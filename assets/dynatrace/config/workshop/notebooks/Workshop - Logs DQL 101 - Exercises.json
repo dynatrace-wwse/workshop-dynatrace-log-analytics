@@ -1,0 +1,1173 @@
+{
+    "version": "6",
+    "defaultTimeframe": {
+        "from": "-30m",
+        "to": "now()"
+    },
+    "defaultSegments": [],
+    "sections": [
+        {
+            "id": "63d752ed-6008-4833-854f-c5b4d7a29fa1",
+            "type": "markdown",
+            "markdown": "# Intro to DQL with Logs\n* A DQL query is a read-only request to process data and return results. The request is stated in plain text, using a pipeline-based data-flow model that is easy to read, author, and automate.\n\n## Chaining commands with the pipe operator\n\n* A DQL query contains at least one or more commands, each of which returns tabular output containing records (lines or rows) and fields (columns). All commands are sequenced by a | (pipe). The data flows or is funneled from one command to the next. The data is filtered or manipulated at each step and then streamed into the following step.\n\n![](https://dt-cdn.net/images/dql-command-chain-1625-35b1bc0640.png?_gl=1*1w3m0sp*_ga*MTIyMjM2NjM2My4xNjk3NTgwMjA4*_ga_1MEMV02JXV*MTY5ODI3NDAxNy4xMTQuMS4xNjk4Mjc0ODg3LjAuMC4w)\n\n* After each operation, DQL returns a table or collection of tables containing data. The pipe operator funnels those tables into the next operation, where they're further processed or manipulated. This makes it easy to incrementally chain operations until the final, intended result is achieved.\n\n* Because the channeling of information from one operator to another is sequential, the query operator order is important and can affect both results and performance.\n\n* The best way to learn DQL is to start with some basic queries. Let's get to it!"
+        },
+        {
+            "id": "7513795d-bd12-4368-8471-d244b45f1e48",
+            "type": "markdown",
+            "markdown": "## Load Data\n* The DQL **FETCH** command defines which data to load from Dynatrace and optionally process in the following processing pipeline steps.\n\n## Exercise 1\n1. Use the **FETCH** command to query logs"
+        },
+        {
+            "id": "984a9b9b-1c76-4262-850a-6a8a7467ca72",
+            "type": "dql",
+            "title": "Exercise 1.1 - Use the FETCH command to query logs",
+            "showTitle": false,
+            "drilldownPath": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "-30m",
+                        "to": "now()"
+                    },
+                    "value": ""
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "gap",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle"
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "",
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": []
+                    },
+                    "honeycomb": {
+                        "shape": "hexagon",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": "auto",
+                        "yAxis": {
+                            "label": "Frequency",
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "davis": {
+                    "includeLogs": true,
+                    "isDavisVisualizationAvailable": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                }
+            },
+            "filterSegments": []
+        },
+        {
+            "id": "0660031b-6205-4c16-82cf-9c45583e6323",
+            "type": "markdown",
+            "markdown": "## Specify timeframe\n* We suggest using the controls offered by the user interface to select your query time frame\n![](https://github.com/JasonOstroski/perform-hot24-intro-to-dql/assets/22330658/44193c2c-d199-405a-8aa7-e5e68fbc2eb7)\n* However, the DQL statement allows you to override the UI selection by using the from or to parameter to specify your intended time range.\n\n## Exercise 2\n1. Specify the timeframe in the UI (last 30 minutes)\n2. Specify the timeframe in the query (last 30 minutes)\n3. Specify the timeframe in the query (last 2 hours, excluding the last 30 minutes)\n* Note: When specifying the timeframe in the query, the UI timeframe selector is disabled."
+        },
+        {
+            "id": "79dba68b-1589-4eb3-a053-9d6c27dc51c2",
+            "type": "dql",
+            "title": "Exercise 2.1 - Specify timeframe in UI (last 30 minutes)",
+            "showTitle": true,
+            "drilldownPath": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "-30m",
+                        "to": "now()"
+                    },
+                    "value": ""
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "gap",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle"
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "",
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": []
+                    },
+                    "honeycomb": {
+                        "shape": "hexagon",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": "auto",
+                        "yAxis": {
+                            "label": "Frequency",
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "davis": {
+                    "includeLogs": true,
+                    "isDavisVisualizationAvailable": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                }
+            },
+            "filterSegments": []
+        },
+        {
+            "id": "c7e593c7-010d-490a-b2b6-6711c62f5520",
+            "type": "dql",
+            "title": "Exercise 2.2 - Specify timeframe in query (last 30 minutes)",
+            "showTitle": true,
+            "drilldownPath": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "-30m",
+                        "to": "now()"
+                    },
+                    "value": ""
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "gap",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle"
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "",
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": []
+                    },
+                    "honeycomb": {
+                        "shape": "hexagon",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": "auto",
+                        "yAxis": {
+                            "label": "Frequency",
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "davis": {
+                    "includeLogs": true,
+                    "isDavisVisualizationAvailable": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                }
+            },
+            "filterSegments": []
+        },
+        {
+            "id": "9f21f0e5-e05b-48d6-883f-d9387d7d6cf7",
+            "type": "dql",
+            "title": "Exercise 2.3 - Specify the timeframe in the query (last 2 hours, excluding the last 30 minutes)",
+            "showTitle": true,
+            "drilldownPath": [],
+            "filterSegments": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "-30m",
+                        "to": "now()"
+                    },
+                    "value": ""
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "gap",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle"
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "",
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": []
+                    },
+                    "honeycomb": {
+                        "shape": "hexagon",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": "auto",
+                        "yAxis": {
+                            "label": "Frequency",
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "davis": {
+                    "includeLogs": true,
+                    "isDavisVisualizationAvailable": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                }
+            }
+        },
+        {
+            "id": "e75a4c13-8f14-46f9-bc84-d1cb2867dee1",
+            "type": "markdown",
+            "markdown": "### You can also use absolute time ranges with the timeframe parameter\n* Ex: fetch logs, timeframe:\"2021-10-20T00:00:00Z/2021-10-28T12:00:00Z\""
+        },
+        {
+            "id": "4e26c44b-033c-40cc-a64c-56539098fe27",
+            "type": "markdown",
+            "markdown": "## Filter\n* Narrow down the requested records with **FILTER**\n* Use operators like == or != to include or exclude fields with specific values. \n* Functions like endsWith or contains let you include fields that end with or contain a specific string.\n\n## Exercise 3\n1. Query only error logs\n2. Query error logs and warn logs\n3. Query error logs and warn logs from the prod namespace\n4. Query logs from the prod namespace, but not logs from nginx k8s containers\n5. Query logs that contain \"AddItemAsync\" in the content"
+        },
+        {
+            "id": "720951d4-57b7-4c8c-a034-e2b51b2872ce",
+            "type": "dql",
+            "title": "Exercise 3.1 - Query only error logs",
+            "showTitle": false,
+            "drilldownPath": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "-30m",
+                        "to": "now()"
+                    },
+                    "value": ""
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "gap",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle"
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "",
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": []
+                    },
+                    "honeycomb": {
+                        "shape": "hexagon",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": "auto",
+                        "yAxis": {
+                            "label": "Frequency",
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "davis": {
+                    "includeLogs": true,
+                    "isDavisVisualizationAvailable": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                }
+            },
+            "filterSegments": []
+        },
+        {
+            "id": "976d333f-3a7c-440a-ba9e-d61bbda3b98a",
+            "type": "dql",
+            "title": "Exercise 3.2 - Query error logs and warn logs",
+            "showTitle": false,
+            "drilldownPath": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "-30m",
+                        "to": "now()"
+                    },
+                    "value": ""
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "gap",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle"
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "",
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": []
+                    },
+                    "honeycomb": {
+                        "shape": "hexagon",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": "auto",
+                        "yAxis": {
+                            "label": "Frequency",
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "davis": {
+                    "includeLogs": true,
+                    "isDavisVisualizationAvailable": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                }
+            },
+            "filterSegments": []
+        },
+        {
+            "id": "fcae0d3f-7cef-4316-a974-c6720889c83e",
+            "type": "dql",
+            "title": "Exercise 3.3 - Query error logs and warn logs from the prod namespace",
+            "showTitle": false,
+            "drilldownPath": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "-30m",
+                        "to": "now()"
+                    },
+                    "value": ""
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "gap",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle"
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "",
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": []
+                    },
+                    "honeycomb": {
+                        "shape": "hexagon",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": "auto",
+                        "yAxis": {
+                            "label": "Frequency",
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "davis": {
+                    "includeLogs": true,
+                    "isDavisVisualizationAvailable": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                }
+            },
+            "filterSegments": []
+        },
+        {
+            "id": "d6f69311-7bbc-41fe-9ce7-7e609e33b8d2",
+            "type": "dql",
+            "title": "Exercise 3.4 - Query logs from the prod namespace, but not logs from nginx k8s containers",
+            "showTitle": false,
+            "drilldownPath": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "-30m",
+                        "to": "now()"
+                    },
+                    "value": ""
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "gap",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle"
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "",
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": []
+                    },
+                    "honeycomb": {
+                        "shape": "hexagon",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": "auto",
+                        "yAxis": {
+                            "label": "Frequency",
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "davis": {
+                    "includeLogs": true,
+                    "isDavisVisualizationAvailable": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                }
+            },
+            "filterSegments": []
+        },
+        {
+            "id": "41a97945-fea6-430d-b81b-ba3ca6561457",
+            "type": "dql",
+            "title": "Exercise 3.5 - Query logs that contain \"AddItemAsync\" in the content",
+            "showTitle": false,
+            "drilldownPath": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "-30m",
+                        "to": "now()"
+                    },
+                    "value": ""
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "gap",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle"
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "",
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": []
+                    },
+                    "honeycomb": {
+                        "shape": "hexagon",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": "auto",
+                        "yAxis": {
+                            "label": "Frequency",
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "davis": {
+                    "includeLogs": true,
+                    "isDavisVisualizationAvailable": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                }
+            },
+            "filterSegments": []
+        },
+        {
+            "id": "684a96a5-593c-44b6-bd5b-701af6604475",
+            "type": "markdown",
+            "markdown": "## Select of subset of fields\n* Dynatrace enriches the logs with important topology information and fields, but sometimes we just want to see a few fields \n* The **FIELDS** command allows us to select which fields should be returned\n\n## Exercise 4\n1. Query logs and return only timestamp, loglevel, and content fields\n2. Query logs, return all fields and remove only the log.source field"
+        },
+        {
+            "id": "560f8dd7-bab8-46ea-bfd1-371767825222",
+            "type": "dql",
+            "title": "Exercise 4.1 - Query logs and return only timestamp, loglevel, and content fields",
+            "showTitle": true,
+            "drilldownPath": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "-30m",
+                        "to": "now()"
+                    },
+                    "value": ""
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "gap",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle"
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "",
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": []
+                    },
+                    "honeycomb": {
+                        "shape": "hexagon",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": "auto",
+                        "yAxis": {
+                            "label": "Frequency",
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "davis": {
+                    "includeLogs": true,
+                    "isDavisVisualizationAvailable": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                }
+            },
+            "filterSegments": []
+        },
+        {
+            "id": "20bb6235-540c-40b9-bb91-629b8c334c73",
+            "type": "dql",
+            "title": "Exercise 4.2 - Query logs, return all fields and remove only the log.source field",
+            "showTitle": true,
+            "drilldownPath": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "-30m",
+                        "to": "now()"
+                    },
+                    "value": ""
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "gap",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle"
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "",
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": []
+                    },
+                    "honeycomb": {
+                        "shape": "hexagon",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": "auto",
+                        "yAxis": {
+                            "label": "Frequency",
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "davis": {
+                    "includeLogs": true,
+                    "isDavisVisualizationAvailable": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                }
+            },
+            "filterSegments": []
+        }
+    ]
+}

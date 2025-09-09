@@ -1,0 +1,3651 @@
+{
+    "version": "6",
+    "defaultTimeframe": {
+        "from": "now()-30m",
+        "to": "now()"
+    },
+    "defaultSegments": [],
+    "sections": [
+        {
+            "id": "d882ccf2-7064-4ec5-8124-80b67c6c1bc9",
+            "type": "markdown",
+            "markdown": "##  Aggregations\n* The **SUMMARIZE** command groups together records that have the same values for a given field and aggregates them.\n* You can also set alias names to attributes within the summarize command.\n* The **MAKETIMESERIES** command creates a timeseries from the data in the stream. It provides a convenient way to chart raw non-metric data (such as events or logs) over time. \n\n## Exercise 1 \n1. Count the number of logs of each log level\n2. Count the number of logs of each log level and rename/alias the filed to \"level\"\n3. Count the number of logs of each log level on each host, removing \"NONE\" loglevels\n4. Visualize the number of error logs over time\n5. Visualize the number of logs of each log level over time\n6. Visualize the number of logs of each log level over time with 5 minute intervals"
+        },
+        {
+            "id": "6cb50b33-ea96-46c6-8144-1823a55ef7d2",
+            "type": "dql",
+            "title": "Exercise 1.1 - Logs by Level",
+            "showTitle": false,
+            "height": 256,
+            "drilldownPath": [],
+            "filterSegments": [],
+            "previousFilterSegments": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-30m",
+                        "to": "now()"
+                    },
+                    "value": "fetch logs\n| summarize count=count(), by:{loglevel}"
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "connect",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color",
+                            "valueAxisScale": "linear",
+                            "categoryAxis": "loglevel",
+                            "categoryAxisLabel": "loglevel",
+                            "valueAxis": "count",
+                            "valueAxisLabel": "count"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle"
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "loglevel",
+                        "prefixIcon": "",
+                        "isIconVisible": false,
+                        "recordField": "loglevel",
+                        "autoscale": true,
+                        "sparklineSettings": {},
+                        "alignment": "center",
+                        "trend": {
+                            "trendType": "auto",
+                            "isVisible": true
+                        },
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [
+                            [
+                                "content"
+                            ]
+                        ],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": [],
+                        "columnOrder": []
+                    },
+                    "honeycomb": {
+                        "shape": "square",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {
+                            "value": "count"
+                        },
+                        "displayedFields": [
+                            "loglevel"
+                        ],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "blue"
+                    },
+                    "histogram": {
+                        "legend": "auto",
+                        "yAxis": {
+                            "label": "Frequency",
+                            "isLabelVisible": true,
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [
+                            {
+                                "valueAxis": "count",
+                                "rangeAxis": ""
+                            }
+                        ],
+                        "variant": "single",
+                        "truncationMode": "middle",
+                        "displayedFields": [
+                            "loglevel"
+                        ]
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    },
+                    "dataMapping": {
+                        "value": "count"
+                    },
+                    "label": {
+                        "showLabel": true,
+                        "label": "count"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "visualization": "recordView",
+                "state": "success",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                },
+                "result": {
+                    "value": {
+                        "records": [
+                            {
+                                "loglevel": "DEBUG",
+                                "count": "5970"
+                            },
+                            {
+                                "loglevel": "ERROR",
+                                "count": "7299"
+                            },
+                            {
+                                "loglevel": "INFO",
+                                "count": "237044"
+                            },
+                            {
+                                "loglevel": "NONE",
+                                "count": "58709"
+                            },
+                            {
+                                "loglevel": "NOTICE",
+                                "count": "5"
+                            },
+                            {
+                                "loglevel": "WARN",
+                                "count": "6322"
+                            }
+                        ],
+                        "types": [
+                            {
+                                "indexRange": [
+                                    0,
+                                    5
+                                ],
+                                "mappings": {
+                                    "loglevel": {
+                                        "type": "string"
+                                    },
+                                    "count": {
+                                        "type": "long"
+                                    }
+                                }
+                            }
+                        ],
+                        "metadata": {
+                            "grail": {
+                                "canonicalQuery": "fetch logs\n| summarize by:{loglevel}, count = count()",
+                                "timezone": "America/Toronto",
+                                "query": "fetch logs\n| summarize count=count(), by:{loglevel}",
+                                "scannedRecords": 1174927,
+                                "dqlVersion": "V1_0",
+                                "scannedBytes": 811842955,
+                                "scannedDataPoints": 0,
+                                "analysisTimeframe": {
+                                    "start": "2025-04-10T14:01:07.421Z",
+                                    "end": "2025-04-10T14:31:07.421Z"
+                                },
+                                "locale": "en-US",
+                                "executionTimeMilliseconds": 714,
+                                "notifications": [],
+                                "queryId": "0770ab53-aae0-433d-9382-dbbd69bc1ac8",
+                                "sampled": false
+                            }
+                        }
+                    },
+                    "code": 200,
+                    "notifications": [],
+                    "dateTime": "2025-04-10T14:31:08.676Z",
+                    "input": {
+                        "timeframe": {
+                            "from": "now()-30m",
+                            "to": "now()"
+                        },
+                        "value": "fetch logs\n| summarize count=count(), by:{loglevel}"
+                    },
+                    "querySettings": {
+                        "maxResultRecords": 1000,
+                        "defaultScanLimitGbytes": 500,
+                        "maxResultMegaBytes": 1,
+                        "defaultSamplingRatio": 10,
+                        "enableSampling": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "31fa8848-0fe5-4c36-8e64-f7b8756e7424",
+            "type": "dql",
+            "title": "Exercise 1.2 - Logs by Level with Alias",
+            "showTitle": false,
+            "height": 256,
+            "drilldownPath": [],
+            "filterSegments": [],
+            "previousFilterSegments": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-30m",
+                        "to": "now()"
+                    },
+                    "value": "fetch logs\n| summarize count=count(), by:{level=loglevel}"
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "connect",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color",
+                            "valueAxisScale": "linear",
+                            "categoryAxis": "level",
+                            "categoryAxisLabel": "level",
+                            "valueAxis": "count",
+                            "valueAxisLabel": "count"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle"
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "level",
+                        "prefixIcon": "",
+                        "isIconVisible": false,
+                        "recordField": "level",
+                        "autoscale": true,
+                        "sparklineSettings": {},
+                        "alignment": "center",
+                        "trend": {
+                            "trendType": "auto",
+                            "isVisible": true
+                        },
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [
+                            [
+                                "content"
+                            ]
+                        ],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": [],
+                        "columnOrder": []
+                    },
+                    "honeycomb": {
+                        "shape": "square",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {
+                            "value": "count"
+                        },
+                        "displayedFields": [
+                            "level"
+                        ],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "blue"
+                    },
+                    "histogram": {
+                        "legend": "auto",
+                        "yAxis": {
+                            "label": "Frequency",
+                            "isLabelVisible": true,
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [
+                            {
+                                "valueAxis": "count",
+                                "rangeAxis": ""
+                            }
+                        ],
+                        "variant": "single",
+                        "truncationMode": "middle",
+                        "displayedFields": [
+                            "level"
+                        ]
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    },
+                    "dataMapping": {
+                        "value": "count"
+                    },
+                    "label": {
+                        "showLabel": true,
+                        "label": "count"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "visualization": "recordView",
+                "state": "success",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                },
+                "result": {
+                    "value": {
+                        "records": [
+                            {
+                                "level": "DEBUG",
+                                "count": "5970"
+                            },
+                            {
+                                "level": "ERROR",
+                                "count": "7299"
+                            },
+                            {
+                                "level": "INFO",
+                                "count": "237044"
+                            },
+                            {
+                                "level": "NONE",
+                                "count": "58709"
+                            },
+                            {
+                                "level": "NOTICE",
+                                "count": "5"
+                            },
+                            {
+                                "level": "WARN",
+                                "count": "6322"
+                            }
+                        ],
+                        "types": [
+                            {
+                                "indexRange": [
+                                    0,
+                                    5
+                                ],
+                                "mappings": {
+                                    "level": {
+                                        "type": "string"
+                                    },
+                                    "count": {
+                                        "type": "long"
+                                    }
+                                }
+                            }
+                        ],
+                        "metadata": {
+                            "grail": {
+                                "canonicalQuery": "fetch logs\n| summarize by:{level = loglevel}, count = count()",
+                                "timezone": "America/Toronto",
+                                "query": "fetch logs\n| summarize count=count(), by:{level=loglevel}",
+                                "scannedRecords": 1174927,
+                                "dqlVersion": "V1_0",
+                                "scannedBytes": 811842955,
+                                "scannedDataPoints": 0,
+                                "analysisTimeframe": {
+                                    "start": "2025-04-10T14:01:07.424Z",
+                                    "end": "2025-04-10T14:31:07.424Z"
+                                },
+                                "locale": "en-US",
+                                "executionTimeMilliseconds": 678,
+                                "notifications": [],
+                                "queryId": "82ef9f7b-f738-4bf6-8a03-62b99761e0e3",
+                                "sampled": false
+                            }
+                        }
+                    },
+                    "code": 200,
+                    "notifications": [],
+                    "dateTime": "2025-04-10T14:31:08.708Z",
+                    "input": {
+                        "timeframe": {
+                            "from": "now()-30m",
+                            "to": "now()"
+                        },
+                        "value": "fetch logs\n| summarize count=count(), by:{level=loglevel}"
+                    },
+                    "querySettings": {
+                        "maxResultRecords": 1000,
+                        "defaultScanLimitGbytes": 500,
+                        "maxResultMegaBytes": 1,
+                        "defaultSamplingRatio": 10,
+                        "enableSampling": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "e84228fd-dd4c-44db-9df2-d7961ccbb38d",
+            "type": "dql",
+            "title": "Exercise 1.3 - Logs by level and host, removing NONE",
+            "showTitle": false,
+            "height": 284,
+            "drilldownPath": [],
+            "filterSegments": [],
+            "previousFilterSegments": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-30m",
+                        "to": "now()"
+                    },
+                    "value": "fetch logs\n| filterOut loglevel == \"NONE\"\n| summarize count = count(), by:{loglevel,host.name}"
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "connect",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color",
+                            "valueAxisScale": "linear",
+                            "categoryAxis": "loglevel",
+                            "categoryAxisLabel": "loglevel",
+                            "valueAxis": "count",
+                            "valueAxisLabel": "count"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle"
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "loglevel",
+                        "prefixIcon": "",
+                        "isIconVisible": false,
+                        "recordField": "loglevel",
+                        "autoscale": true,
+                        "sparklineSettings": {},
+                        "alignment": "center",
+                        "trend": {
+                            "trendType": "auto",
+                            "isVisible": true
+                        },
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [
+                            [
+                                "content"
+                            ]
+                        ],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": [],
+                        "columnOrder": [
+                            "[\"loglevel\"]",
+                            "[\"host.name\"]",
+                            "[\"count\"]"
+                        ]
+                    },
+                    "honeycomb": {
+                        "shape": "square",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {
+                            "value": "count"
+                        },
+                        "displayedFields": [
+                            "loglevel",
+                            "host.name"
+                        ],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "blue"
+                    },
+                    "histogram": {
+                        "legend": "auto",
+                        "yAxis": {
+                            "label": "Frequency",
+                            "isLabelVisible": true,
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [
+                            {
+                                "valueAxis": "count",
+                                "rangeAxis": ""
+                            }
+                        ],
+                        "variant": "single",
+                        "truncationMode": "middle",
+                        "displayedFields": [
+                            "loglevel",
+                            "host.name"
+                        ]
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    },
+                    "dataMapping": {
+                        "value": "count"
+                    },
+                    "label": {
+                        "showLabel": true,
+                        "label": "count"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "visualization": "table",
+                "state": "success",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                },
+                "result": {
+                    "code": 200,
+                    "value": {
+                        "records": [
+                            {
+                                "loglevel": "DEBUG",
+                                "host.name": "aks-userpool-12070609-vmss_1",
+                                "count": "5970"
+                            },
+                            {
+                                "loglevel": "ERROR",
+                                "host.name": "aks-userpool-12070609-vmss_0",
+                                "count": "2610"
+                            },
+                            {
+                                "loglevel": "ERROR",
+                                "host.name": "aks-userpool-12070609-vmss_1",
+                                "count": "4689"
+                            },
+                            {
+                                "loglevel": "INFO",
+                                "host.name": "aks-userpool-12070609-vmss_0",
+                                "count": "57243"
+                            },
+                            {
+                                "loglevel": "INFO",
+                                "host.name": "aks-userpool-12070609-vmss_1",
+                                "count": "179801"
+                            },
+                            {
+                                "loglevel": "NOTICE",
+                                "host.name": "aks-userpool-12070609-vmss_0",
+                                "count": "5"
+                            },
+                            {
+                                "loglevel": "WARN",
+                                "host.name": "aks-userpool-12070609-vmss_0",
+                                "count": "346"
+                            },
+                            {
+                                "loglevel": "WARN",
+                                "host.name": "aks-userpool-12070609-vmss_1",
+                                "count": "5976"
+                            }
+                        ],
+                        "types": [
+                            {
+                                "indexRange": [
+                                    0,
+                                    7
+                                ],
+                                "mappings": {
+                                    "loglevel": {
+                                        "type": "string"
+                                    },
+                                    "host.name": {
+                                        "type": "string"
+                                    },
+                                    "count": {
+                                        "type": "long"
+                                    }
+                                }
+                            }
+                        ],
+                        "metadata": {
+                            "grail": {
+                                "canonicalQuery": "fetch logs\n| filterOut loglevel == \"NONE\"\n| summarize by:{loglevel, host.name}, count = count()",
+                                "timezone": "America/Toronto",
+                                "query": "fetch logs\n| filterOut loglevel == \"NONE\"\n| summarize count = count(), by:{loglevel,host.name}",
+                                "scannedRecords": 1174927,
+                                "dqlVersion": "V1_0",
+                                "scannedBytes": 811842955,
+                                "scannedDataPoints": 0,
+                                "analysisTimeframe": {
+                                    "start": "2025-04-10T14:01:07.425Z",
+                                    "end": "2025-04-10T14:31:07.425Z"
+                                },
+                                "locale": "en-US",
+                                "executionTimeMilliseconds": 828,
+                                "notifications": [],
+                                "queryId": "7b631aff-88bf-4a13-a360-2ae23bec5a5c",
+                                "sampled": false
+                            }
+                        }
+                    },
+                    "notifications": [],
+                    "dateTime": "2025-04-10T14:31:08.739Z",
+                    "input": {
+                        "timeframe": {
+                            "from": "now()-30m",
+                            "to": "now()"
+                        },
+                        "value": "fetch logs\n| filterOut loglevel == \"NONE\"\n| summarize count = count(), by:{loglevel,host.name}"
+                    },
+                    "querySettings": {
+                        "maxResultRecords": 1000,
+                        "defaultScanLimitGbytes": 500,
+                        "maxResultMegaBytes": 1,
+                        "defaultSamplingRatio": 10,
+                        "enableSampling": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "d09cbbad-16eb-45a7-b99f-b2e2dc5e52dd",
+            "type": "dql",
+            "title": "Exercise 1.4 - Error logs over time",
+            "showTitle": false,
+            "drilldownPath": [],
+            "filterSegments": [],
+            "previousFilterSegments": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-30m",
+                        "to": "now()"
+                    },
+                    "value": "fetch logs\n|filter loglevel == \"ERROR\"\n|makeTimeseries errorcount = count()"
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "connect",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color",
+                            "valueAxisScale": "linear",
+                            "categoryAxis": [
+                                "interval"
+                            ],
+                            "categoryAxisLabel": "interval",
+                            "valueAxis": [
+                                "interval"
+                            ],
+                            "valueAxisLabel": "interval",
+                            "tooltipVariant": "single"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle",
+                        "xAxisScaling": "analyzedTimeframe",
+                        "fieldMapping": {
+                            "timestamp": "timeframe",
+                            "leftAxisValues": [
+                                "errorcount"
+                            ],
+                            "leftAxisDimensions": []
+                        },
+                        "xAxisLabel": "timeframe",
+                        "xAxisIsLabelVisible": false,
+                        "hiddenLegendFields": [
+                            "interval"
+                        ],
+                        "leftYAxisSettings": {}
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "",
+                        "isIconVisible": false,
+                        "autoscale": true,
+                        "sparklineSettings": {
+                            "record": "errorcount"
+                        },
+                        "alignment": "center",
+                        "trend": {
+                            "trendType": "auto",
+                            "isVisible": true
+                        },
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [
+                            [
+                                "content"
+                            ]
+                        ],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": [
+                            {
+                                "fields": [
+                                    "errorcount"
+                                ],
+                                "value": "sparkline",
+                                "id": 1742330479474
+                            }
+                        ],
+                        "columnOrder": []
+                    },
+                    "honeycomb": {
+                        "shape": "square",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": "auto",
+                        "yAxis": {
+                            "label": "Frequency",
+                            "isLabelVisible": true,
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [
+                            {
+                                "valueAxis": "interval",
+                                "rangeAxis": ""
+                            }
+                        ],
+                        "variant": "single",
+                        "truncationMode": "middle",
+                        "displayedFields": []
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    },
+                    "dataMapping": {
+                        "value": "interval"
+                    },
+                    "label": {
+                        "showLabel": true,
+                        "label": "interval"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "visualization": "barChart",
+                "state": "success",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                },
+                "result": {
+                    "code": 200,
+                    "value": {
+                        "records": [
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T14:01:00.000Z",
+                                    "end": "2025-04-10T14:31:15.000Z"
+                                },
+                                "interval": "15000000000",
+                                "errorcount": [
+                                    40,
+                                    68,
+                                    86,
+                                    59,
+                                    58,
+                                    62,
+                                    61,
+                                    65,
+                                    70,
+                                    81,
+                                    65,
+                                    75,
+                                    79,
+                                    62,
+                                    72,
+                                    57,
+                                    74,
+                                    66,
+                                    58,
+                                    71,
+                                    65,
+                                    54,
+                                    65,
+                                    65,
+                                    76,
+                                    66,
+                                    70,
+                                    85,
+                                    63,
+                                    66,
+                                    60,
+                                    70,
+                                    61,
+                                    74,
+                                    65,
+                                    74,
+                                    65,
+                                    64,
+                                    63,
+                                    67,
+                                    66,
+                                    60,
+                                    52,
+                                    62,
+                                    56,
+                                    49,
+                                    62,
+                                    79,
+                                    82,
+                                    69,
+                                    58,
+                                    71,
+                                    60,
+                                    54,
+                                    71,
+                                    56,
+                                    56,
+                                    56,
+                                    68,
+                                    61,
+                                    64,
+                                    72,
+                                    58,
+                                    72,
+                                    58,
+                                    65,
+                                    56,
+                                    55,
+                                    74,
+                                    48,
+                                    55,
+                                    76,
+                                    58,
+                                    55,
+                                    57,
+                                    66,
+                                    68,
+                                    69,
+                                    65,
+                                    56,
+                                    76,
+                                    64,
+                                    66,
+                                    69,
+                                    60,
+                                    71,
+                                    64,
+                                    63,
+                                    70,
+                                    79,
+                                    78,
+                                    55,
+                                    63,
+                                    66,
+                                    60,
+                                    72,
+                                    80,
+                                    67,
+                                    72,
+                                    58,
+                                    66,
+                                    68,
+                                    64,
+                                    60,
+                                    50,
+                                    85,
+                                    59,
+                                    56,
+                                    53,
+                                    59,
+                                    77,
+                                    67,
+                                    19,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null
+                                ]
+                            }
+                        ],
+                        "types": [
+                            {
+                                "indexRange": [
+                                    0,
+                                    0
+                                ],
+                                "mappings": {
+                                    "timeframe": {
+                                        "type": "timeframe"
+                                    },
+                                    "interval": {
+                                        "type": "duration"
+                                    },
+                                    "errorcount": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "indexRange": [
+                                                    0,
+                                                    120
+                                                ],
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "double"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ],
+                        "metadata": {
+                            "grail": {
+                                "canonicalQuery": "fetch logs\n| filter loglevel == \"ERROR\"\n| makeTimeseries errorcount = count()",
+                                "timezone": "America/Toronto",
+                                "query": "fetch logs\n|filter loglevel == \"ERROR\"\n|makeTimeseries errorcount = count()",
+                                "scannedRecords": 1174927,
+                                "dqlVersion": "V1_0",
+                                "scannedBytes": 142557392,
+                                "scannedDataPoints": 0,
+                                "analysisTimeframe": {
+                                    "start": "2025-04-10T14:01:07.427Z",
+                                    "end": "2025-04-10T14:31:07.427Z"
+                                },
+                                "locale": "en-US",
+                                "executionTimeMilliseconds": 48,
+                                "notifications": [],
+                                "queryId": "d5cfa277-71fc-4e5d-8102-0f5ceef8d1d1",
+                                "sampled": false
+                            }
+                        }
+                    },
+                    "notifications": [],
+                    "dateTime": "2025-04-10T14:31:07.757Z",
+                    "input": {
+                        "timeframe": {
+                            "from": "now()-30m",
+                            "to": "now()"
+                        },
+                        "value": "fetch logs\n|filter loglevel == \"ERROR\"\n|makeTimeseries errorcount = count()"
+                    },
+                    "querySettings": {
+                        "maxResultRecords": 1000,
+                        "defaultScanLimitGbytes": 500,
+                        "maxResultMegaBytes": 1,
+                        "defaultSamplingRatio": 10,
+                        "enableSampling": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "fc72cb42-4493-4b66-95e3-63669f622148",
+            "type": "dql",
+            "title": "Exercise 1.5 - Logs by level over time",
+            "showTitle": false,
+            "drilldownPath": [],
+            "filterSegments": [],
+            "previousFilterSegments": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-30m",
+                        "to": "now()"
+                    },
+                    "value": "fetch logs\n|makeTimeseries count(), by:{loglevel}"
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "connect",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color",
+                            "valueAxisScale": "linear",
+                            "categoryAxis": "loglevel",
+                            "categoryAxisLabel": "loglevel",
+                            "valueAxis": "interval",
+                            "valueAxisLabel": "interval"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle",
+                        "fieldMapping": {
+                            "timestamp": "timeframe",
+                            "leftAxisValues": [
+                                "count()"
+                            ],
+                            "leftAxisDimensions": [
+                                "loglevel"
+                            ]
+                        },
+                        "xAxisLabel": "timeframe",
+                        "xAxisIsLabelVisible": false,
+                        "hiddenLegendFields": [
+                            "interval"
+                        ],
+                        "leftYAxisSettings": {},
+                        "xAxisScaling": "analyzedTimeframe"
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "loglevel",
+                        "prefixIcon": "",
+                        "isIconVisible": false,
+                        "recordField": "loglevel",
+                        "autoscale": true,
+                        "sparklineSettings": {
+                            "record": "count()"
+                        },
+                        "alignment": "center",
+                        "trend": {
+                            "trendType": "auto",
+                            "isVisible": true
+                        },
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [
+                            [
+                                "content"
+                            ]
+                        ],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": [
+                            {
+                                "fields": [
+                                    "count()"
+                                ],
+                                "value": "sparkline",
+                                "id": 1742330482167
+                            }
+                        ],
+                        "columnOrder": []
+                    },
+                    "honeycomb": {
+                        "shape": "square",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {
+                            "value": "loglevel"
+                        },
+                        "displayedFields": [
+                            "loglevel"
+                        ],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": "auto",
+                        "yAxis": {
+                            "label": "Frequency",
+                            "isLabelVisible": true,
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [
+                            {
+                                "valueAxis": "interval",
+                                "rangeAxis": ""
+                            }
+                        ],
+                        "variant": "single",
+                        "truncationMode": "middle",
+                        "displayedFields": [
+                            "loglevel"
+                        ]
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    },
+                    "dataMapping": {
+                        "value": "interval"
+                    },
+                    "label": {
+                        "showLabel": true,
+                        "label": "interval"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "visualization": "barChart",
+                "state": "success",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                },
+                "result": {
+                    "code": 200,
+                    "value": {
+                        "records": [
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T14:01:00.000Z",
+                                    "end": "2025-04-10T14:31:15.000Z"
+                                },
+                                "interval": "15000000000",
+                                "loglevel": "DEBUG",
+                                "count()": [
+                                    24,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    46,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T14:01:00.000Z",
+                                    "end": "2025-04-10T14:31:15.000Z"
+                                },
+                                "interval": "15000000000",
+                                "loglevel": "ERROR",
+                                "count()": [
+                                    40,
+                                    68,
+                                    86,
+                                    59,
+                                    58,
+                                    62,
+                                    61,
+                                    65,
+                                    70,
+                                    81,
+                                    65,
+                                    75,
+                                    79,
+                                    62,
+                                    72,
+                                    57,
+                                    74,
+                                    66,
+                                    58,
+                                    71,
+                                    65,
+                                    54,
+                                    65,
+                                    65,
+                                    76,
+                                    66,
+                                    70,
+                                    85,
+                                    63,
+                                    66,
+                                    60,
+                                    70,
+                                    61,
+                                    74,
+                                    65,
+                                    74,
+                                    65,
+                                    64,
+                                    63,
+                                    67,
+                                    66,
+                                    60,
+                                    52,
+                                    62,
+                                    56,
+                                    49,
+                                    62,
+                                    79,
+                                    82,
+                                    69,
+                                    58,
+                                    71,
+                                    60,
+                                    54,
+                                    71,
+                                    56,
+                                    56,
+                                    56,
+                                    68,
+                                    61,
+                                    64,
+                                    72,
+                                    58,
+                                    72,
+                                    58,
+                                    65,
+                                    56,
+                                    55,
+                                    74,
+                                    48,
+                                    55,
+                                    76,
+                                    58,
+                                    55,
+                                    57,
+                                    66,
+                                    68,
+                                    69,
+                                    65,
+                                    56,
+                                    76,
+                                    64,
+                                    66,
+                                    69,
+                                    60,
+                                    71,
+                                    64,
+                                    63,
+                                    70,
+                                    79,
+                                    78,
+                                    55,
+                                    63,
+                                    66,
+                                    60,
+                                    72,
+                                    80,
+                                    67,
+                                    72,
+                                    58,
+                                    66,
+                                    68,
+                                    64,
+                                    60,
+                                    50,
+                                    85,
+                                    59,
+                                    56,
+                                    53,
+                                    59,
+                                    77,
+                                    67,
+                                    19,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T14:01:00.000Z",
+                                    "end": "2025-04-10T14:31:15.000Z"
+                                },
+                                "interval": "15000000000",
+                                "loglevel": "INFO",
+                                "count()": [
+                                    552,
+                                    1042,
+                                    1159,
+                                    5133,
+                                    938,
+                                    958,
+                                    972,
+                                    5234,
+                                    1042,
+                                    1069,
+                                    992,
+                                    5341,
+                                    1078,
+                                    1001,
+                                    1040,
+                                    5126,
+                                    1047,
+                                    1027,
+                                    1037,
+                                    5261,
+                                    960,
+                                    892,
+                                    1072,
+                                    5154,
+                                    1015,
+                                    1054,
+                                    891,
+                                    5270,
+                                    983,
+                                    973,
+                                    993,
+                                    5173,
+                                    1020,
+                                    1082,
+                                    953,
+                                    5218,
+                                    944,
+                                    946,
+                                    926,
+                                    5237,
+                                    881,
+                                    940,
+                                    849,
+                                    5195,
+                                    983,
+                                    1033,
+                                    913,
+                                    5306,
+                                    1034,
+                                    954,
+                                    983,
+                                    5228,
+                                    937,
+                                    934,
+                                    1098,
+                                    5072,
+                                    1000,
+                                    1052,
+                                    957,
+                                    5315,
+                                    937,
+                                    976,
+                                    967,
+                                    5260,
+                                    925,
+                                    976,
+                                    971,
+                                    5226,
+                                    1005,
+                                    873,
+                                    912,
+                                    5283,
+                                    953,
+                                    882,
+                                    993,
+                                    5192,
+                                    1079,
+                                    1048,
+                                    1013,
+                                    5066,
+                                    1086,
+                                    957,
+                                    1054,
+                                    5220,
+                                    918,
+                                    932,
+                                    932,
+                                    5142,
+                                    978,
+                                    998,
+                                    1014,
+                                    5121,
+                                    1021,
+                                    935,
+                                    988,
+                                    5221,
+                                    1110,
+                                    1061,
+                                    1028,
+                                    5223,
+                                    1056,
+                                    942,
+                                    935,
+                                    5321,
+                                    886,
+                                    1086,
+                                    910,
+                                    5259,
+                                    863,
+                                    967,
+                                    1034,
+                                    5286,
+                                    890,
+                                    927,
+                                    866,
+                                    4007,
+                                    658,
+                                    415,
+                                    407,
+                                    384,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T14:01:00.000Z",
+                                    "end": "2025-04-10T14:31:15.000Z"
+                                },
+                                "interval": "15000000000",
+                                "loglevel": "NONE",
+                                "count()": [
+                                    217,
+                                    433,
+                                    417,
+                                    393,
+                                    975,
+                                    342,
+                                    373,
+                                    366,
+                                    933,
+                                    410,
+                                    398,
+                                    419,
+                                    1058,
+                                    336,
+                                    416,
+                                    322,
+                                    1146,
+                                    342,
+                                    412,
+                                    366,
+                                    843,
+                                    295,
+                                    339,
+                                    359,
+                                    856,
+                                    384,
+                                    295,
+                                    464,
+                                    936,
+                                    394,
+                                    357,
+                                    349,
+                                    977,
+                                    426,
+                                    316,
+                                    414,
+                                    1001,
+                                    321,
+                                    350,
+                                    410,
+                                    915,
+                                    277,
+                                    261,
+                                    347,
+                                    799,
+                                    306,
+                                    298,
+                                    425,
+                                    958,
+                                    381,
+                                    335,
+                                    368,
+                                    875,
+                                    355,
+                                    403,
+                                    280,
+                                    1033,
+                                    412,
+                                    344,
+                                    387,
+                                    994,
+                                    330,
+                                    365,
+                                    384,
+                                    991,
+                                    322,
+                                    329,
+                                    365,
+                                    1021,
+                                    260,
+                                    327,
+                                    409,
+                                    958,
+                                    285,
+                                    390,
+                                    322,
+                                    927,
+                                    425,
+                                    338,
+                                    278,
+                                    1053,
+                                    328,
+                                    408,
+                                    355,
+                                    924,
+                                    300,
+                                    366,
+                                    293,
+                                    1008,
+                                    399,
+                                    426,
+                                    300,
+                                    1055,
+                                    364,
+                                    361,
+                                    427,
+                                    1064,
+                                    381,
+                                    394,
+                                    360,
+                                    1034,
+                                    350,
+                                    314,
+                                    391,
+                                    841,
+                                    451,
+                                    338,
+                                    376,
+                                    865,
+                                    336,
+                                    375,
+                                    415,
+                                    898,
+                                    203,
+                                    141,
+                                    152,
+                                    723,
+                                    null,
+                                    1,
+                                    null,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T14:01:00.000Z",
+                                    "end": "2025-04-10T14:31:15.000Z"
+                                },
+                                "interval": "15000000000",
+                                "loglevel": "NOTICE",
+                                "count()": [
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T14:01:00.000Z",
+                                    "end": "2025-04-10T14:31:15.000Z"
+                                },
+                                "interval": "15000000000",
+                                "loglevel": "WARN",
+                                "count()": [
+                                    24,
+                                    50,
+                                    52,
+                                    50,
+                                    52,
+                                    53,
+                                    50,
+                                    57,
+                                    51,
+                                    52,
+                                    50,
+                                    52,
+                                    52,
+                                    50,
+                                    52,
+                                    50,
+                                    52,
+                                    51,
+                                    52,
+                                    50,
+                                    52,
+                                    55,
+                                    50,
+                                    55,
+                                    50,
+                                    88,
+                                    50,
+                                    52,
+                                    50,
+                                    52,
+                                    52,
+                                    50,
+                                    52,
+                                    50,
+                                    52,
+                                    50,
+                                    53,
+                                    52,
+                                    50,
+                                    52,
+                                    50,
+                                    52,
+                                    50,
+                                    53,
+                                    50,
+                                    52,
+                                    56,
+                                    50,
+                                    55,
+                                    55,
+                                    53,
+                                    82,
+                                    53,
+                                    50,
+                                    52,
+                                    52,
+                                    50,
+                                    52,
+                                    50,
+                                    52,
+                                    50,
+                                    52,
+                                    52,
+                                    50,
+                                    52,
+                                    50,
+                                    52,
+                                    50,
+                                    52,
+                                    51,
+                                    52,
+                                    53,
+                                    53,
+                                    52,
+                                    55,
+                                    84,
+                                    50,
+                                    52,
+                                    53,
+                                    50,
+                                    52,
+                                    50,
+                                    52,
+                                    50,
+                                    52,
+                                    50,
+                                    52,
+                                    54,
+                                    50,
+                                    53,
+                                    50,
+                                    52,
+                                    50,
+                                    52,
+                                    50,
+                                    52,
+                                    55,
+                                    50,
+                                    88,
+                                    53,
+                                    53,
+                                    87,
+                                    53,
+                                    52,
+                                    50,
+                                    52,
+                                    50,
+                                    52,
+                                    50,
+                                    52,
+                                    50,
+                                    52,
+                                    53,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    50,
+                                    46,
+                                    null
+                                ]
+                            }
+                        ],
+                        "types": [
+                            {
+                                "indexRange": [
+                                    0,
+                                    5
+                                ],
+                                "mappings": {
+                                    "timeframe": {
+                                        "type": "timeframe"
+                                    },
+                                    "interval": {
+                                        "type": "duration"
+                                    },
+                                    "loglevel": {
+                                        "type": "string"
+                                    },
+                                    "count()": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "indexRange": [
+                                                    0,
+                                                    120
+                                                ],
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "double"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ],
+                        "metadata": {
+                            "grail": {
+                                "canonicalQuery": "fetch logs\n| makeTimeseries by:{loglevel}, count()",
+                                "timezone": "America/Toronto",
+                                "query": "fetch logs\n|makeTimeseries count(), by:{loglevel}",
+                                "scannedRecords": 1174927,
+                                "dqlVersion": "V1_0",
+                                "scannedBytes": 811842955,
+                                "scannedDataPoints": 0,
+                                "analysisTimeframe": {
+                                    "start": "2025-04-10T14:01:07.428Z",
+                                    "end": "2025-04-10T14:31:07.428Z"
+                                },
+                                "locale": "en-US",
+                                "executionTimeMilliseconds": 724,
+                                "notifications": [],
+                                "queryId": "b575eba1-53a8-4455-b94d-d590819e0683",
+                                "sampled": false
+                            }
+                        }
+                    },
+                    "notifications": [],
+                    "dateTime": "2025-04-10T14:31:08.748Z",
+                    "input": {
+                        "timeframe": {
+                            "from": "now()-30m",
+                            "to": "now()"
+                        },
+                        "value": "fetch logs\n|makeTimeseries count(), by:{loglevel}"
+                    },
+                    "querySettings": {
+                        "maxResultRecords": 1000,
+                        "defaultScanLimitGbytes": 500,
+                        "maxResultMegaBytes": 1,
+                        "defaultSamplingRatio": 10,
+                        "enableSampling": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "fa36b1e4-d96b-44a1-881a-2f64f740ca4c",
+            "type": "dql",
+            "title": "Exercise 1.6 - Logs by level over time with 5 min interval",
+            "showTitle": false,
+            "drilldownPath": [],
+            "filterSegments": [],
+            "previousFilterSegments": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-30m",
+                        "to": "now()"
+                    },
+                    "value": "fetch logs\n|makeTimeseries count(), by:{loglevel}, interval:5m"
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "connect",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color",
+                            "valueAxisScale": "linear",
+                            "categoryAxis": "loglevel",
+                            "categoryAxisLabel": "loglevel",
+                            "valueAxis": "interval",
+                            "valueAxisLabel": "interval"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle",
+                        "fieldMapping": {
+                            "timestamp": "timeframe",
+                            "leftAxisValues": [
+                                "count()"
+                            ],
+                            "leftAxisDimensions": [
+                                "loglevel"
+                            ]
+                        },
+                        "xAxisLabel": "timeframe",
+                        "xAxisIsLabelVisible": false,
+                        "hiddenLegendFields": [
+                            "interval"
+                        ],
+                        "leftYAxisSettings": {},
+                        "xAxisScaling": "analyzedTimeframe"
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "loglevel",
+                        "prefixIcon": "",
+                        "isIconVisible": false,
+                        "recordField": "loglevel",
+                        "autoscale": true,
+                        "sparklineSettings": {
+                            "record": "count()"
+                        },
+                        "alignment": "center",
+                        "trend": {
+                            "trendType": "auto",
+                            "isVisible": true
+                        },
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [
+                            [
+                                "content"
+                            ]
+                        ],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": [
+                            {
+                                "fields": [
+                                    "count()"
+                                ],
+                                "value": "sparkline",
+                                "id": 1742330482125
+                            }
+                        ],
+                        "columnOrder": []
+                    },
+                    "honeycomb": {
+                        "shape": "square",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {
+                            "value": "loglevel"
+                        },
+                        "displayedFields": [
+                            "loglevel"
+                        ],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": "auto",
+                        "yAxis": {
+                            "label": "Frequency",
+                            "isLabelVisible": true,
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [
+                            {
+                                "valueAxis": "interval",
+                                "rangeAxis": ""
+                            }
+                        ],
+                        "variant": "single",
+                        "truncationMode": "middle",
+                        "displayedFields": [
+                            "loglevel"
+                        ]
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    },
+                    "dataMapping": {
+                        "value": "interval"
+                    },
+                    "label": {
+                        "showLabel": true,
+                        "label": "interval"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "visualization": "barChart",
+                "state": "success",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                },
+                "result": {
+                    "code": 200,
+                    "value": {
+                        "records": [
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T14:00:00.000Z",
+                                    "end": "2025-04-10T14:35:00.000Z"
+                                },
+                                "interval": "300000000000",
+                                "loglevel": "DEBUG",
+                                "count()": [
+                                    774,
+                                    1000,
+                                    1000,
+                                    1000,
+                                    1000,
+                                    1000,
+                                    196
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T14:00:00.000Z",
+                                    "end": "2025-04-10T14:35:00.000Z"
+                                },
+                                "interval": "300000000000",
+                                "loglevel": "ERROR",
+                                "count()": [
+                                    1060,
+                                    1348,
+                                    1266,
+                                    1230,
+                                    1334,
+                                    1061,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T14:00:00.000Z",
+                                    "end": "2025-04-10T14:35:00.000Z"
+                                },
+                                "interval": "300000000000",
+                                "loglevel": "INFO",
+                                "count()": [
+                                    32677,
+                                    41075,
+                                    40393,
+                                    40655,
+                                    40723,
+                                    39657,
+                                    1864
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T14:00:00.000Z",
+                                    "end": "2025-04-10T14:35:00.000Z"
+                                },
+                                "interval": "300000000000",
+                                "loglevel": "NONE",
+                                "count()": [
+                                    7808,
+                                    10270,
+                                    9665,
+                                    10228,
+                                    10335,
+                                    9679,
+                                    724
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T14:00:00.000Z",
+                                    "end": "2025-04-10T14:35:00.000Z"
+                                },
+                                "interval": "300000000000",
+                                "loglevel": "NOTICE",
+                                "count()": [
+                                    null,
+                                    1,
+                                    1,
+                                    1,
+                                    null,
+                                    2,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T14:00:00.000Z",
+                                    "end": "2025-04-10T14:35:00.000Z"
+                                },
+                                "interval": "300000000000",
+                                "loglevel": "WARN",
+                                "count()": [
+                                    797,
+                                    1065,
+                                    1072,
+                                    1064,
+                                    1026,
+                                    1102,
+                                    196
+                                ]
+                            }
+                        ],
+                        "types": [
+                            {
+                                "indexRange": [
+                                    0,
+                                    5
+                                ],
+                                "mappings": {
+                                    "timeframe": {
+                                        "type": "timeframe"
+                                    },
+                                    "interval": {
+                                        "type": "duration"
+                                    },
+                                    "loglevel": {
+                                        "type": "string"
+                                    },
+                                    "count()": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "indexRange": [
+                                                    0,
+                                                    6
+                                                ],
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "double"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ],
+                        "metadata": {
+                            "grail": {
+                                "canonicalQuery": "fetch logs\n| makeTimeseries by:{loglevel}, interval:5m, count()",
+                                "timezone": "America/Toronto",
+                                "query": "fetch logs\n|makeTimeseries count(), by:{loglevel}, interval:5m",
+                                "scannedRecords": 1174927,
+                                "dqlVersion": "V1_0",
+                                "scannedBytes": 811842955,
+                                "scannedDataPoints": 0,
+                                "analysisTimeframe": {
+                                    "start": "2025-04-10T14:01:07.429Z",
+                                    "end": "2025-04-10T14:31:07.430Z"
+                                },
+                                "locale": "en-US",
+                                "executionTimeMilliseconds": 657,
+                                "notifications": [],
+                                "queryId": "bb9e1d7a-28ee-4697-9e59-d969ff5162d8",
+                                "sampled": false
+                            }
+                        }
+                    },
+                    "notifications": [],
+                    "dateTime": "2025-04-10T14:31:08.689Z",
+                    "input": {
+                        "timeframe": {
+                            "from": "now()-30m",
+                            "to": "now()"
+                        },
+                        "value": "fetch logs\n|makeTimeseries count(), by:{loglevel}, interval:5m"
+                    },
+                    "querySettings": {
+                        "maxResultRecords": 1000,
+                        "defaultScanLimitGbytes": 500,
+                        "maxResultMegaBytes": 1,
+                        "defaultSamplingRatio": 10,
+                        "enableSampling": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "f4e95ad0-4a9f-411e-97d7-4efedbdff643",
+            "type": "markdown",
+            "markdown": "##  Order results with sort and limit results\n* By default, the **SORT** command sorts records in ascending order.\n* We can also limit the number of results with the **LIMIT** command.\n\n## Exercise 2\n1. I want  to see the latest error logs. Show the latest 5 error logs (descending order) in the last 30 minutes. \n2. We have some teams that are putting way too much debug logging on in production and we want to give ice cream to the teams that have the smallest amount of debug logs in production. Count the number of debug logs per log source and short them in ascending order so the winner is at the top. "
+        },
+        {
+            "id": "5f592f4f-0e6f-4670-aca3-191cc2c2d570",
+            "type": "dql",
+            "showTitle": false,
+            "title": "Exercise 2.1 - Latest 5 Error Logs",
+            "drilldownPath": [],
+            "filterSegments": [],
+            "previousFilterSegments": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-30m",
+                        "to": "now()"
+                    },
+                    "value": "fetch logs\n| filter loglevel == \"ERROR\"\n| sort timestamp desc\n| limit 5"
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "connect",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color",
+                            "valueAxisScale": "linear",
+                            "categoryAxis": [
+                                "content",
+                                "aws.region",
+                                "aws.resource.id",
+                                "dt.entity.cloud_application",
+                                "dt.entity.cloud_application_instance",
+                                "dt.entity.cloud_application_namespace",
+                                "dt.entity.container_group",
+                                "dt.entity.container_group_instance",
+                                "dt.entity.host",
+                                "dt.entity.kubernetes_cluster",
+                                "dt.entity.kubernetes_node",
+                                "dt.entity.process_group",
+                                "dt.entity.process_group_instance",
+                                "dt.kubernetes.cluster.name",
+                                "dt.kubernetes.node.system_uuid",
+                                "dt.process.name",
+                                "dt.source_entity",
+                                "event.type",
+                                "host.name",
+                                "k8s.cluster.name",
+                                "k8s.container.name",
+                                "k8s.deployment.name",
+                                "k8s.namespace.name",
+                                "k8s.pod.name",
+                                "k8s.pod.uid",
+                                "log.source",
+                                "loglevel",
+                                "status",
+                                "OperatorVersion",
+                                "aws.availability_zone",
+                                "dt.entity.aws_availability_zone",
+                                "dt.entity.ec2_instance",
+                                "dt.process_group.detected_name",
+                                "k8s.cluster.uid",
+                                "k8s.node.name",
+                                "log.iostream",
+                                "dt.kubernetes.cluster.id",
+                                "dt.kubernetes.workload.kind",
+                                "dt.kubernetes.workload.name",
+                                "service.name",
+                                "code.filepath",
+                                "code.function",
+                                "code.lineno",
+                                "dt.auth.origin",
+                                "k8s.pod.ip",
+                                "k8s.workload.kind",
+                                "k8s.workload.name",
+                                "otel.scope.name",
+                                "telemetry.sdk.language",
+                                "telemetry.sdk.name",
+                                "telemetry.sdk.version"
+                            ],
+                            "categoryAxisLabel": "content,aws.region,aws.resource.id,dt.entity.cloud_application,dt.entity.cloud_application_instance,dt.entity.cloud_application_namespace,dt.entity.container_group,dt.entity.container_group_instance,dt.entity.host,dt.entity.kubernetes_cluster,dt.entity.kubernetes_node,dt.entity.process_group,dt.entity.process_group_instance,dt.kubernetes.cluster.name,dt.kubernetes.node.system_uuid,dt.process.name,dt.source_entity,event.type,host.name,k8s.cluster.name,k8s.container.name,k8s.deployment.name,k8s.namespace.name,k8s.pod.name,k8s.pod.uid,log.source,loglevel,status,OperatorVersion,aws.availability_zone,dt.entity.aws_availability_zone,dt.entity.ec2_instance,dt.process_group.detected_name,k8s.cluster.uid,k8s.node.name,log.iostream,dt.kubernetes.cluster.id,dt.kubernetes.workload.kind,dt.kubernetes.workload.name,service.name,code.filepath,code.function,code.lineno,dt.auth.origin,k8s.pod.ip,k8s.workload.kind,k8s.workload.name,otel.scope.name,telemetry.sdk.language,telemetry.sdk.name,telemetry.sdk.version",
+                            "valueAxis": [],
+                            "valueAxisLabel": "",
+                            "tooltipVariant": "single"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle",
+                        "xAxisScaling": "analyzedTimeframe"
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "timestamp",
+                        "prefixIcon": "",
+                        "isIconVisible": false,
+                        "recordField": "timestamp",
+                        "autoscale": true,
+                        "sparklineSettings": {},
+                        "alignment": "center",
+                        "trend": {
+                            "trendType": "auto",
+                            "isVisible": true
+                        },
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [
+                            [
+                                "content"
+                            ]
+                        ],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": [
+                            {
+                                "fields": [
+                                    "content"
+                                ],
+                                "id": 1742330479569,
+                                "value": "log-content"
+                            }
+                        ],
+                        "columnOrder": [
+                            "[\"timestamp\"]",
+                            "[\"content\"]",
+                            "[\"azure.location\"]",
+                            "[\"dt.entity.cloud_application\"]",
+                            "[\"dt.entity.cloud_application_instance\"]",
+                            "[\"dt.entity.cloud_application_namespace\"]",
+                            "[\"dt.entity.container_group\"]",
+                            "[\"dt.entity.container_group_instance\"]",
+                            "[\"dt.entity.host\"]",
+                            "[\"dt.entity.kubernetes_cluster\"]",
+                            "[\"dt.entity.kubernetes_node\"]",
+                            "[\"dt.entity.process_group\"]",
+                            "[\"dt.entity.process_group_instance\"]",
+                            "[\"dt.host_group.id\"]",
+                            "[\"dt.kubernetes.cluster.name\"]",
+                            "[\"dt.source_entity\"]",
+                            "[\"host.name\"]",
+                            "[\"k8s.cluster.name\"]",
+                            "[\"k8s.container.name\"]",
+                            "[\"k8s.namespace.name\"]",
+                            "[\"k8s.pod.name\"]",
+                            "[\"k8s.pod.uid\"]",
+                            "[\"log.source\"]",
+                            "[\"loglevel\"]",
+                            "[\"process.technology\"]",
+                            "[\"status\"]",
+                            "[\"OperatorVersion\"]",
+                            "[\"azure.vmid\"]",
+                            "[\"dt.entity.azure_region\"]",
+                            "[\"dt.entity.azure_vm\"]",
+                            "[\"dt.entity.host_group\"]",
+                            "[\"dt.openpipeline.pipelines\"]",
+                            "[\"dt.process_group.detected_name\"]",
+                            "[\"k8s.cluster.uid\"]",
+                            "[\"k8s.node.name\"]",
+                            "[\"k8s.workload.kind\"]",
+                            "[\"k8s.workload.name\"]",
+                            "[\"log.iostream\"]"
+                        ]
+                    },
+                    "honeycomb": {
+                        "shape": "square",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {
+                            "value": "content"
+                        },
+                        "displayedFields": [
+                            "content",
+                            "aws.region",
+                            "aws.resource.id",
+                            "dt.entity.cloud_application",
+                            "dt.entity.cloud_application_instance",
+                            "dt.entity.cloud_application_namespace",
+                            "dt.entity.container_group",
+                            "dt.entity.container_group_instance",
+                            "dt.entity.host",
+                            "dt.entity.kubernetes_cluster",
+                            "dt.entity.kubernetes_node",
+                            "dt.entity.process_group",
+                            "dt.entity.process_group_instance",
+                            "dt.kubernetes.cluster.name",
+                            "dt.kubernetes.node.system_uuid",
+                            "dt.process.name",
+                            "dt.source_entity",
+                            "event.type",
+                            "host.name",
+                            "k8s.cluster.name",
+                            "k8s.container.name",
+                            "k8s.deployment.name",
+                            "k8s.namespace.name",
+                            "k8s.pod.name",
+                            "k8s.pod.uid",
+                            "log.source",
+                            "loglevel",
+                            "status",
+                            "OperatorVersion",
+                            "aws.availability_zone",
+                            "dt.entity.aws_availability_zone",
+                            "dt.entity.ec2_instance",
+                            "dt.process_group.detected_name",
+                            "k8s.cluster.uid",
+                            "k8s.node.name",
+                            "log.iostream",
+                            "dt.kubernetes.cluster.id",
+                            "dt.kubernetes.workload.kind",
+                            "dt.kubernetes.workload.name",
+                            "service.name",
+                            "code.filepath",
+                            "code.function",
+                            "code.lineno",
+                            "dt.auth.origin",
+                            "k8s.pod.ip",
+                            "k8s.workload.kind",
+                            "k8s.workload.name",
+                            "otel.scope.name",
+                            "telemetry.sdk.language",
+                            "telemetry.sdk.name",
+                            "telemetry.sdk.version"
+                        ],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": "auto",
+                        "yAxis": {
+                            "label": "Frequency",
+                            "isLabelVisible": true,
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [],
+                        "variant": "single",
+                        "truncationMode": "middle",
+                        "displayedFields": [
+                            "content",
+                            "aws.region",
+                            "aws.resource.id",
+                            "dt.entity.cloud_application",
+                            "dt.entity.cloud_application_instance",
+                            "dt.entity.cloud_application_namespace",
+                            "dt.entity.container_group",
+                            "dt.entity.container_group_instance",
+                            "dt.entity.host",
+                            "dt.entity.kubernetes_cluster",
+                            "dt.entity.kubernetes_node",
+                            "dt.entity.process_group",
+                            "dt.entity.process_group_instance",
+                            "dt.kubernetes.cluster.name",
+                            "dt.kubernetes.node.system_uuid",
+                            "dt.process.name",
+                            "dt.source_entity",
+                            "event.type",
+                            "host.name",
+                            "k8s.cluster.name",
+                            "k8s.container.name",
+                            "k8s.deployment.name",
+                            "k8s.namespace.name",
+                            "k8s.pod.name",
+                            "k8s.pod.uid",
+                            "log.source",
+                            "loglevel",
+                            "status",
+                            "OperatorVersion",
+                            "aws.availability_zone",
+                            "dt.entity.aws_availability_zone",
+                            "dt.entity.ec2_instance",
+                            "dt.process_group.detected_name",
+                            "k8s.cluster.uid",
+                            "k8s.node.name",
+                            "log.iostream",
+                            "dt.kubernetes.cluster.id",
+                            "dt.kubernetes.workload.kind",
+                            "dt.kubernetes.workload.name",
+                            "service.name",
+                            "code.filepath",
+                            "code.function",
+                            "code.lineno",
+                            "dt.auth.origin",
+                            "k8s.pod.ip",
+                            "k8s.workload.kind",
+                            "k8s.workload.name",
+                            "otel.scope.name",
+                            "telemetry.sdk.language",
+                            "telemetry.sdk.name",
+                            "telemetry.sdk.version"
+                        ]
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    },
+                    "dataMapping": {},
+                    "label": {
+                        "showLabel": false
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "visualization": "table",
+                "state": "success",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                },
+                "result": {
+                    "code": 200,
+                    "value": {
+                        "records": [
+                            {
+                                "timestamp": "2025-04-10T10:29:20.584000000-04:00",
+                                "content": "2025-04-10 14:29:20.584 [error] <0.21549.18> closing AMQP connection <0.21549.18> (10.244.0.68:33670 -> 10.244.0.109:5672):\nmissed heartbeats from client, timeout: 60s",
+                                "azure.location": "eastus",
+                                "dt.entity.cloud_application": "CLOUD_APPLICATION-61304B3561E8D385",
+                                "dt.entity.cloud_application_instance": "CLOUD_APPLICATION_INSTANCE-047CE777DD73492D",
+                                "dt.entity.cloud_application_namespace": "CLOUD_APPLICATION_NAMESPACE-4D99D0EF31F8D784",
+                                "dt.entity.container_group": "CONTAINER_GROUP-F96298116B5BD499",
+                                "dt.entity.container_group_instance": "CONTAINER_GROUP_INSTANCE-EE3AB02CEC91EF1A",
+                                "dt.entity.host": "HOST-179F37EA0F1D047D",
+                                "dt.entity.kubernetes_cluster": "KUBERNETES_CLUSTER-A45A88D0908F614D",
+                                "dt.entity.kubernetes_node": "KUBERNETES_NODE-84C89DEA8074F4DA",
+                                "dt.entity.process_group": [
+                                    "PROCESS_GROUP-20A5AAAEBFE43647",
+                                    "PROCESS_GROUP-90E6F08BD6BA5E13",
+                                    "PROCESS_GROUP-E658DA9677B7BC98",
+                                    "PROCESS_GROUP-F87F5068829BF90A"
+                                ],
+                                "dt.entity.process_group_instance": [
+                                    "PROCESS_GROUP_INSTANCE-1C946B9E1DDA5E7A",
+                                    "PROCESS_GROUP_INSTANCE-9DDA4F324786F71B",
+                                    "PROCESS_GROUP_INSTANCE-B5AEF80379A15DE8",
+                                    "PROCESS_GROUP_INSTANCE-D631210E9CAFCF33"
+                                ],
+                                "dt.host_group.id": "AKS_LogsWorkshop",
+                                "dt.kubernetes.cluster.name": "dt-logs-workshop",
+                                "dt.source_entity": [
+                                    "PROCESS_GROUP_INSTANCE-1C946B9E1DDA5E7A",
+                                    "PROCESS_GROUP_INSTANCE-9DDA4F324786F71B",
+                                    "PROCESS_GROUP_INSTANCE-B5AEF80379A15DE8",
+                                    "PROCESS_GROUP_INSTANCE-D631210E9CAFCF33"
+                                ],
+                                "host.name": "aks-userpool-12070609-vmss_1",
+                                "k8s.cluster.name": "dt-logs-workshop",
+                                "k8s.container.name": "rabbitmq",
+                                "k8s.namespace.name": "easytrade",
+                                "k8s.pod.name": "rabbitmq-78856c849d-hkn9n",
+                                "k8s.pod.uid": "fa5c185f-4b94-46c3-aa5e-a5710a70d448",
+                                "log.source": "Container Output",
+                                "loglevel": "ERROR",
+                                "process.technology": [
+                                    "AMQP",
+                                    "Containerd",
+                                    "Erlang",
+                                    "Go",
+                                    "RabbitMQ"
+                                ],
+                                "status": "ERROR",
+                                "OperatorVersion": "v1.4.2",
+                                "azure.vmid": "0f7d50bb-cf44-401f-bd54-9d17f8bd5f80",
+                                "dt.entity.azure_region": "AZURE_REGION-A51D9F7F90897B6B",
+                                "dt.entity.azure_vm": "AZURE_VM-A555402422F79483",
+                                "dt.entity.host_group": "HOST_GROUP-B0E4D7D5B573FD9D",
+                                "dt.openpipeline.pipelines": [
+                                    "logs:pipeline_easytrade_1921"
+                                ],
+                                "dt.process_group.detected_name": "Erlang Port Mapper rabbitmq-* rabbitmq",
+                                "k8s.cluster.uid": "87b5b047-c00b-4728-81ed-b649adee5395",
+                                "k8s.node.name": "aks-userpool-12070609-vmss000001",
+                                "k8s.workload.kind": "deployment",
+                                "k8s.workload.name": "rabbitmq",
+                                "log.iostream": "stdout"
+                            },
+                            {
+                                "timestamp": "2025-04-10T10:29:12.153663000-04:00",
+                                "content": "{\"error\":\"failed to get ads: rpc error: code = Unavailable desc = connection error: desc = \\\"transport: Error while dialing dial tcp 10.0.100.127:9555: connect: connection refused\\\"\",\"http.req.id\":\"b9248de2-136f-4d60-bb68-d5d81bb4c6b7\",\"http.req.method\":\"GET\",\"http.req.path\":\"/product/L9ECAV7KIM\",\"message\":\"failed to retrieve ads\",\"session\":\"6aec5ad6-971a-4e17-9a4c-3bc449e07c15\",\"severity\":\"warning\",\"timestamp\":\"2025-04-10T14:29:12.153534228Z\"}",
+                                "azure.location": "eastus",
+                                "dt.entity.cloud_application": "CLOUD_APPLICATION-A67AB024EDD54EA0",
+                                "dt.entity.cloud_application_instance": "CLOUD_APPLICATION_INSTANCE-2DB10EA1CE2FE9EB",
+                                "dt.entity.cloud_application_namespace": "CLOUD_APPLICATION_NAMESPACE-7054B205A87BEE94",
+                                "dt.entity.container_group": "CONTAINER_GROUP-C94A188DB2AB2DA1",
+                                "dt.entity.container_group_instance": "CONTAINER_GROUP_INSTANCE-32E93EFA83FD0469",
+                                "dt.entity.host": "HOST-DC0DB28DECB9214E",
+                                "dt.entity.kubernetes_cluster": "KUBERNETES_CLUSTER-A45A88D0908F614D",
+                                "dt.entity.kubernetes_node": "KUBERNETES_NODE-62CA56BF265132F4",
+                                "dt.entity.process_group": "PROCESS_GROUP-FFAED5333F8F6CC2",
+                                "dt.entity.process_group_instance": "PROCESS_GROUP_INSTANCE-4EE0C84C2EDD2FA2",
+                                "dt.host_group.id": "AKS_LogsWorkshop",
+                                "dt.kubernetes.cluster.name": "dt-logs-workshop",
+                                "dt.source_entity": "PROCESS_GROUP_INSTANCE-4EE0C84C2EDD2FA2",
+                                "host.name": "aks-userpool-12070609-vmss_0",
+                                "k8s.cluster.name": "dt-logs-workshop",
+                                "k8s.container.name": "frontend",
+                                "k8s.namespace.name": "hipstershop",
+                                "k8s.pod.name": "frontend-6c95cf78c8-zb2gg",
+                                "k8s.pod.uid": "af62c199-302b-49f6-82bd-d5eac1c3ebe1",
+                                "log.source": "Container Output",
+                                "loglevel": "ERROR",
+                                "process.technology": [
+                                    "C-Library",
+                                    "Containerd",
+                                    "Go"
+                                ],
+                                "status": "ERROR",
+                                "OperatorVersion": "v1.4.2",
+                                "azure.vmid": "cdcbde15-f27f-4d0b-8e1f-20823ecc9bf3",
+                                "dt.entity.azure_region": "AZURE_REGION-A51D9F7F90897B6B",
+                                "dt.entity.azure_vm": "AZURE_VM-55F78BE9B67B517B",
+                                "dt.entity.host_group": "HOST_GROUP-B0E4D7D5B573FD9D",
+                                "dt.openpipeline.pipelines": [
+                                    "logs:pipeline_hipstershop_8653"
+                                ],
+                                "dt.process_group.detected_name": "server frontend-*",
+                                "k8s.cluster.uid": "87b5b047-c00b-4728-81ed-b649adee5395",
+                                "k8s.node.name": "aks-userpool-12070609-vmss000000",
+                                "k8s.workload.kind": "deployment",
+                                "k8s.workload.name": "frontend",
+                                "log.iostream": "stdout"
+                            },
+                            {
+                                "timestamp": "2025-04-10T10:29:12.087624000-04:00",
+                                "content": "{\"error\":\"failed to get ads: rpc error: code = Unavailable desc = connection error: desc = \\\"transport: Error while dialing dial tcp 10.0.100.127:9555: connect: connection refused\\\"\",\"http.req.id\":\"3d6913ab-3a77-4c1b-8d1f-d9fdb32ea329\",\"http.req.method\":\"GET\",\"http.req.path\":\"/\",\"message\":\"failed to retrieve ads\",\"session\":\"04f5d05a-7473-4db2-ba29-36029122fb9e\",\"severity\":\"warning\",\"timestamp\":\"2025-04-10T14:29:12.087509521Z\"}",
+                                "azure.location": "eastus",
+                                "dt.entity.cloud_application": "CLOUD_APPLICATION-A67AB024EDD54EA0",
+                                "dt.entity.cloud_application_instance": "CLOUD_APPLICATION_INSTANCE-2DB10EA1CE2FE9EB",
+                                "dt.entity.cloud_application_namespace": "CLOUD_APPLICATION_NAMESPACE-7054B205A87BEE94",
+                                "dt.entity.container_group": "CONTAINER_GROUP-C94A188DB2AB2DA1",
+                                "dt.entity.container_group_instance": "CONTAINER_GROUP_INSTANCE-32E93EFA83FD0469",
+                                "dt.entity.host": "HOST-DC0DB28DECB9214E",
+                                "dt.entity.kubernetes_cluster": "KUBERNETES_CLUSTER-A45A88D0908F614D",
+                                "dt.entity.kubernetes_node": "KUBERNETES_NODE-62CA56BF265132F4",
+                                "dt.entity.process_group": "PROCESS_GROUP-FFAED5333F8F6CC2",
+                                "dt.entity.process_group_instance": "PROCESS_GROUP_INSTANCE-4EE0C84C2EDD2FA2",
+                                "dt.host_group.id": "AKS_LogsWorkshop",
+                                "dt.kubernetes.cluster.name": "dt-logs-workshop",
+                                "dt.source_entity": "PROCESS_GROUP_INSTANCE-4EE0C84C2EDD2FA2",
+                                "host.name": "aks-userpool-12070609-vmss_0",
+                                "k8s.cluster.name": "dt-logs-workshop",
+                                "k8s.container.name": "frontend",
+                                "k8s.namespace.name": "hipstershop",
+                                "k8s.pod.name": "frontend-6c95cf78c8-zb2gg",
+                                "k8s.pod.uid": "af62c199-302b-49f6-82bd-d5eac1c3ebe1",
+                                "log.source": "Container Output",
+                                "loglevel": "ERROR",
+                                "process.technology": [
+                                    "C-Library",
+                                    "Containerd",
+                                    "Go"
+                                ],
+                                "status": "ERROR",
+                                "OperatorVersion": "v1.4.2",
+                                "azure.vmid": "cdcbde15-f27f-4d0b-8e1f-20823ecc9bf3",
+                                "dt.entity.azure_region": "AZURE_REGION-A51D9F7F90897B6B",
+                                "dt.entity.azure_vm": "AZURE_VM-55F78BE9B67B517B",
+                                "dt.entity.host_group": "HOST_GROUP-B0E4D7D5B573FD9D",
+                                "dt.openpipeline.pipelines": [
+                                    "logs:pipeline_hipstershop_8653"
+                                ],
+                                "dt.process_group.detected_name": "server frontend-*",
+                                "k8s.cluster.uid": "87b5b047-c00b-4728-81ed-b649adee5395",
+                                "k8s.node.name": "aks-userpool-12070609-vmss000000",
+                                "k8s.workload.kind": "deployment",
+                                "k8s.workload.name": "frontend",
+                                "log.iostream": "stdout"
+                            },
+                            {
+                                "timestamp": "2025-04-10T10:29:10.900057000-04:00",
+                                "content": "{\"error\":\"failed to get ads: rpc error: code = Unavailable desc = connection error: desc = \\\"transport: Error while dialing dial tcp 10.0.100.127:9555: connect: connection refused\\\"\",\"http.req.id\":\"0542f7da-571e-481f-9b22-ff53743e0c03\",\"http.req.method\":\"GET\",\"http.req.path\":\"/product/0PUK6V6EV0\",\"message\":\"failed to retrieve ads\",\"session\":\"76a906b7-4c3a-4a0f-a89c-da857fef2375\",\"severity\":\"warning\",\"timestamp\":\"2025-04-10T14:29:10.899924003Z\"}",
+                                "azure.location": "eastus",
+                                "dt.entity.cloud_application": "CLOUD_APPLICATION-A67AB024EDD54EA0",
+                                "dt.entity.cloud_application_instance": "CLOUD_APPLICATION_INSTANCE-2DB10EA1CE2FE9EB",
+                                "dt.entity.cloud_application_namespace": "CLOUD_APPLICATION_NAMESPACE-7054B205A87BEE94",
+                                "dt.entity.container_group": "CONTAINER_GROUP-C94A188DB2AB2DA1",
+                                "dt.entity.container_group_instance": "CONTAINER_GROUP_INSTANCE-32E93EFA83FD0469",
+                                "dt.entity.host": "HOST-DC0DB28DECB9214E",
+                                "dt.entity.kubernetes_cluster": "KUBERNETES_CLUSTER-A45A88D0908F614D",
+                                "dt.entity.kubernetes_node": "KUBERNETES_NODE-62CA56BF265132F4",
+                                "dt.entity.process_group": "PROCESS_GROUP-FFAED5333F8F6CC2",
+                                "dt.entity.process_group_instance": "PROCESS_GROUP_INSTANCE-4EE0C84C2EDD2FA2",
+                                "dt.host_group.id": "AKS_LogsWorkshop",
+                                "dt.kubernetes.cluster.name": "dt-logs-workshop",
+                                "dt.source_entity": "PROCESS_GROUP_INSTANCE-4EE0C84C2EDD2FA2",
+                                "host.name": "aks-userpool-12070609-vmss_0",
+                                "k8s.cluster.name": "dt-logs-workshop",
+                                "k8s.container.name": "frontend",
+                                "k8s.namespace.name": "hipstershop",
+                                "k8s.pod.name": "frontend-6c95cf78c8-zb2gg",
+                                "k8s.pod.uid": "af62c199-302b-49f6-82bd-d5eac1c3ebe1",
+                                "log.source": "Container Output",
+                                "loglevel": "ERROR",
+                                "process.technology": [
+                                    "C-Library",
+                                    "Containerd",
+                                    "Go"
+                                ],
+                                "status": "ERROR",
+                                "OperatorVersion": "v1.4.2",
+                                "azure.vmid": "cdcbde15-f27f-4d0b-8e1f-20823ecc9bf3",
+                                "dt.entity.azure_region": "AZURE_REGION-A51D9F7F90897B6B",
+                                "dt.entity.azure_vm": "AZURE_VM-55F78BE9B67B517B",
+                                "dt.entity.host_group": "HOST_GROUP-B0E4D7D5B573FD9D",
+                                "dt.openpipeline.pipelines": [
+                                    "logs:pipeline_hipstershop_8653"
+                                ],
+                                "dt.process_group.detected_name": "server frontend-*",
+                                "k8s.cluster.uid": "87b5b047-c00b-4728-81ed-b649adee5395",
+                                "k8s.node.name": "aks-userpool-12070609-vmss000000",
+                                "k8s.workload.kind": "deployment",
+                                "k8s.workload.name": "frontend",
+                                "log.iostream": "stdout"
+                            },
+                            {
+                                "timestamp": "2025-04-10T10:29:10.424607000-04:00",
+                                "content": "{\"error\":\"failed to get ads: rpc error: code = Unavailable desc = connection error: desc = \\\"transport: Error while dialing dial tcp 10.0.100.127:9555: connect: connection refused\\\"\",\"http.req.id\":\"004ac45c-dc7c-40ea-82b9-a55153272b7b\",\"http.req.method\":\"GET\",\"http.req.path\":\"/product/1YMWWN1N4O\",\"message\":\"failed to retrieve ads\",\"session\":\"53dc80d7-d283-47b2-ba93-127a90882e4b\",\"severity\":\"warning\",\"timestamp\":\"2025-04-10T14:29:10.4244727Z\"}",
+                                "azure.location": "eastus",
+                                "dt.entity.cloud_application": "CLOUD_APPLICATION-A67AB024EDD54EA0",
+                                "dt.entity.cloud_application_instance": "CLOUD_APPLICATION_INSTANCE-2DB10EA1CE2FE9EB",
+                                "dt.entity.cloud_application_namespace": "CLOUD_APPLICATION_NAMESPACE-7054B205A87BEE94",
+                                "dt.entity.container_group": "CONTAINER_GROUP-C94A188DB2AB2DA1",
+                                "dt.entity.container_group_instance": "CONTAINER_GROUP_INSTANCE-32E93EFA83FD0469",
+                                "dt.entity.host": "HOST-DC0DB28DECB9214E",
+                                "dt.entity.kubernetes_cluster": "KUBERNETES_CLUSTER-A45A88D0908F614D",
+                                "dt.entity.kubernetes_node": "KUBERNETES_NODE-62CA56BF265132F4",
+                                "dt.entity.process_group": "PROCESS_GROUP-FFAED5333F8F6CC2",
+                                "dt.entity.process_group_instance": "PROCESS_GROUP_INSTANCE-4EE0C84C2EDD2FA2",
+                                "dt.host_group.id": "AKS_LogsWorkshop",
+                                "dt.kubernetes.cluster.name": "dt-logs-workshop",
+                                "dt.source_entity": "PROCESS_GROUP_INSTANCE-4EE0C84C2EDD2FA2",
+                                "host.name": "aks-userpool-12070609-vmss_0",
+                                "k8s.cluster.name": "dt-logs-workshop",
+                                "k8s.container.name": "frontend",
+                                "k8s.namespace.name": "hipstershop",
+                                "k8s.pod.name": "frontend-6c95cf78c8-zb2gg",
+                                "k8s.pod.uid": "af62c199-302b-49f6-82bd-d5eac1c3ebe1",
+                                "log.source": "Container Output",
+                                "loglevel": "ERROR",
+                                "process.technology": [
+                                    "C-Library",
+                                    "Containerd",
+                                    "Go"
+                                ],
+                                "status": "ERROR",
+                                "OperatorVersion": "v1.4.2",
+                                "azure.vmid": "cdcbde15-f27f-4d0b-8e1f-20823ecc9bf3",
+                                "dt.entity.azure_region": "AZURE_REGION-A51D9F7F90897B6B",
+                                "dt.entity.azure_vm": "AZURE_VM-55F78BE9B67B517B",
+                                "dt.entity.host_group": "HOST_GROUP-B0E4D7D5B573FD9D",
+                                "dt.openpipeline.pipelines": [
+                                    "logs:pipeline_hipstershop_8653"
+                                ],
+                                "dt.process_group.detected_name": "server frontend-*",
+                                "k8s.cluster.uid": "87b5b047-c00b-4728-81ed-b649adee5395",
+                                "k8s.node.name": "aks-userpool-12070609-vmss000000",
+                                "k8s.workload.kind": "deployment",
+                                "k8s.workload.name": "frontend",
+                                "log.iostream": "stdout"
+                            }
+                        ],
+                        "types": [
+                            {
+                                "indexRange": [
+                                    0,
+                                    0
+                                ],
+                                "mappings": {
+                                    "timestamp": {
+                                        "type": "timestamp"
+                                    },
+                                    "content": {
+                                        "type": "string"
+                                    },
+                                    "azure.location": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.cloud_application": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.cloud_application_instance": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.cloud_application_namespace": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.container_group": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.container_group_instance": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.host": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.kubernetes_cluster": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.kubernetes_node": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.process_group": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "indexRange": [
+                                                    0,
+                                                    3
+                                                ],
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "dt.entity.process_group_instance": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "indexRange": [
+                                                    0,
+                                                    3
+                                                ],
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "dt.host_group.id": {
+                                        "type": "string"
+                                    },
+                                    "dt.kubernetes.cluster.name": {
+                                        "type": "string"
+                                    },
+                                    "dt.source_entity": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "indexRange": [
+                                                    0,
+                                                    3
+                                                ],
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "host.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.cluster.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.container.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.namespace.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.pod.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.pod.uid": {
+                                        "type": "string"
+                                    },
+                                    "log.source": {
+                                        "type": "string"
+                                    },
+                                    "loglevel": {
+                                        "type": "string"
+                                    },
+                                    "process.technology": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "indexRange": [
+                                                    0,
+                                                    4
+                                                ],
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "OperatorVersion": {
+                                        "type": "string"
+                                    },
+                                    "azure.vmid": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.azure_region": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.azure_vm": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.host_group": {
+                                        "type": "string"
+                                    },
+                                    "dt.openpipeline.pipelines": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "indexRange": [
+                                                    0,
+                                                    0
+                                                ],
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "dt.process_group.detected_name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.cluster.uid": {
+                                        "type": "string"
+                                    },
+                                    "k8s.node.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.workload.kind": {
+                                        "type": "string"
+                                    },
+                                    "k8s.workload.name": {
+                                        "type": "string"
+                                    },
+                                    "log.iostream": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            {
+                                "indexRange": [
+                                    1,
+                                    4
+                                ],
+                                "mappings": {
+                                    "timestamp": {
+                                        "type": "timestamp"
+                                    },
+                                    "content": {
+                                        "type": "string"
+                                    },
+                                    "azure.location": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.cloud_application": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.cloud_application_instance": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.cloud_application_namespace": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.container_group": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.container_group_instance": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.host": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.kubernetes_cluster": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.kubernetes_node": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.process_group": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.process_group_instance": {
+                                        "type": "string"
+                                    },
+                                    "dt.host_group.id": {
+                                        "type": "string"
+                                    },
+                                    "dt.kubernetes.cluster.name": {
+                                        "type": "string"
+                                    },
+                                    "dt.source_entity": {
+                                        "type": "string"
+                                    },
+                                    "host.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.cluster.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.container.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.namespace.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.pod.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.pod.uid": {
+                                        "type": "string"
+                                    },
+                                    "log.source": {
+                                        "type": "string"
+                                    },
+                                    "loglevel": {
+                                        "type": "string"
+                                    },
+                                    "process.technology": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "indexRange": [
+                                                    0,
+                                                    2
+                                                ],
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "OperatorVersion": {
+                                        "type": "string"
+                                    },
+                                    "azure.vmid": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.azure_region": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.azure_vm": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.host_group": {
+                                        "type": "string"
+                                    },
+                                    "dt.openpipeline.pipelines": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "indexRange": [
+                                                    0,
+                                                    0
+                                                ],
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "dt.process_group.detected_name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.cluster.uid": {
+                                        "type": "string"
+                                    },
+                                    "k8s.node.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.workload.kind": {
+                                        "type": "string"
+                                    },
+                                    "k8s.workload.name": {
+                                        "type": "string"
+                                    },
+                                    "log.iostream": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        ],
+                        "metadata": {
+                            "grail": {
+                                "canonicalQuery": "fetch logs\n| filter loglevel == \"ERROR\"\n| sort timestamp desc\n| limit 5",
+                                "timezone": "America/Toronto",
+                                "query": "fetch logs\n| filter loglevel == \"ERROR\"\n| sort timestamp desc\n| limit 5",
+                                "scannedRecords": 1174927,
+                                "dqlVersion": "V1_0",
+                                "scannedBytes": 126891321,
+                                "scannedDataPoints": 0,
+                                "analysisTimeframe": {
+                                    "start": "2025-04-10T14:01:07.431Z",
+                                    "end": "2025-04-10T14:31:07.431Z"
+                                },
+                                "locale": "en-US",
+                                "executionTimeMilliseconds": 73,
+                                "notifications": [],
+                                "queryId": "d802eecb-032a-4cb0-82d5-e60318485f87",
+                                "sampled": false
+                            }
+                        }
+                    },
+                    "notifications": [],
+                    "dateTime": "2025-04-10T14:31:07.837Z",
+                    "input": {
+                        "timeframe": {
+                            "from": "now()-30m",
+                            "to": "now()"
+                        },
+                        "value": "fetch logs\n| filter loglevel == \"ERROR\"\n| sort timestamp desc\n| limit 5"
+                    },
+                    "querySettings": {
+                        "maxResultRecords": 1000,
+                        "defaultScanLimitGbytes": 500,
+                        "maxResultMegaBytes": 1,
+                        "defaultSamplingRatio": 10,
+                        "enableSampling": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "ddfc6c35-a345-45a6-896d-4823f7d82549",
+            "type": "dql",
+            "showTitle": false,
+            "title": "Exercise 2.2 - Ascending Debug Log Count",
+            "height": 141,
+            "drilldownPath": [],
+            "filterSegments": [],
+            "previousFilterSegments": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-30m",
+                        "to": "now()"
+                    },
+                    "value": "fetch logs\n| filter loglevel == \"DEBUG\"\n| summarize count=count(), by: {log.source}\n| sort count"
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "connect",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color",
+                            "valueAxisScale": "linear",
+                            "categoryAxis": "log.source",
+                            "categoryAxisLabel": "log.source",
+                            "valueAxis": "count",
+                            "valueAxisLabel": "count"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle"
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "log.source",
+                        "prefixIcon": "",
+                        "isIconVisible": false,
+                        "recordField": "log.source",
+                        "autoscale": true,
+                        "sparklineSettings": {},
+                        "alignment": "center",
+                        "trend": {
+                            "trendType": "auto",
+                            "isVisible": true
+                        },
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [
+                            [
+                                "content"
+                            ]
+                        ],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {
+                            "[\"loglevel\"]": 97.99715423583984,
+                            "[\"log.source\"]": 600,
+                            "[\"count()\"]": 93.73579406738281,
+                            "[\"count\"]": 83.9914779663086,
+                            "[\"debug\"]": 87.99715423583984,
+                            "[\"k8s.namespace.name\"]": 223.98863220214844,
+                            "[\"dt.process.name\"]": 287.9971618652344
+                        },
+                        "columnTypeOverrides": [],
+                        "columnOrder": [
+                            "[\"log.source\"]",
+                            "[\"count\"]"
+                        ]
+                    },
+                    "honeycomb": {
+                        "shape": "square",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {
+                            "value": "count"
+                        },
+                        "displayedFields": [
+                            "log.source"
+                        ],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "blue"
+                    },
+                    "histogram": {
+                        "legend": "auto",
+                        "yAxis": {
+                            "label": "Frequency",
+                            "isLabelVisible": true,
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [
+                            {
+                                "valueAxis": "count",
+                                "rangeAxis": ""
+                            }
+                        ],
+                        "variant": "single",
+                        "truncationMode": "middle",
+                        "displayedFields": [
+                            "log.source"
+                        ]
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    },
+                    "dataMapping": {
+                        "value": "count"
+                    },
+                    "label": {
+                        "showLabel": true,
+                        "label": "count"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "visualization": "table",
+                "state": "success",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                },
+                "result": {
+                    "code": 200,
+                    "value": {
+                        "records": [
+                            {
+                                "log.source": "Container Output",
+                                "count": "5970"
+                            }
+                        ],
+                        "types": [
+                            {
+                                "indexRange": [
+                                    0,
+                                    0
+                                ],
+                                "mappings": {
+                                    "log.source": {
+                                        "type": "string"
+                                    },
+                                    "count": {
+                                        "type": "long"
+                                    }
+                                }
+                            }
+                        ],
+                        "metadata": {
+                            "grail": {
+                                "canonicalQuery": "fetch logs\n| filter loglevel == \"DEBUG\"\n| summarize by:{log.source}, count = count()\n| sort count",
+                                "timezone": "America/Toronto",
+                                "query": "fetch logs\n| filter loglevel == \"DEBUG\"\n| summarize count=count(), by: {log.source}\n| sort count",
+                                "scannedRecords": 1174927,
+                                "dqlVersion": "V1_0",
+                                "scannedBytes": 138917344,
+                                "scannedDataPoints": 0,
+                                "analysisTimeframe": {
+                                    "start": "2025-04-10T14:01:07.433Z",
+                                    "end": "2025-04-10T14:31:07.433Z"
+                                },
+                                "locale": "en-US",
+                                "executionTimeMilliseconds": 40,
+                                "notifications": [],
+                                "queryId": "e9661fbf-6ae3-4da8-858c-cef25039b678",
+                                "sampled": false
+                            }
+                        }
+                    },
+                    "notifications": [],
+                    "dateTime": "2025-04-10T14:31:07.781Z",
+                    "input": {
+                        "timeframe": {
+                            "from": "now()-30m",
+                            "to": "now()"
+                        },
+                        "value": "fetch logs\n| filter loglevel == \"DEBUG\"\n| summarize count=count(), by: {log.source}\n| sort count"
+                    },
+                    "querySettings": {
+                        "maxResultRecords": 1000,
+                        "defaultScanLimitGbytes": 500,
+                        "maxResultMegaBytes": 1,
+                        "defaultSamplingRatio": 10,
+                        "enableSampling": false
+                    }
+                }
+            }
+        }
+    ]
+}
