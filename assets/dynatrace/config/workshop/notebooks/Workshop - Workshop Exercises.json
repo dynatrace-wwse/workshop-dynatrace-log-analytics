@@ -29,7 +29,7 @@
         {
             "id": "c61ee0bb-85fd-4a1d-b4d9-c9bfdd1a1d4d",
             "type": "markdown",
-            "markdown": "1. #### [Log Anomaly Baselines](https://ojz3954h.sprint.apps.dynatracelabs.com/ui/document/v0/#share=8fd6730e-253d-4b4c-a58a-a4b4fc364c7a)\n2. #### [Davis Anomaly Detection - Logs](https://ojz3954h.sprint.apps.dynatracelabs.com/ui/document/v0/#share=3cb0e4fa-6077-44c3-a6d3-2c5b174d5956)\n3. #### [Log Metric Anomaly Baselines](https://ojz3954h.sprint.apps.dynatracelabs.com/ui/document/v0/#share=3f70d17b-e737-41e0-814a-75494b2441ef)\n4. #### [Davis Anomaly Detection - Metrics](https://ojz3954h.sprint.apps.dynatracelabs.com/ui/document/v0/#share=c73a859f-e6de-429c-8bd1-415293be9dbd)"
+            "markdown": "1. #### [Log Anomaly Baselines]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .log_anomaly_baselines_exercises_id }})\n2. #### [Davis Anomaly Detection - Logs]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .davis_anomaly_detector_logs_id }})\n3. #### [Log Metric Anomaly Baselines]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .metric_anomaly_baselines_exercises_id }})\n4. #### [Davis Anomaly Detection - Metrics]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .davis_anomaly_detector_metrics_id }})"
         },
         {
             "id": "74e10458-5ce7-4787-990e-c00223c276e9",
@@ -39,7 +39,7 @@
         {
             "id": "46e9fd30-4e1c-426d-85c5-e1cbdc2f9414",
             "type": "markdown",
-            "markdown": "1. #### [Dashboarding Notebook](https://ojz3954h.sprint.apps.dynatracelabs.com/ui/document/v0/#share=874c9dcc-c776-473b-b4ea-f95d7ff2cade)"
+            "markdown": "1. #### [Dashboarding Notebook]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .dashboarding_id }})"
         }
     ]
 }

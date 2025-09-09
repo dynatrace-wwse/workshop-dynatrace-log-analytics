@@ -25,6 +25,13 @@ configs:
       events_answers_id: ["workshop", "document", "Workshop - Events - Answer Key", "id"]
       copilot_exercises_id: ["workshop", "document", "Workshop - Copilot - Exercises", "id"]
       copilot_answers_id: ["workshop", "document", "Workshop - Copilot - Answer Key", "id"]
+      log_anomaly_baselines_exercises_id: ["workshop", "document", "Workshop - Log Anomaly Baselines - Exercises", "id"]
+      log_anomaly_baselines_answers_id: ["workshop", "document", "Workshop - Log Anomaly Baselines - Answer Key", "id"]
+      metric_anomaly_baselines_exercises_id: ["workshop", "document", "Workshop - Metric Anomaly Baselines - Exercise", "id"]
+      metric_anomaly_baselines_answers_id: ["workshop", "document", "Workshop - Metric Anomaly Baselines - Answer Key", "id"]
+      davis_anomaly_detector_logs_id: ["workshop", "document", "Workshop - Davis Anomaly Detector - Logs", "id"]
+      davis_anomaly_detector_metrics_id: ["workshop", "document", "Workshop - Davis Anomaly Detector - Metrics", "id"]
+      dashboarding_id: ["workshop", "document", "Workshop - Dashboarding", "id"]
 - id: "Workshop - Explore Logs App"
   type:
     document:
@@ -137,3 +144,59 @@ configs:
   config:
     name: Workshop - Copilot - Answer Key
     template: Workshop - Copilot - Answer Key.json
+- id: "Workshop - Log Anomaly Baselines - Exercises"
+  type:
+    document:
+      kind: notebook
+      private: false
+  config:
+    name: Workshop - Log Anomaly Baselines - Exercises
+    template: Workshop - Log Anomaly Baselines - Exercises.json
+- id: "Workshop - Log Anomaly Baselines - Answer Key"
+  type:
+    document:
+      kind: notebook
+      private: false
+  config:
+    name: Workshop - Log Anomaly Baselines - Answer Key
+    template: Workshop - Log Anomaly Baselines - Answer Key.json
+- id: "Workshop - Metric Anomaly Baselines - Exercise"
+  type:
+    document:
+      kind: notebook
+      private: false
+  config:
+    name: Workshop - Metric Anomaly Baselines - Exercise
+    template: Workshop - Metric Anomaly Baselines - Exercise.json
+- id: "Workshop - Metric Anomaly Baselines - Answer Key"
+  type:
+    document:
+      kind: notebook
+      private: false
+  config:
+    name: Workshop - Metric Anomaly Baselines - Answer Key
+    template: Workshop - Metric Anomaly Baselines - Answer Key.json
+- id: "Workshop - Davis Anomaly Detector - Logs"
+  type:
+    document:
+      kind: notebook
+      private: false
+  config:
+    name: Workshop - Davis Anomaly Detector - Logs
+    template: Workshop - Davis Anomaly Detector - Logs.json
+- id: "Workshop - Davis Anomaly Detector - Metrics"
+  type:
+    document:
+      kind: notebook
+      private: false
+  config:
+    name: Workshop - Davis Anomaly Detector - Metrics
+    template: Workshop - Davis Anomaly Detector - Metrics.json
+- id: "Workshop - Dashboarding"
+  type:
+    document:
+      kind: notebook
+      private: false
+  config:
+    name: Workshop - Dashboarding
+    template: Workshop - Dashboarding.json

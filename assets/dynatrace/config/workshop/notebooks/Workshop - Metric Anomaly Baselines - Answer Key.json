@@ -1,0 +1,417 @@
+{
+    "version": "6",
+    "defaultTimeframe": {
+        "from": "now()-2h",
+        "to": "now()"
+    },
+    "defaultSegments": [],
+    "sections": [
+        {
+            "id": "0fb5a0f2-9ed8-49ee-a8b9-2c53f559c2ca",
+            "type": "markdown",
+            "markdown": "## Davis AI - Static Anomaly Baseline"
+        },
+        {
+            "id": "06ea3cd9-a7b4-43a7-94ea-c0d3eb0fd667",
+            "type": "markdown",
+            "markdown": "**Exercise**\n1. Using the Metrics tile, Search for `log.loglevelcounter.oteldemo”` metric\n2. Filter for `loglevel = \"ERROR\"`\n3. And Split By `loglevel`\n4. Select Options > Under the visualizations tab, enable **Davis AI Analyzer** and select the **Static Anomaly Baseline**"
+        },
+        {
+            "id": "d4c17901-f870-4ffb-8263-286443135aed",
+            "type": "dql",
+            "title": "Explore metrics",
+            "queryConfig": {
+                "version": "13.3.1",
+                "subQueries": [
+                    {
+                        "id": "A",
+                        "isEnabled": true,
+                        "datatype": "metrics",
+                        "metric": {
+                            "key": "log.loglevelcounter.oteldemo",
+                            "aggregation": "sum"
+                        },
+                        "by": [
+                            "loglevel"
+                        ],
+                        "filter": "loglevel = ERROR "
+                    }
+                ]
+            },
+            "filterSegments": [],
+            "drilldownPath": [],
+            "previousFilterSegments": [],
+            "previousQueryConfig": {
+                "version": "13.3.1",
+                "subQueries": [
+                    {
+                        "id": "A",
+                        "isEnabled": true,
+                        "datatype": "metrics",
+                        "metric": {
+                            "key": "log.loglevelcounter.oteldemo",
+                            "aggregation": "sum"
+                        },
+                        "by": [
+                            "loglevel"
+                        ],
+                        "filter": "loglevel = ERROR "
+                    }
+                ]
+            },
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-2h",
+                        "to": "now()"
+                    },
+                    "value": "timeseries { sum(log.loglevelcounter.oteldemo), value.A = avg(log.loglevelcounter.oteldemo, scalar: true) }, by: { loglevel }, filter: { matchesValue(loglevel, \"ERROR\") }"
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "gap",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color",
+                            "valueAxisScale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle",
+                        "xAxisScaling": "analyzedTimeframe",
+                        "xAxisLabel": "timeframe",
+                        "xAxisIsLabelVisible": false,
+                        "hiddenLegendFields": [
+                            "interval",
+                            "value.A"
+                        ],
+                        "fieldMapping": {
+                            "timestamp": "timeframe",
+                            "leftAxisValues": [
+                                "sum(log.loglevelcounter.oteldemo)"
+                            ]
+                        },
+                        "leftYAxisSettings": {
+                            "isLabelVisible": true,
+                            "label": "log.loglevelcounter.oteldemo"
+                        }
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "AnalyticsIcon",
+                        "isIconVisible": false,
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": [
+                            {
+                                "fields": [
+                                    "sum(log.loglevelcounter.oteldemo)"
+                                ],
+                                "value": "sparkline",
+                                "id": 1744749430257
+                            }
+                        ]
+                    },
+                    "honeycomb": {
+                        "shape": "hexagon",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": {
+                            "position": "auto"
+                        },
+                        "yAxis": {
+                            "label": "Frequency",
+                            "isLabelVisible": true,
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    },
+                    "autoSelectVisualization": true
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "visualization": "lineChart",
+                "result": {
+                    "code": 200,
+                    "value": {
+                        "records": [
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-15T18:37:00.000Z",
+                                    "end": "2025-04-15T20:38:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "loglevel": "ERROR",
+                                "sum(log.loglevelcounter.oteldemo)": [
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    6,
+                                    16,
+                                    16,
+                                    8,
+                                    16,
+                                    10,
+                                    14,
+                                    16,
+                                    14,
+                                    10,
+                                    12,
+                                    10,
+                                    12,
+                                    20,
+                                    26,
+                                    10,
+                                    10,
+                                    16,
+                                    14,
+                                    10,
+                                    12,
+                                    12,
+                                    16,
+                                    10,
+                                    10,
+                                    20,
+                                    12,
+                                    10,
+                                    12,
+                                    16,
+                                    10,
+                                    18,
+                                    8,
+                                    20,
+                                    8,
+                                    14,
+                                    16,
+                                    12,
+                                    12,
+                                    14,
+                                    14,
+                                    16,
+                                    12,
+                                    12,
+                                    8,
+                                    20,
+                                    16,
+                                    12,
+                                    14,
+                                    14,
+                                    12,
+                                    18,
+                                    10,
+                                    6,
+                                    14,
+                                    8,
+                                    10,
+                                    8,
+                                    10,
+                                    18,
+                                    14,
+                                    8,
+                                    14,
+                                    14,
+                                    10,
+                                    14,
+                                    10,
+                                    20,
+                                    14,
+                                    18,
+                                    14,
+                                    16,
+                                    12,
+                                    14,
+                                    6,
+                                    3,
+                                    null
+                                ],
+                                "value.A": 4.053719008264463
+                            }
+                        ],
+                        "types": [
+                            {
+                                "indexRange": [
+                                    0,
+                                    0
+                                ],
+                                "mappings": {
+                                    "timeframe": {
+                                        "type": "timeframe"
+                                    },
+                                    "interval": {
+                                        "type": "duration"
+                                    },
+                                    "loglevel": {
+                                        "type": "string"
+                                    },
+                                    "sum(log.loglevelcounter.oteldemo)": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "indexRange": [
+                                                    0,
+                                                    120
+                                                ],
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "double"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "value.A": {
+                                        "type": "double"
+                                    }
+                                }
+                            }
+                        ],
+                        "metadata": {
+                            "grail": {
+                                "canonicalQuery": "timeseries by:{loglevel}, filter:matchesValue(loglevel, \"ERROR\"), {sum(log.loglevelcounter.oteldemo), value.A = avg(log.loglevelcounter.oteldemo, scalar:TRUE)}",
+                                "timezone": "America/Toronto",
+                                "query": "timeseries { sum(log.loglevelcounter.oteldemo), value.A = avg(log.loglevelcounter.oteldemo, scalar: true) }, by: { loglevel }, filter: { matchesValue(loglevel, \"ERROR\") }",
+                                "scannedRecords": 0,
+                                "dqlVersion": "V1_0",
+                                "scannedBytes": 0,
+                                "scannedDataPoints": 183,
+                                "analysisTimeframe": {
+                                    "start": "2025-04-15T18:37:00.000Z",
+                                    "end": "2025-04-15T20:38:00.000Z"
+                                },
+                                "locale": "en-US",
+                                "executionTimeMilliseconds": 24,
+                                "notifications": [],
+                                "queryId": "9ab2f3cf-f6b2-4e44-8836-5a90f87e0012",
+                                "sampled": false
+                            },
+                            "metrics": [
+                                {
+                                    "metric.key": "log.loglevelcounter.oteldemo",
+                                    "displayName": "log.loglevelcounter.oteldemo",
+                                    "fieldName": "sum(log.loglevelcounter.oteldemo)"
+                                },
+                                {
+                                    "metric.key": "log.loglevelcounter.oteldemo",
+                                    "displayName": "log.loglevelcounter.oteldemo",
+                                    "fieldName": "value.A",
+                                    "scalar": true
+                                }
+                            ]
+                        }
+                    },
+                    "notifications": [],
+                    "querySettings": {
+                        "maxResultRecords": 1000,
+                        "defaultScanLimitGbytes": 500,
+                        "maxResultMegaBytes": 1,
+                        "defaultSamplingRatio": 10,
+                        "enableSampling": false
+                    },
+                    "dateTime": "2025-04-15T20:37:10.257Z",
+                    "input": {
+                        "timeframe": {
+                            "from": "now()-2h",
+                            "to": "now()"
+                        },
+                        "value": "timeseries { sum(log.loglevelcounter.oteldemo), value.A = avg(log.loglevelcounter.oteldemo, scalar: true) }, by: { loglevel }, filter: { matchesValue(loglevel, \"ERROR\") }"
+                    }
+                },
+                "state": "success",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                }
+            }
+        }
+    ]
+}
