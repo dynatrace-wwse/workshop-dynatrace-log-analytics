@@ -1,0 +1,7 @@
+# logs
+.logs/*
+*.log
+
+# monaco files
+delete.yaml
+delete_*.yaml
