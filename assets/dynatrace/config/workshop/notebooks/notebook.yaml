@@ -1,0 +1,9 @@
+configs:
+- id: "Dynatrace User - Workshop Exercises"
+  type:
+    document:
+      kind: notebook
+      private: false
+  config:
+    name: Dynatrace User - Workshop Exercises
+    template: Dynatrace User - Workshop Exercises.json

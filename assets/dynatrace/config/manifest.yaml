@@ -1,0 +1,16 @@
+manifestVersion: 1.0
+projects:
+  - name: workshop
+    path: ./workshop
+environmentGroups:
+  - name: workshop-environment-group
+    environments:
+      - name: workshop-environment
+        url:
+          type: environment
+          value: DT_PLATFORM_URL
+          # "https://<your-dynatrace-environment>.apps.dynatrace.com"
+        auth:
+          platformToken:
+            type: environment
+            name: DT_PLATFORM_TOKEN
