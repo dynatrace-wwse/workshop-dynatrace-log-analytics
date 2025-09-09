@@ -9,7 +9,7 @@
         {
             "id": "51440e6f-0358-4e44-9152-6a27f85c8535",
             "type": "markdown",
-            "markdown": "## Explore Logs App[](https://ojz3954h.sprint.apps.dynatracelabs.com/ui/document/v0/#share=30a39124-f716-4a32-869f-305667dd9579)"
+            "markdown": "## Explore Logs App[]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .notebook_1_id }})"
         },
         {
             "id": "368ced4a-0410-4c9b-ba29-e9d0d6c3261a",

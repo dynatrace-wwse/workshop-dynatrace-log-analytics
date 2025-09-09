@@ -7,3 +7,16 @@ configs:
   config:
     name: Dynatrace User - Workshop Exercises
     template: Dynatrace User - Workshop Exercises.json
+    parameters:
+      dt_platform_url:
+        type: environment
+        name: dt_platform_url
+      notebook_1_id: ["workshop", "document", "1 - Workshop - Explore Logs App", "id"]
+- id: "1 - Workshop - Explore Logs App"
+  type:
+    document:
+      kind: notebook
+      private: false
+  config:
+    name: 1 - Workshop - Explore Logs App
+    template: 1 - Workshop - Explore Logs App.json
