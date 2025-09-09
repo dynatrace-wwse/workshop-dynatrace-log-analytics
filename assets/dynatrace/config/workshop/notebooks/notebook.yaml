@@ -32,6 +32,8 @@ configs:
       davis_anomaly_detector_logs_id: ["workshop", "document", "Workshop - Davis Anomaly Detector - Logs", "id"]
       davis_anomaly_detector_metrics_id: ["workshop", "document", "Workshop - Davis Anomaly Detector - Metrics", "id"]
       dashboarding_id: ["workshop", "document", "Workshop - Dashboarding", "id"]
+      segments_id: ["workshop", "document", "Workshop - Segments", "id"]
+      storage_bucket_openpipeline_id: ["workshop", "document", "Workshop - Storage Bucket and OpenPipeline", "id"]
 - id: "Workshop - Explore Logs App"
   type:
     document:
@@ -200,3 +202,19 @@ configs:
   config:
     name: Workshop - Dashboarding
     template: Workshop - Dashboarding.json
+- id: "Workshop - Segments"
+  type:
+    document:
+      kind: notebook
+      private: false
+  config:
+    name: Workshop - Segments
+    template: Workshop - Segments.json
+- id: "Workshop - Storage Bucket and OpenPipeline"
+  type:
+    document:
+      kind: notebook
+      private: false
+  config:
+    name: Workshop - Storage Bucket and OpenPipeline
+    template: Workshop - Storage Bucket and OpenPipeline.json

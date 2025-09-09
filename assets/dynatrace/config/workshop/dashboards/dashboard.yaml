@@ -1,0 +1,9 @@
+configs:
+- id: "Workshop - My Kubernetes Overview"
+  type:
+    document:
+      kind: dashboard
+      private: false
+  config:
+    name: Workshop - My Kubernetes Overview
+    template: Workshop - My Kubernetes Overview.json

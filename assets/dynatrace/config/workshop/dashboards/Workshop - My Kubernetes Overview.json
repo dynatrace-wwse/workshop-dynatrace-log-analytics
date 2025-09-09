@@ -1,0 +1,1076 @@
+{
+    "version": 18,
+    "variables": [],
+    "tiles": {
+        "0": {
+            "title": "Largest CPU consumers in otel-demo namespace",
+            "type": "data",
+            "subType": "dql-builder-metrics",
+            "query": "timeseries { avg(dt.kubernetes.container.cpu_usage), value.A = avg(dt.kubernetes.container.cpu_usage, scalar: true) }, by: { k8s.pod.name, dt.entity.cloud_application_instance, dt.entity.cloud_application }, filter: { matchesValue(k8s.namespace.name, \"otel-demo\") }\n| fieldsAdd dt.entity.cloud_application_instance.name = entityName(dt.entity.cloud_application_instance)\n| fieldsAdd dt.entity.cloud_application.name = entityName(dt.entity.cloud_application)\n| sort `avg(dt.kubernetes.container.cpu_usage)` desc",
+            "visualization": "pieChart",
+            "visualizationSettings": {
+                "thresholds": [],
+                "chartSettings": {
+                    "xAxisScaling": "analyzedTimeframe",
+                    "gapPolicy": "gap",
+                    "circleChartSettings": {
+                        "groupingThresholdType": "relative",
+                        "groupingThresholdValue": 1,
+                        "valueType": "relative"
+                    },
+                    "categoryOverrides": {},
+                    "curve": "linear",
+                    "pointsDisplay": "auto",
+                    "categoricalBarChartSettings": {
+                        "layout": "horizontal",
+                        "categoryAxisTickLayout": "horizontal",
+                        "scale": "absolute",
+                        "groupMode": "stacked",
+                        "colorPaletteMode": "multi-color",
+                        "categoryAxis": [
+                            "k8s.pod.name",
+                            "dt.entity.cloud_application_instance",
+                            "dt.entity.cloud_application",
+                            "dt.entity.cloud_application_instance.name",
+                            "dt.entity.cloud_application.name"
+                        ],
+                        "valueAxis": [
+                            "value.A"
+                        ],
+                        "categoryAxisLabel": "k8s.pod.name,dt.entity.cloud_application_instance,dt.entity.cloud_application,dt.entity.cloud_application_instance.name,dt.entity.cloud_application.name",
+                        "valueAxisLabel": "value.A",
+                        "tooltipVariant": "single"
+                    },
+                    "colorPalette": "categorical",
+                    "valueRepresentation": "absolute",
+                    "truncationMode": "middle",
+                    "hiddenLegendFields": [],
+                    "fieldMapping": {
+                        "timestamp": "timeframe",
+                        "leftAxisValues": [
+                            "avg(dt.kubernetes.container.cpu_usage)"
+                        ]
+                    },
+                    "xAxisLabel": "timeframe",
+                    "xAxisIsLabelVisible": false,
+                    "leftYAxisSettings": {
+                        "isLabelVisible": true,
+                        "label": "Kubernetes: Container - CPU usage"
+                    }
+                },
+                "singleValue": {
+                    "showLabel": true,
+                    "label": "k8s.pod.uid",
+                    "prefixIcon": "",
+                    "recordField": "k8s.pod.uid",
+                    "autoscale": true,
+                    "alignment": "center",
+                    "trend": {
+                        "trendType": "auto",
+                        "isVisible": true
+                    },
+                    "colorThresholdTarget": "value"
+                },
+                "table": {
+                    "rowDensity": "condensed",
+                    "enableSparklines": false,
+                    "hiddenColumns": [],
+                    "linewrapEnabled": false,
+                    "lineWrapIds": [],
+                    "monospacedFontEnabled": false,
+                    "monospacedFontColumns": [],
+                    "columnWidths": {},
+                    "columnTypeOverrides": [
+                        {
+                            "fields": [
+                                "avg(dt.kubernetes.container.cpu_usage)"
+                            ],
+                            "value": "sparkline",
+                            "id": 1744745637085
+                        }
+                    ]
+                },
+                "honeycomb": {
+                    "shape": "hexagon",
+                    "legend": {
+                        "hidden": false,
+                        "position": "auto"
+                    },
+                    "displayedFields": [
+                        "k8s.pod.name",
+                        "dt.entity.cloud_application_instance",
+                        "dt.entity.cloud_application",
+                        "dt.entity.cloud_application_instance.name",
+                        "dt.entity.cloud_application.name"
+                    ],
+                    "dataMappings": {
+                        "value": "avg(dt.kubernetes.container.cpu_usage)"
+                    },
+                    "truncationMode": "middle",
+                    "colorMode": "color-palette",
+                    "colorPalette": "blue"
+                },
+                "histogram": {
+                    "legend": "auto",
+                    "yAxis": {
+                        "label": "Frequency",
+                        "scale": "linear"
+                    },
+                    "colorPalette": "categorical",
+                    "dataMappings": [
+                        {
+                            "valueAxis": "interval",
+                            "rangeAxis": ""
+                        },
+                        {
+                            "valueAxis": "avg(dt.kubernetes.container.cpu_usage)",
+                            "rangeAxis": ""
+                        }
+                    ],
+                    "variant": "single",
+                    "truncationMode": "middle",
+                    "displayedFields": [
+                        "dt.entity.cloud_application_instance",
+                        "dt.entity.cloud_application_instance.name"
+                    ]
+                },
+                "valueBoundaries": {
+                    "min": "auto",
+                    "max": "auto"
+                },
+                "autoSelectVisualization": false
+            },
+            "querySettings": {
+                "maxResultRecords": 1000,
+                "defaultScanLimitGbytes": 500,
+                "maxResultMegaBytes": 1,
+                "defaultSamplingRatio": 10,
+                "enableSampling": false
+            },
+            "queryConfig": {
+                "version": "13.5.0",
+                "subQueries": [
+                    {
+                        "id": "A",
+                        "isEnabled": true,
+                        "datatype": "metrics",
+                        "metric": {
+                            "key": "dt.kubernetes.container.cpu_usage",
+                            "aggregation": "avg",
+                            "kind": "gauge"
+                        },
+                        "by": [
+                            "k8s.pod.name",
+                            "dt.entity.cloud_application_instance",
+                            "dt.entity.cloud_application"
+                        ],
+                        "convertToValue": "Avg",
+                        "filter": "k8s.namespace.name = otel-demo"
+                    }
+                ],
+                "globalCommands": {
+                    "sort": {
+                        "field": "`avg(dt.kubernetes.container.cpu_usage)`",
+                        "direction": "desc"
+                    }
+                }
+            },
+            "davis": {}
+        },
+        "1": {
+            "title": "Largest CPU consumers in otel-demo namespace",
+            "type": "data",
+            "subType": "dql-builder-metrics",
+            "query": "timeseries { avg(dt.kubernetes.container.cpu_usage), value.A = avg(dt.kubernetes.container.cpu_usage, scalar: true) }, by: { k8s.pod.name, dt.entity.cloud_application_instance, dt.entity.cloud_application }, filter: { matchesValue(k8s.namespace.name, \"otel-demo\") }\n| fieldsAdd dt.entity.cloud_application_instance.name = entityName(dt.entity.cloud_application_instance)\n| fieldsAdd dt.entity.cloud_application.name = entityName(dt.entity.cloud_application)\n| sort `avg(dt.kubernetes.container.cpu_usage)` desc",
+            "visualization": "lineChart",
+            "visualizationSettings": {
+                "thresholds": [],
+                "chartSettings": {
+                    "xAxisScaling": "analyzedTimeframe",
+                    "gapPolicy": "gap",
+                    "circleChartSettings": {
+                        "groupingThresholdType": "relative",
+                        "groupingThresholdValue": 1,
+                        "valueType": "relative"
+                    },
+                    "categoryOverrides": {},
+                    "curve": "linear",
+                    "pointsDisplay": "auto",
+                    "categoricalBarChartSettings": {
+                        "layout": "horizontal",
+                        "categoryAxisTickLayout": "horizontal",
+                        "scale": "absolute",
+                        "groupMode": "stacked",
+                        "colorPaletteMode": "multi-color",
+                        "categoryAxisLabel": "k8s.pod.name,dt.entity.cloud_application_instance,dt.entity.cloud_application,dt.entity.cloud_application_instance.name,dt.entity.cloud_application.name",
+                        "valueAxisLabel": "interval",
+                        "tooltipVariant": "single"
+                    },
+                    "colorPalette": "categorical",
+                    "valueRepresentation": "absolute",
+                    "truncationMode": "middle",
+                    "hiddenLegendFields": [
+                        "dt.entity.cloud_application_instance",
+                        "dt.entity.cloud_application",
+                        "dt.entity.cloud_application_instance.name",
+                        "dt.entity.cloud_application.name",
+                        "avg(dt.kubernetes.container.cpu_usage)"
+                    ],
+                    "fieldMapping": {
+                        "timestamp": "timeframe",
+                        "leftAxisValues": [
+                            "avg(dt.kubernetes.container.cpu_usage)"
+                        ]
+                    },
+                    "xAxisLabel": "timeframe",
+                    "xAxisIsLabelVisible": false,
+                    "leftYAxisSettings": {
+                        "isLabelVisible": true,
+                        "label": "Kubernetes: Container - CPU usage"
+                    }
+                },
+                "singleValue": {
+                    "showLabel": true,
+                    "label": "k8s.pod.uid",
+                    "prefixIcon": "",
+                    "recordField": "k8s.pod.uid",
+                    "autoscale": true,
+                    "alignment": "center",
+                    "trend": {
+                        "trendType": "auto",
+                        "isVisible": true
+                    },
+                    "colorThresholdTarget": "value"
+                },
+                "table": {
+                    "rowDensity": "condensed",
+                    "enableSparklines": false,
+                    "hiddenColumns": [],
+                    "linewrapEnabled": false,
+                    "lineWrapIds": [],
+                    "monospacedFontEnabled": false,
+                    "monospacedFontColumns": [],
+                    "columnWidths": {},
+                    "columnTypeOverrides": [
+                        {
+                            "fields": [
+                                "avg(dt.kubernetes.container.cpu_usage)"
+                            ],
+                            "value": "sparkline",
+                            "id": 1734341749415
+                        }
+                    ]
+                },
+                "honeycomb": {
+                    "shape": "hexagon",
+                    "legend": {
+                        "hidden": false,
+                        "position": "auto"
+                    },
+                    "displayedFields": [
+                        "k8s.pod.name",
+                        "dt.entity.cloud_application_instance",
+                        "dt.entity.cloud_application",
+                        "dt.entity.cloud_application_instance.name",
+                        "dt.entity.cloud_application.name"
+                    ],
+                    "dataMappings": {
+                        "value": "k8s.pod.name"
+                    },
+                    "truncationMode": "middle",
+                    "colorMode": "color-palette",
+                    "colorPalette": "categorical"
+                },
+                "histogram": {
+                    "legend": "auto",
+                    "yAxis": {
+                        "label": "Frequency",
+                        "scale": "linear"
+                    },
+                    "colorPalette": "categorical",
+                    "dataMappings": [
+                        {
+                            "valueAxis": "interval",
+                            "rangeAxis": ""
+                        }
+                    ],
+                    "variant": "single",
+                    "truncationMode": "middle",
+                    "displayedFields": [
+                        "dt.entity.cloud_application_instance",
+                        "dt.entity.cloud_application_instance.name"
+                    ]
+                },
+                "valueBoundaries": {
+                    "min": "auto",
+                    "max": "auto"
+                },
+                "autoSelectVisualization": false
+            },
+            "querySettings": {
+                "maxResultRecords": 1000,
+                "defaultScanLimitGbytes": 500,
+                "maxResultMegaBytes": 1,
+                "defaultSamplingRatio": 10,
+                "enableSampling": false
+            },
+            "queryConfig": {
+                "version": "13.5.0",
+                "subQueries": [
+                    {
+                        "id": "A",
+                        "isEnabled": true,
+                        "datatype": "metrics",
+                        "metric": {
+                            "key": "dt.kubernetes.container.cpu_usage",
+                            "aggregation": "avg",
+                            "kind": "gauge"
+                        },
+                        "by": [
+                            "k8s.pod.name",
+                            "dt.entity.cloud_application_instance",
+                            "dt.entity.cloud_application"
+                        ],
+                        "filter": "k8s.namespace.name = otel-demo "
+                    }
+                ],
+                "globalCommands": {
+                    "sort": {
+                        "field": "`avg(dt.kubernetes.container.cpu_usage)`",
+                        "direction": "desc"
+                    }
+                }
+            },
+            "davis": {}
+        },
+        "2": {
+            "title": "",
+            "type": "data",
+            "subType": "dql-builder-logs",
+            "query": "fetch logs\n| filter matchesValue(k8s.namespace.name, \"otel-demo\") AND matchesValue(content, \"*exception*\")\n| sort timestamp desc\n| limit 20",
+            "visualization": "table",
+            "visualizationSettings": {
+                "thresholds": [
+                    {
+                        "id": 1,
+                        "field": "status",
+                        "title": "",
+                        "isEnabled": true,
+                        "rules": [
+                            {
+                                "id": 0,
+                                "color": {
+                                    "Default": "var(--dt-colors-charts-status-ideal-default, #2f6863)"
+                                },
+                                "comparator": "!=",
+                                "label": "",
+                                "value": "ERROR"
+                            },
+                            {
+                                "id": 1,
+                                "color": {
+                                    "Default": "var(--dt-colors-charts-status-warning-default, #eca440)"
+                                },
+                                "comparator": "=",
+                                "label": "",
+                                "value": "WARN"
+                            },
+                            {
+                                "id": 2,
+                                "color": {
+                                    "Default": "var(--dt-colors-charts-status-critical-default, #c4233b)"
+                                },
+                                "comparator": "=",
+                                "label": "",
+                                "value": "ERROR"
+                            }
+                        ]
+                    }
+                ],
+                "chartSettings": {
+                    "xAxisScaling": "analyzedTimeframe",
+                    "gapPolicy": "gap",
+                    "circleChartSettings": {
+                        "groupingThresholdType": "relative",
+                        "groupingThresholdValue": 0,
+                        "valueType": "relative"
+                    },
+                    "categoryOverrides": {},
+                    "curve": "linear",
+                    "pointsDisplay": "auto",
+                    "categoricalBarChartSettings": {
+                        "layout": "horizontal",
+                        "categoryAxisTickLayout": "horizontal",
+                        "scale": "absolute",
+                        "groupMode": "stacked",
+                        "colorPaletteMode": "multi-color",
+                        "categoryAxisLabel": "content,aws.region,aws.resource.id,dt.entity.cloud_application,dt.entity.cloud_application_instance,dt.entity.cloud_application_namespace,dt.entity.container_group,dt.entity.container_group_instance,dt.entity.host,dt.entity.kubernetes_cluster,dt.entity.kubernetes_node,dt.entity.process_group,dt.entity.process_group_instance,dt.kubernetes.cluster.name,dt.kubernetes.node.system_uuid,dt.process.name,dt.source_entity,event.type,host.name,k8s.cluster.name,k8s.container.name,k8s.deployment.name,k8s.namespace.name,k8s.pod.name,k8s.pod.uid,log.source,loglevel,status,aws.availability_zone,dt.entity.aws_availability_zone,dt.entity.ec2_instance,dt.process_group.detected_name,k8s.cluster.uid,k8s.node.name,log.iostream,operatorversion,span_id,trace_id,trace_sampled",
+                        "valueAxisLabel": "",
+                        "tooltipVariant": "single"
+                    },
+                    "colorPalette": "categorical",
+                    "valueRepresentation": "absolute",
+                    "truncationMode": "middle"
+                },
+                "singleValue": {
+                    "showLabel": true,
+                    "label": "timestamp",
+                    "prefixIcon": "",
+                    "recordField": "timestamp",
+                    "autoscale": true,
+                    "alignment": "center",
+                    "trend": {
+                        "trendType": "auto",
+                        "isVisible": true
+                    },
+                    "colorThresholdTarget": "value"
+                },
+                "table": {
+                    "rowDensity": "condensed",
+                    "enableSparklines": false,
+                    "hiddenColumns": [
+                        [
+                            "aws.region"
+                        ],
+                        [
+                            "aws.resource.id"
+                        ],
+                        [
+                            "dt.entity.cloud_application"
+                        ],
+                        [
+                            "dt.entity.cloud_application_instance"
+                        ],
+                        [
+                            "dt.entity.cloud_application_namespace"
+                        ],
+                        [
+                            "dt.entity.container_group"
+                        ],
+                        [
+                            "dt.entity.container_group_instance"
+                        ],
+                        [
+                            "dt.entity.host"
+                        ],
+                        [
+                            "dt.entity.kubernetes_cluster"
+                        ],
+                        [
+                            "dt.entity.kubernetes_node"
+                        ],
+                        [
+                            "dt.entity.process_group"
+                        ],
+                        [
+                            "dt.entity.process_group_instance"
+                        ],
+                        [
+                            "dt.kubernetes.cluster.name"
+                        ],
+                        [
+                            "dt.kubernetes.node.system_uuid"
+                        ],
+                        [
+                            "dt.process.name"
+                        ],
+                        [
+                            "dt.source_entity"
+                        ],
+                        [
+                            "event.type"
+                        ],
+                        [
+                            "host.name"
+                        ],
+                        [
+                            "k8s.cluster.name"
+                        ],
+                        [
+                            "k8s.container.name"
+                        ],
+                        [
+                            "k8s.deployment.name"
+                        ],
+                        [
+                            "k8s.namespace.name"
+                        ],
+                        [
+                            "k8s.pod.name"
+                        ],
+                        [
+                            "k8s.pod.uid"
+                        ],
+                        [
+                            "log.source"
+                        ],
+                        [
+                            "loglevel"
+                        ],
+                        [
+                            "process.technology"
+                        ],
+                        [
+                            "aws.availability_zone"
+                        ],
+                        [
+                            "dt.entity.aws_availability_zone"
+                        ],
+                        [
+                            "dt.entity.ec2_instance"
+                        ],
+                        [
+                            "dt.openpipeline.pipelines"
+                        ],
+                        [
+                            "dt.process_group.detected_name"
+                        ],
+                        [
+                            "k8s.cluster.uid"
+                        ],
+                        [
+                            "k8s.node.name"
+                        ],
+                        [
+                            "log.iostream"
+                        ],
+                        [
+                            "operatorversion"
+                        ],
+                        [
+                            "span_id"
+                        ],
+                        [
+                            "trace_id"
+                        ],
+                        [
+                            "trace_sampled"
+                        ]
+                    ],
+                    "linewrapEnabled": true,
+                    "lineWrapIds": [
+                        [
+                            "content"
+                        ]
+                    ],
+                    "monospacedFontEnabled": true,
+                    "monospacedFontColumns": [
+                        [
+                            "content"
+                        ]
+                    ],
+                    "columnWidths": {
+                        "[\"content\"]": 1223
+                    },
+                    "columnTypeOverrides": [
+                        {
+                            "fields": [
+                                "content"
+                            ],
+                            "id": 1735335423595,
+                            "value": "log-content"
+                        }
+                    ],
+                    "colorThresholdTarget": "background",
+                    "enableThresholdInRow": false,
+                    "selectedColumnForRowThreshold": "status"
+                },
+                "honeycomb": {
+                    "shape": "hexagon",
+                    "legend": {
+                        "hidden": false,
+                        "position": "auto"
+                    },
+                    "displayedFields": [
+                        "content",
+                        "aws.region",
+                        "aws.resource.id",
+                        "dt.entity.cloud_application",
+                        "dt.entity.cloud_application_instance",
+                        "dt.entity.cloud_application_namespace",
+                        "dt.entity.container_group",
+                        "dt.entity.container_group_instance",
+                        "dt.entity.host",
+                        "dt.entity.kubernetes_cluster",
+                        "dt.entity.kubernetes_node",
+                        "dt.entity.process_group",
+                        "dt.entity.process_group_instance",
+                        "dt.kubernetes.cluster.name",
+                        "dt.kubernetes.node.system_uuid",
+                        "dt.process.name",
+                        "dt.source_entity",
+                        "event.type",
+                        "host.name",
+                        "k8s.cluster.name",
+                        "k8s.container.name",
+                        "k8s.deployment.name",
+                        "k8s.namespace.name",
+                        "k8s.pod.name",
+                        "k8s.pod.uid",
+                        "log.source",
+                        "loglevel",
+                        "status",
+                        "aws.availability_zone",
+                        "dt.entity.aws_availability_zone",
+                        "dt.entity.ec2_instance",
+                        "dt.process_group.detected_name",
+                        "k8s.cluster.uid",
+                        "k8s.node.name",
+                        "log.iostream",
+                        "operatorversion",
+                        "span_id",
+                        "trace_id",
+                        "trace_sampled"
+                    ],
+                    "dataMappings": {
+                        "value": "content"
+                    },
+                    "truncationMode": "middle",
+                    "colorMode": "color-palette",
+                    "colorPalette": "categorical"
+                },
+                "histogram": {
+                    "legend": "auto",
+                    "yAxis": {
+                        "label": "Frequency",
+                        "scale": "linear"
+                    },
+                    "colorPalette": "categorical",
+                    "dataMappings": [],
+                    "variant": "single",
+                    "truncationMode": "middle",
+                    "displayedFields": [
+                        "content",
+                        "aws.region",
+                        "aws.resource.id",
+                        "dt.entity.cloud_application",
+                        "dt.entity.cloud_application_instance",
+                        "dt.entity.cloud_application_namespace",
+                        "dt.entity.container_group",
+                        "dt.entity.container_group_instance",
+                        "dt.entity.host",
+                        "dt.entity.kubernetes_cluster",
+                        "dt.entity.kubernetes_node",
+                        "dt.entity.process_group",
+                        "dt.entity.process_group_instance",
+                        "dt.kubernetes.cluster.name",
+                        "dt.kubernetes.node.system_uuid",
+                        "dt.process.name",
+                        "dt.source_entity",
+                        "event.type",
+                        "host.name",
+                        "k8s.cluster.name",
+                        "k8s.container.name",
+                        "k8s.deployment.name",
+                        "k8s.namespace.name",
+                        "k8s.pod.name",
+                        "k8s.pod.uid",
+                        "log.source",
+                        "loglevel",
+                        "status",
+                        "aws.availability_zone",
+                        "dt.entity.aws_availability_zone",
+                        "dt.entity.ec2_instance",
+                        "dt.process_group.detected_name",
+                        "k8s.cluster.uid",
+                        "k8s.node.name",
+                        "log.iostream",
+                        "operatorversion",
+                        "span_id",
+                        "trace_id",
+                        "trace_sampled"
+                    ]
+                },
+                "valueBoundaries": {
+                    "min": "auto",
+                    "max": "auto"
+                },
+                "autoSelectVisualization": false
+            },
+            "querySettings": {
+                "maxResultRecords": 1000,
+                "defaultScanLimitGbytes": 500,
+                "maxResultMegaBytes": 1,
+                "defaultSamplingRatio": 10,
+                "enableSampling": false
+            },
+            "queryConfig": {
+                "version": "13.5.0",
+                "subQueries": [
+                    {
+                        "id": "A",
+                        "isEnabled": true,
+                        "datatype": "logs",
+                        "filter": "k8s.namespace.name = otel-demo AND content = *exception*"
+                    }
+                ],
+                "globalCommands": {
+                    "limit": 20,
+                    "sort": {
+                        "field": "timestamp",
+                        "direction": "desc"
+                    }
+                }
+            },
+            "davis": {}
+        },
+        "3": {
+            "title": "",
+            "type": "data",
+            "subType": "dql-builder-events",
+            "query": "fetch events\n| filter matchesValue(k8s.namespace.name, \"otel-demo\") AND matchesValue(event.provider, \"KUBERNETES_EVENT\")\n| makeTimeseries count = count(), by: { dt.kubernetes.event.reason }",
+            "visualization": "barChart",
+            "visualizationSettings": {
+                "thresholds": [],
+                "chartSettings": {
+                    "xAxisScaling": "analyzedTimeframe",
+                    "gapPolicy": "gap",
+                    "circleChartSettings": {
+                        "groupingThresholdType": "relative",
+                        "groupingThresholdValue": 0,
+                        "valueType": "relative"
+                    },
+                    "categoryOverrides": {},
+                    "curve": "linear",
+                    "pointsDisplay": "auto",
+                    "categoricalBarChartSettings": {
+                        "layout": "horizontal",
+                        "categoryAxisTickLayout": "horizontal",
+                        "scale": "absolute",
+                        "groupMode": "stacked",
+                        "colorPaletteMode": "multi-color",
+                        "categoryAxisLabel": "dt.kubernetes.event.reason",
+                        "valueAxisLabel": "interval",
+                        "tooltipVariant": "single"
+                    },
+                    "colorPalette": "categorical",
+                    "valueRepresentation": "absolute",
+                    "truncationMode": "middle",
+                    "fieldMapping": {
+                        "timestamp": "timeframe",
+                        "leftAxisValues": [
+                            "count"
+                        ]
+                    },
+                    "xAxisLabel": "timeframe",
+                    "xAxisIsLabelVisible": false,
+                    "hiddenLegendFields": [],
+                    "leftYAxisSettings": {}
+                },
+                "singleValue": {
+                    "showLabel": true,
+                    "label": "timestamp",
+                    "prefixIcon": "",
+                    "recordField": "timestamp",
+                    "autoscale": true,
+                    "alignment": "center",
+                    "trend": {
+                        "trendType": "auto",
+                        "isVisible": true
+                    },
+                    "colorThresholdTarget": "value"
+                },
+                "table": {
+                    "rowDensity": "condensed",
+                    "enableSparklines": false,
+                    "hiddenColumns": [],
+                    "linewrapEnabled": false,
+                    "lineWrapIds": [],
+                    "monospacedFontEnabled": false,
+                    "monospacedFontColumns": [],
+                    "columnWidths": {},
+                    "columnTypeOverrides": [
+                        {
+                            "fields": [
+                                "count"
+                            ],
+                            "value": "sparkline",
+                            "id": 1735335423386
+                        }
+                    ]
+                },
+                "honeycomb": {
+                    "shape": "hexagon",
+                    "legend": {
+                        "hidden": false,
+                        "position": "auto"
+                    },
+                    "displayedFields": [
+                        "dt.kubernetes.event.reason"
+                    ],
+                    "dataMappings": {
+                        "value": "dt.kubernetes.event.reason"
+                    },
+                    "truncationMode": "middle",
+                    "colorMode": "color-palette",
+                    "colorPalette": "categorical"
+                },
+                "histogram": {
+                    "legend": "auto",
+                    "yAxis": {
+                        "label": "Frequency",
+                        "scale": "linear"
+                    },
+                    "colorPalette": "categorical",
+                    "dataMappings": [
+                        {
+                            "valueAxis": "interval",
+                            "rangeAxis": ""
+                        }
+                    ],
+                    "variant": "single",
+                    "truncationMode": "middle",
+                    "displayedFields": [
+                        "dt.kubernetes.event.reason"
+                    ]
+                },
+                "valueBoundaries": {
+                    "min": "auto",
+                    "max": "auto"
+                },
+                "autoSelectVisualization": false
+            },
+            "querySettings": {
+                "maxResultRecords": 1000,
+                "defaultScanLimitGbytes": 500,
+                "maxResultMegaBytes": 1,
+                "defaultSamplingRatio": 10,
+                "enableSampling": false
+            },
+            "queryConfig": {
+                "version": "13.5.0",
+                "subQueries": [
+                    {
+                        "id": "A",
+                        "isEnabled": true,
+                        "datatype": "events",
+                        "makeTimeseries": {
+                            "aggregator": "count",
+                            "fields": [
+                                "dt.kubernetes.event.reason"
+                            ]
+                        },
+                        "filter": "k8s.namespace.name = \"otel-demo\" AND event.provider = \"KUBERNETES_EVENT\""
+                    }
+                ]
+            },
+            "davis": {}
+        },
+        "4": {
+            "title": "",
+            "type": "data",
+            "subType": "dql-builder-metrics",
+            "query": "timeseries { avg(dt.kubernetes.container.memory_working_set), value.A = avg(dt.kubernetes.container.memory_working_set, scalar: true) }, by: { k8s.workload.name }, filter: { matchesValue(k8s.namespace.name, \"otel-demo\") }\n| limit 20",
+            "visualization": "davis",
+            "visualizationSettings": {
+                "thresholds": [],
+                "chartSettings": {
+                    "xAxisScaling": "analyzedTimeframe",
+                    "gapPolicy": "gap",
+                    "circleChartSettings": {
+                        "groupingThresholdType": "relative",
+                        "groupingThresholdValue": 0,
+                        "valueType": "relative"
+                    },
+                    "categoryOverrides": {},
+                    "curve": "linear",
+                    "pointsDisplay": "auto",
+                    "categoricalBarChartSettings": {
+                        "layout": "horizontal",
+                        "categoryAxisTickLayout": "horizontal",
+                        "scale": "absolute",
+                        "groupMode": "stacked",
+                        "colorPaletteMode": "multi-color",
+                        "categoryAxis": [
+                            "k8s.workload.name"
+                        ],
+                        "valueAxis": [
+                            "interval"
+                        ],
+                        "categoryAxisLabel": "k8s.workload.name",
+                        "valueAxisLabel": "interval",
+                        "tooltipVariant": "single"
+                    },
+                    "colorPalette": "categorical",
+                    "valueRepresentation": "absolute",
+                    "truncationMode": "middle",
+                    "xAxisLabel": "timeframe",
+                    "xAxisIsLabelVisible": false,
+                    "hiddenLegendFields": [],
+                    "fieldMapping": {
+                        "timestamp": "timeframe",
+                        "leftAxisValues": [
+                            "avg(dt.kubernetes.container.memory_working_set)"
+                        ],
+                        "leftAxisDimensions": [
+                            "k8s.workload.name"
+                        ]
+                    },
+                    "leftYAxisSettings": {
+                        "isLabelVisible": true,
+                        "label": "Kubernetes: Container - working set memory"
+                    }
+                },
+                "singleValue": {
+                    "showLabel": true,
+                    "label": "k8s.workload.name",
+                    "prefixIcon": "",
+                    "recordField": "k8s.workload.name",
+                    "autoscale": true,
+                    "alignment": "center",
+                    "trend": {
+                        "trendType": "auto",
+                        "isVisible": true
+                    },
+                    "colorThresholdTarget": "value"
+                },
+                "table": {
+                    "rowDensity": "condensed",
+                    "enableSparklines": false,
+                    "hiddenColumns": [],
+                    "linewrapEnabled": false,
+                    "lineWrapIds": [],
+                    "monospacedFontEnabled": false,
+                    "monospacedFontColumns": [],
+                    "columnWidths": {},
+                    "columnTypeOverrides": []
+                },
+                "honeycomb": {
+                    "shape": "hexagon",
+                    "legend": {
+                        "hidden": false,
+                        "position": "auto"
+                    },
+                    "displayedFields": [
+                        "k8s.workload.name"
+                    ],
+                    "dataMappings": {
+                        "value": "k8s.workload.name"
+                    },
+                    "truncationMode": "middle",
+                    "colorMode": "color-palette",
+                    "colorPalette": "categorical"
+                },
+                "histogram": {
+                    "legend": "auto",
+                    "yAxis": {
+                        "label": "Frequency",
+                        "scale": "linear"
+                    },
+                    "colorPalette": "categorical",
+                    "dataMappings": [
+                        {
+                            "valueAxis": "interval",
+                            "rangeAxis": ""
+                        }
+                    ],
+                    "variant": "single",
+                    "truncationMode": "middle",
+                    "displayedFields": [
+                        "k8s.workload.name"
+                    ]
+                },
+                "valueBoundaries": {
+                    "min": "auto",
+                    "max": "auto"
+                },
+                "autoSelectVisualization": false
+            },
+            "querySettings": {
+                "maxResultRecords": 1000,
+                "defaultScanLimitGbytes": 500,
+                "maxResultMegaBytes": 1,
+                "defaultSamplingRatio": 10,
+                "enableSampling": false
+            },
+            "queryConfig": {
+                "version": "13.5.0",
+                "subQueries": [
+                    {
+                        "id": "A",
+                        "isEnabled": true,
+                        "datatype": "metrics",
+                        "metric": {
+                            "key": "dt.kubernetes.container.memory_working_set",
+                            "aggregation": "avg"
+                        },
+                        "by": [
+                            "k8s.workload.name"
+                        ],
+                        "filter": "k8s.namespace.name = \"otel-demo\""
+                    }
+                ],
+                "globalCommands": {
+                    "limit": 20
+                }
+            },
+            "davis": {
+                "enabled": true,
+                "componentState": {
+                    "selectedAnalyzerName": "dt.statistics.ui.ForecastAnalyzer",
+                    "inputData": {
+                        "dt.statistics.ui.ForecastAnalyzer": {
+                            "generalParameters": {
+                                "timeframe": {
+                                    "startTime": "2025-03-18T19:21:48.027Z",
+                                    "endTime": "2025-04-17T19:21:48.027Z"
+                                },
+                                "resolveDimensionalQueryData": true,
+                                "logVerbosity": "INFO"
+                            },
+                            "forecastHorizon": 100,
+                            "forecastOffset": 1,
+                            "query": "timeseries { avg(dt.kubernetes.container.memory_working_set), value.A = avg(dt.kubernetes.container.memory_working_set, scalar: true) }, by: { k8s.workload.name }, filter: { matchesValue(k8s.namespace.name, \"otel-demo\") }\n| limit 20"
+                        }
+                    }
+                },
+                "davisVisualization": {
+                    "settings": {
+                        "visibleSections": "ALL"
+                    }
+                }
+            },
+            "timeframe": {
+                "tileTimeframeEnabled": true,
+                "tileTimeframe": {
+                    "from": "now()-30d",
+                    "to": "now()"
+                }
+            }
+        }
+    },
+    "layouts": {
+        "0": {
+            "x": 0,
+            "y": 0,
+            "w": 7,
+            "h": 5
+        },
+        "1": {
+            "x": 7,
+            "y": 0,
+            "w": 17,
+            "h": 5
+        },
+        "2": {
+            "x": 0,
+            "y": 5,
+            "w": 24,
+            "h": 6
+        },
+        "3": {
+            "x": 0,
+            "y": 11,
+            "w": 24,
+            "h": 4
+        },
+        "4": {
+            "x": 0,
+            "y": 15,
+            "w": 24,
+            "h": 7
+        }
+    },
+    "importedWithCode": false,
+    "settings": {}
+}
