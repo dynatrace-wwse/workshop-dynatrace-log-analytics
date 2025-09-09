@@ -1,0 +1,325 @@
+{
+    "schemaVersion": 2,
+    "icon": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGlkPSJJQ09OUyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgODAgODAiPjxwb2x5Z29uIHBvaW50cz0iNDUuNTIgMzMuMDkgNDEuMTEgMzMuMDkgNDEuMTEgMjMuMjEgMzguMTIgMjMuMjEgMzguMTIgMzUuODEgNDUuNTIgMzUuODEgNDUuNTIgMzMuMDkiLz48cGF0aCBkPSJNNDkuODIsMzUuNDhjLjc4LjQ0LDEuNzIuNjcsMi44MS42N3MyLS4yMywyLjc3LS42OGMuNzctLjQ2LDEuMzUtMS4xMSwxLjc2LTEuOTUuNC0uODUuNi0xLjg4LjYtMy4wOXYtMi4wNWMwLTEuMTYtLjItMi4xNi0uNjEtMi45OC0uNDEtLjgyLTEtMS40NS0xLjc3LTEuODhzLTEuNzEtLjY1LTIuODItLjY1LTIsLjIzLTIuNzcuNjdjLS43Ny40NS0xLjM1LDEuMS0xLjc1LDEuOTYtLjQuODYtLjU5LDEuODktLjU5LDMuMXYxLjk0YzAsMS4xOS4yLDIuMi42LDMuMDJzLjk5LDEuNDYsMS43NywxLjkxWk01MC40MiwyOC41N2MwLS45Ni4xOS0xLjcuNTgtMi4yMS4zOC0uNTIuOTItLjc3LDEuNi0uNzdzMS4yMy4yNSwxLjYxLjc2Yy4zOC41LjU3LDEuMjEuNTcsMi4xMnYxLjk2YzAsLjk2LS4xOSwxLjctLjU3LDIuMjItLjM4LjUyLS45Mi43OC0xLjYuNzhzLTEuMjMtLjI1LTEuNjEtLjc3Yy0uMzgtLjUxLS41Ny0xLjIyLS41Ny0yLjEzdi0xLjk2WiIvPjxwYXRoIGQ9Ik02Mi40MiwzNS40NmMuODIuNDYsMS43OS42OSwyLjkyLjY5Ljc5LDAsMS41Ni0uMTMsMi4yOS0uMzguNzQtLjI1LDEuMzctLjY0LDEuOS0xLjE1di01Ljk2aC00LjM0djIuNWgxLjUybC0uMDIuNjd2MS40OGMtLjMzLjA5LS42OS4xNC0xLjEzLjE0LS44NS0uMDEtMS41MS0uMjktMS45Ni0uODMtLjQ2LS41NC0uNjgtMS4yNS0uNjgtMi4xMnYtMS43OGMwLS45Ny4yNC0xLjczLjcxLTIuMjguNDctLjU1LDEuMi0uODMsMi4xOS0uODUuNDItLjAxLjg0LjA0LDEuMjYuMTRzLjguMjYsMS4xNS40N2wxLjAxLTIuMjVjLS42MS0uMzctMS4yMi0uNjUtMS44NC0uODItLjYxLS4xNy0xLjI1LS4yNi0xLjkzLS4yNi0xLjA2LDAtMiwuMi0yLjgzLjU5cy0xLjQ4LDEuMDItMS45NywxLjg2Yy0uNDkuODUtLjczLDEuOTItLjczLDMuMjF2Mi4wN2MwLDEuMS4yMSwyLjA3LjYzLDIuOTFzMS4wNCwxLjQ4LDEuODUsMS45NFoiLz48cGF0aCBkPSJNMTUuMzMsNjAuMXYtMjguN2gtM3YyOS4yYzAsMS4zOCwxLjEyLDIuNSwyLjUsMi41aDE1LjI0Yy43Nyw3LjY2LDcuMjYsMTMuNjYsMTUuMTIsMTMuNjYsOC4zOCwwLDE1LjItNi44MiwxNS4yLTE1LjIsMC0zLjIzLTEuMDItNi4yMi0yLjc1LTguNjloNS44NWMxLjM4LDAsMi41LTEuMTIsMi41LTIuNXYtNy4zN2g4LjM3YzEuMzgsMCwyLjUtMS4xMiwyLjUtMi41di0yMS44M2MwLTEuMzgtMS4xMi0yLjUtMi41LTIuNWgtOC4zN1Y1LjY1YzAtMS4zOC0xLjEyLTIuNS0yLjUtMi41SDI2Ljk5Yy0xLjM4LDAtMi41LDEuMTItMi41LDIuNXY0NC43M2MwLDEuMzgsMS4xMiwyLjUsMi41LDIuNWg1Ljc1Yy0xLjQ2LDIuMDktMi40Miw0LjU2LTIuNjcsNy4yM2gtMTQuNzRaTTczLjg2LDQwLjAxaC00MC40NHYtMjAuODNoNDAuNDR2MjAuODNaTTI3LjQ5LDYuMTVoMzUuNXYxMC4wM2gtMzAuMDhjLTEuMzgsMC0yLjUsMS4xMi0yLjUsMi41djIxLjgzYzAsMS4zOCwxLjEyLDIuNSwyLjUsMi41aDMwLjA4djYuODdoLTguMTFjLTIuNjMtMi4xOS02LjAxLTMuNTEtOS43LTMuNTFzLTcuMDYsMS4zMi05LjcsMy41MWgtOFY2LjE1Wk00NS4xOSw0OS4zN2M2LjcyLDAsMTIuMiw1LjQ3LDEyLjIsMTIuMnMtNS40NywxMi4yLTEyLjIsMTIuMmMtNi4yLDAtMTEuMzMtNC42Ni0xMi4wOS0xMC42NmgxNC4wOGwtNS4xLDUuMSwyLjEyLDIuMTIsNi45NS02Ljk1Yy45Ny0uOTcuOTctMi41NiwwLTMuNTRsLTYuOTUtNi45NS0yLjEyLDIuMTIsNS4xLDUuMWgtMTQuMDljLjczLTYuMDQsNS44Ny0xMC43MywxMi4xLTEwLjczWiIvPjxyZWN0IHg9IjMuNTMiIHk9IjEyLjUzIiB3aWR0aD0iMTcuODIiIGhlaWdodD0iMyIvPjxyZWN0IHg9IjMuNTMiIHk9IjE4Ljg0IiB3aWR0aD0iMTcuODIiIGhlaWdodD0iMyIvPjxyZWN0IHg9IjMuNTMiIHk9IjI1LjE0IiB3aWR0aD0iMTEuOSIgaGVpZ2h0PSIzIi8+PC9zdmc+",
+    "background": "default",
+    "containerList": {
+        "containers": [
+            {
+                "blocks": [
+                    {
+                        "id": "969d4186-26c2-4d1d-868f-d10522de5bd6",
+                        "type": "markdown",
+                        "properties": {
+                            "expanded": true
+                        },
+                        "content": "# Exercises"
+                    },
+                    {
+                        "id": "f98f7079-07c6-4ec2-9a3c-87f1ee1a52fa",
+                        "type": "links",
+                        "properties": {
+                            "expanded": true
+                        },
+                        "appearance": "tile",
+                        "contentType": "static",
+                        "content": [
+                            {
+                                "id": "8ba3b6cc-9afe-4f86-a447-725567e391d3",
+                                "type": "doc",
+                                "title": "1 - Workshop - Explore Logs App",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "60adcb0c-10d7-444a-813d-7c98c76aa5ea"
+                                },
+                                "icon": "",
+                                "categoryId": "notebooks"
+                            },
+                            {
+                                "id": "6d29f2ff-b5f6-4687-bd99-c88690e3f405",
+                                "type": "doc",
+                                "title": "2. Workshop - Logs DQL 101 - Exercises",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "5139b09f-384e-47fa-9f74-392258993699"
+                                },
+                                "icon": "",
+                                "categoryId": "notebooks"
+                            },
+                            {
+                                "id": "a0054866-9a9d-4849-bed6-afc7b987775f",
+                                "type": "doc",
+                                "title": "3. Workshop - Logs DQL 102 - Exercises",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "a8c4be5c-31a0-4c3f-836c-cc09b10e98ce"
+                                },
+                                "icon": "",
+                                "categoryId": "notebooks"
+                            },
+                            {
+                                "id": "fd984f39-1b6d-4507-992d-e3c7388da2b3",
+                                "type": "doc",
+                                "title": "4. Workshop - Logs DQL 201 - Exercises",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "6655727e-196d-46dd-9304-4f3cb1d270e3"
+                                },
+                                "icon": "",
+                                "categoryId": "notebooks"
+                            },
+                            {
+                                "id": "52c0a8af-5d4c-43b4-aeff-4c3e0d810843",
+                                "type": "doc",
+                                "title": "5. Workshop - Logs DQL 301 - Exercise & Answer Key",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "886aa17f-3082-4fe7-8f3b-bf57fceeb074"
+                                },
+                                "icon": "",
+                                "categoryId": "notebooks"
+                            },
+                            {
+                                "id": "5b78663e-5fc4-482a-88a4-a1b1893ec591",
+                                "type": "doc",
+                                "title": "6. Workshop - Log Metrics - Exercises",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "4285070d-a946-4d03-b1cb-4e85c68e97e1"
+                                },
+                                "icon": "",
+                                "categoryId": "notebooks"
+                            },
+                            {
+                                "id": "56da5b90-1e9f-4d96-9415-7965b349eaa2",
+                                "type": "doc",
+                                "title": "7. Workshop - Events - Exercises",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "158ab467-0112-4a8e-8506-0d8da9406ae9"
+                                },
+                                "icon": "",
+                                "categoryId": "notebooks"
+                            },
+                            {
+                                "id": "e10f70e5-5bd6-4718-bf77-d0e159bea22f",
+                                "type": "doc",
+                                "title": "8. Workshop - Copilot - Exercises",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "7137719f-90f6-40f0-a37c-0f054c3d49d7"
+                                },
+                                "icon": "",
+                                "categoryId": "notebooks"
+                            },
+                            {
+                                "id": "7058ff83-c945-4f51-bb04-28027340038d",
+                                "type": "doc",
+                                "title": "9. Workshop - Log Anomaly Baselines - Exercise",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "70d7344d-7760-4f61-b09e-2605af070a21"
+                                },
+                                "icon": "",
+                                "categoryId": "notebooks"
+                            },
+                            {
+                                "id": "20be0e49-f4f1-4b8c-9d75-d3f4b7087549",
+                                "type": "doc",
+                                "title": "10. Workshop - Metric Anomaly Baselines - Exercise",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "872148d6-8700-44d4-b53f-e77798773be2"
+                                },
+                                "icon": "",
+                                "categoryId": "notebooks"
+                            },
+                            {
+                                "id": "f0e4278a-60de-411c-9b20-58330e8f2e10",
+                                "type": "doc",
+                                "title": "11. Workshop - Davis Anomaly Detector - Logs",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "3ae90e5f-932c-4524-b529-68c507cbd4e9"
+                                },
+                                "icon": "",
+                                "categoryId": "notebooks"
+                            },
+                            {
+                                "id": "3daeccf2-8611-48d0-a938-7610464ed962",
+                                "type": "doc",
+                                "title": "12. Workshop - Davis Anomaly Detector - Metrics",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "d5698ba2-3c17-4167-9fe0-e640b9834040"
+                                },
+                                "icon": "",
+                                "categoryId": "notebooks"
+                            },
+                            {
+                                "id": "b8d4ee42-4708-4954-a469-1805ba5abbd5",
+                                "type": "doc",
+                                "title": "13. Workshop - Dashboarding",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "3fcdf5c9-996a-4d81-80ec-b745c822c100"
+                                },
+                                "icon": "",
+                                "categoryId": "notebooks"
+                            },
+                            {
+                                "id": "c961bf85-291d-467c-8d28-d894a7be2c6d",
+                                "type": "doc",
+                                "title": "14. Workshop - Storage Bucket & OpenPipeline",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "4726d477-be71-4e75-9222-b90d5aa671ef"
+                                },
+                                "icon": "",
+                                "categoryId": "notebooks"
+                            },
+                            {
+                                "id": "60e13e76-2598-4a00-84ee-f7e6049be48f",
+                                "type": "doc",
+                                "title": "15. Workshop - Segments",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "ddfa3ec7-6bab-48c4-b915-9267be15b3b2"
+                                },
+                                "icon": "",
+                                "categoryId": "notebooks"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "993c86e4-35f6-4cb8-873f-019aed258b3b",
+                        "type": "markdown",
+                        "properties": {
+                            "expanded": true
+                        },
+                        "content": "# Answer Key"
+                    },
+                    {
+                        "id": "57d55160-d4c1-4548-b247-f34eec372169",
+                        "type": "links",
+                        "contentType": "static",
+                        "appearance": "tile",
+                        "properties": {
+                            "expanded": true
+                        },
+                        "content": [
+                            {
+                                "id": "2384ce08-8097-4680-a42e-0e7bf057ddd9",
+                                "type": "doc",
+                                "title": "2A. Workshop - Logs DQL 101 - Answer Key",
+                                "description": "",
+                                "icon": "",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "ce15846c-6733-46e5-94c8-b9a8c9095109"
+                                },
+                                "categoryId": "notebooks"
+                            },
+                            {
+                                "id": "7b202b31-97f1-470f-b58a-b0f4d83c54a7",
+                                "type": "doc",
+                                "title": "3A. Workshop - Logs DQL 102 - Answer Key",
+                                "description": "",
+                                "icon": "",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "d2847fea-a94b-493a-a898-17c86ea8dd2b"
+                                },
+                                "categoryId": "notebooks"
+                            },
+                            {
+                                "id": "5a30db64-c642-4477-ac3e-b502944196b6",
+                                "type": "doc",
+                                "title": "4A. Workshop - Logs DQL 201 - Answer Key",
+                                "description": "",
+                                "icon": "",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "609bfa32-613b-4314-89a2-3ab9724e1db9"
+                                },
+                                "categoryId": "notebooks"
+                            },
+                            {
+                                "id": "35a3de61-77b9-443b-b4cf-03a66e4ba9b6",
+                                "type": "doc",
+                                "title": "6A. Workshop - Log Metrics - Answer Key",
+                                "description": "",
+                                "icon": "",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "25ed60fe-9c45-4f08-873e-f5205dae5dbd"
+                                },
+                                "categoryId": "notebooks"
+                            },
+                            {
+                                "id": "1c798658-797c-43bd-a35d-9814a5d611f9",
+                                "type": "doc",
+                                "title": "7A. Workshop - Events - Answer Key",
+                                "description": "",
+                                "icon": "",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "ebca9d55-8ca8-4b9a-bdd9-fea83e2dd549"
+                                },
+                                "categoryId": "notebooks"
+                            },
+                            {
+                                "id": "737842ac-adbd-4491-874f-04cf3342bf55",
+                                "type": "doc",
+                                "title": "8A. Workshop - Copilot - Answer Key",
+                                "description": "",
+                                "icon": "",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "4e672776-db36-4d2b-bca9-c82371e6ef2f"
+                                },
+                                "categoryId": "notebooks"
+                            },
+                            {
+                                "id": "8a62d15a-9a38-454d-834e-0ff2dc624df6",
+                                "type": "doc",
+                                "title": "9A. Workshop - Log Anomaly Baselines - Answer Key",
+                                "description": "",
+                                "icon": "",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "726b0b50-2e66-4d8c-8f65-3158add9168d"
+                                },
+                                "categoryId": "notebooks"
+                            },
+                            {
+                                "id": "efaa8cee-17ab-4c8c-be65-266b0d9365bb",
+                                "type": "doc",
+                                "title": "10A. Workshop - Metric Anomaly Baselines - Answer Key",
+                                "description": "",
+                                "icon": "",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "014fa318-dac0-4c21-957e-49a8a3761f3f"
+                                },
+                                "categoryId": "notebooks"
+                            },
+                            {
+                                "id": "06137ee0-5622-4d4e-b5c9-3d901193cd7e",
+                                "type": "doc",
+                                "title": "Dashboarding - My Kubernetes overview",
+                                "description": "",
+                                "icon": "",
+                                "action": {
+                                    "type": "openDocument",
+                                    "documentId": "47245b22-6dda-4c38-9fc2-5d2bf89a93cd"
+                                },
+                                "categoryId": "dashboards"
+                            }
+                        ]
+                    }
+                ],
+                "horizontalLayoutWeight": 1
+            }
+        ]
+    }
+}

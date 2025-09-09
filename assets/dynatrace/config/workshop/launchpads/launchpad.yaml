@@ -1,0 +1,9 @@
+configs:
+- id: "Logs Workshop"
+  type:
+    document:
+      kind: launchpad
+      private: false
+  config:
+    name: Logs Workshop
+    template: Logs Workshop.json
