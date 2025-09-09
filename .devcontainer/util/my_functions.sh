@@ -88,7 +88,7 @@ deployDynatraceConfig() {
   # Copy monaco to local bin directory
   sudo cp $REPO_PATH/assets/dynatrace/config/monaco /usr/local/bin/
 
-  printInfo "Monaco dry run deployment (`monaco deploy --dry-run manifest.yaml`)"
+  printInfo "Monaco dry run deployment (monaco deploy --dry-run manifest.yaml)"
 
   # Dry run monaco deployment
   (cd $REPO_PATH/assets/dynatrace/config && monaco deploy --dry-run manifest.yaml)
@@ -103,7 +103,7 @@ deployDynatraceConfig() {
     return 1  # or exit 1 if you're in a script
   fi
 
-  printInfo "Monaco deployment (`monaco deploy manifest.yaml`)"
+  printInfo "Monaco deployment (monaco deploy manifest.yaml)"
 
   # Execute monaco deployment
   execute=$(cd "$REPO_PATH/assets/dynatrace/config" && monaco deploy manifest.yaml)
@@ -138,10 +138,12 @@ deleteDynatraceConfig() {
   # Copy monaco to local bin directory
   sudo cp $REPO_PATH/assets/dynatrace/config/monaco /usr/local/bin/
 
-  printInfo "Generating Monaco deletefile (`monaco generate deletefile manifest.yaml`)"
+  printInfo "Generating Monaco deletefile (monaco generate deletefile manifest.yaml)"
 
   # Generate deletefile from projects
   (cd $REPO_PATH/assets/dynatrace/config && monaco generate deletefile manifest.yaml)
+
+  printInfo "Deleting Configurations in Monaco deletefile"
 
   # Delete configurations in deletefile
   (cd $REPO_PATH/assets/dynatrace/config && monaco delete -m manifest.yaml)
