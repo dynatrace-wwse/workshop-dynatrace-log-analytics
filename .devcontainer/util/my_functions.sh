@@ -70,3 +70,32 @@ deployHipsterShop() {
   printInfo "HipsterShop deployed succesfully"
   
 }
+
+# deploy dynatrace configurations (monaco)
+deployDynatraceConfig() {
+
+  # Check if DT_PLATFORM_URL environment variable is set
+  _check_env_var DT_PLATFORM_URL
+
+  # Check if DT_PLATFORM_TOKEN environment variable is set
+  _check_env_var DT_PLATFORM_TOKEN
+
+  # Make sure monaco is executable
+  chmod +x $REPO_PATH/assets/dynatrace/config/monaco
+
+  # Dry run monaco deployment
+  ./$REPO_PATH/assets/dynatrace/config/monaco deploy --dry-run manifest.yaml
+
+}
+
+# helper function for checking if environment variable has been set
+_check_env_var() {
+  local var_name="$1"
+  if [ -z "${!var_name}" ]; then
+    printWarn "Environment variable '$var_name' is NOT set."
+    return 1
+  else
+    printInfo "Environment variable '$var_name' is set to '${!var_name}'."
+    return 0
+  fi
+}
