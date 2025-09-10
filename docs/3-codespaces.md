@@ -105,6 +105,8 @@ deployDynatraceConfig
 
 Review the Monaco logs output in the console and check for any error messages.  If the configurations were deployed successfully, you should see **Successfully deployed Dynatrace Configurations with Monaco**.
 
+![Monaco Successful](./img/prereq-dt_monaco_deployment_success.png){target=_blank}
+
 In your Dynatrace tenant, open the **Notebooks** App.  Locate the newly uploaded Notebook titled `Workshop - Workshop Exercises`.
 
 ![Workshop Notebooks](./img/prereq-dt_monaco_workshop_notebooks.png)
