@@ -1,24 +1,29 @@
-<!-- markdownlint-disable-next-line -->
-# <img src="https://cdn.bfldr.com/B686QPH3/at/w5hnjzb32k5wcrcxnwcx4ckg/Dynatrace_signet_RGB_HTML.svg?auto=webp&format=pngg" alt="DT logo" width="30"> Enablement Codespaces Template 
+<!--TODO: Update Lab Name -->
+# Workshop Dynatrace Log Analytics at Scale
 
-[![dt-badge](https://img.shields.io/badge/powered_by-DT_enablement-8A2BE2?logo=dynatrace)](https://github.com/dynatrace-wwse/enablement-codespaces-template)
-[![Downloads](https://img.shields.io/docker/pulls/shinojosa/dt-enablement?logo=docker)](https://hub.docker.com/r/shinojosa/dt-enablement)
-![Integration tests](https://github.com/dynatrace-wwse/enablement-codespaces-template/actions/workflows/integration-tests.yaml/badge.svg)
-[![Version](https://img.shields.io/github/v/release/dynatrace-wwse/enablement-codespaces-template?color=blueviolet)](https://github.com/dynatrace-wwse/enablement-codespaces-template/releases)
-[![Commits](https://img.shields.io/github/commits-since/dynatrace-wwse/enablement-codespaces-template/latest?color=ff69b4&include_prereleases)](https://github.com/dynatrace-wwse/enablement-codespaces-template/graphs/commit-activity)
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?color=green)](https://github.com/dynatrace-wwse/enablement-codespaces-template/blob/main/LICENSE)
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-green)](https://dynatrace-wwse.github.io/enablement-codespaces-template/)
+## Workshop Overview
+* This workshop is intended to be an introduction to Logs on latest Dynatrace platform.
+  * It covers the following topics:
+    * Log Management and Analytics
+    * Exploring Logs, Notebooks, and Dashboards App
+    * DQL Training 101, 102, 201, 301
+    * Logs to Metrics
+    * Anomaly Detection
+    * Buckets and Segments
+    * Permissions
+    * OpenPipeline
+  * The material can be broken down modularly as required for your use case
+  * The target personas are - 1) Dynatrace users, 2) Dynatrace Admins
+  * Presentation is broken down into 2 parts to cater to the above 2 personas
+* Audience: Existing Dynatrace customers and late stage prospects (Intermediate Level Workshop).
+* Time: 2.5-4 Hours depending on how many labs you want to cover.
+* Present a 60 minute Logs Workshop presentation.
+* Get everyone logged in and run through the Workshop:
+  * Dynatrace User - Workshop Exercises
+  * Dynatrace User - Workshop Answer Key
 
-___
+Ready to scale log analytics and understand your business like never before?
 
-This is a template so you as a professor can create fun and interesting enablements in no time.
-
-In this README you should add a brief description of the project. What will the student learn, which technologies and/or solutions. 
-
-<p align="center">
-<img src="docs/img/dt_professors.png" alt="Alt text" width="400"/>
-</p>
-
-Ready to learn how to create an enablement using codespaces? 
-## [👨‍🏫 Learn how to create enablements in Codespaces!](https://dynatrace-wwse.github.io/enablement-codespaces-template)
+<!--TODO: Update Lab Guide URL -->
+## [View the Lab Guide](https://dynatrace-wwse.github.io/repository-name)
 

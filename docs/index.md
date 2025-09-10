@@ -1,28 +1,48 @@
---8<-- "snippets/index.js"
+--8<-- "snippets/send-bizevent/index.js"
 
+<!--TODO: Remove Under Construction -->
+--8<-- "snippets/under-construction.md"
+
+<!--TODO: Update disclaimer (optional) -->
 --8<-- "snippets/disclaimer.md"
 
-## What's this tutorial all about
-In this tutorial we'll learn:
+<!--TODO: Update lab overview (match readme) -->
+## Lab Overview
 
-- how this codespace is being built
-- how is the separation of concerns of the architecture in this devcontainer
-- the functions.sh file
-- create Github documentation and publish it
-- How MKDocs work
-- monitor the Github documentation
-- monitor the instatiation of codespaces (learn about the usage of a specific enablement)
-- exposing ports
-- tipp & tricks
-- troubleshooting
+During this hands-on training lab, ...
 
-<p align="center">
-  <img src="img/dt_professors.png" alt="Professors" width="200">
-</p>
+**Lab tasks:**
 
+1. Task 1
 
-!!! tip "What will we do"
-    In this tutorial we will learn how easy it is to create an enablement using codespaces and a Kubernetes cluster!
+     - Task Step or Description
+
+2. Task 2
+
+3. Task 3
+
+10. Clean up GitHub codespaces instance
+
+<!--TODO: Update tech spec of lab components -->
+## Technical Specification
+
+### Technologies Used
+- [Dynatrace](https://www.dynatrace.com/trial)
+- [Kubernetes Kind](https://kind.sigs.k8s.io/)
+    - tested on Kind tag 0.27.0
+- [Cert Manager](https://cert-manager.io/) - *prerequisite for OpenTelemetry Operator
+    - tested on cert-manager v1.15.3
+- [Dynatrace Operator](https://github.com/Dynatrace/dynatrace-operator)
+    - tested on v1.4.2 (April 2025)
+- Dynatrace OneAgent
+    - tested on v1.309 (April 2025)
+
+### Reference Architecture
+
+## Continue
+
+In the next section, we'll review the prerequisites for this lab needed before launching our Codespaces instance.
 
 <div class="grid cards" markdown>
-- [Yes! let's begin :octicons-arrow-right-24:](2-getting-started.md)
+- [Continue to getting started:octicons-arrow-right-24:](2-getting-started.md)
+</div>
