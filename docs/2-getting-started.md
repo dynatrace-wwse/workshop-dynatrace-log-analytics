@@ -13,13 +13,12 @@ You will need full administrator access to a Dynatrace SaaS tenant with a DPS li
 <!--TODO: Update prerequisite bulleted list -->
 * Identify Dynatrace Tenant Platform URL
 * Generate Dynatrace Platform Token
-* Prerequisite 2
 
 ### Identify Dynatrace Tenant Platform URL
 
 The Dynatrace platform provides a collection of so-called platform services where each has its specific area of responsibility. You can access platform services in different ways. Platform services are individually versioned and offer RESTful APIs via HTTP requests.
 
-[Dynatrace Documentation]](https://docs.dynatrace.com/docs/shortlink/otel-getstarted-otlpexport#export-to-saas-and-activegate){target=_blank}
+[Dynatrace Documentation](https://docs.dynatrace.com/docs/shortlink/otel-getstarted-otlpexport#export-to-saas-and-activegate){target=_blank}
 
 Identify and save/store your Dynatrace Tenant Platform URL for the Dynatrace SaaS tenant:
 
@@ -51,9 +50,9 @@ app-engine:apps:run
 app-engine:functions:run
 ```
 
-### Prerequisite 2
+### Prerequisite
 
-Prerequisite 2 Details
+Prerequisite Details
 
 ![Screenshot](./img/screenshot.png)
 

@@ -5,11 +5,10 @@
 
 ## Create Codespace
 
-Click to open Codespaces for this lab repository:
-<!--TODO: Update Codespaces Repo URL -->
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dynatrace-wwse/repo-name){target="_blank"}
+Click to open Codespaces for this workshop repository:
 
-<!--TODO: Update Codespace Configuration -->
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dynatrace-wwse/workshop-dynatrace-log-analytics){target="_blank"}
+
 !!! tip "Codespace Configuration"
     - Branch
         - select the **main** branch
@@ -26,36 +25,31 @@ We know your time is very valuable. This codespace takes around 7-10 minutes to 
 
 **k9s kubectl helm node jq python3 gh**
 
-## Explore Codespace
+## Deploy Demo Applications
 
-<!-- TODO: Need to update this section -->
+<!--TODO: Update Steps -->
+### AstroShop (OpenTelemetry Demo App)
 
-Your Codespace has now deployed the following resources:
+```sh
+deployAstroshop
+```
 
-- A local Kubernetes ([kind](https://kind.sigs.k8s.io/){target="_blank"}) cluster, with some pre-deployed apps that will be used later in the demo.
+<!--TODO: Update Steps -->
+### EasyTrade
 
-After a couple of minutes, you'll see this screen in your Codespaces terminal. It contains the links to the UI of the application which we will be using for our hands-on training.
+```sh
+deployEasyTrade
+```
 
-Sample output:
-![Codespaces finish](img/codespaces_finish.png)
+<!--TODO: Update Steps -->
+### HipsterShop
 
-## Tips & Tricks
-
-We want to boost your learning and try to make your experience as smooth as possible with Dynatrace trainings. Your Codespaces have a couple of convenience features added. 
-
-### Show the greeting
-In the terminal, there are functions loaded for your convenience. By creating a new terminal the greeting will be shown that includes the links to the exposed apps, the Github  pages, the Github Repository, the Dynatrace Tenant that is bound to this devcontainer (if applicable) and some of the tools installed.
-
-You can create a new terminal directly in VSCode, type `zsh` or call the function `printGreeting` and that will print the greeting with the most relevant information.
-
-### Navigating in your local Kubernetes
-The client `kubectl` and `k9s` are configured so you can navigate in your local Kubernetes. 
-![k9s](img/k9s.png)
-
-### Exposing the apps to the public
-The AstroShop app is being exposed in the devcontainer to your localhost. If you want to make the endpoints publicly accesible, just go to the ports section, right click on them and change the visibility to public.
+```sh
+deployHipsterShop
+```
 
 ## Troubleshooting
+<!--TODO: Update Troubleshooting -->
 
 ### AstroShop
 
