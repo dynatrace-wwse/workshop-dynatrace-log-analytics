@@ -85,11 +85,8 @@ spec:
           #   value: "true"
           resources:
             requests:
-              cpu: 100m
-              memory: 64Mi
-            limits:
-              cpu: 200m
-              memory: 128Mi
+              cpu: 50m
+              memory: 100Mi
 ---
 apiVersion: v1
 kind: Service

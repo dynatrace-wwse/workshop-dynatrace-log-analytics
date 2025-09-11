@@ -53,12 +53,9 @@ spec:
         - name: DISABLE_DEBUGGER
           value: "1"
         resources:
-          requests:
-            cpu: 100m
-            memory: 220Mi
-          limits:
-            cpu: 200m
-            memory: 450Mi
+            requests:
+              cpu: 50m
+              memory: 100Mi
 ---
 apiVersion: v1
 kind: Service
