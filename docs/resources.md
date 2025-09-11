@@ -1,5 +1,6 @@
 --8<-- "snippets/resources.js"
 
+<!--TODO: Optional page, delete if desired -->
 ### Get your Dynatrace environment
 
 - [Create a Free Trial in Dynatrace](https://www.dynatrace.com/signup/){target="_blank"}

@@ -1,0 +1,30 @@
+{
+    "version": "6",
+    "defaultTimeframe": {
+        "from": "now()-2h",
+        "to": "now()"
+    },
+    "defaultSegments": [],
+    "sections": [
+        {
+            "id": "adbee822-325b-4549-b3d2-b6d6e895d873",
+            "type": "markdown",
+            "markdown": "# Davis CoPilot\n## DQL is super powerful, but what if we could use generative AI to do some of the hard work for us? Let's use Davis CoPilot to build the DQL for some common use cases\n![](https://mkt-cdn.dynatrace.com/assets/Marketing/content-images/_1920x921_crop_center-center_100_line/davis-chart.png.webp)"
+        },
+        {
+            "id": "dfda42c9-5445-430d-87e6-4d66273d5722",
+            "type": "markdown",
+            "markdown": "### Investigate your logs for specific information\n\n**Get a high level overview of your logs**\n\n```Summarize all logs by log level```\n\n**Convert logs into a time series**\n\n```Show me all error logs this week with 15 minute intervals```\n\n**Split by K8s Namespace over time**\n\n```Show me the count of all error logs grouped by k8s namespace with a 5-minute interval```"
+        },
+        {
+            "id": "3f08dbdf-9797-4497-9616-558dc130e8cf",
+            "type": "markdown",
+            "markdown": "### Understand application problems\n\n**Get an overview of active and closed problems**\n\n```Show all of today's problems by status with a 1 hour interval```\n\n**Understand which entities are causing the most problems**\n\n```From the problems in the last week, show me the most 10 most common root cause entities```"
+        },
+        {
+            "id": "46375348-a8f8-4b76-8de4-c1a9cd793ddc",
+            "type": "markdown",
+            "markdown": "### Analyze resource utilization\n\n**Understand if any hosts have CPU saturation**\n\n```Show me the top 10 hosts by CPU Utilization```\n\n**Understand if any hosts were over provisioned and should be sized down**\n\n```Show me the top 10 hosts with the least CPU utilization```"
+        }
+    ]
+}

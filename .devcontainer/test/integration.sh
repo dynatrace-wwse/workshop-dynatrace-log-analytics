@@ -7,6 +7,6 @@ source $REPO_PATH/.devcontainer/test/test_functions.sh
 
 printInfoSection "Running integration Tests for the Enablement Framework"
 
-assertRunningPod todoapp todoapp
+assertRunningPod astroshop frontend
 
 assertRunningApp 30100

@@ -1,0 +1,20 @@
+{
+    "version": "6",
+    "defaultTimeframe": {
+        "from": "now()-2h",
+        "to": "now()"
+    },
+    "defaultSegments": [],
+    "sections": [
+        {
+            "id": "19c2e75a-e9a8-4c49-b166-31c1b67beda4",
+            "type": "markdown",
+            "markdown": "# Segments\n\n## Use Cases\nSegments are typically modeled to allow filtering monitored entities, logs, metrics, events, and other types of data about the following dimensions:\n\n- Business applications operated by the customer  \n- Organizational units, to understand responsibility and ownership  \n- Infrastructural components, to understand and plan the allocation of resources  \n\n## Key terms\n> **Grail bucket:** Logs powered by Grail can be stored in different buckets. Buckets can improve query performance by reducing query execution time and the scope of data read.\n\n> **One-off segment:** Segment configured with static conditions for a one-off scenario.\n\n> **Dynamic segment:** Segment configured with dynamic conditions using variables."
+        },
+        {
+            "id": "4548684b-2770-4fca-a774-a04fb126e6db",
+            "type": "markdown",
+            "markdown": "## Exercise 1: Segment logs by bucket\n\n### 1. Create a segment for a single log bucket\nHaving a segment for a single bucket might be desired in some situations. The following example shows how to do that by filtering for logs of bucket `logs_default`.\n\n![](https://dt-cdn.net/images/segments-log-bucket1-2528-0fcb794b9b.png)\n\n**1.** Go to **Segments** and **+ Segment** to add a new segment  \n**2.** Enter the segment name, such as \"Log bucket\"  \n**3.** Select **+ Add from data types > Logs** to include logs in your segment  \n**4.** **Type to filter** and select `dt.system.bucket`  \n**5.** Specify a certain bucket to filter for (for example, `dt.system.bucket = logs_default`)  \n**6.** Select **Save**  \n\n---\n> Successfully configured segments are displayed in the segments list. Select  `> Edit` to modify a segment.\n---\n\n\n### 2. Add a variable to filter for any log bucket\nAdding a variable to the segment to dynamically filter for many log buckets instead of one makes the segment universally applicable.\n\n![](https://dt-cdn.net/images/segments-log-bucket2-2524-201b656143.png)\n\n**1.** Select  **Variable**  \n**2.** Query the list of log buckets, sorted alphabetically  \n```\nfetch dt.system.buckets\n| filter dt.system.table == \"logs\"\n| fields bucket=name\n| sort bucket\n```\n**3.** Select **Run query**  \n**4.** Select **Done** to finish variable configuration  \n**5.** Adjust the condition of the include for logs to use `$bucket` variable (`dt.system.bucket = $bucket`)  \n**6.** Select **Save**\n\n---\n>Successfully configured variables are displayed as on top of existing include blocks of a segment. Select Edit variable(s) to modify variables.\n---\n\n### 3. Use segment to analyze logs by bucket\nYou can analyze logs in different apps. To query for logs in Notebooks Notebooks\n\n**1.** Go to **Notebooks** and select **+ Notebook**   \n**2.** Select **+ Logs**  \n**3.** Open the segment selector ◇ and, in **Filter by segments**, select the previously created segment for log buckets  \n**4.** In the **Select an option** list, select one or more log buckets to filter for  \n**5.** Select **Apply** to finish segment selection  \n**6.** Select **Run query** to query for logs of the selected buckets  \n\n![](https://dt-cdn.net/images/segments-12-2142-b2a14173b1.png)\n\n## Conclusion\nYou’ve configured a segment for a single bucket statically. You’ve learned how variables help to make segments more dynamic and cover broader use cases. Lastly, you’ve seen how to analyze logs of certain buckets, allowing optimization of query performance and license consumption."
+        }
+    ]
+}

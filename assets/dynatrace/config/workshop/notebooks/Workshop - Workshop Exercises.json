@@ -1,0 +1,45 @@
+{
+    "version": "6",
+    "defaultTimeframe": {
+        "from": "now()-2h",
+        "to": "now()"
+    },
+    "defaultSegments": [],
+    "sections": [
+        {
+            "id": "51440e6f-0358-4e44-9152-6a27f85c8535",
+            "type": "markdown",
+            "markdown": "## Explore Logs App[]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .explore_logs_app_id }})"
+        },
+        {
+            "id": "368ced4a-0410-4c9b-ba29-e9d0d6c3261a",
+            "type": "markdown",
+            "markdown": "# DQL Exercises:"
+        },
+        {
+            "id": "dbc054d4-adda-445d-955c-1400f308e50a",
+            "type": "markdown",
+            "markdown": "1. #### [Logs DQL 101]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .logs_dql_101_exercises_id }})\n2. #### [Logs DQL 102]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .logs_dql_102_exercises_id }})\n3. #### [Logs DQL 201]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .logs_dql_201_exercises_id }})\n5. #### [Log Metrics]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .log_metrics_exercises_id }})\n6. #### [Davis Events]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .events_exercises_id }})\n7. #### [CoPilot Queries]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .copilot_exercises_id }})"
+        },
+        {
+            "id": "15234111-78a8-4f51-ab39-8afa018e8d53",
+            "type": "markdown",
+            "markdown": "# Log Anomaly Detection:"
+        },
+        {
+            "id": "c61ee0bb-85fd-4a1d-b4d9-c9bfdd1a1d4d",
+            "type": "markdown",
+            "markdown": "1. #### [Log Anomaly Baselines]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .log_anomaly_baselines_exercises_id }})\n2. #### [Davis Anomaly Detection - Logs]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .davis_anomaly_detector_logs_id }})\n3. #### [Log Metric Anomaly Baselines]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .metric_anomaly_baselines_exercises_id }})\n4. #### [Davis Anomaly Detection - Metrics]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .davis_anomaly_detector_metrics_id }})"
+        },
+        {
+            "id": "74e10458-5ce7-4787-990e-c00223c276e9",
+            "type": "markdown",
+            "markdown": "# Dashboarding Exercises:"
+        },
+        {
+            "id": "46e9fd30-4e1c-426d-85c5-e1cbdc2f9414",
+            "type": "markdown",
+            "markdown": "1. #### [Dashboarding Notebook]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .dashboarding_id }})"
+        }
+    ]
+}

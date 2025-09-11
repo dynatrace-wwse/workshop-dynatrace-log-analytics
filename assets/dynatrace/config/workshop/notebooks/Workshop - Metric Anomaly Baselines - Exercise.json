@@ -1,0 +1,144 @@
+{
+    "version": "6",
+    "defaultTimeframe": {
+        "from": "now()-2h",
+        "to": "now()"
+    },
+    "defaultSegments": [],
+    "sections": [
+        {
+            "id": "0fb5a0f2-9ed8-49ee-a8b9-2c53f559c2ca",
+            "type": "markdown",
+            "markdown": "## Davis AI - Static Anomaly Baseline"
+        },
+        {
+            "id": "6d86387e-5d0d-44e9-87ad-09a4ead70275",
+            "type": "markdown",
+            "markdown": "**Exercise**\n1. Using the Metrics tile, Search for `log.loglevelcounter.oteldemo”` metric\n2. Filter for `loglevel = \"ERROR\"`\n3. And Split By `loglevel`\n4. Select Options > Under the visualizations tab, enable **Davis AI Analyzer** and select the **Static Anomaly Baseline**"
+        },
+        {
+            "id": "61b0492e-6bad-4177-82fc-6baa914ca3c6",
+            "type": "dql",
+            "title": "Explore metrics",
+            "queryConfig": {
+                "version": "13.3.1",
+                "subQueries": [
+                    {
+                        "id": "A",
+                        "isEnabled": true,
+                        "datatype": "metrics",
+                        "metric": {
+                            "key": "",
+                            "aggregation": "avg"
+                        }
+                    }
+                ]
+            },
+            "filterSegments": [],
+            "drilldownPath": [],
+            "previousFilterSegments": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-2h",
+                        "to": "now()"
+                    },
+                    "value": ""
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "gap",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color",
+                            "valueAxisScale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle"
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "AnalyticsIcon",
+                        "isIconVisible": false,
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": []
+                    },
+                    "honeycomb": {
+                        "shape": "hexagon",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": {
+                            "position": "auto"
+                        },
+                        "yAxis": {
+                            "label": "Frequency",
+                            "isLabelVisible": true,
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    },
+                    "autoSelectVisualization": true
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "visualization": "lineChart",
+                "state": "idle",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                }
+            }
+        }
+    ]
+}

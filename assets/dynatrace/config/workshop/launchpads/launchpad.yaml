@@ -1,0 +1,37 @@
+configs:
+- id: "Logs Workshop"
+  type:
+    document:
+      kind: launchpad
+      private: false
+  config:
+    name: Logs Workshop
+    template: Logs Workshop.json
+    parameters:
+      dt_platform_url:
+        type: environment
+        name: DT_PLATFORM_URL
+      explore_logs_app_id: ["workshop", "document", "Workshop - Explore Logs App", "id"]
+      logs_dql_101_exercises_id: ["workshop", "document", "Workshop - Logs DQL 101 - Exercises", "id"]
+      logs_dql_101_answers_id: ["workshop", "document", "Workshop - Logs DQL 101 - Answer Key", "id"]
+      logs_dql_102_exercises_id: ["workshop", "document", "Workshop - Logs DQL 102 - Exercises", "id"]
+      logs_dql_102_answers_id: ["workshop", "document", "Workshop - Logs DQL 102 - Answer Key", "id"]
+      logs_dql_201_exercises_id: ["workshop", "document", "Workshop - Logs DQL 201 - Exercises", "id"]
+      logs_dql_201_answers_id: ["workshop", "document", "Workshop - Logs DQL 201 - Answer Key", "id"]
+      logs_dql_301_exercises_id: ["workshop", "document", "Workshop - Logs DQL 301 - Exercises with Answer Key", "id"]
+      log_metrics_exercises_id: ["workshop", "document", "Workshop - Log Metrics - Exercises", "id"]
+      log_metrics_answers_id: ["workshop", "document", "Workshop - Log Metrics - Answer Key", "id"]
+      events_exercises_id: ["workshop", "document", "Workshop - Events - Exercises", "id"]
+      events_answers_id: ["workshop", "document", "Workshop - Events - Answer Key", "id"]
+      copilot_exercises_id: ["workshop", "document", "Workshop - Copilot - Exercises", "id"]
+      copilot_answers_id: ["workshop", "document", "Workshop - Copilot - Answer Key", "id"]
+      log_anomaly_baselines_exercises_id: ["workshop", "document", "Workshop - Log Anomaly Baselines - Exercises", "id"]
+      log_anomaly_baselines_answers_id: ["workshop", "document", "Workshop - Log Anomaly Baselines - Answer Key", "id"]
+      metric_anomaly_baselines_exercises_id: ["workshop", "document", "Workshop - Metric Anomaly Baselines - Exercise", "id"]
+      metric_anomaly_baselines_answers_id: ["workshop", "document", "Workshop - Metric Anomaly Baselines - Answer Key", "id"]
+      davis_anomaly_detector_logs_id: ["workshop", "document", "Workshop - Davis Anomaly Detector - Logs", "id"]
+      davis_anomaly_detector_metrics_id: ["workshop", "document", "Workshop - Davis Anomaly Detector - Metrics", "id"]
+      dashboarding_id: ["workshop", "document", "Workshop - Dashboarding", "id"]
+      dashboard_kubernetes_overview_id: ["workshop", "document", "Workshop - My Kubernetes Overview", "id"]
+      segments_id: ["workshop", "document", "Workshop - Segments", "id"]
+      storage_bucket_openpipeline_id: ["workshop", "document", "Workshop - Storage Bucket and OpenPipeline", "id"]

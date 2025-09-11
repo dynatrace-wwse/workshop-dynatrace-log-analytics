@@ -1,0 +1,2461 @@
+{
+    "version": "6",
+    "defaultTimeframe": {
+        "from": "now()-1h",
+        "to": "now()"
+    },
+    "defaultSegments": [],
+    "sections": [
+        {
+            "id": "23556987-d686-4f35-82f5-938f1b06a230",
+            "type": "markdown",
+            "markdown": "## Metrics on Grail\n* Metrics on Grail enable you to pinpoint and retrieve any metric data with the help of DQL. \n* Metrics can be trended, analyzed, and even forecasted with Davis AI!\n* [Metrics on Grail Example](https://docs.dynatrace.com/docs/shortlink/metrics-on-grail-examples)\n* [List of Metics on Grail](https://docs.dynatrace.com/docs/shortlink/built-in-metrics-on-grail) or select SUPPORTED IN GRAIL on the metrics screen"
+        },
+        {
+            "id": "d818c0eb-0c35-4a68-9e44-7c5562d9d438",
+            "type": "markdown",
+            "markdown": "# Exercise:\n1. Find the count timeseries for \"log.loglevelcounter.oteldemo\"\n2. Filter by ERROR\n3. Visualize as single value\n4. Assign an alias"
+        },
+        {
+            "id": "095613c2-1a17-45ed-a1d4-19d6a8942274",
+            "type": "dql",
+            "showTitle": false,
+            "title": "1. Find the count timeseries for \"log.loglevelcounter.oteldemo\"",
+            "filterSegments": [],
+            "drilldownPath": [],
+            "previousFilterSegments": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-1h",
+                        "to": "now()"
+                    },
+                    "value": "timeseries count(log.loglevelcounter.hipstershop), by:{loglevel,k8s.workload.name}"
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "connect",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color",
+                            "valueAxisScale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle",
+                        "fieldMapping": {
+                            "timestamp": "timeframe",
+                            "leftAxisValues": [
+                                "count(log.loglevelcounter.hipstershop)"
+                            ]
+                        },
+                        "xAxisScaling": "analyzedTimeframe",
+                        "xAxisLabel": "timeframe",
+                        "xAxisIsLabelVisible": false,
+                        "hiddenLegendFields": [
+                            "interval"
+                        ],
+                        "leftYAxisSettings": {}
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "",
+                        "isIconVisible": false,
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": [
+                            {
+                                "fields": [
+                                    "count(log.loglevelcounter.hipstershop)"
+                                ],
+                                "value": "sparkline",
+                                "id": 1744223731919
+                            }
+                        ],
+                        "columnOrder": []
+                    },
+                    "honeycomb": {
+                        "shape": "square",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": {
+                            "position": "auto"
+                        },
+                        "yAxis": {
+                            "label": "Frequency",
+                            "isLabelVisible": true,
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [
+                            {
+                                "valueAxis": "interval",
+                                "rangeAxis": ""
+                            }
+                        ],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    },
+                    "autoSelectVisualization": false
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "visualization": "lineChart",
+                "state": "success",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                },
+                "result": {
+                    "code": 200,
+                    "value": {
+                        "records": [
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T13:39:00.000Z",
+                                    "end": "2025-04-10T14:40:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "loglevel": "ERROR",
+                                "k8s.workload.name": "adservice",
+                                "count(log.loglevelcounter.hipstershop)": [
+                                    0,
+                                    0,
+                                    1,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    1,
+                                    1,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    1,
+                                    1,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    1,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    1,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    1,
+                                    1,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    1,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    1,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    1,
+                                    1,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    1,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T13:39:00.000Z",
+                                    "end": "2025-04-10T14:40:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "loglevel": "ERROR",
+                                "k8s.workload.name": "emailservice",
+                                "count(log.loglevelcounter.hipstershop)": [
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T13:39:00.000Z",
+                                    "end": "2025-04-10T14:40:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "loglevel": "ERROR",
+                                "k8s.workload.name": "frontend",
+                                "count(log.loglevelcounter.hipstershop)": [
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T13:39:00.000Z",
+                                    "end": "2025-04-10T14:40:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "loglevel": "ERROR",
+                                "k8s.workload.name": "recommendationservice",
+                                "count(log.loglevelcounter.hipstershop)": [
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T13:39:00.000Z",
+                                    "end": "2025-04-10T14:40:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "loglevel": "INFO",
+                                "k8s.workload.name": "adservice",
+                                "count(log.loglevelcounter.hipstershop)": [
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    1,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T13:39:00.000Z",
+                                    "end": "2025-04-10T14:40:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "loglevel": "INFO",
+                                "k8s.workload.name": "checkoutservice",
+                                "count(log.loglevelcounter.hipstershop)": [
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T13:39:00.000Z",
+                                    "end": "2025-04-10T14:40:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "loglevel": "INFO",
+                                "k8s.workload.name": "currencyservice",
+                                "count(log.loglevelcounter.hipstershop)": [
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T13:39:00.000Z",
+                                    "end": "2025-04-10T14:40:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "loglevel": "INFO",
+                                "k8s.workload.name": "emailservice",
+                                "count(log.loglevelcounter.hipstershop)": [
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    null,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T13:39:00.000Z",
+                                    "end": "2025-04-10T14:40:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "loglevel": "INFO",
+                                "k8s.workload.name": "paymentservice",
+                                "count(log.loglevelcounter.hipstershop)": [
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T13:39:00.000Z",
+                                    "end": "2025-04-10T14:40:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "loglevel": "INFO",
+                                "k8s.workload.name": "recommendationservice",
+                                "count(log.loglevelcounter.hipstershop)": [
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T13:39:00.000Z",
+                                    "end": "2025-04-10T14:40:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "loglevel": "INFO",
+                                "k8s.workload.name": "shippingservice",
+                                "count(log.loglevelcounter.hipstershop)": [
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T13:39:00.000Z",
+                                    "end": "2025-04-10T14:40:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "loglevel": "NONE",
+                                "k8s.workload.name": "adservice",
+                                "count(log.loglevelcounter.hipstershop)": [
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T13:39:00.000Z",
+                                    "end": "2025-04-10T14:40:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "loglevel": "NONE",
+                                "k8s.workload.name": "cartservice",
+                                "count(log.loglevelcounter.hipstershop)": [
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T13:39:00.000Z",
+                                    "end": "2025-04-10T14:40:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "loglevel": "NONE",
+                                "k8s.workload.name": "checkoutservice",
+                                "count(log.loglevelcounter.hipstershop)": [
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T13:39:00.000Z",
+                                    "end": "2025-04-10T14:40:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "loglevel": "NONE",
+                                "k8s.workload.name": "frontend",
+                                "count(log.loglevelcounter.hipstershop)": [
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T13:39:00.000Z",
+                                    "end": "2025-04-10T14:40:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "loglevel": "NONE",
+                                "k8s.workload.name": "loadgenerator",
+                                "count(log.loglevelcounter.hipstershop)": [
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T13:39:00.000Z",
+                                    "end": "2025-04-10T14:40:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "loglevel": "NONE",
+                                "k8s.workload.name": "redis-cart",
+                                "count(log.loglevelcounter.hipstershop)": [
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T13:39:00.000Z",
+                                    "end": "2025-04-10T14:40:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "loglevel": "WARN",
+                                "k8s.workload.name": "adservice",
+                                "count(log.loglevelcounter.hipstershop)": [
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    1,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null
+                                ]
+                            }
+                        ],
+                        "types": [
+                            {
+                                "indexRange": [
+                                    0,
+                                    17
+                                ],
+                                "mappings": {
+                                    "timeframe": {
+                                        "type": "timeframe"
+                                    },
+                                    "interval": {
+                                        "type": "duration"
+                                    },
+                                    "loglevel": {
+                                        "type": "string"
+                                    },
+                                    "k8s.workload.name": {
+                                        "type": "string"
+                                    },
+                                    "count(log.loglevelcounter.hipstershop)": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "indexRange": [
+                                                    0,
+                                                    60
+                                                ],
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "double"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ],
+                        "metadata": {
+                            "grail": {
+                                "canonicalQuery": "timeseries by:{loglevel, k8s.workload.name}, count(log.loglevelcounter.hipstershop)",
+                                "timezone": "America/Toronto",
+                                "query": "timeseries count(log.loglevelcounter.hipstershop), by:{loglevel,k8s.workload.name}",
+                                "scannedRecords": 0,
+                                "dqlVersion": "V1_0",
+                                "scannedBytes": 0,
+                                "scannedDataPoints": 1098,
+                                "analysisTimeframe": {
+                                    "start": "2025-04-10T13:39:00.000Z",
+                                    "end": "2025-04-10T14:40:00.000Z"
+                                },
+                                "locale": "en-US",
+                                "executionTimeMilliseconds": 32,
+                                "notifications": [],
+                                "queryId": "8703bc03-efa0-473c-aeed-ba0357a68340",
+                                "sampled": false
+                            },
+                            "metrics": [
+                                {
+                                    "metric.key": "log.loglevelcounter.hipstershop",
+                                    "fieldName": "count(log.loglevelcounter.hipstershop)",
+                                    "rollup": "availability"
+                                }
+                            ]
+                        }
+                    },
+                    "notifications": [],
+                    "dateTime": "2025-04-10T14:39:35.199Z",
+                    "input": {
+                        "timeframe": {
+                            "from": "now()-1h",
+                            "to": "now()"
+                        },
+                        "value": "timeseries count(log.loglevelcounter.hipstershop), by:{loglevel,k8s.workload.name}"
+                    },
+                    "querySettings": {
+                        "maxResultRecords": 1000,
+                        "defaultScanLimitGbytes": 500,
+                        "maxResultMegaBytes": 1,
+                        "defaultSamplingRatio": 10,
+                        "enableSampling": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "b9f4b282-35f9-4685-9c8d-cd5f668866e0",
+            "type": "dql",
+            "title": "2. Filter by ERROR",
+            "filterSegments": [],
+            "drilldownPath": [],
+            "previousFilterSegments": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-1h",
+                        "to": "now()"
+                    },
+                    "value": "timeseries count(log.loglevelcounter.oteldemo), by:{loglevel,k8s.workload.name}\n| filter loglevel == \"ERROR\""
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "gap",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color",
+                            "valueAxisScale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle",
+                        "xAxisScaling": "analyzedTimeframe",
+                        "xAxisLabel": "timeframe",
+                        "xAxisIsLabelVisible": false,
+                        "hiddenLegendFields": [
+                            "k8s.workload",
+                            "interval",
+                            "count(log.loglevelcounter.hipstershop)"
+                        ],
+                        "fieldMapping": {
+                            "timestamp": "timeframe",
+                            "leftAxisValues": [
+                                "count(log.loglevelcounter.oteldemo)"
+                            ]
+                        },
+                        "leftYAxisSettings": {}
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "AnalyticsIcon",
+                        "isIconVisible": false,
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": []
+                    },
+                    "honeycomb": {
+                        "shape": "hexagon",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": {
+                            "position": "auto"
+                        },
+                        "yAxis": {
+                            "label": "Frequency",
+                            "isLabelVisible": true,
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    },
+                    "autoSelectVisualization": true
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "visualization": "lineChart",
+                "result": {
+                    "code": 200,
+                    "value": {
+                        "records": [
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-15T18:30:00.000Z",
+                                    "end": "2025-04-15T19:31:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "loglevel": "ERROR",
+                                "k8s.workload.name": null,
+                                "count(log.loglevelcounter.oteldemo)": [
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    null
+                                ]
+                            }
+                        ],
+                        "types": [
+                            {
+                                "indexRange": [
+                                    0,
+                                    0
+                                ],
+                                "mappings": {
+                                    "timeframe": {
+                                        "type": "timeframe"
+                                    },
+                                    "interval": {
+                                        "type": "duration"
+                                    },
+                                    "loglevel": {
+                                        "type": "string"
+                                    },
+                                    "k8s.workload.name": {
+                                        "type": "undefined"
+                                    },
+                                    "count(log.loglevelcounter.oteldemo)": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "indexRange": [
+                                                    0,
+                                                    60
+                                                ],
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "double"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ],
+                        "metadata": {
+                            "grail": {
+                                "canonicalQuery": "timeseries by:{loglevel, k8s.workload.name}, count(log.loglevelcounter.oteldemo)\n| filter loglevel == \"ERROR\"",
+                                "timezone": "America/Toronto",
+                                "query": "timeseries count(log.loglevelcounter.oteldemo), by:{loglevel,k8s.workload.name}\n| filter loglevel == \"ERROR\"",
+                                "scannedRecords": 0,
+                                "dqlVersion": "V1_0",
+                                "scannedBytes": 0,
+                                "scannedDataPoints": 61,
+                                "analysisTimeframe": {
+                                    "start": "2025-04-15T18:30:00.000Z",
+                                    "end": "2025-04-15T19:31:00.000Z"
+                                },
+                                "locale": "en-US",
+                                "executionTimeMilliseconds": 27,
+                                "notifications": [],
+                                "queryId": "608c22c8-11f4-45b9-a8be-fb8b5fdfdc3d",
+                                "sampled": false
+                            },
+                            "metrics": [
+                                {
+                                    "metric.key": "log.loglevelcounter.oteldemo",
+                                    "fieldName": "count(log.loglevelcounter.oteldemo)",
+                                    "rollup": "availability"
+                                }
+                            ]
+                        }
+                    },
+                    "notifications": [],
+                    "dateTime": "2025-04-15T19:30:53.405Z",
+                    "input": {
+                        "timeframe": {
+                            "from": "now()-1h",
+                            "to": "now()"
+                        },
+                        "value": "timeseries count(log.loglevelcounter.oteldemo), by:{loglevel,k8s.workload.name}\n| filter loglevel == \"ERROR\""
+                    },
+                    "querySettings": {
+                        "maxResultRecords": 1000,
+                        "defaultScanLimitGbytes": 500,
+                        "maxResultMegaBytes": 1,
+                        "defaultSamplingRatio": 10,
+                        "enableSampling": false
+                    }
+                },
+                "state": "success",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                }
+            }
+        },
+        {
+            "id": "06c9b714-8a20-4304-a28e-69df0585f85c",
+            "type": "dql",
+            "title": "3. Visualize as single value",
+            "filterSegments": [],
+            "drilldownPath": [],
+            "previousFilterSegments": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-1h",
+                        "to": "now()"
+                    },
+                    "value": "timeseries count(log.loglevelcounter.oteldemo), by:{loglevel,k8s.workload.name}\n| filter loglevel == \"ERROR\"\n| fieldsAdd ErrorCount = arraySum(`count(log.loglevelcounter.oteldemo)`)"
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "gap",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color",
+                            "valueAxisScale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle",
+                        "xAxisScaling": "analyzedTimeframe",
+                        "xAxisLabel": "timeframe",
+                        "xAxisIsLabelVisible": false,
+                        "hiddenLegendFields": [
+                            "k8s.workload",
+                            "interval",
+                            "count(log.loglevelcounter.hipstershop)"
+                        ],
+                        "fieldMapping": {
+                            "timestamp": "timeframe",
+                            "leftAxisValues": [
+                                "count(log.loglevelcounter.oteldemo)"
+                            ]
+                        },
+                        "leftYAxisSettings": {}
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "ERROR",
+                        "prefixIcon": "AnalyticsIcon",
+                        "isIconVisible": false,
+                        "recordField": "ErrorCount",
+                        "autoscale": true,
+                        "sparklineSettings": {
+                            "record": "count(log.loglevelcounter.hipstershop)"
+                        },
+                        "alignment": "center",
+                        "trend": {
+                            "trendType": "auto",
+                            "isVisible": false,
+                            "isRelative": false,
+                            "isLabelVisible": false,
+                            "label": "",
+                            "upward": {
+                                "Default": "var(--dt-colors-charts-diverging-red-green-color-10-default, #2a7453)"
+                            },
+                            "downward": {
+                                "Default": "var(--dt-colors-charts-diverging-red-blue-color-02-default, #ae132d)"
+                            },
+                            "neutral": {
+                                "Default": "var(--dt-colors-charts-diverging-red-blue-color-10-default, #134fc9)"
+                            }
+                        },
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": [
+                            {
+                                "fields": [
+                                    "count(log.loglevelcounter.oteldemo)"
+                                ],
+                                "value": "sparkline",
+                                "id": 1744745455224
+                            }
+                        ]
+                    },
+                    "honeycomb": {
+                        "shape": "hexagon",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": {
+                            "position": "auto"
+                        },
+                        "yAxis": {
+                            "label": "Frequency",
+                            "isLabelVisible": true,
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    },
+                    "autoSelectVisualization": false
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "visualization": "singleValue",
+                "result": {
+                    "code": 200,
+                    "value": {
+                        "records": [
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-15T18:30:00.000Z",
+                                    "end": "2025-04-15T19:31:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "loglevel": "ERROR",
+                                "k8s.workload.name": null,
+                                "count(log.loglevelcounter.oteldemo)": [
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    null
+                                ],
+                                "ErrorCount": 9
+                            }
+                        ],
+                        "types": [
+                            {
+                                "indexRange": [
+                                    0,
+                                    0
+                                ],
+                                "mappings": {
+                                    "timeframe": {
+                                        "type": "timeframe"
+                                    },
+                                    "interval": {
+                                        "type": "duration"
+                                    },
+                                    "loglevel": {
+                                        "type": "string"
+                                    },
+                                    "k8s.workload.name": {
+                                        "type": "undefined"
+                                    },
+                                    "count(log.loglevelcounter.oteldemo)": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "indexRange": [
+                                                    0,
+                                                    60
+                                                ],
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "double"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "ErrorCount": {
+                                        "type": "double"
+                                    }
+                                }
+                            }
+                        ],
+                        "metadata": {
+                            "grail": {
+                                "canonicalQuery": "timeseries by:{loglevel, k8s.workload.name}, count(log.loglevelcounter.oteldemo)\n| filter loglevel == \"ERROR\"\n| fieldsAdd ErrorCount = arraySum(`count(log.loglevelcounter.oteldemo)`)",
+                                "timezone": "America/Toronto",
+                                "query": "timeseries count(log.loglevelcounter.oteldemo), by:{loglevel,k8s.workload.name}\n| filter loglevel == \"ERROR\"\n| fieldsAdd ErrorCount = arraySum(`count(log.loglevelcounter.oteldemo)`)",
+                                "scannedRecords": 0,
+                                "dqlVersion": "V1_0",
+                                "scannedBytes": 0,
+                                "scannedDataPoints": 61,
+                                "analysisTimeframe": {
+                                    "start": "2025-04-15T18:30:00.000Z",
+                                    "end": "2025-04-15T19:31:00.000Z"
+                                },
+                                "locale": "en-US",
+                                "executionTimeMilliseconds": 26,
+                                "notifications": [],
+                                "queryId": "da3a0337-d600-4c9a-a54c-62394504991a",
+                                "sampled": false
+                            },
+                            "metrics": [
+                                {
+                                    "metric.key": "log.loglevelcounter.oteldemo",
+                                    "fieldName": "count(log.loglevelcounter.oteldemo)",
+                                    "rollup": "availability"
+                                }
+                            ]
+                        }
+                    },
+                    "notifications": [],
+                    "dateTime": "2025-04-15T19:30:55.224Z",
+                    "input": {
+                        "timeframe": {
+                            "from": "now()-1h",
+                            "to": "now()"
+                        },
+                        "value": "timeseries count(log.loglevelcounter.oteldemo), by:{loglevel,k8s.workload.name}\n| filter loglevel == \"ERROR\"\n| fieldsAdd ErrorCount = arraySum(`count(log.loglevelcounter.oteldemo)`)"
+                    },
+                    "querySettings": {
+                        "maxResultRecords": 1000,
+                        "defaultScanLimitGbytes": 500,
+                        "maxResultMegaBytes": 1,
+                        "defaultSamplingRatio": 10,
+                        "enableSampling": false
+                    }
+                },
+                "state": "success",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                }
+            }
+        },
+        {
+            "id": "42c31344-eec7-45a9-b051-246ac6a1c25d",
+            "type": "dql",
+            "title": "4. Assign an alias",
+            "filterSegments": [],
+            "drilldownPath": [],
+            "previousFilterSegments": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-1h",
+                        "to": "now()"
+                    },
+                    "value": "timeseries count=count(log.loglevelcounter.oteldemo), by:{loglevel,k8s.workload.name}\n| filter loglevel == \"ERROR\"\n| fieldsAdd ErrorCount = arraySum(count)"
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "gap",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color",
+                            "valueAxisScale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle",
+                        "xAxisScaling": "analyzedTimeframe",
+                        "xAxisLabel": "timeframe",
+                        "xAxisIsLabelVisible": false,
+                        "hiddenLegendFields": [
+                            "k8s.workload",
+                            "interval",
+                            "count(log.loglevelcounter.hipstershop)"
+                        ],
+                        "fieldMapping": {
+                            "timestamp": "timeframe",
+                            "leftAxisValues": [
+                                "count"
+                            ]
+                        },
+                        "leftYAxisSettings": {}
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "ERROR",
+                        "prefixIcon": "AnalyticsIcon",
+                        "isIconVisible": false,
+                        "recordField": "ErrorCount",
+                        "autoscale": true,
+                        "sparklineSettings": {
+                            "record": "count(log.loglevelcounter.hipstershop)"
+                        },
+                        "alignment": "center",
+                        "trend": {
+                            "trendType": "auto",
+                            "isVisible": false,
+                            "isRelative": false,
+                            "isLabelVisible": false,
+                            "label": "",
+                            "upward": {
+                                "Default": "var(--dt-colors-charts-diverging-red-green-color-10-default, #2a7453)"
+                            },
+                            "downward": {
+                                "Default": "var(--dt-colors-charts-diverging-red-blue-color-02-default, #ae132d)"
+                            },
+                            "neutral": {
+                                "Default": "var(--dt-colors-charts-diverging-red-blue-color-10-default, #134fc9)"
+                            }
+                        },
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": [
+                            {
+                                "fields": [
+                                    "count"
+                                ],
+                                "value": "sparkline",
+                                "id": 1744225157068
+                            }
+                        ]
+                    },
+                    "honeycomb": {
+                        "shape": "hexagon",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": {
+                            "position": "auto"
+                        },
+                        "yAxis": {
+                            "label": "Frequency",
+                            "isLabelVisible": true,
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    },
+                    "autoSelectVisualization": false
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "visualization": "singleValue",
+                "result": {
+                    "code": 200,
+                    "value": {
+                        "records": [
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-15T18:30:00.000Z",
+                                    "end": "2025-04-15T19:31:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "loglevel": "ERROR",
+                                "k8s.workload.name": null,
+                                "count": [
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    0,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    1,
+                                    null
+                                ],
+                                "ErrorCount": 9
+                            }
+                        ],
+                        "types": [
+                            {
+                                "indexRange": [
+                                    0,
+                                    0
+                                ],
+                                "mappings": {
+                                    "timeframe": {
+                                        "type": "timeframe"
+                                    },
+                                    "interval": {
+                                        "type": "duration"
+                                    },
+                                    "loglevel": {
+                                        "type": "string"
+                                    },
+                                    "k8s.workload.name": {
+                                        "type": "undefined"
+                                    },
+                                    "count": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "indexRange": [
+                                                    0,
+                                                    60
+                                                ],
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "double"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "ErrorCount": {
+                                        "type": "double"
+                                    }
+                                }
+                            }
+                        ],
+                        "metadata": {
+                            "grail": {
+                                "canonicalQuery": "timeseries by:{loglevel, k8s.workload.name}, count = count(log.loglevelcounter.oteldemo)\n| filter loglevel == \"ERROR\"\n| fieldsAdd ErrorCount = arraySum(count)",
+                                "timezone": "America/Toronto",
+                                "query": "timeseries count=count(log.loglevelcounter.oteldemo), by:{loglevel,k8s.workload.name}\n| filter loglevel == \"ERROR\"\n| fieldsAdd ErrorCount = arraySum(count)",
+                                "scannedRecords": 0,
+                                "dqlVersion": "V1_0",
+                                "scannedBytes": 0,
+                                "scannedDataPoints": 61,
+                                "analysisTimeframe": {
+                                    "start": "2025-04-15T18:30:00.000Z",
+                                    "end": "2025-04-15T19:31:00.000Z"
+                                },
+                                "locale": "en-US",
+                                "executionTimeMilliseconds": 19,
+                                "notifications": [],
+                                "queryId": "e4264afd-70b4-4860-92a4-bc6b75867959",
+                                "sampled": false
+                            },
+                            "metrics": [
+                                {
+                                    "metric.key": "log.loglevelcounter.oteldemo",
+                                    "fieldName": "count",
+                                    "rollup": "availability"
+                                }
+                            ]
+                        }
+                    },
+                    "notifications": [],
+                    "dateTime": "2025-04-15T19:30:58.541Z",
+                    "input": {
+                        "timeframe": {
+                            "from": "now()-1h",
+                            "to": "now()"
+                        },
+                        "value": "timeseries count=count(log.loglevelcounter.oteldemo), by:{loglevel,k8s.workload.name}\n| filter loglevel == \"ERROR\"\n| fieldsAdd ErrorCount = arraySum(count)"
+                    },
+                    "querySettings": {
+                        "maxResultRecords": 1000,
+                        "defaultScanLimitGbytes": 500,
+                        "maxResultMegaBytes": 1,
+                        "defaultSamplingRatio": 10,
+                        "enableSampling": false
+                    }
+                },
+                "state": "success",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                }
+            }
+        }
+    ]
+}

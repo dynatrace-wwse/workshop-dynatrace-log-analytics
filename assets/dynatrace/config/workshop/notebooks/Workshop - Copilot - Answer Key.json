@@ -1,0 +1,3597 @@
+{
+    "version": "6",
+    "defaultTimeframe": {
+        "from": "now()-24h",
+        "to": "now()"
+    },
+    "defaultSegments": [],
+    "sections": [
+        {
+            "id": "adbee822-325b-4549-b3d2-b6d6e895d873",
+            "type": "markdown",
+            "markdown": "# Davis CoPilot\n## DQL is super powerful, but what if we could use generative AI to do some of the hard work for us? Let's use Davis CoPilot to build the DQL for some common use cases\n![](https://mkt-cdn.dynatrace.com/assets/Marketing/content-images/_1920x921_crop_center-center_100_line/davis-chart.png.webp)"
+        },
+        {
+            "id": "dfda42c9-5445-430d-87e6-4d66273d5722",
+            "type": "markdown",
+            "markdown": "### Investigate your logs for specific information\n\n**Get a high level overview of your logs**\n\n```Summarize all logs by log level```\n\n**Convert logs into a time series**\n\n```Show me all error logs this week with 15 minute intervals```\n\n**Split by K8s Namespace over time**\n\n```Show me the count of all error logs grouped by k8s namespace with a 5-minute interval```"
+        },
+        {
+            "id": "c9dd937e-377f-4d8b-82cb-ac306ed81907",
+            "type": "dql",
+            "showTitle": false,
+            "subType": "davis-copilot",
+            "davisCopilot": {
+                "prompt": "Summarize all logs by log level",
+                "response": {
+                    "status": "success",
+                    "data": {
+                        "dql": "fetch logs\n| summarize by:{loglevel}, count = count()",
+                        "messageToken": "8bb87350-d9bb-4b18-8401-fe82ad49869f",
+                        "status": "SUCCESSFUL",
+                        "metadata": {
+                            "notifications": []
+                        },
+                        "prompt": "Summarize all logs by log level"
+                    }
+                },
+                "showDqlSnippet": true,
+                "feedbackProvided": false
+            },
+            "height": 216,
+            "filterSegments": [],
+            "drilldownPath": [],
+            "previousFilterSegments": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-7d",
+                        "to": "now()"
+                    },
+                    "value": "fetch logs\n| summarize by:{loglevel}, count = count()"
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "connect",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color",
+                            "valueAxisScale": "linear",
+                            "categoryAxis": "loglevel",
+                            "categoryAxisLabel": "loglevel",
+                            "valueAxis": "count",
+                            "valueAxisLabel": "count"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle"
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "",
+                        "isIconVisible": false,
+                        "recordField": "dt.entity.host",
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {
+                            "[\"loglevel\"]": 126.671875
+                        },
+                        "columnTypeOverrides": [],
+                        "columnOrder": [
+                            "[\"loglevel\"]",
+                            "[\"count\"]"
+                        ]
+                    },
+                    "honeycomb": {
+                        "shape": "square",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": {
+                            "position": "auto"
+                        },
+                        "yAxis": {
+                            "label": "Frequency",
+                            "isLabelVisible": true,
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [
+                            {
+                                "valueAxis": "count",
+                                "rangeAxis": ""
+                            }
+                        ],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "visualization": "table",
+                "state": "success",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                },
+                "result": {
+                    "code": 200,
+                    "value": {
+                        "records": [
+                            {
+                                "loglevel": "DEBUG",
+                                "count": "175256"
+                            },
+                            {
+                                "loglevel": "ERROR",
+                                "count": "228638"
+                            },
+                            {
+                                "loglevel": "INFO",
+                                "count": "5614659"
+                            },
+                            {
+                                "loglevel": "NONE",
+                                "count": "1822198"
+                            },
+                            {
+                                "loglevel": "NOTICE",
+                                "count": "225"
+                            },
+                            {
+                                "loglevel": "WARN",
+                                "count": "187315"
+                            }
+                        ],
+                        "types": [
+                            {
+                                "indexRange": [
+                                    0,
+                                    5
+                                ],
+                                "mappings": {
+                                    "loglevel": {
+                                        "type": "string"
+                                    },
+                                    "count": {
+                                        "type": "long"
+                                    }
+                                }
+                            }
+                        ],
+                        "metadata": {
+                            "grail": {
+                                "canonicalQuery": "fetch logs\n| summarize by:{loglevel}, count = count()",
+                                "timezone": "America/Toronto",
+                                "query": "fetch logs\n| summarize by:{loglevel}, count = count()",
+                                "scannedRecords": 8028291,
+                                "dqlVersion": "V1_0",
+                                "scannedBytes": 17124426060,
+                                "scannedDataPoints": 0,
+                                "analysisTimeframe": {
+                                    "start": "2025-04-03T14:40:15.373Z",
+                                    "end": "2025-04-10T14:40:15.373Z"
+                                },
+                                "locale": "en-US",
+                                "executionTimeMilliseconds": 2173,
+                                "notifications": [],
+                                "queryId": "d52a28fb-d71e-4bee-afcf-67b8d7c065cd",
+                                "sampled": false
+                            }
+                        }
+                    },
+                    "notifications": [],
+                    "dateTime": "2025-04-10T14:40:18.401Z",
+                    "input": {
+                        "timeframe": {
+                            "from": "now()-7d",
+                            "to": "now()"
+                        },
+                        "value": "fetch logs\n| summarize by:{loglevel}, count = count()"
+                    },
+                    "querySettings": {
+                        "maxResultRecords": 1000,
+                        "defaultScanLimitGbytes": 500,
+                        "maxResultMegaBytes": 1,
+                        "defaultSamplingRatio": 10,
+                        "enableSampling": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "1dd823e9-0d6c-4b47-90b8-295ab96557da",
+            "type": "dql",
+            "showTitle": false,
+            "subType": "davis-copilot",
+            "davisCopilot": {
+                "prompt": "Show me all error logs this week with 15 minute intervals",
+                "response": {
+                    "status": "success",
+                    "data": {
+                        "dql": "fetch logs, from:bin(now(), 7d)\n| filter loglevel == \"ERROR\"\n| makeTimeseries interval:15m, count = count()",
+                        "messageToken": "708293f6-691f-44be-bbe3-eb96368c8c01",
+                        "status": "SUCCESSFUL",
+                        "metadata": {
+                            "notifications": []
+                        },
+                        "prompt": "Show me all error logs this week with 15 minute intervals"
+                    }
+                },
+                "showDqlSnippet": true,
+                "feedbackProvided": false
+            },
+            "height": 264,
+            "filterSegments": [],
+            "drilldownPath": [],
+            "previousFilterSegments": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-7d",
+                        "to": "now()"
+                    },
+                    "value": "fetch logs, from:bin(now(), 7d)\n| filter loglevel == \"ERROR\"\n| makeTimeseries interval:15m, count = count()"
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "connect",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color",
+                            "valueAxisScale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle",
+                        "fieldMapping": {
+                            "timestamp": "timeframe",
+                            "leftAxisValues": [
+                                "count"
+                            ],
+                            "leftAxisDimensions": []
+                        },
+                        "xAxisScaling": "analyzedTimeframe",
+                        "xAxisLabel": "timeframe",
+                        "xAxisIsLabelVisible": false,
+                        "hiddenLegendFields": [
+                            "interval"
+                        ],
+                        "leftYAxisSettings": {}
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "",
+                        "isIconVisible": false,
+                        "recordField": "interval",
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": [
+                            {
+                                "fields": [
+                                    "count"
+                                ],
+                                "value": "sparkline",
+                                "id": 1744221521916
+                            }
+                        ],
+                        "columnOrder": []
+                    },
+                    "honeycomb": {
+                        "shape": "square",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": {
+                            "position": "auto"
+                        },
+                        "yAxis": {
+                            "label": "Frequency",
+                            "isLabelVisible": true,
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [
+                            {
+                                "valueAxis": "interval",
+                                "rangeAxis": ""
+                            }
+                        ],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "visualization": "lineChart",
+                "state": "success",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                },
+                "result": {
+                    "code": 200,
+                    "value": {
+                        "records": [
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T00:00:00.000Z",
+                                    "end": "2025-04-10T14:45:00.000Z"
+                                },
+                                "interval": "900000000000",
+                                "count": [
+                                    2952,
+                                    3981,
+                                    3923,
+                                    3907,
+                                    3955,
+                                    3981,
+                                    3983,
+                                    3883,
+                                    3828,
+                                    3944,
+                                    3957,
+                                    3876,
+                                    3869,
+                                    3899,
+                                    3911,
+                                    3879,
+                                    3983,
+                                    3863,
+                                    3926,
+                                    3816,
+                                    3920,
+                                    3910,
+                                    3923,
+                                    3904,
+                                    3940,
+                                    3873,
+                                    3953,
+                                    3883,
+                                    3833,
+                                    3951,
+                                    4036,
+                                    3951,
+                                    3834,
+                                    3905,
+                                    3908,
+                                    3886,
+                                    3943,
+                                    3862,
+                                    3886,
+                                    3888,
+                                    3940,
+                                    4051,
+                                    3917,
+                                    3959,
+                                    3889,
+                                    3989,
+                                    3966,
+                                    3947,
+                                    3909,
+                                    3966,
+                                    3923,
+                                    3870,
+                                    3857,
+                                    4050,
+                                    3876,
+                                    3951,
+                                    3995,
+                                    3879,
+                                    2133
+                                ]
+                            }
+                        ],
+                        "types": [
+                            {
+                                "indexRange": [
+                                    0,
+                                    0
+                                ],
+                                "mappings": {
+                                    "timeframe": {
+                                        "type": "timeframe"
+                                    },
+                                    "interval": {
+                                        "type": "duration"
+                                    },
+                                    "count": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "indexRange": [
+                                                    0,
+                                                    58
+                                                ],
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "double"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ],
+                        "metadata": {
+                            "grail": {
+                                "canonicalQuery": "fetch logs, from:bin(now(), 168h)\n| filter loglevel == \"ERROR\"\n| makeTimeseries interval:15m, count = count()",
+                                "timezone": "America/Toronto",
+                                "query": "fetch logs, from:bin(now(), 7d)\n| filter loglevel == \"ERROR\"\n| makeTimeseries interval:15m, count = count()",
+                                "scannedRecords": 8028291,
+                                "dqlVersion": "V1_0",
+                                "scannedBytes": 1363230133,
+                                "scannedDataPoints": 0,
+                                "analysisTimeframe": {
+                                    "start": "2025-04-10T00:00:00.000Z",
+                                    "end": "2025-04-10T14:40:15.659Z"
+                                },
+                                "locale": "en-US",
+                                "executionTimeMilliseconds": 249,
+                                "notifications": [
+                                    {
+                                        "severity": "INFO",
+                                        "messageFormat": "Calendar durations aren't supported here. The expression is replaced with `%1$s`.",
+                                        "syntaxPosition": {
+                                            "start": {
+                                                "column": 29,
+                                                "index": 28,
+                                                "line": 1
+                                            },
+                                            "end": {
+                                                "column": 30,
+                                                "index": 29,
+                                                "line": 1
+                                            }
+                                        },
+                                        "messageFormatSpecifierTypes": [
+                                            "INPUT_QUERY_PART"
+                                        ],
+                                        "arguments": [
+                                            "168h"
+                                        ],
+                                        "notificationType": "DEPRECATED_DURATION_UNIT_DAYS",
+                                        "message": "Calendar durations aren't supported here. The expression is replaced with `168h`."
+                                    }
+                                ],
+                                "queryId": "47f84731-807e-4909-948a-8e9886937644",
+                                "sampled": false
+                            }
+                        }
+                    },
+                    "notifications": [
+                        {
+                            "message": "Calendar durations aren't supported here. The expression is replaced with `168h`.",
+                            "severity": "info",
+                            "notificationType": "DEPRECATED_DURATION_UNIT_DAYS"
+                        }
+                    ],
+                    "dateTime": "2025-04-10T14:40:16.635Z",
+                    "input": {
+                        "timeframe": {
+                            "from": "now()-7d",
+                            "to": "now()"
+                        },
+                        "value": "fetch logs, from:bin(now(), 7d)\n| filter loglevel == \"ERROR\"\n| makeTimeseries interval:15m, count = count()"
+                    },
+                    "querySettings": {
+                        "maxResultRecords": 1000,
+                        "defaultScanLimitGbytes": 500,
+                        "maxResultMegaBytes": 1,
+                        "defaultSamplingRatio": 10,
+                        "enableSampling": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "963dc1c0-df22-46b9-a2ad-29b6b0d3a096",
+            "type": "dql",
+            "showTitle": false,
+            "subType": "davis-copilot",
+            "davisCopilot": {
+                "prompt": "Show me the count of ERROR logs grouped by k8s namespace with a 5-minute interval",
+                "response": {
+                    "status": "success",
+                    "data": {
+                        "dql": "fetch logs\n| filter loglevel == \"ERROR\"\n| makeTimeseries by:{k8s.namespace.name}, interval:5m, count = count()",
+                        "messageToken": "4a2b1119-a4ee-4e1f-8b12-f924413fe0d1",
+                        "status": "SUCCESSFUL",
+                        "metadata": {
+                            "notifications": []
+                        },
+                        "prompt": "Show me the count of ERROR logs grouped by k8s namespace with a 5-minute interval"
+                    }
+                },
+                "showDqlSnippet": true,
+                "feedbackProvided": false
+            },
+            "height": 226,
+            "filterSegments": [],
+            "drilldownPath": [],
+            "previousFilterSegments": [],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-24h",
+                        "to": "now()"
+                    },
+                    "value": "fetch logs\n| filter loglevel == \"ERROR\"\n| makeTimeseries by:{k8s.namespace.name}, interval:5m, count = count()"
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "connect",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color",
+                            "valueAxisScale": "linear",
+                            "categoryAxis": "k8s.namespace.name",
+                            "categoryAxisLabel": "k8s.namespace.name",
+                            "valueAxis": "interval",
+                            "valueAxisLabel": "interval"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle",
+                        "fieldMapping": {
+                            "timestamp": "timeframe",
+                            "leftAxisValues": [
+                                "count"
+                            ],
+                            "leftAxisDimensions": [
+                                "k8s.namespace.name"
+                            ],
+                            "rightAxisDimensions": []
+                        },
+                        "xAxisScaling": "analyzedTimeframe",
+                        "xAxisLabel": "timeframe",
+                        "xAxisIsLabelVisible": false,
+                        "hiddenLegendFields": [
+                            "k8sspace.name",
+                            "interval",
+                            "count"
+                        ],
+                        "leftYAxisSettings": {}
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "",
+                        "isIconVisible": false,
+                        "recordField": "loglevel",
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [
+                            [
+                                "content"
+                            ]
+                        ],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": [
+                            {
+                                "fields": [
+                                    "count"
+                                ],
+                                "value": "sparkline",
+                                "id": 1744221533177
+                            }
+                        ],
+                        "columnOrder": []
+                    },
+                    "honeycomb": {
+                        "shape": "square",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": {
+                            "position": "auto"
+                        },
+                        "yAxis": {
+                            "label": "Frequency",
+                            "isLabelVisible": true,
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [
+                            {
+                                "valueAxis": "interval",
+                                "rangeAxis": ""
+                            }
+                        ],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "visualization": "barChart",
+                "state": "success",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                },
+                "result": {
+                    "code": 200,
+                    "value": {
+                        "records": [
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-09T14:40:00.000Z",
+                                    "end": "2025-04-10T14:45:00.000Z"
+                                },
+                                "interval": "300000000000",
+                                "k8s.namespace.name": "easytrade",
+                                "count": [
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    16,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    2,
+                                    1,
+                                    1,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-09T14:40:00.000Z",
+                                    "end": "2025-04-10T14:45:00.000Z"
+                                },
+                                "interval": "300000000000",
+                                "k8s.namespace.name": "hipstershop",
+                                "count": [
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    282,
+                                    1326,
+                                    1300,
+                                    1303,
+                                    1288,
+                                    1366,
+                                    1354,
+                                    1277,
+                                    1280,
+                                    1312,
+                                    1269,
+                                    1307,
+                                    1306,
+                                    1317,
+                                    1313,
+                                    1344,
+                                    1324,
+                                    1296,
+                                    1304,
+                                    1297,
+                                    1366,
+                                    1305,
+                                    1267,
+                                    1296,
+                                    1314,
+                                    1269,
+                                    1219,
+                                    1293,
+                                    1318,
+                                    1317,
+                                    1337,
+                                    1282,
+                                    1325,
+                                    1320,
+                                    1307,
+                                    1227,
+                                    1270,
+                                    1306,
+                                    1276,
+                                    1297,
+                                    1264,
+                                    1320,
+                                    1247,
+                                    1325,
+                                    1322,
+                                    1314,
+                                    1303,
+                                    1247,
+                                    1345,
+                                    1312,
+                                    1310,
+                                    1275,
+                                    1262,
+                                    1307,
+                                    1290,
+                                    1285,
+                                    1339,
+                                    1253,
+                                    1301,
+                                    1241,
+                                    1335,
+                                    1277,
+                                    1293,
+                                    1282,
+                                    1314,
+                                    1298,
+                                    1312,
+                                    1282,
+                                    1301,
+                                    1230,
+                                    1300,
+                                    1354,
+                                    1323,
+                                    1310,
+                                    1294,
+                                    1305,
+                                    1246,
+                                    1304,
+                                    1291,
+                                    1327,
+                                    1318,
+                                    1272,
+                                    1287,
+                                    1306,
+                                    1266,
+                                    1271,
+                                    1280,
+                                    1310,
+                                    1292,
+                                    1327,
+                                    1347,
+                                    1346,
+                                    1331,
+                                    1263,
+                                    1349,
+                                    1320,
+                                    1264,
+                                    1310,
+                                    1244,
+                                    1276,
+                                    1262,
+                                    1349,
+                                    1302,
+                                    1299,
+                                    1285,
+                                    1287,
+                                    1284,
+                                    1297,
+                                    1317,
+                                    1310,
+                                    1299,
+                                    1222,
+                                    1281,
+                                    1342,
+                                    1281,
+                                    1279,
+                                    1308,
+                                    1273,
+                                    1326,
+                                    1271,
+                                    1350,
+                                    1276,
+                                    1301,
+                                    1321,
+                                    1391,
+                                    1322,
+                                    1308,
+                                    1279,
+                                    1314,
+                                    1346,
+                                    1286,
+                                    1302,
+                                    1253,
+                                    1338,
+                                    1281,
+                                    1300,
+                                    1322,
+                                    1344,
+                                    1318,
+                                    1331,
+                                    1307,
+                                    1341,
+                                    1294,
+                                    1284,
+                                    1280,
+                                    1280,
+                                    1335,
+                                    1313,
+                                    1324,
+                                    1313,
+                                    1335,
+                                    1299,
+                                    1271,
+                                    1294,
+                                    1327,
+                                    1236,
+                                    1274,
+                                    1274,
+                                    1292,
+                                    1308,
+                                    1379,
+                                    1342,
+                                    1277,
+                                    1272,
+                                    1312,
+                                    1336,
+                                    1301,
+                                    1293,
+                                    1376,
+                                    1342,
+                                    1261,
+                                    1224,
+                                    1333,
+                                    1304,
+                                    1287,
+                                    835,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-09T14:40:00.000Z",
+                                    "end": "2025-04-10T14:45:00.000Z"
+                                },
+                                "interval": "300000000000",
+                                "k8s.namespace.name": "kube-system",
+                                "count": [
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    7,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    1,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-09T14:40:00.000Z",
+                                    "end": "2025-04-10T14:45:00.000Z"
+                                },
+                                "interval": "300000000000",
+                                "k8s.namespace.name": null,
+                                "count": [
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    24,
+                                    null,
+                                    35,
+                                    11,
+                                    8,
+                                    6,
+                                    5,
+                                    4,
+                                    9,
+                                    4,
+                                    4,
+                                    null,
+                                    6,
+                                    4,
+                                    4,
+                                    8,
+                                    null,
+                                    7,
+                                    4,
+                                    4,
+                                    4,
+                                    null,
+                                    3,
+                                    8,
+                                    7,
+                                    null,
+                                    4,
+                                    8,
+                                    9,
+                                    4,
+                                    null,
+                                    4,
+                                    8,
+                                    4,
+                                    4,
+                                    null,
+                                    10,
+                                    4,
+                                    4,
+                                    null,
+                                    4,
+                                    8,
+                                    9,
+                                    null,
+                                    4,
+                                    5,
+                                    4,
+                                    4,
+                                    2,
+                                    4,
+                                    4,
+                                    4,
+                                    8,
+                                    null,
+                                    5,
+                                    5,
+                                    4,
+                                    4,
+                                    null,
+                                    4,
+                                    11,
+                                    5,
+                                    null,
+                                    4,
+                                    2,
+                                    4,
+                                    4,
+                                    4,
+                                    4,
+                                    9,
+                                    4,
+                                    10,
+                                    2,
+                                    5,
+                                    9,
+                                    4,
+                                    4,
+                                    null,
+                                    6,
+                                    4,
+                                    4,
+                                    null,
+                                    4,
+                                    8,
+                                    9,
+                                    4,
+                                    null,
+                                    4,
+                                    4,
+                                    4,
+                                    4,
+                                    4,
+                                    9,
+                                    4,
+                                    4,
+                                    null,
+                                    6,
+                                    4,
+                                    4,
+                                    5,
+                                    5,
+                                    2,
+                                    5,
+                                    4,
+                                    4,
+                                    null,
+                                    9,
+                                    8,
+                                    10,
+                                    null,
+                                    4,
+                                    4,
+                                    4,
+                                    4,
+                                    null,
+                                    9,
+                                    4,
+                                    4,
+                                    9,
+                                    null,
+                                    6,
+                                    4,
+                                    4,
+                                    4,
+                                    null,
+                                    4,
+                                    10,
+                                    2,
+                                    null,
+                                    4,
+                                    4,
+                                    4,
+                                    16,
+                                    null,
+                                    4,
+                                    5,
+                                    4,
+                                    4,
+                                    4,
+                                    8,
+                                    6,
+                                    4,
+                                    null,
+                                    2,
+                                    6,
+                                    9,
+                                    8,
+                                    null,
+                                    5,
+                                    4,
+                                    4,
+                                    4,
+                                    4,
+                                    4,
+                                    5,
+                                    4,
+                                    2,
+                                    3,
+                                    4,
+                                    8,
+                                    null,
+                                    4,
+                                    9,
+                                    4,
+                                    4,
+                                    null,
+                                    6,
+                                    4,
+                                    6,
+                                    10,
+                                    null,
+                                    4,
+                                    4,
+                                    4,
+                                    4,
+                                    null,
+                                    9,
+                                    4,
+                                    5,
+                                    null
+                                ]
+                            }
+                        ],
+                        "types": [
+                            {
+                                "indexRange": [
+                                    0,
+                                    3
+                                ],
+                                "mappings": {
+                                    "timeframe": {
+                                        "type": "timeframe"
+                                    },
+                                    "interval": {
+                                        "type": "duration"
+                                    },
+                                    "k8s.namespace.name": {
+                                        "type": "string"
+                                    },
+                                    "count": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "indexRange": [
+                                                    0,
+                                                    288
+                                                ],
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "double"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ],
+                        "metadata": {
+                            "grail": {
+                                "canonicalQuery": "fetch logs\n| filter loglevel == \"ERROR\"\n| makeTimeseries by:{k8s.namespace.name}, interval:5m, count = count()",
+                                "timezone": "America/Toronto",
+                                "query": "fetch logs\n| filter loglevel == \"ERROR\"\n| makeTimeseries by:{k8s.namespace.name}, interval:5m, count = count()",
+                                "scannedRecords": 7986238,
+                                "dqlVersion": "V1_0",
+                                "scannedBytes": 1363310245,
+                                "scannedDataPoints": 0,
+                                "analysisTimeframe": {
+                                    "start": "2025-04-09T14:40:15.378Z",
+                                    "end": "2025-04-10T14:40:15.378Z"
+                                },
+                                "locale": "en-US",
+                                "executionTimeMilliseconds": 249,
+                                "notifications": [],
+                                "queryId": "c11769f0-2323-4553-9ba1-5e5c73df5136",
+                                "sampled": false
+                            }
+                        }
+                    },
+                    "notifications": [],
+                    "dateTime": "2025-04-10T14:40:16.620Z",
+                    "input": {
+                        "timeframe": {
+                            "from": "now()-24h",
+                            "to": "now()"
+                        },
+                        "value": "fetch logs\n| filter loglevel == \"ERROR\"\n| makeTimeseries by:{k8s.namespace.name}, interval:5m, count = count()"
+                    },
+                    "querySettings": {
+                        "maxResultRecords": 1000,
+                        "defaultScanLimitGbytes": 500,
+                        "maxResultMegaBytes": 1,
+                        "defaultSamplingRatio": 10,
+                        "enableSampling": false
+                    }
+                }
+            }
+        },
+        {
+            "id": "3f08dbdf-9797-4497-9616-558dc130e8cf",
+            "type": "markdown",
+            "markdown": "### Understand application problems\n\n**Get an overview of active and closed problems**\n\n```Show all of today's problems by status with a 1 hour interval```\n\n**Understand which entities are causing the most problems**\n\n```From the problems in the last week, show me the most 10 most common root cause entities```"
+        },
+        {
+            "id": "1dc1e123-3df4-4669-ac9c-07bf6f120dc8",
+            "type": "dql",
+            "showTitle": false,
+            "subType": "davis-copilot",
+            "davisCopilot": {
+                "prompt": "Show all of today's problems by status with a 1 hour interval",
+                "response": {
+                    "status": "success",
+                    "data": {
+                        "dql": "fetch events, from:bin(now(), 1d)\n| filter event.kind == \"DAVIS_PROBLEM\"\n| makeTimeseries by:{status = event.status}, interval:1h, count = count()",
+                        "messageToken": "be369af0-75ad-4a39-9704-427543a4f278",
+                        "status": "SUCCESSFUL",
+                        "metadata": {
+                            "notifications": []
+                        },
+                        "prompt": "Show all of today's problems by status with a 1 hour interval"
+                    }
+                },
+                "showDqlSnippet": true,
+                "feedbackProvided": false
+            },
+            "height": 134,
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-2h",
+                        "to": "now()"
+                    },
+                    "value": "fetch events, from:bin(now(), 1d)\n| filter event.kind == \"DAVIS_PROBLEM\"\n| makeTimeseries by:{status = event.status}, interval:1h, count = count()"
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "connect",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color",
+                            "valueAxisScale": "linear",
+                            "categoryAxis": "status",
+                            "valueAxis": "interval",
+                            "categoryAxisLabel": "status",
+                            "valueAxisLabel": "interval"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle",
+                        "fieldMapping": {
+                            "timestamp": "timeframe",
+                            "leftAxisValues": [
+                                "count"
+                            ],
+                            "leftAxisDimensions": [
+                                "status"
+                            ]
+                        },
+                        "xAxisScaling": "analyzedTimeframe",
+                        "xAxisLabel": "timeframe",
+                        "xAxisIsLabelVisible": false,
+                        "hiddenLegendFields": [
+                            "interval",
+                            "count"
+                        ],
+                        "leftYAxisSettings": {}
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "",
+                        "isIconVisible": false,
+                        "recordField": "activeEvents",
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": [
+                            {
+                                "fields": [
+                                    "count"
+                                ],
+                                "value": "sparkline",
+                                "id": 1744296015709
+                            }
+                        ],
+                        "columnOrder": []
+                    },
+                    "honeycomb": {
+                        "shape": "square",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": {
+                            "position": "auto"
+                        },
+                        "yAxis": {
+                            "label": "Frequency",
+                            "isLabelVisible": true,
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [
+                            {
+                                "valueAxis": "interval",
+                                "rangeAxis": ""
+                            }
+                        ],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "visualization": "areaChart",
+                "state": "success",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                },
+                "result": {
+                    "code": 200,
+                    "value": {
+                        "records": [
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T00:00:00.000Z",
+                                    "end": "2025-04-10T15:00:00.000Z"
+                                },
+                                "interval": "3600000000000",
+                                "status": "ACTIVE",
+                                "count": [
+                                    25,
+                                    6,
+                                    11,
+                                    8,
+                                    11,
+                                    39,
+                                    8,
+                                    8,
+                                    10,
+                                    9,
+                                    38,
+                                    11,
+                                    11,
+                                    9,
+                                    5
+                                ]
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T00:00:00.000Z",
+                                    "end": "2025-04-10T15:00:00.000Z"
+                                },
+                                "interval": "3600000000000",
+                                "status": "CLOSED",
+                                "count": [
+                                    8,
+                                    7,
+                                    3,
+                                    8,
+                                    7,
+                                    13,
+                                    8,
+                                    null,
+                                    6,
+                                    3,
+                                    13,
+                                    11,
+                                    3,
+                                    6,
+                                    5
+                                ]
+                            }
+                        ],
+                        "types": [
+                            {
+                                "indexRange": [
+                                    0,
+                                    1
+                                ],
+                                "mappings": {
+                                    "timeframe": {
+                                        "type": "timeframe"
+                                    },
+                                    "interval": {
+                                        "type": "duration"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "count": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "indexRange": [
+                                                    0,
+                                                    14
+                                                ],
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "double"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ],
+                        "metadata": {
+                            "grail": {
+                                "canonicalQuery": "fetch events, from:bin(now(), 24h)\n| filter event.kind == \"DAVIS_PROBLEM\"\n| makeTimeseries by:{status = event.status}, interval:1h, count = count()",
+                                "timezone": "America/Toronto",
+                                "query": "fetch events, from:bin(now(), 1d)\n| filter event.kind == \"DAVIS_PROBLEM\"\n| makeTimeseries by:{status = event.status}, interval:1h, count = count()",
+                                "scannedRecords": 1970,
+                                "dqlVersion": "V1_0",
+                                "scannedBytes": 2816166,
+                                "scannedDataPoints": 0,
+                                "analysisTimeframe": {
+                                    "start": "2025-04-10T00:00:00.000Z",
+                                    "end": "2025-04-10T14:40:15.660Z"
+                                },
+                                "locale": "en-US",
+                                "executionTimeMilliseconds": 27,
+                                "notifications": [
+                                    {
+                                        "severity": "INFO",
+                                        "messageFormat": "Calendar durations aren't supported here. The expression is replaced with `%1$s`.",
+                                        "syntaxPosition": {
+                                            "start": {
+                                                "column": 31,
+                                                "index": 30,
+                                                "line": 1
+                                            },
+                                            "end": {
+                                                "column": 32,
+                                                "index": 31,
+                                                "line": 1
+                                            }
+                                        },
+                                        "messageFormatSpecifierTypes": [
+                                            "INPUT_QUERY_PART"
+                                        ],
+                                        "arguments": [
+                                            "24h"
+                                        ],
+                                        "notificationType": "DEPRECATED_DURATION_UNIT_DAYS",
+                                        "message": "Calendar durations aren't supported here. The expression is replaced with `24h`."
+                                    }
+                                ],
+                                "queryId": "1ce5bdae-136e-4a00-b5ac-4de70f117ab4",
+                                "sampled": false
+                            }
+                        }
+                    },
+                    "notifications": [
+                        {
+                            "message": "Calendar durations aren't supported here. The expression is replaced with `24h`.",
+                            "severity": "info",
+                            "notificationType": "DEPRECATED_DURATION_UNIT_DAYS"
+                        }
+                    ],
+                    "dateTime": "2025-04-10T14:40:15.709Z",
+                    "input": {
+                        "timeframe": {
+                            "from": "now()-2h",
+                            "to": "now()"
+                        },
+                        "value": "fetch events, from:bin(now(), 1d)\n| filter event.kind == \"DAVIS_PROBLEM\"\n| makeTimeseries by:{status = event.status}, interval:1h, count = count()"
+                    },
+                    "querySettings": {
+                        "maxResultRecords": 1000,
+                        "defaultScanLimitGbytes": 500,
+                        "maxResultMegaBytes": 1,
+                        "defaultSamplingRatio": 10,
+                        "enableSampling": false
+                    }
+                }
+            },
+            "drilldownPath": []
+        },
+        {
+            "id": "5121856e-a925-4a06-8a21-f713a751bb4b",
+            "type": "dql",
+            "showTitle": false,
+            "subType": "davis-copilot",
+            "davisCopilot": {
+                "prompt": "From the problems in the last week, show me the most 10 most common root cause entities",
+                "response": {
+                    "status": "success",
+                    "data": {
+                        "dql": "fetch events, from:now() - 7d\n| filter isNotNull(root_cause_entity_id)\n| summarize by:{root_cause_entity_id}, count = count()\n| sort count desc\n| limit 10",
+                        "messageToken": "2ffff903-4efd-4481-9f42-cbb6fb5de4a9",
+                        "status": "SUCCESSFUL",
+                        "metadata": {
+                            "notifications": []
+                        },
+                        "prompt": "From the problems in the last week, show me the most 10 most common root cause entities"
+                    }
+                },
+                "showDqlSnippet": true,
+                "feedbackProvided": false
+            },
+            "height": 179,
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-2h",
+                        "to": "now()"
+                    },
+                    "value": "fetch events, from:now() - 7d\n| filter isNotNull(root_cause_entity_id)\n| summarize by:{root_cause_entity_id}, count = count()\n| sort count desc\n| limit 10"
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "connect",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color",
+                            "valueAxisScale": "linear",
+                            "categoryAxis": "root_cause_entity_id",
+                            "categoryAxisLabel": "root_cause_entity_id",
+                            "valueAxis": "count",
+                            "valueAxisLabel": "count"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle"
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "",
+                        "isIconVisible": false,
+                        "recordField": "affected_entity_ids",
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": [],
+                        "columnOrder": []
+                    },
+                    "honeycomb": {
+                        "shape": "square",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": {
+                            "position": "auto"
+                        },
+                        "yAxis": {
+                            "label": "Frequency",
+                            "isLabelVisible": true,
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [
+                            {
+                                "valueAxis": "count",
+                                "rangeAxis": ""
+                            }
+                        ],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "visualization": "recordView",
+                "state": "success",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                },
+                "result": {
+                    "code": 200,
+                    "value": {
+                        "records": [
+                            {
+                                "root_cause_entity_id": "SERVICE-70C56686E39D60B1",
+                                "count": "23"
+                            },
+                            {
+                                "root_cause_entity_id": "SERVICE-2E24A0A72F2F635C",
+                                "count": "22"
+                            },
+                            {
+                                "root_cause_entity_id": "SERVICE-391EFC5A3E8045C7",
+                                "count": "1"
+                            }
+                        ],
+                        "types": [
+                            {
+                                "indexRange": [
+                                    0,
+                                    2
+                                ],
+                                "mappings": {
+                                    "root_cause_entity_id": {
+                                        "type": "string"
+                                    },
+                                    "count": {
+                                        "type": "long"
+                                    }
+                                }
+                            }
+                        ],
+                        "metadata": {
+                            "grail": {
+                                "canonicalQuery": "fetch events, from:now() - 7d\n| filter isNotNull(root_cause_entity_id)\n| summarize by:{root_cause_entity_id}, count = count()\n| sort count desc\n| limit 10",
+                                "timezone": "America/Toronto",
+                                "query": "fetch events, from:now() - 7d\n| filter isNotNull(root_cause_entity_id)\n| summarize by:{root_cause_entity_id}, count = count()\n| sort count desc\n| limit 10",
+                                "scannedRecords": 2519,
+                                "dqlVersion": "V1_0",
+                                "scannedBytes": 2014004,
+                                "scannedDataPoints": 0,
+                                "analysisTimeframe": {
+                                    "start": "2025-04-03T14:40:15.662Z",
+                                    "end": "2025-04-10T14:40:15.662Z"
+                                },
+                                "locale": "en-US",
+                                "executionTimeMilliseconds": 21,
+                                "notifications": [],
+                                "queryId": "f4d21c86-4fb3-4321-a690-4c76b79af852",
+                                "sampled": false
+                            }
+                        }
+                    },
+                    "notifications": [],
+                    "dateTime": "2025-04-10T14:40:15.725Z",
+                    "input": {
+                        "timeframe": {
+                            "from": "now()-2h",
+                            "to": "now()"
+                        },
+                        "value": "fetch events, from:now() - 7d\n| filter isNotNull(root_cause_entity_id)\n| summarize by:{root_cause_entity_id}, count = count()\n| sort count desc\n| limit 10"
+                    },
+                    "querySettings": {
+                        "maxResultRecords": 1000,
+                        "defaultScanLimitGbytes": 500,
+                        "maxResultMegaBytes": 1,
+                        "defaultSamplingRatio": 10,
+                        "enableSampling": false
+                    }
+                }
+            },
+            "drilldownPath": []
+        },
+        {
+            "id": "46375348-a8f8-4b76-8de4-c1a9cd793ddc",
+            "type": "markdown",
+            "markdown": "### Analyze resource utilization\n\n**Understand if any hosts have CPU saturation**\n\n```Show me the top 10 hosts by CPU Utilization```\n\n**Understand if any hosts were over provisioned and should be sized down**\n\n```Show me the top 10 hosts with the least CPU utilization```"
+        },
+        {
+            "id": "df2cfc09-9e32-4e3f-8347-0277c55b0c80",
+            "type": "dql",
+            "showTitle": false,
+            "subType": "davis-copilot",
+            "davisCopilot": {
+                "prompt": "Show me the top 10 hosts by CPU Utilization",
+                "response": {
+                    "status": "success",
+                    "data": {
+                        "dql": "timeseries by:{dt.entity.host}, cpu_usage = avg(dt.host.cpu.usage)\n| fieldsAdd avg_cpu_usage = arrayAvg(cpu_usage)\n| sort avg_cpu_usage desc\n| limit 10",
+                        "messageToken": "2599d624-ac52-4890-a5f7-f082bb79d988",
+                        "status": "SUCCESSFUL",
+                        "metadata": {
+                            "notifications": []
+                        },
+                        "prompt": "Show me the top 10 hosts by CPU Utilization"
+                    }
+                },
+                "showDqlSnippet": true,
+                "feedbackProvided": false
+            },
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-2h",
+                        "to": "now()"
+                    },
+                    "value": "timeseries by:{dt.entity.host}, cpu_usage = avg(dt.host.cpu.usage)\n| fieldsAdd avg_cpu_usage = arrayAvg(cpu_usage)\n| sort avg_cpu_usage desc\n| limit 10"
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "connect",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color",
+                            "valueAxisScale": "linear",
+                            "categoryAxis": "dt.entity.host",
+                            "categoryAxisLabel": "dt.entity.host",
+                            "valueAxis": "interval",
+                            "valueAxisLabel": "interval"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle",
+                        "fieldMapping": {
+                            "timestamp": "timeframe",
+                            "leftAxisValues": [
+                                "cpu_usage"
+                            ],
+                            "leftAxisDimensions": [
+                                "dt.entity.host",
+                                "avg_cpu_usage"
+                            ]
+                        },
+                        "xAxisScaling": "analyzedTimeframe",
+                        "xAxisLabel": "timeframe",
+                        "xAxisIsLabelVisible": false,
+                        "hiddenLegendFields": [
+                            "interval",
+                            "avg_cpu_usage",
+                            "cpu_usage"
+                        ],
+                        "leftYAxisSettings": {}
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "",
+                        "isIconVisible": false,
+                        "recordField": "dt.entity.host",
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": [
+                            {
+                                "fields": [
+                                    "cpu_usage"
+                                ],
+                                "value": "sparkline",
+                                "id": 1744296015767
+                            }
+                        ],
+                        "columnOrder": []
+                    },
+                    "honeycomb": {
+                        "shape": "square",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": {
+                            "position": "auto"
+                        },
+                        "yAxis": {
+                            "label": "Frequency",
+                            "isLabelVisible": true,
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [
+                            {
+                                "valueAxis": "interval",
+                                "rangeAxis": ""
+                            },
+                            {
+                                "valueAxis": "avg_cpu_usage",
+                                "rangeAxis": ""
+                            }
+                        ],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "visualization": "lineChart",
+                "state": "success",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                },
+                "result": {
+                    "code": 200,
+                    "value": {
+                        "records": [
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T12:40:00.000Z",
+                                    "end": "2025-04-10T14:41:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "dt.entity.host": "HOST-DC0DB28DECB9214E",
+                                "cpu_usage": [
+                                    10.59130859375,
+                                    10.047307332356771,
+                                    10.044116973876953,
+                                    11.87026341756185,
+                                    10.254617055257162,
+                                    10.038447062174479,
+                                    10.044577280680338,
+                                    10.379786173502604,
+                                    10.278786977132162,
+                                    10.790374755859375,
+                                    11.68072764078776,
+                                    10.207860310872396,
+                                    10.013056437174479,
+                                    10.053494771321615,
+                                    9.867130279541016,
+                                    10.74509302775065,
+                                    10.753793080647787,
+                                    9.881327311197916,
+                                    10.250924428304037,
+                                    10.171855926513672,
+                                    10.0621706644694,
+                                    10.17954126993815,
+                                    11.76650365193685,
+                                    11.381059010823568,
+                                    10.05679194132487,
+                                    10.014961242675781,
+                                    10.125946044921875,
+                                    10.199358622233072,
+                                    10.032100677490234,
+                                    11.444315592447916,
+                                    10.770985921223959,
+                                    9.992140452067057,
+                                    10.221542358398438,
+                                    9.951550801595053,
+                                    10.189695994059244,
+                                    12.978510538736979,
+                                    10.633734385172525,
+                                    10.253707885742188,
+                                    9.960625966389975,
+                                    10.046436309814453,
+                                    10.201334635416666,
+                                    11.358876546223959,
+                                    11.385526021321615,
+                                    10.036131540934244,
+                                    10.029871622721354,
+                                    10.385753631591797,
+                                    10.21639887491862,
+                                    10.139355977376303,
+                                    13.01095708211263,
+                                    10.372435251871744,
+                                    10.175593058268229,
+                                    9.670731862386068,
+                                    9.93722152709961,
+                                    9.965740203857422,
+                                    11.796764373779297,
+                                    11.914928436279297,
+                                    9.910592397054037,
+                                    9.91306177775065,
+                                    10.366528828938803,
+                                    9.919073740641275,
+                                    11.569119771321615,
+                                    11.191635131835938,
+                                    10.07564926147461,
+                                    9.731363932291666,
+                                    10.17080815633138,
+                                    10.593554178873697,
+                                    11.255732218424479,
+                                    12.112251281738281,
+                                    9.952117919921875,
+                                    10.138109842936197,
+                                    10.732622782389322,
+                                    10.251917521158854,
+                                    9.583174387613932,
+                                    12.933511098225912,
+                                    10.71023178100586,
+                                    10.506332397460938,
+                                    10.739574432373047,
+                                    10.395759582519531,
+                                    9.708241780598959,
+                                    10.84995142618815,
+                                    12.515519460042318,
+                                    10.884496053059896,
+                                    10.135897318522135,
+                                    10.27648671468099,
+                                    10.737703959147135,
+                                    10.414143880208334,
+                                    12.350571950276693,
+                                    10.095511118570963,
+                                    10.424463907877604,
+                                    10.267094930013021,
+                                    10.551891326904297,
+                                    9.63687006632487,
+                                    11.638623555501303,
+                                    10.98016103108724,
+                                    10.24786631266276,
+                                    10.976872762044271,
+                                    10.1099001566569,
+                                    10.5037841796875,
+                                    10.332378387451172,
+                                    10.61639658610026,
+                                    10.601746877034506,
+                                    9.914503733317057,
+                                    10.047349294026693,
+                                    10.295675913492838,
+                                    11.273579915364584,
+                                    12.355354309082031,
+                                    10.423535664876303,
+                                    10.299798329671225,
+                                    9.791032155354818,
+                                    10.238871256510416,
+                                    10.692919413248697,
+                                    12.431458791097006,
+                                    11.388352711995443,
+                                    10.422871907552084,
+                                    10.369607289632162,
+                                    10.370067596435547,
+                                    10.102517445882162,
+                                    10.978221893310547,
+                                    null,
+                                    null,
+                                    null
+                                ],
+                                "avg_cpu_usage": 10.574823411844541
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T12:40:00.000Z",
+                                    "end": "2025-04-10T14:41:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "dt.entity.host": "HOST-179F37EA0F1D047D",
+                                "cpu_usage": [
+                                    7.970396677652995,
+                                    7.588002522786458,
+                                    7.393845876057942,
+                                    7.677818298339844,
+                                    7.713874816894531,
+                                    7.977333068847656,
+                                    7.586564381917317,
+                                    7.648139953613281,
+                                    7.980264027913411,
+                                    7.7195485432942705,
+                                    7.958034515380859,
+                                    7.673665364583333,
+                                    7.7197723388671875,
+                                    7.727171579996745,
+                                    7.755910237630208,
+                                    7.955437978108724,
+                                    7.80178705851237,
+                                    7.744636535644531,
+                                    7.694006601969401,
+                                    7.552679697672526,
+                                    8.04797617594401,
+                                    7.620952606201172,
+                                    7.736006418863933,
+                                    7.763881683349609,
+                                    7.740512847900391,
+                                    8.098834991455078,
+                                    7.7431894938151045,
+                                    8.00689442952474,
+                                    8.128785451253256,
+                                    7.842658996582031,
+                                    7.9511973063151045,
+                                    8.008331298828125,
+                                    7.895193735758464,
+                                    7.867554982503255,
+                                    7.951104482014974,
+                                    8.227701822916666,
+                                    7.7772979736328125,
+                                    7.9398854573567705,
+                                    8.00247319539388,
+                                    7.975138346354167,
+                                    8.24356206258138,
+                                    7.919948577880859,
+                                    8.084910074869791,
+                                    7.957883199055989,
+                                    7.874772389729817,
+                                    8.301358540852865,
+                                    8.080254872639975,
+                                    7.843636830647786,
+                                    8.027116139729818,
+                                    7.975669860839844,
+                                    8.078358968098959,
+                                    8.106892903645834,
+                                    7.824877421061198,
+                                    8.156558990478516,
+                                    8.18204116821289,
+                                    8.185175577799479,
+                                    7.786029815673828,
+                                    7.860649108886719,
+                                    8.116738637288412,
+                                    8.201432545979818,
+                                    8.433314005533854,
+                                    8.262865702311197,
+                                    8.134541829427084,
+                                    8.188313802083334,
+                                    8.103998819986979,
+                                    8.628676096598307,
+                                    7.921744028727214,
+                                    8.316033681233725,
+                                    8.51498540242513,
+                                    8.0940310160319,
+                                    8.290948232014975,
+                                    8.12267812093099,
+                                    8.087357838948568,
+                                    8.510037740071615,
+                                    8.120839436848959,
+                                    8.409956614176432,
+                                    8.131944020589193,
+                                    8.113877614339193,
+                                    7.905342102050781,
+                                    8.040451049804688,
+                                    8.584022521972656,
+                                    8.353160858154297,
+                                    8.27633285522461,
+                                    8.325743357340494,
+                                    8.133530934651693,
+                                    8.579938252766928,
+                                    8.046283721923828,
+                                    8.293866475423178,
+                                    8.28872299194336,
+                                    8.11712392171224,
+                                    8.368169148763021,
+                                    8.1412722269694,
+                                    8.150614420572916,
+                                    8.31927490234375,
+                                    8.09234364827474,
+                                    8.669745127360025,
+                                    8.284674326578775,
+                                    8.313518524169922,
+                                    8.181924184163412,
+                                    8.31585693359375,
+                                    8.585889180501303,
+                                    8.47438939412435,
+                                    8.288468678792318,
+                                    8.401541392008463,
+                                    8.552570343017578,
+                                    8.63598887125651,
+                                    8.493565877278646,
+                                    8.347134908040365,
+                                    8.367294311523438,
+                                    8.38637924194336,
+                                    8.730857849121094,
+                                    8.530218760172525,
+                                    8.690839131673178,
+                                    8.309216817220053,
+                                    8.47826894124349,
+                                    8.761178334554037,
+                                    8.493096669514975,
+                                    8.317864735921225,
+                                    null,
+                                    null,
+                                    null
+                                ],
+                                "avg_cpu_usage": 8.110043638843605
+                            }
+                        ],
+                        "types": [
+                            {
+                                "indexRange": [
+                                    0,
+                                    1
+                                ],
+                                "mappings": {
+                                    "timeframe": {
+                                        "type": "timeframe"
+                                    },
+                                    "interval": {
+                                        "type": "duration"
+                                    },
+                                    "dt.entity.host": {
+                                        "type": "string"
+                                    },
+                                    "cpu_usage": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "indexRange": [
+                                                    0,
+                                                    120
+                                                ],
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "double"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "avg_cpu_usage": {
+                                        "type": "double"
+                                    }
+                                }
+                            }
+                        ],
+                        "metadata": {
+                            "grail": {
+                                "canonicalQuery": "timeseries by:{dt.entity.host}, cpu_usage = avg(dt.host.cpu.usage)\n| fieldsAdd avg_cpu_usage = arrayAvg(cpu_usage)\n| sort avg_cpu_usage desc\n| limit 10",
+                                "timezone": "America/Toronto",
+                                "query": "timeseries by:{dt.entity.host}, cpu_usage = avg(dt.host.cpu.usage)\n| fieldsAdd avg_cpu_usage = arrayAvg(cpu_usage)\n| sort avg_cpu_usage desc\n| limit 10",
+                                "scannedRecords": 0,
+                                "dqlVersion": "V1_0",
+                                "scannedBytes": 0,
+                                "scannedDataPoints": 266,
+                                "analysisTimeframe": {
+                                    "start": "2025-04-10T12:40:00.000Z",
+                                    "end": "2025-04-10T14:41:00.000Z"
+                                },
+                                "locale": "en-US",
+                                "executionTimeMilliseconds": 26,
+                                "notifications": [],
+                                "queryId": "9c3b0bd1-feff-42f6-85bf-42f1d516d788",
+                                "sampled": false
+                            },
+                            "metrics": [
+                                {
+                                    "metric.key": "dt.host.cpu.usage",
+                                    "fieldName": "cpu_usage"
+                                }
+                            ]
+                        }
+                    },
+                    "notifications": [],
+                    "dateTime": "2025-04-10T14:40:15.767Z",
+                    "input": {
+                        "timeframe": {
+                            "from": "now()-2h",
+                            "to": "now()"
+                        },
+                        "value": "timeseries by:{dt.entity.host}, cpu_usage = avg(dt.host.cpu.usage)\n| fieldsAdd avg_cpu_usage = arrayAvg(cpu_usage)\n| sort avg_cpu_usage desc\n| limit 10"
+                    },
+                    "querySettings": {
+                        "maxResultRecords": 1000,
+                        "defaultScanLimitGbytes": 500,
+                        "maxResultMegaBytes": 1,
+                        "defaultSamplingRatio": 10,
+                        "enableSampling": false
+                    }
+                }
+            },
+            "drilldownPath": []
+        },
+        {
+            "id": "4b4d54a1-c9be-4398-adb0-0f05caee29bf",
+            "type": "dql",
+            "showTitle": false,
+            "subType": "davis-copilot",
+            "davisCopilot": {
+                "prompt": "Show me the top 10 hosts with the least CPU utilization",
+                "response": {
+                    "status": "success",
+                    "data": {
+                        "dql": "timeseries by:{dt.entity.host}, cpu = avg(dt.host.cpu.usage)\n| fieldsAdd avg_cpu = arrayAvg(cpu)\n| sort avg_cpu asc\n| limit 10",
+                        "messageToken": "cdc612ae-42ad-42b6-ac39-fbad8f9d4e1d",
+                        "status": "SUCCESSFUL",
+                        "metadata": {
+                            "notifications": []
+                        },
+                        "prompt": "Show me the top 10 hosts with the least CPU utilization"
+                    }
+                },
+                "showDqlSnippet": true,
+                "feedbackProvided": false
+            },
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-2h",
+                        "to": "now()"
+                    },
+                    "value": "timeseries by:{dt.entity.host}, cpu = avg(dt.host.cpu.usage)\n| fieldsAdd avg_cpu = arrayAvg(cpu)\n| sort avg_cpu asc\n| limit 10"
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "connect",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "layout": "horizontal",
+                            "categoryAxisTickLayout": "horizontal",
+                            "scale": "absolute",
+                            "groupMode": "stacked",
+                            "colorPaletteMode": "multi-color",
+                            "valueAxisScale": "linear",
+                            "categoryAxis": "dt.entity.host",
+                            "valueAxis": "interval",
+                            "categoryAxisLabel": "dt.entity.host",
+                            "valueAxisLabel": "interval"
+                        },
+                        "colorPalette": "categorical",
+                        "valueRepresentation": "absolute",
+                        "truncationMode": "middle",
+                        "fieldMapping": {
+                            "timestamp": "timeframe",
+                            "leftAxisValues": [
+                                "cpu"
+                            ],
+                            "leftAxisDimensions": [
+                                "dt.entity.host",
+                                "avg_cpu"
+                            ]
+                        },
+                        "xAxisScaling": "analyzedTimeframe",
+                        "xAxisLabel": "timeframe",
+                        "xAxisIsLabelVisible": false,
+                        "hiddenLegendFields": [
+                            "interval",
+                            "avg_cpu",
+                            "cpu"
+                        ],
+                        "leftYAxisSettings": {}
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "",
+                        "isIconVisible": false,
+                        "recordField": "dt.entity.host",
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": [
+                            {
+                                "fields": [
+                                    "cpu"
+                                ],
+                                "value": "sparkline",
+                                "id": 1744296015787
+                            }
+                        ],
+                        "columnOrder": []
+                    },
+                    "honeycomb": {
+                        "shape": "square",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto",
+                            "ratio": "auto"
+                        },
+                        "dataMappings": {},
+                        "displayedFields": [],
+                        "truncationMode": "middle",
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical"
+                    },
+                    "histogram": {
+                        "legend": {
+                            "position": "auto"
+                        },
+                        "yAxis": {
+                            "label": "Frequency",
+                            "isLabelVisible": true,
+                            "scale": "linear"
+                        },
+                        "colorPalette": "categorical",
+                        "dataMappings": [
+                            {
+                                "valueAxis": "interval",
+                                "rangeAxis": ""
+                            },
+                            {
+                                "valueAxis": "avg_cpu",
+                                "rangeAxis": ""
+                            }
+                        ],
+                        "variant": "single",
+                        "truncationMode": "middle"
+                    },
+                    "valueBoundaries": {
+                        "min": "auto",
+                        "max": "auto"
+                    }
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "visualization": "lineChart",
+                "state": "success",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                },
+                "result": {
+                    "code": 200,
+                    "value": {
+                        "records": [
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T12:40:00.000Z",
+                                    "end": "2025-04-10T14:41:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "dt.entity.host": "HOST-179F37EA0F1D047D",
+                                "cpu": [
+                                    7.970396677652995,
+                                    7.588002522786458,
+                                    7.393845876057942,
+                                    7.677818298339844,
+                                    7.713874816894531,
+                                    7.977333068847656,
+                                    7.586564381917317,
+                                    7.648139953613281,
+                                    7.980264027913411,
+                                    7.7195485432942705,
+                                    7.958034515380859,
+                                    7.673665364583333,
+                                    7.7197723388671875,
+                                    7.727171579996745,
+                                    7.755910237630208,
+                                    7.955437978108724,
+                                    7.80178705851237,
+                                    7.744636535644531,
+                                    7.694006601969401,
+                                    7.552679697672526,
+                                    8.04797617594401,
+                                    7.620952606201172,
+                                    7.736006418863933,
+                                    7.763881683349609,
+                                    7.740512847900391,
+                                    8.098834991455078,
+                                    7.7431894938151045,
+                                    8.00689442952474,
+                                    8.128785451253256,
+                                    7.842658996582031,
+                                    7.9511973063151045,
+                                    8.008331298828125,
+                                    7.895193735758464,
+                                    7.867554982503255,
+                                    7.951104482014974,
+                                    8.227701822916666,
+                                    7.7772979736328125,
+                                    7.9398854573567705,
+                                    8.00247319539388,
+                                    7.975138346354167,
+                                    8.24356206258138,
+                                    7.919948577880859,
+                                    8.084910074869791,
+                                    7.957883199055989,
+                                    7.874772389729817,
+                                    8.301358540852865,
+                                    8.080254872639975,
+                                    7.843636830647786,
+                                    8.027116139729818,
+                                    7.975669860839844,
+                                    8.078358968098959,
+                                    8.106892903645834,
+                                    7.824877421061198,
+                                    8.156558990478516,
+                                    8.18204116821289,
+                                    8.185175577799479,
+                                    7.786029815673828,
+                                    7.860649108886719,
+                                    8.116738637288412,
+                                    8.201432545979818,
+                                    8.433314005533854,
+                                    8.262865702311197,
+                                    8.134541829427084,
+                                    8.188313802083334,
+                                    8.103998819986979,
+                                    8.628676096598307,
+                                    7.921744028727214,
+                                    8.316033681233725,
+                                    8.51498540242513,
+                                    8.0940310160319,
+                                    8.290948232014975,
+                                    8.12267812093099,
+                                    8.087357838948568,
+                                    8.510037740071615,
+                                    8.120839436848959,
+                                    8.409956614176432,
+                                    8.131944020589193,
+                                    8.113877614339193,
+                                    7.905342102050781,
+                                    8.040451049804688,
+                                    8.584022521972656,
+                                    8.353160858154297,
+                                    8.27633285522461,
+                                    8.325743357340494,
+                                    8.133530934651693,
+                                    8.579938252766928,
+                                    8.046283721923828,
+                                    8.293866475423178,
+                                    8.28872299194336,
+                                    8.11712392171224,
+                                    8.368169148763021,
+                                    8.1412722269694,
+                                    8.150614420572916,
+                                    8.31927490234375,
+                                    8.09234364827474,
+                                    8.669745127360025,
+                                    8.284674326578775,
+                                    8.313518524169922,
+                                    8.181924184163412,
+                                    8.31585693359375,
+                                    8.585889180501303,
+                                    8.47438939412435,
+                                    8.288468678792318,
+                                    8.401541392008463,
+                                    8.552570343017578,
+                                    8.63598887125651,
+                                    8.493565877278646,
+                                    8.347134908040365,
+                                    8.367294311523438,
+                                    8.38637924194336,
+                                    8.730857849121094,
+                                    8.530218760172525,
+                                    8.690839131673178,
+                                    8.309216817220053,
+                                    8.47826894124349,
+                                    8.761178334554037,
+                                    8.493096669514975,
+                                    8.317864735921225,
+                                    null,
+                                    null,
+                                    null
+                                ],
+                                "avg_cpu": 8.110043638843605
+                            },
+                            {
+                                "timeframe": {
+                                    "start": "2025-04-10T12:40:00.000Z",
+                                    "end": "2025-04-10T14:41:00.000Z"
+                                },
+                                "interval": "60000000000",
+                                "dt.entity.host": "HOST-DC0DB28DECB9214E",
+                                "cpu": [
+                                    10.59130859375,
+                                    10.047307332356771,
+                                    10.044116973876953,
+                                    11.87026341756185,
+                                    10.254617055257162,
+                                    10.038447062174479,
+                                    10.044577280680338,
+                                    10.379786173502604,
+                                    10.278786977132162,
+                                    10.790374755859375,
+                                    11.68072764078776,
+                                    10.207860310872396,
+                                    10.013056437174479,
+                                    10.053494771321615,
+                                    9.867130279541016,
+                                    10.74509302775065,
+                                    10.753793080647787,
+                                    9.881327311197916,
+                                    10.250924428304037,
+                                    10.171855926513672,
+                                    10.0621706644694,
+                                    10.17954126993815,
+                                    11.76650365193685,
+                                    11.381059010823568,
+                                    10.05679194132487,
+                                    10.014961242675781,
+                                    10.125946044921875,
+                                    10.199358622233072,
+                                    10.032100677490234,
+                                    11.444315592447916,
+                                    10.770985921223959,
+                                    9.992140452067057,
+                                    10.221542358398438,
+                                    9.951550801595053,
+                                    10.189695994059244,
+                                    12.978510538736979,
+                                    10.633734385172525,
+                                    10.253707885742188,
+                                    9.960625966389975,
+                                    10.046436309814453,
+                                    10.201334635416666,
+                                    11.358876546223959,
+                                    11.385526021321615,
+                                    10.036131540934244,
+                                    10.029871622721354,
+                                    10.385753631591797,
+                                    10.21639887491862,
+                                    10.139355977376303,
+                                    13.01095708211263,
+                                    10.372435251871744,
+                                    10.175593058268229,
+                                    9.670731862386068,
+                                    9.93722152709961,
+                                    9.965740203857422,
+                                    11.796764373779297,
+                                    11.914928436279297,
+                                    9.910592397054037,
+                                    9.91306177775065,
+                                    10.366528828938803,
+                                    9.919073740641275,
+                                    11.569119771321615,
+                                    11.191635131835938,
+                                    10.07564926147461,
+                                    9.731363932291666,
+                                    10.17080815633138,
+                                    10.593554178873697,
+                                    11.255732218424479,
+                                    12.112251281738281,
+                                    9.952117919921875,
+                                    10.138109842936197,
+                                    10.732622782389322,
+                                    10.251917521158854,
+                                    9.583174387613932,
+                                    12.933511098225912,
+                                    10.71023178100586,
+                                    10.506332397460938,
+                                    10.739574432373047,
+                                    10.395759582519531,
+                                    9.708241780598959,
+                                    10.84995142618815,
+                                    12.515519460042318,
+                                    10.884496053059896,
+                                    10.135897318522135,
+                                    10.27648671468099,
+                                    10.737703959147135,
+                                    10.414143880208334,
+                                    12.350571950276693,
+                                    10.095511118570963,
+                                    10.424463907877604,
+                                    10.267094930013021,
+                                    10.551891326904297,
+                                    9.63687006632487,
+                                    11.638623555501303,
+                                    10.98016103108724,
+                                    10.24786631266276,
+                                    10.976872762044271,
+                                    10.1099001566569,
+                                    10.5037841796875,
+                                    10.332378387451172,
+                                    10.61639658610026,
+                                    10.601746877034506,
+                                    9.914503733317057,
+                                    10.047349294026693,
+                                    10.295675913492838,
+                                    11.273579915364584,
+                                    12.355354309082031,
+                                    10.423535664876303,
+                                    10.299798329671225,
+                                    9.791032155354818,
+                                    10.238871256510416,
+                                    10.692919413248697,
+                                    12.431458791097006,
+                                    11.388352711995443,
+                                    10.422871907552084,
+                                    10.369607289632162,
+                                    10.370067596435547,
+                                    10.102517445882162,
+                                    10.978221893310547,
+                                    null,
+                                    null,
+                                    null
+                                ],
+                                "avg_cpu": 10.574823411844541
+                            }
+                        ],
+                        "types": [
+                            {
+                                "indexRange": [
+                                    0,
+                                    1
+                                ],
+                                "mappings": {
+                                    "timeframe": {
+                                        "type": "timeframe"
+                                    },
+                                    "interval": {
+                                        "type": "duration"
+                                    },
+                                    "dt.entity.host": {
+                                        "type": "string"
+                                    },
+                                    "cpu": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "indexRange": [
+                                                    0,
+                                                    120
+                                                ],
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "double"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "avg_cpu": {
+                                        "type": "double"
+                                    }
+                                }
+                            }
+                        ],
+                        "metadata": {
+                            "grail": {
+                                "canonicalQuery": "timeseries by:{dt.entity.host}, cpu = avg(dt.host.cpu.usage)\n| fieldsAdd avg_cpu = arrayAvg(cpu)\n| sort avg_cpu\n| limit 10",
+                                "timezone": "America/Toronto",
+                                "query": "timeseries by:{dt.entity.host}, cpu = avg(dt.host.cpu.usage)\n| fieldsAdd avg_cpu = arrayAvg(cpu)\n| sort avg_cpu asc\n| limit 10",
+                                "scannedRecords": 0,
+                                "dqlVersion": "V1_0",
+                                "scannedBytes": 0,
+                                "scannedDataPoints": 266,
+                                "analysisTimeframe": {
+                                    "start": "2025-04-10T12:40:00.000Z",
+                                    "end": "2025-04-10T14:41:00.000Z"
+                                },
+                                "locale": "en-US",
+                                "executionTimeMilliseconds": 31,
+                                "notifications": [],
+                                "queryId": "b7668910-e7b0-42b6-a9cf-324820c2c187",
+                                "sampled": false
+                            },
+                            "metrics": [
+                                {
+                                    "metric.key": "dt.host.cpu.usage",
+                                    "fieldName": "cpu"
+                                }
+                            ]
+                        }
+                    },
+                    "notifications": [],
+                    "dateTime": "2025-04-10T14:40:15.786Z",
+                    "input": {
+                        "timeframe": {
+                            "from": "now()-2h",
+                            "to": "now()"
+                        },
+                        "value": "timeseries by:{dt.entity.host}, cpu = avg(dt.host.cpu.usage)\n| fieldsAdd avg_cpu = arrayAvg(cpu)\n| sort avg_cpu asc\n| limit 10"
+                    },
+                    "querySettings": {
+                        "maxResultRecords": 1000,
+                        "defaultScanLimitGbytes": 500,
+                        "maxResultMegaBytes": 1,
+                        "defaultSamplingRatio": 10,
+                        "enableSampling": false
+                    }
+                }
+            },
+            "drilldownPath": []
+        }
+    ]
+}
