@@ -23,8 +23,8 @@ spec:
               value: "login"
           resources:
             requests:
-              cpu: 100m
-              memory: 350Mi
+              cpu: 50m
+              memory: 150Mi
 ---
 apiVersion: v1
 kind: Service

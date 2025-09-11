@@ -31,8 +31,8 @@ spec:
           value: "pricing-service"
         resources:
           requests:
-            cpu: 100m
-            memory: 350Mi
+            cpu: 50m
+            memory: 100Mi
 ---
 apiVersion: v1
 kind: Service

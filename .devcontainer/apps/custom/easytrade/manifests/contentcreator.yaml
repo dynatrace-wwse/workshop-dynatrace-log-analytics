@@ -19,5 +19,5 @@ spec:
               value: "jdbc:sqlserver://db:1433;database=TradeManagement;user=sa;password=yourStrong(!)Password;encrypt=false;trustServerCertificate=false;loginTimeout=30;"
           resources:
             requests:
-              cpu: 150m
-              memory: 200Mi
+              cpu: 50m
+              memory: 250Mi

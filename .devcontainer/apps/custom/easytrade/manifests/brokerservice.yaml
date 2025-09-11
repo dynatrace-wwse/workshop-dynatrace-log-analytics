@@ -27,8 +27,8 @@ spec:
               value: "broker"
           resources:
             requests:
-              cpu: 100m
-              memory: 300Mi
+              cpu: 50m
+              memory: 350Mi
 ---
 apiVersion: v1
 kind: Service
