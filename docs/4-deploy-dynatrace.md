@@ -1,6 +1,9 @@
 # Deploy Dynatrace
 --8<-- "snippets/send-bizevent/4-deploy-dynatrace.js"
 
+!!! tip "Deploy Dynatrace Approach"
+    This guide offers (2) approaches to deploying Dynatrace for this workshop.  To speed things up and get log data into Dynatrace as quickly as possible, the automated (scripted) approach will deploy Dynatrace for you using helper functions.  To learn the process of deploying Dynatrace on Kubernetes and to customize the deployment to your needs, you can follow the manual (guided) approach.
+
 Dynatrace provides integrated log management and analytics for your Kubernetes environments by either running the OneAgent Log Module or integrating with log collectors such as Fluent Bit, OpenTelemetry Collector, Logstash, or Fluentd.
 
 Dynatrace provides a flexible approach to Kubernetes observability where you can pick and choose the level of observability you need for your Kubernetes clusters. The Dynatrace Operator manages all the components needed to get the data into Dynatrace for you. This also applies to collecting logs from Kubernetes containers. Depending on the selected observability option, the Dynatrace Operator configures and manages the Log Module to work in conjunction with or without a OneAgent on the node.
@@ -25,9 +28,6 @@ Application observability focuses on monitoring application-level metrics by inj
     - Get granular control over the instrumented Pods using namespaces and annotations.
     - Route Pod metrics to different Dynatrace environments within the same Kubernetes cluster.
     - Enable data enrichment for Kubernetes environments.
-
-!!! tip "Deploy Dynatrace Approach"
-    This guide offers (2) approaches to deploying Dynatrace for this workshop.  To speed things up and get log data into Dynatrace as quickly as possible, the automated (scripted) approach will deploy Dynatrace for you using helper functions.  To learn the process of deploying Dynatrace on Kubernetes and to customize the deployment to your needs, you can follow the manual (guided) approach.
 
 ## Automated (Scripted) Approach
 
