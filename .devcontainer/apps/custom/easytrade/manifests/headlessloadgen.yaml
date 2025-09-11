@@ -22,8 +22,8 @@ spec:
               memory: "500Mi"
               cpu: "500m"
             limits:
-              memory: "900Mi"
-              cpu: "700m"
+              memory: "1Gi"
+              cpu: "1000m"
           env:
             - name: EASY_TRADE_DOMAIN
               value: frontendreverseproxy-easytrade

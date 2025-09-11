@@ -11,8 +11,21 @@
 You will need full administrator access to a Dynatrace SaaS tenant with a DPS license.
 
 <!--TODO: Update prerequisite bulleted list -->
+* Identify Dynatrace Tenant URL
 * Identify Dynatrace Tenant Platform URL
 * Generate Dynatrace Platform Token
+
+### Identify Dynatrace Tenant URL
+
+Identify and save/store your Dynatrace Tenant URL for the Dynatrace SaaS tenant:
+
+!!! tip "No Trailing Slash"
+    Do not include a trailing slash!
+
+| Type        | URL Pattern                                                               |
+|-------------|---------------------------------------------------------------------------|
+| Live (Prod) | https://{your-environment-id}.live.dynatrace.com                          |
+| Stage       | https://{your-environment-id}.sprint.dynatracelabs.com                    |
 
 ### Identify Dynatrace Tenant Platform URL
 

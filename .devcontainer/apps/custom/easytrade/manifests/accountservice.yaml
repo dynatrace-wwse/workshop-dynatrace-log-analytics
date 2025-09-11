@@ -23,8 +23,8 @@ spec:
               value: "accountservice"
           resources:
             requests:
-              cpu: 150m
-              memory: 100Mi
+              cpu: 100m
+              memory: 300Mi
 ---
 apiVersion: v1
 kind: Service

@@ -31,8 +31,8 @@ spec:
               name: flagsmith-setup
           resources:
             requests:
-              cpu: 150m
-              memory: 350Mi
+              cpu: 50m
+              memory: 300Mi
 ---
 apiVersion: v1
 kind: Service

@@ -21,7 +21,7 @@ spec:
               value: "yourStrong(!)Password"
           resources:
             requests:
-              cpu: 300m
+              cpu: 100m
               memory: 1Gi
 ---
 apiVersion: v1
