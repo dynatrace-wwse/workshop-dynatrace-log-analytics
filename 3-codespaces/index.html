@@ -12,7 +12,7 @@
         <link rel="prev" href="../2-getting-started/">
       
       
-        <link rel="next" href="../cleanup/">
+        <link rel="next" href="../4-deploy-dynatrace/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>3. Codespaces - Dynatrace Enablement Lab: Codespaces template</title>
+        <title>3. Codespaces - Dynatrace Workshop: Scaling Log Analytics</title>
       
     
     
@@ -99,7 +99,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Dynatrace Enablement Lab: Codespaces template" class="md-header__button md-logo" aria-label="Dynatrace Enablement Lab: Codespaces template" data-md-component="logo">
+    <a href=".." title="Dynatrace Workshop: Scaling Log Analytics" class="md-header__button md-logo" aria-label="Dynatrace Workshop: Scaling Log Analytics" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -113,7 +113,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Dynatrace Enablement Lab: Codespaces template
+            Dynatrace Workshop: Scaling Log Analytics
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -206,7 +206,7 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/dynatrace-wwse/enablement-codespaces-template" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/dynatrace-wwse/workshop-dynatrace-log-analytics" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
@@ -242,17 +242,17 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Dynatrace Enablement Lab: Codespaces template" class="md-nav__button md-logo" aria-label="Dynatrace Enablement Lab: Codespaces template" data-md-component="logo">
+    <a href=".." title="Dynatrace Workshop: Scaling Log Analytics" class="md-nav__button md-logo" aria-label="Dynatrace Workshop: Scaling Log Analytics" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    Dynatrace Enablement Lab: Codespaces template
+    Dynatrace Workshop: Scaling Log Analytics
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/dynatrace-wwse/enablement-codespaces-template" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/dynatrace-wwse/workshop-dynatrace-log-analytics" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
@@ -485,11 +485,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-content.md" class="md-nav__link">
+      <a href="../4-deploy-dynatrace/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    4. Content
+    4. Deploy Dynatrace
   </span>
   
 
@@ -505,11 +505,91 @@
   
   
     <li class="md-nav__item">
-      <a href="../cleanup/" class="md-nav__link">
+      <a href="../5-scaling-log-analytics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    5. Cleanup
+    5. Scaling Log Analytics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-dql-exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. DQL Exercises
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-configure-dynatrace/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Configure Dynatrace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-anomaly-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Anomaly Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-dashboards/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Dashboards
   </span>
   
 
@@ -529,7 +609,7 @@
         
   
   <span class="md-ellipsis">
-    6. Resources
+    10. Resources
   </span>
   
 
@@ -545,11 +625,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../whats-next/" class="md-nav__link">
+      <a href="../cleanup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    7. What's next?
+    11. Cleanup
   </span>
   
 
@@ -812,7 +892,7 @@ kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w">
 <p>In the next section, ...</p>
 <div class="grid cards">
 <ul>
-<li><a href="../4-content-placeholder/">Continue to Deploy Dynatrace<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
+<li><a href="4-content-placeholder.md">Continue to Deploy Dynatrace<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
 </ul>
 </div>
 

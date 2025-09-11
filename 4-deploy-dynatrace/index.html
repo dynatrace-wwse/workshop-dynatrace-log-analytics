@@ -1,0 +1,1236 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../3-codespaces/">
+      
+      
+        <link rel="next" href="../5-scaling-log-analytics/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>4. Deploy Dynatrace - Dynatrace Workshop: Scaling Log Analytics</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+  <!-- Add scripts that need to run before here -->
+  
+      
+    
+  <!-- Add scripts that need to run afterwards here -->
+   Create an agentless RUM application before GoLive
+   <!-- TODO: BeforeGoLive: Replace Agentless RUM Snippet
+    1. Create an agentless application in Dynatrace from with convention 'dynatrace-wwse/repositoryname'
+    2. https://hci34192.apps.dynatrace.com/ui/apps/dynatrace.classic.deploy.agentless/#install/agentless;gtf=-2h;gf=all
+    <script type="text/javascript" src="https://js-cdn.dynatrace.com/jstag/PLACEHOLDEr/REPLACE_WITH_YOUR_SNIPPET/1234abcd1234abcd_complete.js" crossorigin="anonymous"></script>
+    -->
+    <script type="text/javascript" src="https://js-cdn.dynatrace.com/jstag/145e12d594f/bf64904yne/6c910e7a6d2a6ab4_complete.js" crossorigin="anonymous"></script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#deploy-dynatrace" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Dynatrace Workshop: Scaling Log Analytics" class="md-header__button md-logo" aria-label="Dynatrace Workshop: Scaling Log Analytics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Dynatrace Workshop: Scaling Log Analytics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4. Deploy Dynatrace
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dynatrace-wwse/workshop-dynatrace-log-analytics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    View Code on GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Dynatrace Workshop: Scaling Log Analytics" class="md-nav__button md-logo" aria-label="Dynatrace Workshop: Scaling Log Analytics" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Dynatrace Workshop: Scaling Log Analytics
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dynatrace-wwse/workshop-dynatrace-log-analytics" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    View Code on GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Getting started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-codespaces/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Codespaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    4. Deploy Dynatrace
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    4. Deploy Dynatrace
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kubernetes-platform-monitoring-application-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubernetes Platform Monitoring + Application Observability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automated-scripted-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automated (Scripted) Approach
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Automated (Scripted) Approach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generate-dynatrace-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generate Dynatrace Tokens
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set Environment Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-dynatrace_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy Dynatrace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refresh-application-pods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Refresh Application Pods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-log-ingest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validate Log Ingest
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#continue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continue
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manual-guided-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual (Guided) Approach
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Manual (Guided) Approach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start-monitoring-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start Monitoring Kubernetes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-dynatrace-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy Dynatrace Operator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-dynakube" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy Dynakube
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynakube-log-module-spec" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynakube Log Module Spec
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-log-ingest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure Log Ingest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refresh-application-pods_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Refresh Application Pods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-log-ingest_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validate Log Ingest
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#continue_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continue
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-scaling-log-analytics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Scaling Log Analytics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-dql-exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. DQL Exercises
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-configure-dynatrace/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Configure Dynatrace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-anomaly-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Anomaly Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-dashboards/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Dashboards
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cleanup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Cleanup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kubernetes-platform-monitoring-application-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubernetes Platform Monitoring + Application Observability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automated-scripted-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automated (Scripted) Approach
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Automated (Scripted) Approach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generate-dynatrace-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generate Dynatrace Tokens
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set Environment Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-dynatrace_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy Dynatrace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refresh-application-pods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Refresh Application Pods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-log-ingest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validate Log Ingest
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#continue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continue
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manual-guided-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual (Guided) Approach
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Manual (Guided) Approach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start-monitoring-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start Monitoring Kubernetes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-dynatrace-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy Dynatrace Operator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-dynakube" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy Dynakube
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynakube-log-module-spec" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynakube Log Module Spec
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-log-ingest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure Log Ingest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refresh-application-pods_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Refresh Application Pods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-log-ingest_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validate Log Ingest
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#continue_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continue
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="deploy-dynatrace">Deploy Dynatrace<a class="headerlink" href="#deploy-dynatrace" title="Permanent link">#</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">Deploy Dynatrace Approach</p>
+<p>This guide offers (2) approaches to deploying Dynatrace for this workshop.  To speed things up and get log data into Dynatrace as quickly as possible, the automated (scripted) approach will deploy Dynatrace for you using helper functions.  To learn the process of deploying Dynatrace on Kubernetes and to customize the deployment to your needs, you can follow the manual (guided) approach.</p>
+</div>
+<p>Dynatrace provides integrated log management and analytics for your Kubernetes environments by either running the OneAgent Log Module or integrating with log collectors such as Fluent Bit, OpenTelemetry Collector, Logstash, or Fluentd.</p>
+<p>Dynatrace provides a flexible approach to Kubernetes observability where you can pick and choose the level of observability you need for your Kubernetes clusters. The Dynatrace Operator manages all the components needed to get the data into Dynatrace for you. This also applies to collecting logs from Kubernetes containers. Depending on the selected observability option, the Dynatrace Operator configures and manages the Log Module to work in conjunction with or without a OneAgent on the node.</p>
+<div class="grid cards">
+<ul>
+<li><a href="https://docs.dynatrace.com/docs/ingest-from/setup-on-k8s/deployment/k8s-log-monitoring" target="_blank">Learn More<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
+</ul>
+</div>
+<h2 id="kubernetes-platform-monitoring-application-observability">Kubernetes Platform Monitoring + Application Observability<a class="headerlink" href="#kubernetes-platform-monitoring-application-observability" title="Permanent link">#</a></h2>
+<p>Kubernetes platform monitoring sets the foundation for understanding and troubleshooting your Kubernetes clusters. This setup does not include OneAgent or application-level monitoring by default, but it can be combined with other monitoring and injection approaches.</p>
+<div class="admonition tip">
+<p class="admonition-title"><a href="https://docs.dynatrace.com/docs/ingest-from/setup-on-k8s/how-it-works/kubernetes-monitoring" target="_blank">Kubernetes Platform Monitoring</a>: Capabilities</p>
+<ul>
+<li>Provides insights into the health and utilization of your Kubernetes clusters, including object relationships (topology)</li>
+<li>Uses the Kubernetes API and cAdvisor to get node- and container-level metrics and Kubernetes events</li>
+<li>Enables out-of-the-box alerting and anomaly detection for workloads, Pods, nodes, and clusters</li>
+</ul>
+</div>
+<p>Application observability focuses on monitoring application-level metrics by injecting code modules into application Pods. This mode offers multiple injection strategies (automatic, runtime, and build-time) to collect application-specific metrics. For infrastructure-level insights, combine it with Kubernetes platform monitoring.</p>
+<div class="admonition tip">
+<p class="admonition-title"><a href="https://docs.dynatrace.com/docs/ingest-from/setup-on-k8s/how-it-works/application-monitoring" target="_blank">Application Observability</a>: Capabilities</p>
+<ul>
+<li>Dynatrace injects code modules into Pods using the Kubernetes admission controller.</li>
+<li>Get granular control over the instrumented Pods using namespaces and annotations.</li>
+<li>Route Pod metrics to different Dynatrace environments within the same Kubernetes cluster.</li>
+<li>Enable data enrichment for Kubernetes environments.</li>
+</ul>
+</div>
+<h2 id="automated-scripted-approach">Automated (Scripted) Approach<a class="headerlink" href="#automated-scripted-approach" title="Permanent link">#</a></h2>
+<h3 id="generate-dynatrace-tokens">Generate Dynatrace Tokens<a class="headerlink" href="#generate-dynatrace-tokens" title="Permanent link">#</a></h3>
+<p>In your Dynatrace tenant, launch the <code>Kubernetes</code> app.  From the Overview tab, click on <code>Add cluster</code>.</p>
+<p><img alt="Add Cluster" src="../img/deploy-dynatrace_k8s_add_cluster.png" /></p>
+<p>We do not need to configure anything on this screen other than generating the tokens.  Scroll down to the section <strong>Install Dynatrace Operator</strong>.</p>
+<p><img alt="Dynatrace Tokens" src="../img/deploy-dynatrace_k8s_generate_tokens.png" /></p>
+<p>Generate a Dynatrace Operator Token.  Copy and save the value somewhere, we will need it shortly.</p>
+<p>Generate a Data Ingest Token.  Copy and save the value somewhere, we will need it shortly.</p>
+<h3 id="set-environment-variables">Set Environment Variables<a class="headerlink" href="#set-environment-variables" title="Permanent link">#</a></h3>
+<p>The automation script will utilize environment variables for deploying Dynatrace on Kubernetes.</p>
+<p>From your terminal, set the environment variables with the <code>export</code> command.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DT_TENANT</span><span class="o">=</span>https://abc123.live.dynatrace.com
+<span class="nb">export</span><span class="w"> </span><span class="nv">DT_OPERATOR_TOKEN</span><span class="o">=</span>dt0c01.&lt;YOUR-DYNATRACE-OPERATOR-TOKEN&gt;
+<span class="nb">export</span><span class="w"> </span><span class="nv">DT_INGEST_TOKEN</span><span class="o">=</span>dt0c01.&lt;YOUR-DATA-INGEST-TOKEN&gt;
+</code></pre></div>
+<h3 id="deploy-dynatrace_1">Deploy Dynatrace<a class="headerlink" href="#deploy-dynatrace_1" title="Permanent link">#</a></h3>
+<p>Deploy the Dynatrace Operator.</p>
+<div class="highlight"><pre><span></span><code>dynatraceDeployOperator
+</code></pre></div>
+<p>Validate that the Dynatrace Operator was deployed successfully.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>dynatrace
+</code></pre></div>
+<p>Deploy the Dynakube with Kubernetes Platform Monitoring + Application Observability.</p>
+<div class="highlight"><pre><span></span><code>deployApplicationMonitoring
+</code></pre></div>
+<p>Validate that the Dynatrace Dynakube was deployed successfully.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>dynatrace
+</code></pre></div>
+<h3 id="refresh-application-pods">Refresh Application Pods<a class="headerlink" href="#refresh-application-pods" title="Permanent link">#</a></h3>
+<p>Now that Dynatrace is deployed, let's refresh/recycle the application pods for <code>astroshop</code> to inject the OneAgent code modules.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>astroshop<span class="w"> </span>--field-selector<span class="o">=</span><span class="s2">&quot;status.phase=Running&quot;</span>
+</code></pre></div>
+<h3 id="validate-log-ingest">Validate Log Ingest<a class="headerlink" href="#validate-log-ingest" title="Permanent link">#</a></h3>
+<p>In your Dynatrace tenant, return to the <code>Kubernetes</code> app.  From the Cluster overview tab, click on <code>Namespaces</code> to open the list of Namespaces on the Cluster.</p>
+<p><img alt="List Namespaces" src="../img/deploy-dynatrace_k8s_cluster_list_namespaces.png" /></p>
+<p>From the list of Namespaces, click on <code>astroshop</code>.  From the Namespace pop-out, click the <code>Logs</code> tab.  Verify in the chart that logs are being ingested for the <code>astroshop</code> namespace.  Click on <code>Run query</code> on the <strong>Show logs in current context</strong> option.</p>
+<p><img alt="Namespace Logs" src="../img/deploy-dynatrace_k8s_namespace_logs.png" /></p>
+<p>Validate log data after running the query.</p>
+<p><img alt="Namespace Logs Query" src="../img/deploy-dynatrace_k8s_namespace_query_logs.png" /></p>
+<h2 id="continue">Continue<a class="headerlink" href="#continue" title="Permanent link">#</a></h2>
+<p>In the next section, we'll configure Log Monitoring in Dynatrace.</p>
+<div class="grid cards">
+<ul>
+<li><a href="5-configure-dynatrace.md">Continue to configuring Dynatrace Log Monitoring<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
+</ul>
+</div>
+<h2 id="manual-guided-approach">Manual (Guided) Approach<a class="headerlink" href="#manual-guided-approach" title="Permanent link">#</a></h2>
+<h3 id="start-monitoring-kubernetes">Start Monitoring Kubernetes<a class="headerlink" href="#start-monitoring-kubernetes" title="Permanent link">#</a></h3>
+<p>In your Dynatrace tenant, launch the <code>Kubernetes</code> app.  From the Overview tab, click on <code>Add cluster</code>.</p>
+<p><img alt="Add Cluster" src="../img/deploy-dynatrace_k8s_add_cluster.png" /></p>
+<p><strong>1. Select distribution</strong></p>
+<p>Choose <code>Other distributions</code> as your distribution, as we will be deploying Dynatrace on a generic Kind Kubernetes cluster.</p>
+<p><strong>2. Select observability options</strong></p>
+<p>Choose <code>Kubernetes platform monitoring + Application observability</code> as your observability option.  This will define your Dynakube spec/configuration.</p>
+<p>Toggle the <code>Log Management and Analytics</code> flag/setting to <code>Enabled</code>.  Expand the option and select <code>Fully managed with Dynatrace Log Module</code>.</p>
+<p>Check the box for <code>Restrict Log monitoring to certain resources</code>.  In the <code>Namespaces</code> field, type <code>astroshop</code>.  This will filter log ingestion on logs related to the <code>astroshop</code> Kubernetes namespace.</p>
+<p>Toggle the <code>Extensions</code> flag/setting to <code>Disabled</code>.  We will not be using this feature in this lab.</p>
+<p><img alt="Select Distribution" src="../img/deploy-dynatrace_k8s_select_distribution.png" /></p>
+<p><strong>3. Configure cluster</strong></p>
+<p>Give your Kubernetes cluster a name, enter <code>enablement-log-ingest-101</code>.</p>
+<p><strong>4. Install Dynatrace Operator</strong></p>
+<p>Generate a Dynatrace Operator Token.  Copy and save the value somewhere, in case you need it.  The value will automatically be added to the <code>dynakube.yaml</code> file.</p>
+<p>Generate a Data Ingest Token.  Copy and save the value somewhere, in case you need it.  The value will automatically be added to the <code>dynakube.yaml</code> file.</p>
+<p>Download the <code>dynakube.yaml</code> file.</p>
+<p>Copy the <code>helm install dynatrace-operator</code> command to your clipboard.  Use the command from your Dynatrace tenant, but it should look similar to this:
+<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>install<span class="w"> </span>dynatrace-operator<span class="w"> </span>oci://public.ecr.aws/dynatrace/dynatrace-operator<span class="w"> </span><span class="se">\</span>
+--create-namespace<span class="w"> </span><span class="se">\</span>
+--namespace<span class="w"> </span>dynatrace<span class="w"> </span><span class="se">\</span>
+--atomic
+</code></pre></div></p>
+<p><img alt="Configure Cluster" src="../img/deploy-dynatrace_k8s_configure_cluster.png" /></p>
+<h3 id="deploy-dynatrace-operator">Deploy Dynatrace Operator<a class="headerlink" href="#deploy-dynatrace-operator" title="Permanent link">#</a></h3>
+<p>Navigate back to your GitHub Codespaces instance.  From the terminal, paste the <code>helm install dynatrace-operator</code> command and execute it.</p>
+<p><img alt="Deploy Dynatrace Operator" src="../img/deploy-dynatrace_k8s_deploy_dt_operator.png" /></p>
+<p>Validate the new Dynatrace pods are running:
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>dynatrace
+</code></pre></div></p>
+<h3 id="deploy-dynakube">Deploy Dynakube<a class="headerlink" href="#deploy-dynakube" title="Permanent link">#</a></h3>
+<p>Locate the <code>dynakube.yaml</code> file that you downloaded from your tenant.  With the file (directory) open, navigate back to your GitHub Codespaces instance.  Click and hold to drag and drop the <code>dynakube.yaml</code> file into your Codespaces instance.</p>
+<p><img alt="Copy Dynakube" src="../img/deploy-dynatrace_copy_dynakube.gif" /></p>
+<div class="admonition tip">
+<p class="admonition-title">ActiveGate Container Resources</p>
+<p>Consider changing the ActiveGate's resources for better performance in this lab environment
+<div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DynaKube</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">activeGate</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100m</span>
+<span class="w">        </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">512Mi</span>
+<span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500m</span>
+<span class="w">        </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">768Mi</span>
+</code></pre></div></p>
+</div>
+<p>Deploy the Dynakube using <code>kubectl</code>.
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>dynakube.yaml
+</code></pre></div></p>
+<p>Wait 3-5 minutes and validate that the Dynatrace pods are running.
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>dynatrace
+</code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>NAME</th>
+<th>READY</th>
+<th>STATUS</th>
+<th>RESTARTS</th>
+<th>AGE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dynatrace-oneagent-csi-driver-7b9kx</td>
+<td>4/4</td>
+<td>Running</td>
+<td>0</td>
+<td>3m5s</td>
+</tr>
+<tr>
+<td>dynatrace-operator-747d795b5c-hrmtl</td>
+<td>1/1</td>
+<td>Running</td>
+<td>0</td>
+<td>3m5s</td>
+</tr>
+<tr>
+<td>dynatrace-webhook-5b697d4b9d-6v95s</td>
+<td>1/1</td>
+<td>Running</td>
+<td>0</td>
+<td>3m5s</td>
+</tr>
+<tr>
+<td>dynatrace-webhook-5b697d4b9d-nvslc</td>
+<td>1/1</td>
+<td>Running</td>
+<td>0</td>
+<td>3m5s</td>
+</tr>
+<tr>
+<td>enablement-log-ingest-101-activegate-0</td>
+<td>1/1</td>
+<td>Running</td>
+<td>0</td>
+<td>90s</td>
+</tr>
+<tr>
+<td>enablement-log-ingest-101-logmonitoring-dxrsh</td>
+<td>1/1</td>
+<td>Running</td>
+<td>0</td>
+<td>89s</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dynakube-log-module-spec">Dynakube Log Module Spec<a class="headerlink" href="#dynakube-log-module-spec" title="Permanent link">#</a></h3>
+<p>Enabling <strong>Log Management and Analytics</strong> with the option <code>Fully managed with Dynatrace Log Module</code> will add the Log Module to the Dynakube spec.</p>
+<div class="highlight"><span class="filename">Dynakube sample - Kubernetes platform monitoring + Application Observability + Log Management enabled</span><pre><span></span><code><span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dynatrace.com/v1beta3</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DynaKube</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enablement-log-ingest-101</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dynatrace</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">feature.dynatrace.com/k8s-app-enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">apiUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://&lt;tenant&gt;/api</span>
+<span class="w">  </span><span class="nt">metadataEnrichment</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">oneAgent</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">applicationMonitoring</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">  </span><span class="nt">activeGate</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">capabilities</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">routing</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes-monitoring</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100m</span>
+<span class="w">        </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">512Mi</span>
+<span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500m</span>
+<span class="w">        </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">768Mi</span>
+<span class="w">  </span><span class="nt">templates</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">logMonitoring</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">imageRef</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">public.ecr.aws/dynatrace/dynatrace-logmodule</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.309.66.20250401-150134</span>
+<span class="w">  </span><span class="nt">logMonitoring</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ingestRuleMatchers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">attribute</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s.namespace.name</span>
+<span class="w">        </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">astroshop</span>
+</code></pre></div>
+<p>The Log Module runs as a container in a standalone pod (as part of a daemonset) on each node.  The <code>spec.templates.imageRef</code> defines the container image and tag to be used.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">templates</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">logMonitoring</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">imageRef</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">public.ecr.aws/dynatrace/dynatrace-logmodule</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.309.66.20250401-150134</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">ImagePullBackOff Error</p>
+<p>In case you encounter an <strong>ImagePullBackOff</strong> error, check <a href="https://gallery.ecr.aws/dynatrace/dynatrace-logmodule" target="_blank">public.ecr.aws</a> to make sure the container image with that tag exists.  If not, change the value to use an existing one.
+<img alt="Container Registry" src="../img/deploy-dynatrace_log_module_container_registry.png" /></p>
+</div>
+<p>Enabling the option <strong>Restrict Log monitoring to certain resources</strong> option will add <code>spec.logMonitoring.ingestRuleMatchers</code> to the Dynakube definition.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">logMonitoring</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ingestRuleMatchers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">attribute</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s.namespace.name</span>
+<span class="w">        </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">astroshop</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Log Ingest Rule Configuration</p>
+<p>Log ingest for the Log Module is controlled by the Dynatrace tenant, not the local Dynakube configuration!  This configuration is a quality of life feature that is to be used during the initial deployment of Dynatrace on Kubernetes.</p>
+</div>
+<p>By enabling the Log Module in your <code>dynakube.yaml</code> definition, this will enable the Dynakube to add a Log Ingest rule scoped at the Cluster-level within the Dynatrace tenant.</p>
+<p>As of Dynatrace Operator version <code>1.4.2</code> and Dynatrace version <code>1.311</code>, the Log Ingest rule is added upon deployment and creation of the Kubernetes Cluster setting, but any further changes within the Dynakube's configuration will not update the setting.  Manage Log Ingest rules within the Dynatrace tenant.  If you seek to automate this process at the Kubernetes Cluster-level, consider deploying <a href="https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco" target="_blank">Dynatrace Configuration As Code</a> to <a href="https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco/reference/supported-configuration#settings" target="_blank">manage the setting</a>.</p>
+<div class="grid cards">
+<ul>
+<li><a href="https://docs.dynatrace.com/docs/analyze-explore-automate/logs/lma-log-ingestion/lma-log-ingestion-via-oa/lma-logs-from-kubernetes" target="_blank">Learn More<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
+</ul>
+</div>
+<h3 id="configure-log-ingest">Configure Log Ingest<a class="headerlink" href="#configure-log-ingest" title="Permanent link">#</a></h3>
+<p>In your Dynatrace tenant, return to the <code>Kubernetes</code> app.  Click on the <code>Explorer</code> tab.  In your list of Clusters, click on <code>enablement-log-ingest-101</code>.</p>
+<p><img alt="Clusters" src="../img/deploy-dynatrace_k8s_clusters.png" /></p>
+<p>From the Cluster overview pop-out, in the top right corner, click on the <code>...</code> ellipsis icon, and then click on the drilldown for <strong>Log ingest rules</strong>.</p>
+<p><img alt="Log Ingest Rules Drilldown" src="../img/deploy-dynatrace_k8s_cluster_drill_log_ingest_rules.png" /></p>
+<p>This will open the <code>Kubernetes Classic</code> app and the connection settings for the Kubernetes Cluster.  In the Log Monitoring settings, the Log Ingest rules are shown.  You'll find the rule that was created by the Dynakube that matches the configuration in the <code>dynakube.yaml</code> spec.  It should be configured to only ingest logs from the <code>astroshop</code> namespace.</p>
+<p><img alt="Log Ingest Rule" src="../img/deploy-dynatrace_k8s_cluster_log_ingest_rule_setting.png" /></p>
+<h3 id="refresh-application-pods_1">Refresh Application Pods<a class="headerlink" href="#refresh-application-pods_1" title="Permanent link">#</a></h3>
+<p>Now that Dynatrace is deployed, let's refresh/recycle the application pods for <code>astroshop</code> to inject the OneAgent code modules.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>astroshop<span class="w"> </span>--field-selector<span class="o">=</span><span class="s2">&quot;status.phase=Running&quot;</span>
+</code></pre></div>
+<h3 id="validate-log-ingest_1">Validate Log Ingest<a class="headerlink" href="#validate-log-ingest_1" title="Permanent link">#</a></h3>
+<p>In your Dynatrace tenant, return to the <code>Kubernetes</code> app.  From the Cluster overview tab, click on <code>Namespaces</code> to open the list of Namespaces on the Cluster.</p>
+<p><img alt="List Namespaces" src="../img/deploy-dynatrace_k8s_cluster_list_namespaces.png" /></p>
+<p>From the list of Namespaces, click on <code>astroshop</code>.  From the Namespace pop-out, click the <code>Logs</code> tab.  Verify in the chart that logs are being ingested for the <code>astroshop</code> namespace.  Click on <code>Run query</code> on the <strong>Show logs in current context</strong> option.</p>
+<p><img alt="Namespace Logs" src="../img/deploy-dynatrace_k8s_namespace_logs.png" /></p>
+<p>Validate log data after running the query.</p>
+<p><img alt="Namespace Logs Query" src="../img/deploy-dynatrace_k8s_namespace_query_logs.png" /></p>
+<h2 id="continue_1">Continue<a class="headerlink" href="#continue_1" title="Permanent link">#</a></h2>
+<p>In the next section, we'll configure Log Monitoring in Dynatrace.</p>
+<div class="grid cards">
+<ul>
+<li><a href="5-configure-dynatrace.md">Continue to configuring Dynatrace Log Monitoring<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -9,23 +9,25 @@
       
       
       
+        <link rel="prev" href="../8-anomaly-detection/">
       
-        <link rel="next" href="2-getting-started/">
+      
+        <link rel="next" href="../resources/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
-        <title>Dynatrace Workshop: Scaling Log Analytics</title>
+        <title>9. Dashboards - Dynatrace Workshop: Scaling Log Analytics</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -55,7 +57,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -81,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lab-overview" class="md-skip">
+        <a href="#dashboards" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +99,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Dynatrace Workshop: Scaling Log Analytics" class="md-header__button md-logo" aria-label="Dynatrace Workshop: Scaling Log Analytics" data-md-component="logo">
+    <a href=".." title="Dynatrace Workshop: Scaling Log Analytics" class="md-header__button md-logo" aria-label="Dynatrace Workshop: Scaling Log Analytics" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -117,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1. About
+              9. Dashboards
             
           </span>
         </div>
@@ -240,7 +242,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Dynatrace Workshop: Scaling Log Analytics" class="md-nav__button md-logo" aria-label="Dynatrace Workshop: Scaling Log Analytics" data-md-component="logo">
+    <a href=".." title="Dynatrace Workshop: Scaling Log Analytics" class="md-nav__button md-logo" aria-label="Dynatrace Workshop: Scaling Log Analytics" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -267,6 +269,166 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Getting started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-codespaces/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Codespaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-deploy-dynatrace/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Deploy Dynatrace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-scaling-log-analytics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Scaling Log Analytics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-dql-exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. DQL Exercises
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-configure-dynatrace/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Configure Dynatrace
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-anomaly-detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Anomaly Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -276,23 +438,25 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
   <span class="md-ellipsis">
-    1. About
+    9. Dashboards
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="." class="md-nav__link md-nav__link--active">
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    1. About
+    9. Dashboards
   </span>
   
 
@@ -304,6 +468,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -312,37 +478,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lab-overview" class="md-nav__link">
+  <a href="#lab-step" class="md-nav__link">
     <span class="md-ellipsis">
-      Lab Overview
+      Lab Step
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#technical-specification" class="md-nav__link">
-    <span class="md-ellipsis">
-      Technical Specification
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Technical Specification">
+    <nav class="md-nav" aria-label="Lab Step">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#technologies-used" class="md-nav__link">
+  <a href="#sub-step-1" class="md-nav__link">
     <span class="md-ellipsis">
-      Technologies Used
+      Sub Step 1
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#reference-architecture" class="md-nav__link">
+  <a href="#sub-step-2" class="md-nav__link">
     <span class="md-ellipsis">
-      Reference Architecture
+      Sub Step 2
     </span>
   </a>
   
@@ -377,167 +534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="2-getting-started/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    2. Getting started
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="3-codespaces/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    3. Codespaces
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="4-deploy-dynatrace/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    4. Deploy Dynatrace
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="5-scaling-log-analytics/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    5. Scaling Log Analytics
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="6-dql-exercises/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    6. DQL Exercises
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="7-configure-dynatrace/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    7. Configure Dynatrace
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="8-anomaly-detection/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    8. Anomaly Detection
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="9-dashboards/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    9. Dashboards
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="resources/" class="md-nav__link">
+      <a href="../resources/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -557,7 +554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cleanup/" class="md-nav__link">
+      <a href="../cleanup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -587,6 +584,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -595,37 +594,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lab-overview" class="md-nav__link">
+  <a href="#lab-step" class="md-nav__link">
     <span class="md-ellipsis">
-      Lab Overview
+      Lab Step
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#technical-specification" class="md-nav__link">
-    <span class="md-ellipsis">
-      Technical Specification
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Technical Specification">
+    <nav class="md-nav" aria-label="Lab Step">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#technologies-used" class="md-nav__link">
+  <a href="#sub-step-1" class="md-nav__link">
     <span class="md-ellipsis">
-      Technologies Used
+      Sub Step 1
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#reference-architecture" class="md-nav__link">
+  <a href="#sub-step-2" class="md-nav__link">
     <span class="md-ellipsis">
-      Reference Architecture
+      Sub Step 2
     </span>
   </a>
   
@@ -663,74 +653,35 @@
   
 
 
-  <h1>1. About</h1>
-
+<!--TODO: Update Lab Task -->
+<h1 id="dashboards">Dashboards<a class="headerlink" href="#dashboards" title="Permanent link">#</a></h1>
+<!--TODO: Update bizevent code snippet -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  dynatrace.sendBizEvent('page_load', {"page": "1. About"})
+  dynatrace.sendBizEvent('page_load', {"page": "4. Content Placeholder"})
 });
 </script>
 
-<!--TODO: Remove Under Construction -->
-<div class="admonition warning">
-<p class="admonition-title">Under Construction</p>
-<p>This guide is under construction and is not ready for use!</p>
-</div>
-<!--TODO: Update disclaimer (optional) -->
-<div class="admonition warning">
-<p class="admonition-title">Support Policy</p>
-<p>This is an enablement project created by the Center of Excellence - Enablement Team at Dynatrace.</p>
-<p><strong>Support is provided via GitHub issues only</strong>. The materials provided in this repository are offered "as-is" without any warranties, express or implied. Use them at your own risk.</p>
-</div>
-<!--TODO: Update lab overview (match readme) -->
-<h2 id="lab-overview">Lab Overview<a class="headerlink" href="#lab-overview" title="Permanent link">#</a></h2>
-<p>During this hands-on training lab, ...</p>
-<p><strong>Lab tasks:</strong></p>
-<ol>
-<li>
-<p>Task 1</p>
-<ul>
-<li>Task Step or Description</li>
-</ul>
-</li>
-<li>
-<p>Task 2</p>
-</li>
-<li>
-<p>Task 3</p>
-</li>
-<li>
-<p>Clean up GitHub codespaces instance</p>
-</li>
-</ol>
-<!--TODO: Update tech spec of lab components -->
-<h2 id="technical-specification">Technical Specification<a class="headerlink" href="#technical-specification" title="Permanent link">#</a></h2>
-<h3 id="technologies-used">Technologies Used<a class="headerlink" href="#technologies-used" title="Permanent link">#</a></h3>
-<ul>
-<li><a href="https://www.dynatrace.com/trial">Dynatrace</a></li>
-<li><a href="https://kind.sigs.k8s.io/">Kubernetes Kind</a><ul>
-<li>tested on Kind tag 0.27.0</li>
-</ul>
-</li>
-<li><a href="https://cert-manager.io/">Cert Manager</a> - *prerequisite for OpenTelemetry Operator<ul>
-<li>tested on cert-manager v1.15.3</li>
-</ul>
-</li>
-<li><a href="https://github.com/Dynatrace/dynatrace-operator">Dynatrace Operator</a><ul>
-<li>tested on v1.4.2 (April 2025)</li>
-</ul>
-</li>
-<li>Dynatrace OneAgent<ul>
-<li>tested on v1.309 (April 2025)</li>
-</ul>
-</li>
-</ul>
-<h3 id="reference-architecture">Reference Architecture<a class="headerlink" href="#reference-architecture" title="Permanent link">#</a></h3>
-<h2 id="continue">Continue<a class="headerlink" href="#continue" title="Permanent link">#</a></h2>
-<p>In the next section, we'll review the prerequisites for this lab needed before launching our Codespaces instance.</p>
+<!--TODO: Update Lab task and learn more link -->
+<p>Lab task description and primer</p>
 <div class="grid cards">
 <ul>
-<li><a href="2-getting-started/">Continue to getting started<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
+<li><a href="learn-more-url" target="_blank">Learn More<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
+</ul>
+</div>
+<!--TODO: Lab Task Details -->
+<h2 id="lab-step">Lab Step<a class="headerlink" href="#lab-step" title="Permanent link">#</a></h2>
+<p>Step Details</p>
+<h3 id="sub-step-1">Sub Step 1<a class="headerlink" href="#sub-step-1" title="Permanent link">#</a></h3>
+<p>Sub Step Details</p>
+<h3 id="sub-step-2">Sub Step 2<a class="headerlink" href="#sub-step-2" title="Permanent link">#</a></h3>
+<p>Sub Step Details</p>
+<h2 id="continue">Continue<a class="headerlink" href="#continue" title="Permanent link">#</a></h2>
+<!--TODO: Update Continue Section -->
+<p>In the next section, we'll ...</p>
+<div class="grid cards">
+<ul>
+<li><a href="next-page.md">Continue to ...<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
 </ul>
 </div>
 
@@ -779,10 +730,10 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
       
     
   </body>
