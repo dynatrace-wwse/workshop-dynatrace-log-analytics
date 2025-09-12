@@ -9,7 +9,7 @@
         {
             "id": "d882ccf2-7064-4ec5-8124-80b67c6c1bc9",
             "type": "markdown",
-            "markdown": "##  Aggregations\n* The **SUMMARIZE** command groups together records that have the same values for a given field and aggregates them.\n* You can also set alias names to attributes within the summarize command.\n* The **MAKETIMESERIES** command creates a timeseries from the data in the stream. It provides a convenient way to chart raw non-metric data (such as events or logs) over time. \n\n## Exercise 1 \n1. Count the number of logs of each log level\n2. Count the number of logs of each log level and rename/alias the filed to \"level\"\n3. Count the number of logs of each log level on each host, removing \"NONE\" loglevels\n4. Visualize the number of error logs over time\n5. Visualize the number of logs of each log level over time\n6. Visualize the number of logs of each log level over time with 5 minute intervals"
+            "markdown": "##  Aggregations\n* The **SUMMARIZE** command groups together records that have the same values for a given field and aggregates them.\n* You can also set alias names to attributes within the summarize command.\n* The **MAKETIMESERIES** command creates a timeseries from the data in the stream. It provides a convenient way to chart raw non-metric data (such as events or logs) over time. \n\n## Exercise 1 \n1. Count the number of logs of each log level\n2. Count the number of logs of each log level and rename/alias the field to \"level\"\n3. Count the number of logs of each log level on each `k8s.container.name`, removing \"NONE\" loglevels\n4. Visualize the number of error logs over time\n5. Visualize the number of logs of each log level over time\n6. Visualize the number of logs of each log level over time with 5 minute intervals"
         },
         {
             "id": "6cb50b33-ea96-46c6-8144-1823a55ef7d2",
@@ -17,10 +17,11 @@
             "title": "Exercise 1.1 - Logs by Level",
             "showTitle": false,
             "drilldownPath": [],
+            "filterSegments": [],
             "state": {
                 "input": {
                     "timeframe": {
-                        "from": "-30m",
+                        "from": "now()-30m",
                         "to": "now()"
                     },
                     "value": ""
@@ -49,7 +50,7 @@
                         "truncationMode": "middle"
                     },
                     "singleValue": {
-                        "showLabel": true,
+                        "labelMode": "custom",
                         "label": "",
                         "prefixIcon": "",
                         "autoscale": true,
@@ -93,8 +94,12 @@
                         "truncationMode": "middle"
                     },
                     "valueBoundaries": {
-                        "min": "auto",
-                        "max": "auto"
+                        "min": {
+                            "mode": "auto"
+                        },
+                        "max": {
+                            "mode": "auto"
+                        }
                     }
                 },
                 "querySettings": {
@@ -109,9 +114,9 @@
                     "davisVisualization": {
                         "isAvailable": true
                     }
-                }
-            },
-            "filterSegments": []
+                },
+                "state": "idle"
+            }
         },
         {
             "id": "31fa8848-0fe5-4c36-8e64-f7b8756e7424",
@@ -119,10 +124,11 @@
             "title": "Exercise 1.2 - Logs by Level with Alias",
             "showTitle": false,
             "drilldownPath": [],
+            "filterSegments": [],
             "state": {
                 "input": {
                     "timeframe": {
-                        "from": "-30m",
+                        "from": "now()-30m",
                         "to": "now()"
                     },
                     "value": ""
@@ -151,7 +157,7 @@
                         "truncationMode": "middle"
                     },
                     "singleValue": {
-                        "showLabel": true,
+                        "labelMode": "custom",
                         "label": "",
                         "prefixIcon": "",
                         "autoscale": true,
@@ -195,8 +201,12 @@
                         "truncationMode": "middle"
                     },
                     "valueBoundaries": {
-                        "min": "auto",
-                        "max": "auto"
+                        "min": {
+                            "mode": "auto"
+                        },
+                        "max": {
+                            "mode": "auto"
+                        }
                     }
                 },
                 "querySettings": {
@@ -211,20 +221,21 @@
                     "davisVisualization": {
                         "isAvailable": true
                     }
-                }
-            },
-            "filterSegments": []
+                },
+                "state": "idle"
+            }
         },
         {
             "id": "e84228fd-dd4c-44db-9df2-d7961ccbb38d",
             "type": "dql",
-            "title": "Exercise 1.3 - Logs by level and host, removing NONE",
+            "title": "Exercise 1.3 - Logs by level and container name, removing NONE loglevel",
             "showTitle": false,
             "drilldownPath": [],
+            "filterSegments": [],
             "state": {
                 "input": {
                     "timeframe": {
-                        "from": "-30m",
+                        "from": "now()-30m",
                         "to": "now()"
                     },
                     "value": ""
@@ -253,7 +264,7 @@
                         "truncationMode": "middle"
                     },
                     "singleValue": {
-                        "showLabel": true,
+                        "labelMode": "custom",
                         "label": "",
                         "prefixIcon": "",
                         "autoscale": true,
@@ -297,8 +308,12 @@
                         "truncationMode": "middle"
                     },
                     "valueBoundaries": {
-                        "min": "auto",
-                        "max": "auto"
+                        "min": {
+                            "mode": "auto"
+                        },
+                        "max": {
+                            "mode": "auto"
+                        }
                     }
                 },
                 "querySettings": {
@@ -313,9 +328,9 @@
                     "davisVisualization": {
                         "isAvailable": true
                     }
-                }
-            },
-            "filterSegments": []
+                },
+                "state": "idle"
+            }
         },
         {
             "id": "d09cbbad-16eb-45a7-b99f-b2e2dc5e52dd",
@@ -323,10 +338,11 @@
             "title": "Exercise 1.4 - Error logs over time",
             "showTitle": false,
             "drilldownPath": [],
+            "filterSegments": [],
             "state": {
                 "input": {
                     "timeframe": {
-                        "from": "-30m",
+                        "from": "now()-30m",
                         "to": "now()"
                     },
                     "value": ""
@@ -355,7 +371,7 @@
                         "truncationMode": "middle"
                     },
                     "singleValue": {
-                        "showLabel": true,
+                        "labelMode": "custom",
                         "label": "",
                         "prefixIcon": "",
                         "autoscale": true,
@@ -399,8 +415,12 @@
                         "truncationMode": "middle"
                     },
                     "valueBoundaries": {
-                        "min": "auto",
-                        "max": "auto"
+                        "min": {
+                            "mode": "auto"
+                        },
+                        "max": {
+                            "mode": "auto"
+                        }
                     }
                 },
                 "querySettings": {
@@ -415,9 +435,9 @@
                     "davisVisualization": {
                         "isAvailable": true
                     }
-                }
-            },
-            "filterSegments": []
+                },
+                "state": "idle"
+            }
         },
         {
             "id": "fc72cb42-4493-4b66-95e3-63669f622148",
@@ -425,10 +445,11 @@
             "title": "Exercise 1.5 - Logs by level over time",
             "showTitle": false,
             "drilldownPath": [],
+            "filterSegments": [],
             "state": {
                 "input": {
                     "timeframe": {
-                        "from": "-30m",
+                        "from": "now()-30m",
                         "to": "now()"
                     },
                     "value": ""
@@ -457,7 +478,7 @@
                         "truncationMode": "middle"
                     },
                     "singleValue": {
-                        "showLabel": true,
+                        "labelMode": "custom",
                         "label": "",
                         "prefixIcon": "",
                         "autoscale": true,
@@ -501,8 +522,12 @@
                         "truncationMode": "middle"
                     },
                     "valueBoundaries": {
-                        "min": "auto",
-                        "max": "auto"
+                        "min": {
+                            "mode": "auto"
+                        },
+                        "max": {
+                            "mode": "auto"
+                        }
                     }
                 },
                 "querySettings": {
@@ -517,9 +542,9 @@
                     "davisVisualization": {
                         "isAvailable": true
                     }
-                }
-            },
-            "filterSegments": []
+                },
+                "state": "idle"
+            }
         },
         {
             "id": "fa36b1e4-d96b-44a1-881a-2f64f740ca4c",
@@ -527,10 +552,11 @@
             "title": "Exercise 1.6 - Logs by level over time with 5 min interval",
             "showTitle": false,
             "drilldownPath": [],
+            "filterSegments": [],
             "state": {
                 "input": {
                     "timeframe": {
-                        "from": "-30m",
+                        "from": "now()-30m",
                         "to": "now()"
                     },
                     "value": ""
@@ -559,7 +585,7 @@
                         "truncationMode": "middle"
                     },
                     "singleValue": {
-                        "showLabel": true,
+                        "labelMode": "custom",
                         "label": "",
                         "prefixIcon": "",
                         "autoscale": true,
@@ -603,8 +629,12 @@
                         "truncationMode": "middle"
                     },
                     "valueBoundaries": {
-                        "min": "auto",
-                        "max": "auto"
+                        "min": {
+                            "mode": "auto"
+                        },
+                        "max": {
+                            "mode": "auto"
+                        }
                     }
                 },
                 "querySettings": {
@@ -619,14 +649,14 @@
                     "davisVisualization": {
                         "isAvailable": true
                     }
-                }
-            },
-            "filterSegments": []
+                },
+                "state": "idle"
+            }
         },
         {
             "id": "f4e95ad0-4a9f-411e-97d7-4efedbdff643",
             "type": "markdown",
-            "markdown": "##  Order results with sort and limit results\n* By default, the **SORT** command sorts records in ascending order.\n* We can also limit the number of results with the **LIMIT** command.\n\n## Exercise 2\n1. I want  to see the latest error logs. Show the latest 5 error logs (descending order) in the last 30 minutes. \n2. We have some teams that are putting way too much debug logging on in production and we want to give ice cream to the teams that have the smallest amount of debug logs in production. Count the number of debug logs per log source and short them in ascending order so the winner is at the top. "
+            "markdown": "##  Order results with sort and limit results\n* By default, the **SORT** command sorts records in ascending order.\n* We can also limit the number of results with the **LIMIT** command.\n\n## Exercise 2\n1. I want  to see the latest error logs. Show the latest 5 error logs (descending order) in the last 30 minutes. \n2. We have some teams that are forgetting to include the proper loglevel in production and we want to give ice cream to the teams that have the smallest amount of logs with loglevel **NONE** in production. Count the number of NONE loglevel logs per `k8s.container.name` and sort them in ascending order so the winner is at the top. To avoid humiliation, limit the results to the top 10."
         },
         {
             "id": "5f592f4f-0e6f-4670-aca3-191cc2c2d570",
@@ -634,10 +664,11 @@
             "showTitle": false,
             "title": "Exercise 2.1 - Latest 5 Error Logs",
             "drilldownPath": [],
+            "filterSegments": [],
             "state": {
                 "input": {
                     "timeframe": {
-                        "from": "-30m",
+                        "from": "now()-30m",
                         "to": "now()"
                     },
                     "value": ""
@@ -666,7 +697,7 @@
                         "truncationMode": "middle"
                     },
                     "singleValue": {
-                        "showLabel": true,
+                        "labelMode": "custom",
                         "label": "",
                         "prefixIcon": "",
                         "autoscale": true,
@@ -710,8 +741,12 @@
                         "truncationMode": "middle"
                     },
                     "valueBoundaries": {
-                        "min": "auto",
-                        "max": "auto"
+                        "min": {
+                            "mode": "auto"
+                        },
+                        "max": {
+                            "mode": "auto"
+                        }
                     }
                 },
                 "querySettings": {
@@ -726,20 +761,21 @@
                     "davisVisualization": {
                         "isAvailable": true
                     }
-                }
-            },
-            "filterSegments": []
+                },
+                "state": "idle"
+            }
         },
         {
             "id": "ddfc6c35-a345-45a6-896d-4823f7d82549",
             "type": "dql",
             "showTitle": false,
-            "title": "Exercise 2.2 - Ascending Debug Log Count",
+            "title": "Exercise 2.2 - Ascending NONE Log Count by Container",
             "drilldownPath": [],
+            "filterSegments": [],
             "state": {
                 "input": {
                     "timeframe": {
-                        "from": "-30m",
+                        "from": "now()-30m",
                         "to": "now()"
                     },
                     "value": ""
@@ -768,7 +804,7 @@
                         "truncationMode": "middle"
                     },
                     "singleValue": {
-                        "showLabel": true,
+                        "labelMode": "custom",
                         "label": "",
                         "prefixIcon": "",
                         "autoscale": true,
@@ -812,8 +848,12 @@
                         "truncationMode": "middle"
                     },
                     "valueBoundaries": {
-                        "min": "auto",
-                        "max": "auto"
+                        "min": {
+                            "mode": "auto"
+                        },
+                        "max": {
+                            "mode": "auto"
+                        }
                     }
                 },
                 "querySettings": {
@@ -828,9 +868,9 @@
                     "davisVisualization": {
                         "isAvailable": true
                     }
-                }
-            },
-            "filterSegments": []
+                },
+                "state": "idle"
+            }
         }
     ]
 }
