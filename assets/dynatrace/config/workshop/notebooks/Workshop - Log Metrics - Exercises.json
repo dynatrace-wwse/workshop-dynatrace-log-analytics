@@ -14,13 +14,13 @@
         {
             "id": "931c2906-6306-410b-ad43-b84f6d51fa3e",
             "type": "markdown",
-            "markdown": "# Exercise:\n1. Find the count timeseries for \"log.loglevelcounter.oteldemo\"\n2. Filter by ERROR\n3. Visualize as single value\n4. Assign an alias"
+            "markdown": "# Exercise:\n1. Find the count timeseries for \"log.loglevelcounter\"\n2. Filter by ERROR\n3. Visualize as single value\n4. Assign an alias"
         },
         {
             "id": "fa07dbe1-8376-4e8b-8587-9e55054fc057",
             "type": "dql",
             "showTitle": false,
-            "title": "1. Find the count timeseries for \"log.loglevelcounter.oteldemo\"",
+            "title": "1. Find the count timeseries for \"log.loglevelcounter\"",
             "filterSegments": [],
             "state": {
                 "input": {

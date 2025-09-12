@@ -7,6 +7,11 @@
     "defaultSegments": [],
     "sections": [
         {
+            "id": "db25135e-0bee-419f-af04-7e1c0c64f0e1",
+            "type": "markdown",
+            "markdown": "## Anomaly Baselines\n\nYou can leverage Dynatrace's Davis AI to analyze your timeseries log data and [visualize a baseline](https://docs.dynatrace.com/docs/discover-dynatrace/platform/davis-ai/anomaly-detection)."
+        },
+        {
             "id": "0fb5a0f2-9ed8-49ee-a8b9-2c53f559c2ca",
             "type": "markdown",
             "markdown": "## Davis AI - Static Anomaly Baseline"
@@ -14,7 +19,7 @@
         {
             "id": "8ca88e63-96e6-48d8-b954-d71361bc8649",
             "type": "markdown",
-            "markdown": "**Exercise 1**\n1. Using the DQL tile, fetch logs for `loglevel == ”ERROR”` and `k8s.namespace.name == ”hipstershop”`\n2. Filter for `dt.process_group.detected_name == \"server frontend-*\"`\n3. And create it into a **Timeseries** Chart\n4. Select Options > Under the visualizations tab, enable **Davis AI Analyzer** and select the **Static Anomaly Baseline**"
+            "markdown": "**Exercise 1**\n1. Using the DQL section type, fetch logs for `loglevel == \"ERROR\" and k8s.namespace.name == \"astroshop\"`\n2. Filter for `matchesValue(k8s.container.name, \"imageprovider\")`\n3. And create it into a **timeseries** chart\n4. Select Options > Under the visualizations tab, enable **Davis AI Analyzer** and select the **Static Anomaly Baseline**"
         },
         {
             "id": "9a5077af-33a1-4452-acad-dd655a13e7ae",
@@ -56,7 +61,7 @@
                         "truncationMode": "middle"
                     },
                     "singleValue": {
-                        "showLabel": true,
+                        "labelMode": "custom",
                         "label": "",
                         "prefixIcon": "AnalyticsIcon",
                         "isIconVisible": false,
@@ -104,8 +109,12 @@
                         "truncationMode": "middle"
                     },
                     "valueBoundaries": {
-                        "min": "auto",
-                        "max": "auto"
+                        "min": {
+                            "mode": "auto"
+                        },
+                        "max": {
+                            "mode": "auto"
+                        }
                     },
                     "autoSelectVisualization": true
                 },
@@ -133,7 +142,7 @@
         {
             "id": "1ba2ae00-3809-48e9-aa45-e3f69991cec5",
             "type": "markdown",
-            "markdown": "**Exercise 2**\n1. Repeat the same steps as above until step 3\n4. Select Options > Under the visualizations tab, enable **Davis AI Analyzer** and select the **Auto-adaptive Anomaly Baseline**"
+            "markdown": "**Exercise 2**\n1. Repeat the same steps as above through step 3\n4. Select Options > Under the visualizations tab, enable **Davis AI Analyzer** and select the **Auto-adaptive Anomaly Baseline**"
         },
         {
             "id": "62e82148-1d66-4233-8f17-6d6aa1dd1c9f",
@@ -175,7 +184,7 @@
                         "truncationMode": "middle"
                     },
                     "singleValue": {
-                        "showLabel": true,
+                        "labelMode": "custom",
                         "label": "",
                         "prefixIcon": "AnalyticsIcon",
                         "isIconVisible": false,
@@ -223,8 +232,12 @@
                         "truncationMode": "middle"
                     },
                     "valueBoundaries": {
-                        "min": "auto",
-                        "max": "auto"
+                        "min": {
+                            "mode": "auto"
+                        },
+                        "max": {
+                            "mode": "auto"
+                        }
                     },
                     "autoSelectVisualization": true
                 },
@@ -252,7 +265,7 @@
         {
             "id": "b3b936b9-6b16-44a7-8eb8-977a0c6ec9f0",
             "type": "markdown",
-            "markdown": "**Exercise 3**\n1. Repeat the same steps as above until step 3\n4. Select Options > Under the visualizations tab, enable **Davis AI Analyzer** and select the **Seasonal Anomaly Baseline**"
+            "markdown": "**Exercise 3**\n1. Repeat the same steps as above through step 3\n4. Select Options > Under the visualizations tab, enable **Davis AI Analyzer** and select the **Seasonal Anomaly Baseline**"
         },
         {
             "id": "4c11b77e-877b-4a82-9f63-908d1ff3bc73",
@@ -294,7 +307,7 @@
                         "truncationMode": "middle"
                     },
                     "singleValue": {
-                        "showLabel": true,
+                        "labelMode": "custom",
                         "label": "",
                         "prefixIcon": "AnalyticsIcon",
                         "isIconVisible": false,
@@ -342,8 +355,12 @@
                         "truncationMode": "middle"
                     },
                     "valueBoundaries": {
-                        "min": "auto",
-                        "max": "auto"
+                        "min": {
+                            "mode": "auto"
+                        },
+                        "max": {
+                            "mode": "auto"
+                        }
                     },
                     "autoSelectVisualization": true
                 },

@@ -9,22 +9,151 @@
         {
             "id": "adbee822-325b-4549-b3d2-b6d6e895d873",
             "type": "markdown",
-            "markdown": "# Davis CoPilot\n## DQL is super powerful, but what if we could use generative AI to do some of the hard work for us? Let's use Davis CoPilot to build the DQL for some common use cases\n![](https://mkt-cdn.dynatrace.com/assets/Marketing/content-images/_1920x921_crop_center-center_100_line/davis-chart.png.webp)"
+            "markdown": "# Davis CoPilot\n### DQL is super powerful, but what if we could use generative AI to do some of the hard work for us? Let's use **[Davis CoPilot](https://docs.dynatrace.com/docs/discover-dynatrace/platform/davis-ai/copilot/copilot-getting-started)** to build the DQL for some common use cases\n![](https://raw.githubusercontent.com/dynatrace-wwse/workshop-dynatrace-log-analytics/refs/heads/main/assets/images/logs-copilot_davis_ai_marketecture.png)"
         },
         {
             "id": "dfda42c9-5445-430d-87e6-4d66273d5722",
             "type": "markdown",
-            "markdown": "### Investigate your logs for specific information\n\n**Get a high level overview of your logs**\n\n```Summarize all logs by log level```\n\n**Convert logs into a time series**\n\n```Show me all error logs this week with 15 minute intervals```\n\n**Split by K8s Namespace over time**\n\n```Show me the count of all error logs grouped by k8s namespace with a 5-minute interval```"
+            "markdown": "**Get a high level overview of your logs**\n\n```Summarize all logs by log level```"
         },
         {
-            "id": "3f08dbdf-9797-4497-9616-558dc130e8cf",
-            "type": "markdown",
-            "markdown": "### Understand application problems\n\n**Get an overview of active and closed problems**\n\n```Show all of today's problems by status with a 1 hour interval```\n\n**Understand which entities are causing the most problems**\n\n```From the problems in the last week, show me the most 10 most common root cause entities```"
+            "id": "dbff690e-6c6f-45b7-9e9f-102f6d3ea9e1",
+            "type": "dql",
+            "filterSegments": [],
+            "drilldownPath": [],
+            "previousFilterSegments": [],
+            "subType": "davis-copilot",
+            "davisCopilot": {
+                "prompt": "",
+                "response": {
+                    "status": "idle"
+                },
+                "showDqlSnippet": false,
+                "feedbackProvided": false
+            },
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-2h",
+                        "to": "now()"
+                    },
+                    "value": ""
+                },
+                "visualizationSettings": {
+                    "autoSelectVisualization": true,
+                    "chartSettings": {}
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "state": "idle",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                }
+            }
         },
         {
-            "id": "46375348-a8f8-4b76-8de4-c1a9cd793ddc",
+            "id": "c45c6be4-e276-4486-a6a0-073690f6e9c2",
             "type": "markdown",
-            "markdown": "### Analyze resource utilization\n\n**Understand if any hosts have CPU saturation**\n\n```Show me the top 10 hosts by CPU Utilization```\n\n**Understand if any hosts were over provisioned and should be sized down**\n\n```Show me the top 10 hosts with the least CPU utilization```"
+            "markdown": "**Convert logs into a time series**\n\n```Show me all error logs this week with 15 minute intervals```"
+        },
+        {
+            "id": "2576cc48-0b0f-4fda-8a8c-2887edcb6130",
+            "type": "dql",
+            "filterSegments": [],
+            "drilldownPath": [],
+            "previousFilterSegments": [],
+            "subType": "davis-copilot",
+            "davisCopilot": {
+                "prompt": "",
+                "response": {
+                    "status": "idle"
+                },
+                "showDqlSnippet": false,
+                "feedbackProvided": false
+            },
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-2h",
+                        "to": "now()"
+                    },
+                    "value": ""
+                },
+                "visualizationSettings": {
+                    "autoSelectVisualization": true,
+                    "chartSettings": {}
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "state": "idle",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                }
+            }
+        },
+        {
+            "id": "5b25a692-a58f-4c1b-8a34-5f8bd7e5661d",
+            "type": "markdown",
+            "markdown": "**Split by K8s Namespace over time**\n\n```Show me the count of all error logs grouped by k8s namespace with a 5-minute interval```"
+        },
+        {
+            "id": "e3d69131-fafd-4e84-bb3c-ecff1ed3bb56",
+            "type": "dql",
+            "filterSegments": [],
+            "drilldownPath": [],
+            "previousFilterSegments": [],
+            "subType": "davis-copilot",
+            "davisCopilot": {
+                "prompt": "",
+                "response": {
+                    "status": "idle"
+                },
+                "showDqlSnippet": false,
+                "feedbackProvided": false
+            },
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-2h",
+                        "to": "now()"
+                    },
+                    "value": ""
+                },
+                "visualizationSettings": {
+                    "autoSelectVisualization": true,
+                    "chartSettings": {}
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "state": "idle",
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                }
+            }
         }
     ]
 }
