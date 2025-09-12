@@ -19,7 +19,7 @@
         {
             "id": "dbc054d4-adda-445d-955c-1400f308e50a",
             "type": "markdown",
-            "markdown": "1. #### [Logs DQL 101]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .logs_dql_101_exercises_id }})\n2. #### [Logs DQL 102]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .logs_dql_102_exercises_id }})\n3. #### [Logs DQL 201]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .logs_dql_201_exercises_id }})\n5. #### [Log Metrics]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .log_metrics_exercises_id }})\n6. #### [Davis Events]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .events_exercises_id }})\n7. #### [CoPilot Queries]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .copilot_exercises_id }})"
+            "markdown": "1. #### [Logs DQL 101]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .logs_dql_101_exercises_id }})\n2. #### [Logs DQL 102]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .logs_dql_102_exercises_id }})\n3. #### [Logs DQL 201]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .logs_dql_201_exercises_id }})\n5. #### [Log Metrics]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .log_metrics_exercises_id }})\n6. #### [CoPilot Queries]({{ .dt_platform_url }}/ui/apps/dynatrace.notebooks/notebook/{{ .copilot_exercises_id }})"
         },
         {
             "id": "15234111-78a8-4f51-ab39-8afa018e8d53",

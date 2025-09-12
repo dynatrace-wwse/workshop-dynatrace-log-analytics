@@ -9,7 +9,7 @@
         {
             "id": "33cf75d7-ec4f-4fd7-8346-751dc57267cb",
             "type": "markdown",
-            "markdown": "## Parsing Logs\n* The DQL **PARSE** command parses a record field and puts the result(s) into one or more fields as specified in the pattern. Parsed fields are added to the previously set of fields and can be used for further processing and analysis.\n\n## Exercise 1\n1.  Fetch logs with the following filters: k8s.container.name == \"cartservice\" and matchesPhrase(content, \"AddItemAsync\") and use the **PARSE** command to extract the quantity from the log content. Return only the quantity and content fields. \n2. Use the **PARSE** command to extract the userId from the logs content and return the userID and content fields.\n3. Use the **PARSE** command to extract the productId from the logs content and return the productId and content fields.\n4. Extract productId, userId and quantity in a single parse command and return all 3 extracted fields."
+            "markdown": "## Parsing Logs\n* The DQL **PARSE** command parses a record field and puts the result(s) into one or more fields as specified in the pattern. Parsed fields are added to the previous set of fields and can be used for further processing and analysis.\n\n## Exercise 1\n1.  Fetch logs with the following filters: k8s.container.name == \"cartservice\" and matchesPhrase(content, \"AddItemAsync\") and use the **PARSE** command to extract the quantity from the log content. Return only the quantity and content fields. \n2. Use the **PARSE** command to extract the userId from the logs content and return the userID and content fields.\n3. Use the **PARSE** command to extract the productId from the logs content and return the productId and content fields.\n4. Extract productId, userId and quantity in a single parse command and return all 3 extracted fields."
         },
         {
             "id": "eabe23a0-9ec6-4b9e-b05f-822f87024d96",
@@ -51,7 +51,7 @@
                         "truncationMode": "middle"
                     },
                     "singleValue": {
-                        "showLabel": true,
+                        "labelMode": "custom",
                         "label": "",
                         "prefixIcon": "",
                         "isIconVisible": false,
@@ -98,8 +98,12 @@
                         "truncationMode": "middle"
                     },
                     "valueBoundaries": {
-                        "min": "auto",
-                        "max": "auto"
+                        "min": {
+                            "mode": "auto"
+                        },
+                        "max": {
+                            "mode": "auto"
+                        }
                     }
                 },
                 "querySettings": {
@@ -158,7 +162,7 @@
                         "truncationMode": "middle"
                     },
                     "singleValue": {
-                        "showLabel": true,
+                        "labelMode": "custom",
                         "label": "",
                         "prefixIcon": "",
                         "isIconVisible": false,
@@ -205,8 +209,12 @@
                         "truncationMode": "middle"
                     },
                     "valueBoundaries": {
-                        "min": "auto",
-                        "max": "auto"
+                        "min": {
+                            "mode": "auto"
+                        },
+                        "max": {
+                            "mode": "auto"
+                        }
                     }
                 },
                 "querySettings": {
@@ -265,7 +273,7 @@
                         "truncationMode": "middle"
                     },
                     "singleValue": {
-                        "showLabel": true,
+                        "labelMode": "custom",
                         "label": "",
                         "prefixIcon": "",
                         "isIconVisible": false,
@@ -312,8 +320,12 @@
                         "truncationMode": "middle"
                     },
                     "valueBoundaries": {
-                        "min": "auto",
-                        "max": "auto"
+                        "min": {
+                            "mode": "auto"
+                        },
+                        "max": {
+                            "mode": "auto"
+                        }
                     }
                 },
                 "querySettings": {
@@ -372,7 +384,7 @@
                         "truncationMode": "middle"
                     },
                     "singleValue": {
-                        "showLabel": true,
+                        "labelMode": "custom",
                         "label": "",
                         "prefixIcon": "",
                         "isIconVisible": false,
@@ -419,8 +431,12 @@
                         "truncationMode": "middle"
                     },
                     "valueBoundaries": {
-                        "min": "auto",
-                        "max": "auto"
+                        "min": {
+                            "mode": "auto"
+                        },
+                        "max": {
+                            "mode": "auto"
+                        }
                     }
                 },
                 "querySettings": {
@@ -479,7 +495,7 @@
                         "truncationMode": "middle"
                     },
                     "singleValue": {
-                        "showLabel": true,
+                        "labelMode": "custom",
                         "label": "",
                         "prefixIcon": "",
                         "isIconVisible": false,
@@ -526,8 +542,12 @@
                         "truncationMode": "middle"
                     },
                     "valueBoundaries": {
-                        "min": "auto",
-                        "max": "auto"
+                        "min": {
+                            "mode": "auto"
+                        },
+                        "max": {
+                            "mode": "auto"
+                        }
                     }
                 },
                 "querySettings": {
@@ -591,7 +611,7 @@
                         "truncationMode": "middle"
                     },
                     "singleValue": {
-                        "showLabel": true,
+                        "labelMode": "custom",
                         "label": "",
                         "prefixIcon": "",
                         "isIconVisible": false,
@@ -638,8 +658,12 @@
                         "truncationMode": "middle"
                     },
                     "valueBoundaries": {
-                        "min": "auto",
-                        "max": "auto"
+                        "min": {
+                            "mode": "auto"
+                        },
+                        "max": {
+                            "mode": "auto"
+                        }
                     }
                 },
                 "querySettings": {
@@ -698,7 +722,7 @@
                         "truncationMode": "middle"
                     },
                     "singleValue": {
-                        "showLabel": true,
+                        "labelMode": "custom",
                         "label": "",
                         "prefixIcon": "",
                         "isIconVisible": false,
@@ -745,8 +769,12 @@
                         "truncationMode": "middle"
                     },
                     "valueBoundaries": {
-                        "min": "auto",
-                        "max": "auto"
+                        "min": {
+                            "mode": "auto"
+                        },
+                        "max": {
+                            "mode": "auto"
+                        }
                     }
                 },
                 "querySettings": {
@@ -805,7 +833,7 @@
                         "truncationMode": "middle"
                     },
                     "singleValue": {
-                        "showLabel": true,
+                        "labelMode": "custom",
                         "label": "",
                         "prefixIcon": "",
                         "isIconVisible": false,
@@ -852,8 +880,12 @@
                         "truncationMode": "middle"
                     },
                     "valueBoundaries": {
-                        "min": "auto",
-                        "max": "auto"
+                        "min": {
+                            "mode": "auto"
+                        },
+                        "max": {
+                            "mode": "auto"
+                        }
                     }
                 },
                 "querySettings": {
@@ -875,12 +907,12 @@
         {
             "id": "82983013-455c-4467-bb3f-afc8cfe71ce6",
             "type": "markdown",
-            "markdown": "## Putting it all together - Dashboarding\n\n## Exercise 3\n1. For each of the visualizations we just created, click open with and add them all to the same dashboard. ![](https://github.com/JasonOstroski/perform-hot24-intro-to-dql/blob/main/images/openwith.jpg?raw=true)![](https://github.com/JasonOstroski/perform-hot24-intro-to-dql/blob/main/images/openwithdashboard.jpg?raw=true)\n2. We want to be able to analyze purchases by product ID, but we don't want to have to modify the query each time. Let's create a variable for product ID. Click the + button in the upper right corner and add a variable. Use the query as the type and write query that just returns productID.(Hint: Previous exercises have some good queries to start with) Allow multi-select and preview results.![](https://github.com/JasonOstroski/perform-hot24-intro-to-dql/blob/main/images/variable.jpg?raw=true)\n\n3. In each query on the dashboard add a filter for product Id. Ex: filter in(productId, $ProductID). Try selecting different product IDs in the variable and see how the charts update. ![](https://github.com/JasonOstroski/perform-hot24-intro-to-dql/blob/main/images/variablequery.jpg?raw=true)\n\n## Finished Dashboard\nFinished dashboard available on GitHub"
+            "markdown": "## Putting it all together - Dashboarding\n\n## Exercise 3\n1. For each of the visualizations we just created, add them all to the same new dashboard. ![](https://raw.githubusercontent.com/dynatrace-wwse/workshop-dynatrace-log-analytics/refs/heads/main/assets/images/logs-dql-201_notebook_add_to_dashboard.png)\n\n2. We want to be able to analyze purchases by productID, but we don't want to have to modify the query each time. Let's create a variable for productID. Click the + button in the upper right corner and add a variable. Use the query as the type and write query that just returns productID. (Hint: Previous exercises have some good queries to start with) Allow multi-select and preview results. ![](https://raw.githubusercontent.com/dynatrace-wwse/workshop-dynatrace-log-analytics/refs/heads/main/assets/images/logs-dql-201_dashboard_add_variable.png) ![](https://raw.githubusercontent.com/dynatrace-wwse/workshop-dynatrace-log-analytics/refs/heads/main/assets/images/logs-dql-201_variable_productid.png)\n\n3. In each query on the dashboard add a filter for productId. Ex: filter in(productId, $ProductID). Try selecting different product IDs in the variable and see how the charts update. ![](https://raw.githubusercontent.com/dynatrace-wwse/workshop-dynatrace-log-analytics/refs/heads/main/assets/images/logs-dql-201_query_with_variable_filter.png)"
         },
         {
             "id": "d0e805ef-060b-4baa-b242-5212b3c281dd",
             "type": "markdown",
-            "markdown": "## Extra Exercise - Parsing JSON on Read\n1.  Fetch logs with the following filter: ``` | filter log.source == \"Container Output\" and contains(content, \"unguard-status-service\") ```\n\n2. Review the JSON structure of the logs (Click on the complex record on the jsonContent field and click view)\n3. Use the **PARSE** command to extract the key value pairs (ex: method, uri, status, bytes_in, bytes_out, latency, etc.) and create a table with these fields"
+            "markdown": "## Extra Exercise - Parsing JSON on Read\n1. Fetch logs with the following filter: ``` | filter k8s.container.name == \"paymentservice\" and matchesPhrase(content,\"amount\") ```\n2. Review the JSON structure of the logs (Click on the complex record on the jsonContent field and click view)\n3. Use the **PARSE** command to extract the key value pairs (ex: currencyCode, amount, cardType, etc.) and create a table with these fields"
         },
         {
             "id": "5a60533f-3206-4aaa-aa56-0c52c0652e55",
@@ -922,7 +954,7 @@
                         "truncationMode": "middle"
                     },
                     "singleValue": {
-                        "showLabel": true,
+                        "labelMode": "custom",
                         "label": "",
                         "prefixIcon": "AnalyticsIcon",
                         "isIconVisible": false,
@@ -970,8 +1002,12 @@
                         "truncationMode": "middle"
                     },
                     "valueBoundaries": {
-                        "min": "auto",
-                        "max": "auto"
+                        "min": {
+                            "mode": "auto"
+                        },
+                        "max": {
+                            "mode": "auto"
+                        }
                     },
                     "autoSelectVisualization": true
                 },
@@ -1031,7 +1067,7 @@
                         "truncationMode": "middle"
                     },
                     "singleValue": {
-                        "showLabel": true,
+                        "labelMode": "custom",
                         "label": "",
                         "prefixIcon": "AnalyticsIcon",
                         "isIconVisible": false,
@@ -1079,8 +1115,12 @@
                         "truncationMode": "middle"
                     },
                     "valueBoundaries": {
-                        "min": "auto",
-                        "max": "auto"
+                        "min": {
+                            "mode": "auto"
+                        },
+                        "max": {
+                            "mode": "auto"
+                        }
                     },
                     "autoSelectVisualization": true
                 },
@@ -1140,7 +1180,7 @@
                         "truncationMode": "middle"
                     },
                     "singleValue": {
-                        "showLabel": true,
+                        "labelMode": "custom",
                         "label": "",
                         "prefixIcon": "AnalyticsIcon",
                         "isIconVisible": false,
@@ -1188,8 +1228,12 @@
                         "truncationMode": "middle"
                     },
                     "valueBoundaries": {
-                        "min": "auto",
-                        "max": "auto"
+                        "min": {
+                            "mode": "auto"
+                        },
+                        "max": {
+                            "mode": "auto"
+                        }
                     },
                     "autoSelectVisualization": true
                 },
