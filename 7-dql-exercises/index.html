@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../6-dql-exercises/">
+        <link rel="prev" href="../6-configure-dynatrace/">
       
       
         <link rel="next" href="../8-anomaly-detection/">
@@ -20,7 +20,7 @@
     
     
       
-        <title>7. Configure Dynatrace - Dynatrace Workshop: Scaling Log Analytics</title>
+        <title>7. DQL Exercises - Dynatrace Workshop: Scaling Log Analytics</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configure-dynatrace" class="md-skip">
+        <a href="#dql-exercises" class="md-skip">
           Skip to content
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              7. Configure Dynatrace
+              7. DQL Exercises
             
           </span>
         </div>
@@ -372,11 +372,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../6-dql-exercises/" class="md-nav__link">
+      <a href="../6-configure-dynatrace/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    6. DQL Exercises
+    6. Configure Dynatrace
   </span>
   
 
@@ -405,7 +405,7 @@
           
   
   <span class="md-ellipsis">
-    7. Configure Dynatrace
+    7. DQL Exercises
   </span>
   
 
@@ -416,7 +416,7 @@
         
   
   <span class="md-ellipsis">
-    7. Configure Dynatrace
+    7. DQL Exercises
   </span>
   
 
@@ -438,35 +438,47 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lab-step" class="md-nav__link">
+  <a href="#logs-dql-101" class="md-nav__link">
     <span class="md-ellipsis">
-      Lab Step
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Lab Step">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sub-step-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sub Step 1
+      Logs DQL 101
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#sub-step-2" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#logs-dql-102" class="md-nav__link">
     <span class="md-ellipsis">
-      Sub Step 2
+      Logs DQL 102
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#logs-dql-201" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logs DQL 201
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log Metrics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copilot-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      CoPilot Queries
+    </span>
+  </a>
   
 </li>
       
@@ -594,35 +606,47 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lab-step" class="md-nav__link">
+  <a href="#logs-dql-101" class="md-nav__link">
     <span class="md-ellipsis">
-      Lab Step
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Lab Step">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sub-step-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sub Step 1
+      Logs DQL 101
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#sub-step-2" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#logs-dql-102" class="md-nav__link">
     <span class="md-ellipsis">
-      Sub Step 2
+      Logs DQL 102
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#logs-dql-201" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logs DQL 201
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log Metrics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copilot-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      CoPilot Queries
+    </span>
+  </a>
   
 </li>
       
@@ -653,8 +677,7 @@
   
 
 
-<!--TODO: Update Lab Task -->
-<h1 id="configure-dynatrace">Configure Dynatrace<a class="headerlink" href="#configure-dynatrace" title="Permanent link">#</a></h1>
+<h1 id="dql-exercises">DQL Exercises<a class="headerlink" href="#dql-exercises" title="Permanent link">#</a></h1>
 <!--TODO: Update bizevent code snippet -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -662,26 +685,38 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<!--TODO: Update Lab task and learn more link -->
-<p>Lab task description and primer</p>
+<p>Now that logs are flowing into Dynatrace from our Kubernetes environment, it's time to unlock their full potential. Enter Dynatrace Query Language (DQL) - a powerful, intuitive language purpose-built for observability at scale. With DQL, you can slice through massive volumes of log data with precision, filter by meaningful attributes, extract insights in seconds, and even correlate logs with traces and metrics—all in a single query. Whether you're troubleshooting an issue, hunting for anomalies, or building dashboards, DQL makes it easy to ask complex questions and get clear answers fast. Let’s dive in and see how DQL transforms raw log data into actionable intelligence.</p>
 <div class="grid cards">
 <ul>
-<li><a href="learn-more-url" target="_blank">Learn More<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
+<li><a href="https://docs.dynatrace.com/docs/discover-dynatrace/platform/grail/dynatrace-query-language" target="_blank">Learn More<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
 </ul>
 </div>
-<!--TODO: Lab Task Details -->
-<h2 id="lab-step">Lab Step<a class="headerlink" href="#lab-step" title="Permanent link">#</a></h2>
-<p>Step Details</p>
-<h3 id="sub-step-1">Sub Step 1<a class="headerlink" href="#sub-step-1" title="Permanent link">#</a></h3>
-<p>Sub Step Details</p>
-<h3 id="sub-step-2">Sub Step 2<a class="headerlink" href="#sub-step-2" title="Permanent link">#</a></h3>
-<p>Sub Step Details</p>
+<p>Access the hands-on exercises for DQL from the Notebook in your Dynatrace tenant.  In your Dynatrace tenant, open the <strong>Notebooks</strong> App.  Locate the Notebook titled <code>Workshop - Workshop Exercises</code>.  We will be completing the <code>DQL Exercises</code> linked Notebooks.</p>
+<h2 id="logs-dql-101">Logs DQL 101<a class="headerlink" href="#logs-dql-101" title="Permanent link">#</a></h2>
+<p>Complete the DQL exercises found in the Notebook <code>Workshop - Logs DQL 101 - Exercises</code>.</p>
+<p><img alt="DQL 101 Exercises" src="../img/dql-logs_dql_101_exercises.png" /></p>
+<p>Reference the Notebook <code>Workshop - Logs DQL 101 - Answer Key</code> as needed or upon completion.</p>
+<h2 id="logs-dql-102">Logs DQL 102<a class="headerlink" href="#logs-dql-102" title="Permanent link">#</a></h2>
+<p>Complete the DQL exercises found in the Notebook <code>Workshop - Logs DQL 102 - Exercises</code>.</p>
+<p><img alt="DQL 102 Exercises" src="../img/dql-logs_dql_102_exercises.png" /></p>
+<p>Reference the Notebook <code>Workshop - Logs DQL 102 - Answer Key</code> as needed or upon completion.</p>
+<h2 id="logs-dql-201">Logs DQL 201<a class="headerlink" href="#logs-dql-201" title="Permanent link">#</a></h2>
+<p>Complete the DQL exercises found in the Notebook <code>Workshop - Logs DQL 201 - Exercises</code>.</p>
+<p><img alt="DQL 201 Exercises" src="../img/dql-logs_dql_201_exercises.png" /></p>
+<p>Reference the Notebook <code>Workshop - Logs DQL 201 - Answer Key</code> as needed or upon completion.</p>
+<h2 id="log-metrics">Log Metrics<a class="headerlink" href="#log-metrics" title="Permanent link">#</a></h2>
+<p>Complete the DQL exercises found in the Notebook <code>Workshop - Log Metrics - Exercises</code>.</p>
+<p><img alt="Log Metrics Exercises" src="../img/dql-logs_metrics_exercises.png" /></p>
+<p>Reference the Notebook <code>Workshop - Log Metrics - Answer Key</code> as needed or upon completion.</p>
+<h2 id="copilot-queries">CoPilot Queries<a class="headerlink" href="#copilot-queries" title="Permanent link">#</a></h2>
+<p>Complete the DQL exercises found in the Notebook <code>Workshop - CoPilot - Exercises</code>.</p>
+<p><img alt="CoPilot Exercises" src="../img/dql-logs_copilot_exercises.png" /></p>
+<p>Reference the Notebook <code>Workshop - CoPilot - Answer Key</code> as needed or upon completion.</p>
 <h2 id="continue">Continue<a class="headerlink" href="#continue" title="Permanent link">#</a></h2>
-<!--TODO: Update Continue Section -->
-<p>In the next section, we'll ...</p>
+<p>In the next section, we'll learn anomaly detection strategies from log data using the Davis AI.</p>
 <div class="grid cards">
 <ul>
-<li><a href="next-page.md">Continue to ...<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
+<li><a href="../8-anomaly-detection/">Continue to Anomaly Detection<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
 </ul>
 </div>
 

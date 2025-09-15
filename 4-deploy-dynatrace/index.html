@@ -441,17 +441,17 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#continue" class="md-nav__link">
     <span class="md-ellipsis">
       Continue
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -502,15 +502,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#configure-log-ingest" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configure Log Ingest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#refresh-application-pods_1" class="md-nav__link">
     <span class="md-ellipsis">
       Refresh Application Pods
@@ -528,17 +519,17 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#continue_1" class="md-nav__link">
     <span class="md-ellipsis">
       Continue
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -577,11 +568,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../6-dql-exercises/" class="md-nav__link">
+      <a href="../6-configure-dynatrace/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    6. DQL Exercises
+    6. Configure Dynatrace
   </span>
   
 
@@ -597,11 +588,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../7-configure-dynatrace/" class="md-nav__link">
+      <a href="../7-dql-exercises/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    7. Configure Dynatrace
+    7. DQL Exercises
   </span>
   
 
@@ -780,17 +771,17 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#continue" class="md-nav__link">
     <span class="md-ellipsis">
       Continue
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -841,15 +832,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#configure-log-ingest" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configure Log Ingest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#refresh-application-pods_1" class="md-nav__link">
     <span class="md-ellipsis">
       Refresh Application Pods
@@ -867,17 +849,17 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#continue_1" class="md-nav__link">
     <span class="md-ellipsis">
       Continue
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -965,16 +947,19 @@
 </code></pre></div>
 <h3 id="validate-log-ingest">Validate Log Ingest<a class="headerlink" href="#validate-log-ingest" title="Permanent link">#</a></h3>
 <p>In your Dynatrace tenant, return to the <code>Kubernetes</code> app.  From the Cluster overview tab, click on <code>Namespaces</code> to open the list of Namespaces on the Cluster.</p>
+<!--TODO: Update screenshot -->
 <p><img alt="List Namespaces" src="../img/deploy-dynatrace_k8s_cluster_list_namespaces.png" /></p>
 <p>From the list of Namespaces, click on <code>astroshop</code>.  From the Namespace pop-out, click the <code>Logs</code> tab.  Verify in the chart that logs are being ingested for the <code>astroshop</code> namespace.  Click on <code>Run query</code> on the <strong>Show logs in current context</strong> option.</p>
+<!--TODO: Update screenshot -->
 <p><img alt="Namespace Logs" src="../img/deploy-dynatrace_k8s_namespace_logs.png" /></p>
 <p>Validate log data after running the query.</p>
+<!--TODO: Update screenshot -->
 <p><img alt="Namespace Logs Query" src="../img/deploy-dynatrace_k8s_namespace_query_logs.png" /></p>
-<h2 id="continue">Continue<a class="headerlink" href="#continue" title="Permanent link">#</a></h2>
-<p>In the next section, we'll configure Log Monitoring in Dynatrace.</p>
+<h3 id="continue">Continue<a class="headerlink" href="#continue" title="Permanent link">#</a></h3>
+<p>In the next section, we'll learn how to scale your log analytics with Dynatrace.</p>
 <div class="grid cards">
 <ul>
-<li><a href="5-configure-dynatrace.md">Continue to configuring Dynatrace Log Monitoring<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
+<li><a href="../5-scaling-log-analytics/">Continue to Scaling Log Analytics with Dynatrace<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
 </ul>
 </div>
 <h2 id="manual-guided-approach">Manual (Guided) Approach<a class="headerlink" href="#manual-guided-approach" title="Permanent link">#</a></h2>
@@ -985,12 +970,13 @@
 <p>Choose <code>Other distributions</code> as your distribution, as we will be deploying Dynatrace on a generic Kind Kubernetes cluster.</p>
 <p><strong>2. Select observability options</strong></p>
 <p>Choose <code>Kubernetes platform monitoring + Application observability</code> as your observability option.  This will define your Dynakube spec/configuration.</p>
-<p>Toggle the <code>Log Management and Analytics</code> flag/setting to <code>Enabled</code>.  Expand the option and select <code>Fully managed with Dynatrace Log Module</code>.</p>
-<p>Check the box for <code>Restrict Log monitoring to certain resources</code>.  In the <code>Namespaces</code> field, type <code>astroshop</code>.  This will filter log ingestion on logs related to the <code>astroshop</code> Kubernetes namespace.</p>
+<p>Toggle the <code>Log Management and Analytics</code> flag/setting to <code>Enabled</code>.</p>
 <p>Toggle the <code>Extensions</code> flag/setting to <code>Disabled</code>.  We will not be using this feature in this lab.</p>
+<p>Toggle the <code>Telemetry endpoints for data ingest</code> flag/setting to <code>Disabled</code>.  We will not be using this feature in this lab.</p>
+<!--TODO: Update screenshot -->
 <p><img alt="Select Distribution" src="../img/deploy-dynatrace_k8s_select_distribution.png" /></p>
 <p><strong>3. Configure cluster</strong></p>
-<p>Give your Kubernetes cluster a name, enter <code>enablement-log-ingest-101</code>.</p>
+<p>Give your Kubernetes cluster a name, for example <code>workshop-log-analytics</code>.</p>
 <p><strong>4. Install Dynatrace Operator</strong></p>
 <p>Generate a Dynatrace Operator Token.  Copy and save the value somewhere, in case you need it.  The value will automatically be added to the <code>dynakube.yaml</code> file.</p>
 <p>Generate a Data Ingest Token.  Copy and save the value somewhere, in case you need it.  The value will automatically be added to the <code>dynakube.yaml</code> file.</p>
@@ -1001,16 +987,17 @@
 --namespace<span class="w"> </span>dynatrace<span class="w"> </span><span class="se">\</span>
 --atomic
 </code></pre></div></p>
+<!--TODO: Update screenshot -->
 <p><img alt="Configure Cluster" src="../img/deploy-dynatrace_k8s_configure_cluster.png" /></p>
 <h3 id="deploy-dynatrace-operator">Deploy Dynatrace Operator<a class="headerlink" href="#deploy-dynatrace-operator" title="Permanent link">#</a></h3>
 <p>Navigate back to your GitHub Codespaces instance.  From the terminal, paste the <code>helm install dynatrace-operator</code> command and execute it.</p>
+<!--TODO: Update screenshot -->
 <p><img alt="Deploy Dynatrace Operator" src="../img/deploy-dynatrace_k8s_deploy_dt_operator.png" /></p>
 <p>Validate the new Dynatrace pods are running:
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>dynatrace
 </code></pre></div></p>
 <h3 id="deploy-dynakube">Deploy Dynakube<a class="headerlink" href="#deploy-dynakube" title="Permanent link">#</a></h3>
 <p>Locate the <code>dynakube.yaml</code> file that you downloaded from your tenant.  With the file (directory) open, navigate back to your GitHub Codespaces instance.  Click and hold to drag and drop the <code>dynakube.yaml</code> file into your Codespaces instance.</p>
-<p><img alt="Copy Dynakube" src="../img/deploy-dynatrace_copy_dynakube.gif" /></p>
 <div class="admonition tip">
 <p class="admonition-title">ActiveGate Container Resources</p>
 <p>Consider changing the ActiveGate's resources for better performance in this lab environment
@@ -1072,14 +1059,14 @@
 <td>3m5s</td>
 </tr>
 <tr>
-<td>enablement-log-ingest-101-activegate-0</td>
+<td>workshop-log-analytics-activegate-0</td>
 <td>1/1</td>
 <td>Running</td>
 <td>0</td>
 <td>90s</td>
 </tr>
 <tr>
-<td>enablement-log-ingest-101-logmonitoring-dxrsh</td>
+<td>workshop-log-analytics-logmonitoring-dxrsh</td>
 <td>1/1</td>
 <td>Running</td>
 <td>0</td>
@@ -1090,10 +1077,10 @@
 <h3 id="dynakube-log-module-spec">Dynakube Log Module Spec<a class="headerlink" href="#dynakube-log-module-spec" title="Permanent link">#</a></h3>
 <p>Enabling <strong>Log Management and Analytics</strong> with the option <code>Fully managed with Dynatrace Log Module</code> will add the Log Module to the Dynakube spec.</p>
 <div class="highlight"><span class="filename">Dynakube sample - Kubernetes platform monitoring + Application Observability + Log Management enabled</span><pre><span></span><code><span class="nn">---</span>
-<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dynatrace.com/v1beta3</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dynatrace.com/v1beta5</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DynaKube</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enablement-log-ingest-101</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workshop-log-analytics</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dynatrace</span>
 <span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">feature.dynatrace.com/k8s-app-enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
@@ -1118,66 +1105,41 @@
 <span class="w">    </span><span class="nt">logMonitoring</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">imageRef</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">public.ecr.aws/dynatrace/dynatrace-logmodule</span>
-<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.309.66.20250401-150134</span>
-<span class="w">  </span><span class="nt">logMonitoring</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">ingestRuleMatchers</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">attribute</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s.namespace.name</span>
-<span class="w">        </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">astroshop</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.319.83.20250909-095914</span>
+<span class="w">  </span><span class="nt">logMonitoring</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </code></pre></div>
 <p>The Log Module runs as a container in a standalone pod (as part of a daemonset) on each node.  The <code>spec.templates.imageRef</code> defines the container image and tag to be used.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">templates</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">logMonitoring</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">imageRef</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">public.ecr.aws/dynatrace/dynatrace-logmodule</span>
-<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.309.66.20250401-150134</span>
+<span class="w">        </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.319.83.20250909-095914</span>
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">ImagePullBackOff Error</p>
 <p>In case you encounter an <strong>ImagePullBackOff</strong> error, check <a href="https://gallery.ecr.aws/dynatrace/dynatrace-logmodule" target="_blank">public.ecr.aws</a> to make sure the container image with that tag exists.  If not, change the value to use an existing one.
 <img alt="Container Registry" src="../img/deploy-dynatrace_log_module_container_registry.png" /></p>
 </div>
-<p>Enabling the option <strong>Restrict Log monitoring to certain resources</strong> option will add <code>spec.logMonitoring.ingestRuleMatchers</code> to the Dynakube definition.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">logMonitoring</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">ingestRuleMatchers</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">attribute</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s.namespace.name</span>
-<span class="w">        </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">astroshop</span>
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Log Ingest Rule Configuration</p>
-<p>Log ingest for the Log Module is controlled by the Dynatrace tenant, not the local Dynakube configuration!  This configuration is a quality of life feature that is to be used during the initial deployment of Dynatrace on Kubernetes.</p>
-</div>
 <p>By enabling the Log Module in your <code>dynakube.yaml</code> definition, this will enable the Dynakube to add a Log Ingest rule scoped at the Cluster-level within the Dynatrace tenant.</p>
-<p>As of Dynatrace Operator version <code>1.4.2</code> and Dynatrace version <code>1.311</code>, the Log Ingest rule is added upon deployment and creation of the Kubernetes Cluster setting, but any further changes within the Dynakube's configuration will not update the setting.  Manage Log Ingest rules within the Dynatrace tenant.  If you seek to automate this process at the Kubernetes Cluster-level, consider deploying <a href="https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco" target="_blank">Dynatrace Configuration As Code</a> to <a href="https://docs.dynatrace.com/docs/deliver/configuration-as-code/monaco/reference/supported-configuration#settings" target="_blank">manage the setting</a>.</p>
-<div class="grid cards">
-<ul>
-<li><a href="https://docs.dynatrace.com/docs/analyze-explore-automate/logs/lma-log-ingestion/lma-log-ingestion-via-oa/lma-logs-from-kubernetes" target="_blank">Learn More<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
-</ul>
-</div>
-<h3 id="configure-log-ingest">Configure Log Ingest<a class="headerlink" href="#configure-log-ingest" title="Permanent link">#</a></h3>
-<p>In your Dynatrace tenant, return to the <code>Kubernetes</code> app.  Click on the <code>Explorer</code> tab.  In your list of Clusters, click on <code>enablement-log-ingest-101</code>.</p>
-<p><img alt="Clusters" src="../img/deploy-dynatrace_k8s_clusters.png" /></p>
-<p>From the Cluster overview pop-out, in the top right corner, click on the <code>...</code> ellipsis icon, and then click on the drilldown for <strong>Log ingest rules</strong>.</p>
-<p><img alt="Log Ingest Rules Drilldown" src="../img/deploy-dynatrace_k8s_cluster_drill_log_ingest_rules.png" /></p>
-<p>This will open the <code>Kubernetes Classic</code> app and the connection settings for the Kubernetes Cluster.  In the Log Monitoring settings, the Log Ingest rules are shown.  You'll find the rule that was created by the Dynakube that matches the configuration in the <code>dynakube.yaml</code> spec.  It should be configured to only ingest logs from the <code>astroshop</code> namespace.</p>
-<p><img alt="Log Ingest Rule" src="../img/deploy-dynatrace_k8s_cluster_log_ingest_rule_setting.png" /></p>
 <h3 id="refresh-application-pods_1">Refresh Application Pods<a class="headerlink" href="#refresh-application-pods_1" title="Permanent link">#</a></h3>
 <p>Now that Dynatrace is deployed, let's refresh/recycle the application pods for <code>astroshop</code> to inject the OneAgent code modules.</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>astroshop<span class="w"> </span>--field-selector<span class="o">=</span><span class="s2">&quot;status.phase=Running&quot;</span>
 </code></pre></div>
 <h3 id="validate-log-ingest_1">Validate Log Ingest<a class="headerlink" href="#validate-log-ingest_1" title="Permanent link">#</a></h3>
 <p>In your Dynatrace tenant, return to the <code>Kubernetes</code> app.  From the Cluster overview tab, click on <code>Namespaces</code> to open the list of Namespaces on the Cluster.</p>
+<!--TODO: Update screenshot -->
 <p><img alt="List Namespaces" src="../img/deploy-dynatrace_k8s_cluster_list_namespaces.png" /></p>
 <p>From the list of Namespaces, click on <code>astroshop</code>.  From the Namespace pop-out, click the <code>Logs</code> tab.  Verify in the chart that logs are being ingested for the <code>astroshop</code> namespace.  Click on <code>Run query</code> on the <strong>Show logs in current context</strong> option.</p>
+<!--TODO: Update screenshot -->
 <p><img alt="Namespace Logs" src="../img/deploy-dynatrace_k8s_namespace_logs.png" /></p>
 <p>Validate log data after running the query.</p>
+<!--TODO: Update screenshot -->
 <p><img alt="Namespace Logs Query" src="../img/deploy-dynatrace_k8s_namespace_query_logs.png" /></p>
-<h2 id="continue_1">Continue<a class="headerlink" href="#continue_1" title="Permanent link">#</a></h2>
-<p>In the next section, we'll configure Log Monitoring in Dynatrace.</p>
+<h3 id="continue_1">Continue<a class="headerlink" href="#continue_1" title="Permanent link">#</a></h3>
+<p>In the next section, we'll learn how to scale your log analytics with Dynatrace.</p>
 <div class="grid cards">
 <ul>
-<li><a href="5-configure-dynatrace.md">Continue to configuring Dynatrace Log Monitoring<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
+<li><a href="../5-scaling-log-analytics/">Continue to Scaling Log Analytics with Dynatrace<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>
 </ul>
 </div>
 
