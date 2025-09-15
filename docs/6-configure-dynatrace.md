@@ -28,5 +28,5 @@ Sub Step Details
 In the next section, we'll ...
 
 <div class="grid cards" markdown>
-- [Continue to ...:octicons-arrow-right-24:](next-page.md)
+- [Continue to ...:octicons-arrow-right-24:](7-dql-exercises.md)
 </div>
