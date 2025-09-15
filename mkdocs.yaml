@@ -8,8 +8,8 @@ nav:
   - '3. Codespaces': 3-codespaces.md
   - '4. Deploy Dynatrace': 4-deploy-dynatrace.md
   - '5. Scaling Log Analytics': 5-scaling-log-analytics.md
-  - '6. DQL Exercises': 6-dql-exercises.md
-  - '7. Configure Dynatrace': 7-configure-dynatrace.md
+  - '6. Configure Dynatrace': 6-configure-dynatrace.md
+  - '7. DQL Exercises': 7-dql-exercises.md
   - '8. Anomaly Detection': 8-anomaly-detection.md
   - '9. Dashboards': 9-dashboards.md
   - '10. Resources': resources.md

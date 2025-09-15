@@ -194,5 +194,5 @@ Alerting:
 Now that we better understand how Dynatrace is able to scale log analytics for your organization, let's implement these strategies and best practices with hands-on exercises.
 
 <div class="grid cards" markdown>
-- [Continue to configuring Dynatrace:octicons-arrow-right-24:](next-page.md)
+- [Continue to configuring Dynatrace:octicons-arrow-right-24:](6-configure-dynatrace.md)
 </div>

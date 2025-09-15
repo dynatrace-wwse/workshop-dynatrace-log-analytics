@@ -112,9 +112,9 @@ In your Dynatrace tenant, open the **Notebooks** App.  Locate the newly uploaded
 ![Workshop Notebooks](./img/prereq-dt_monaco_workshop_notebooks.png)
 
 ## Continue
-<!--TODO: Update the continue section -->
-In the next section, ...
+
+In the next section, we'll deploy Dynatrace on Kubernetes for full stack observability with log analytics.
 
 <div class="grid cards" markdown>
-- [Continue to Deploy Dynatrace:octicons-arrow-right-24:](4-content-placeholder.md)
+- [Continue to Deploy Dynatrace:octicons-arrow-right-24:](4-deploy-dynatrace.md)
 </div>
