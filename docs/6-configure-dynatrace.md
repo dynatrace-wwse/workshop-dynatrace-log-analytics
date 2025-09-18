@@ -1,4 +1,3 @@
-<!--TODO: Update Lab Task -->
 # Configure Dynatrace
 <!--TODO: Update bizevent code snippet -->
 --8<-- "snippets/send-bizevent/4-content-placeholder.js"
@@ -11,7 +10,7 @@ Lab task description and primer
 </div>
 
 <!--TODO: Lab Task Details -->
-## Lab Step
+## Storage Bucket and OpenPipeline
 
 Step Details
 
@@ -24,8 +23,8 @@ Sub Step Details
 Sub Step Details
 
 ## Continue
-<!--TODO: Update Continue Section -->
-In the next section, we'll ...
+
+In the next section, we'll introduce the Dynatrace Query Language and unlock power queries and analytics on your data.
 
 <div class="grid cards" markdown>
 - [Continue to ...:octicons-arrow-right-24:](7-dql-exercises.md)

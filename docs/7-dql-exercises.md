@@ -10,6 +10,8 @@ Now that logs are flowing into Dynatrace from our Kubernetes environment, it's t
 
 Access the hands-on exercises for DQL from the Notebook in your Dynatrace tenant.  In your Dynatrace tenant, open the **Notebooks** App.  Locate the Notebook titled `Workshop - Workshop Exercises`.  We will be completing the `DQL Exercises` linked Notebooks.
 
+![Workshop Exercises](./img/dql-workshop_exercises_dql_notebook.png)
+
 ## Logs DQL 101
 
 Complete the DQL exercises found in the Notebook `Workshop - Logs DQL 101 - Exercises`.
