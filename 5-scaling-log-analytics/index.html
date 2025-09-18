@@ -728,105 +728,141 @@ document.addEventListener('DOMContentLoaded', function() {
 <p><img alt="OpenPipeline" src="../img/scaling-logs_openpipeline.png" /></p>
 <p><strong>Customizable and Scalable Log Ingestion</strong></p>
 <p>OpenPipeline is Dynatrace’s flexible data processing engine that allows you to ingest, extract, and enrich log data at scale. </p>
-<p>You can:
-* Create custom pipelines to extract relevant log fields.
-* Convert log entries into actionable events (e.g., Davis events).
-* Route logs dynamically based on conditions like severity or error type.</p>
+<p>You can:</p>
+<ul>
+<li>Create custom pipelines to extract relevant log fields.</li>
+<li>Convert log entries into actionable events (e.g., Davis events).</li>
+<li>Route logs dynamically based on conditions like severity or error type.</li>
+</ul>
 <p>This modular approach ensures that only meaningful data is processed and stored, optimizing performance and cost for large environments.</p>
 <p><strong>Modular Data Flow Architecture</strong></p>
 <p>OpenPipeline uses a modular data flow model where each stage can be independently configured. </p>
-<p>This enables:
-* Fine-grained control over how logs are handled.
-* Easy integration with external sources and destinations.
-* Reusability and scalability across teams and environments.</p>
+<p>This enables:</p>
+<ul>
+<li>Fine-grained control over how logs are handled.</li>
+<li>Easy integration with external sources and destinations.</li>
+<li>Reusability and scalability across teams and environments.</li>
+</ul>
 <p>This architecture supports enterprise-grade customization while maintaining performance and reliability.</p>
 <p><strong>Event Extraction and AI Integration</strong></p>
 <p>OpenPipeline can convert log entries into other telemetry types, extract business events, and make them actionable within Dynatrace’s AI engine. </p>
-<p>This means:
-* Logs can trigger alerts and problem detection.
-* Events can be correlated with metrics, traces, and topology.
-* Teams can directly relate technical issues to business impact and speed up root cause analysis.</p>
+<p>This means:</p>
+<ul>
+<li>Logs can trigger alerts and problem detection.</li>
+<li>Events can be correlated with metrics, traces, and topology.</li>
+<li>Teams can directly relate technical issues to business impact and speed up root cause analysis.</li>
+</ul>
 <p>By turning raw logs into structured, AI-ready data, OpenPipeline helps teams solve problems faster and more intelligently.</p>
 <h2 id="bucket-strategy">Bucket Strategy<a class="headerlink" href="#bucket-strategy" title="Permanent link">#</a></h2>
 <p><img alt="Bucket Strategy" src="../img/scaling-logs_bucket_strategy.png" /></p>
 <p><strong>Logical Grouping of Data for Efficient Querying</strong></p>
 <p>Buckets allow you to organize log data by logical boundaries such as environment, application, team, or region. </p>
-<p>Consider a bucket strategy by evaluating the following information:
-* Ingest sources
-* Estimated Ingest volume
-* Retention desires
-* Compliance Requirements (audit)
-* Sensitive data &amp; masking
-* Permission requirements</p>
+<p>Consider a bucket strategy by evaluating the following information:</p>
+<ul>
+<li>Ingest sources</li>
+<li>Estimated Ingest volume</li>
+<li>Retention desires</li>
+<li>Compliance Requirements (audit)</li>
+<li>Sensitive data &amp; masking</li>
+<li>Permission requirements</li>
+</ul>
 <p><strong>Bucket Considerations</strong></p>
-<p>Consider the following details when using buckets with your log management and analytics solution:
-* There is a limit to the number of buckets per tenant, but it can be increased based on log ingest volumes.
-* Buckets exist for all data types available with Grail, not just logs - traces (spans) and business events too for example.
-* Creating more buckets introduces additional administration, find the right balance.
-* Leverage log attributes, including those added by OpenPipeline, to store logs in the correct bucket.</p>
+<p>Consider the following details when using buckets with your log management and analytics solution:</p>
+<ul>
+<li>There is a limit to the number of buckets per tenant, but it can be increased based on log ingest volumes.</li>
+<li>Buckets exist for all data types available with Grail, not just logs - traces (spans) and business events too for example.</li>
+<li>Creating more buckets introduces additional administration, find the right balance.</li>
+<li>Leverage log attributes, including those added by OpenPipeline, to store logs in the correct bucket.</li>
+</ul>
 <p><strong>Optimized Query Execution via Bucket Targeting</strong></p>
-<p>When using Dynatrace Query Language (DQL), you can specify the bucket to query, which allows Grail to:
-* Automatically optimize query execution.
-* Skip irrelevant data and reduce latency.
-* Leverage indexing and parallel processing for faster results.</p>
+<p>When using Dynatrace Query Language (DQL), you can specify the bucket to query, which allows Grail to:</p>
+<ul>
+<li>Automatically optimize query execution.</li>
+<li>Skip irrelevant data and reduce latency.</li>
+<li>Leverage indexing and parallel processing for faster results.</li>
+</ul>
 <h2 id="segments">Segments<a class="headerlink" href="#segments" title="Permanent link">#</a></h2>
 <p><img alt="Segments" src="../img/scaling-logs_segments.png" /></p>
 <p><strong>Logical Filtering Across Data Types</strong></p>
-<p>Segments act as predefined logical filters that span across logs, traces, metrics, events, and entities. They allow you to organize observability data by dimensions such as:
-* Business applications
-* Organizational units
-* Infrastructure components</p>
+<p>Segments act as predefined logical filters that span across logs, traces, metrics, events, and entities. They allow you to organize observability data by dimensions such as:</p>
+<ul>
+<li>Business applications</li>
+<li>Organizational units</li>
+<li>Infrastructure components</li>
+</ul>
 <p>This logical structuring helps teams focus on relevant data, improving query efficiency and reducing noise in large-scale environments.</p>
 <p><strong>Enable Reusable, Scalable Filtering</strong></p>
-<p>Segments can be configured with variables, allowing dynamic filtering across multiple buckets or entities. For example:
-* A segment can include a variable to filter logs by bucket name.
-* Users can select one or more values at runtime, making the segment reusable across dashboards, notebooks, and workflows.</p>
+<p>Segments can be configured with variables, allowing dynamic filtering across multiple buckets or entities. For example:</p>
+<ul>
+<li>A segment can include a variable to filter logs by bucket name.</li>
+<li>Users can select one or more values at runtime, making the segment reusable across dashboards, notebooks, and workflows.</li>
+</ul>
 <p>This flexibility supports scalable log analytics by enabling consistent filtering logic across apps and teams.</p>
 <p><strong>Optimize Query Performance and Consumption</strong></p>
-<p>By scoping queries to specific buckets or entities using segments, Dynatrace can:
-* Reduce query execution time by narrowing the search space.
-* Optimize license usage by avoiding unnecessary data scans.
-* Improve responsiveness in apps like Notebooks and Dashboards.</p>
+<p>By scoping queries to specific buckets or entities using segments, Dynatrace can:</p>
+<ul>
+<li>Reduce query execution time by narrowing the search space.</li>
+<li>Optimize license usage by avoiding unnecessary data scans.</li>
+<li>Improve responsiveness in apps like Notebooks and Dashboards.</li>
+</ul>
 <p>This makes segments a powerful tool for performance tuning and cost control in enterprise-scale environments.</p>
 <h2 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">#</a></h2>
 <p><img alt="Permissions" src="../img/scaling-logs_permissions.png" /></p>
 <p><strong>Granular Access Control at Multiple Levels</strong></p>
-<p>Dynatrace Grail supports fine-grained permissions at the bucket, table, field, and entity levels. This allows organizations to:
-* Control who can access specific log data.
-* Limit visibility based on business units, environments, or data sensitivity.
-* Ensure compliance with internal and external data governance policies.</p>
+<p>Dynatrace Grail supports fine-grained permissions at the bucket, table, field, and entity levels. This allows organizations to:</p>
+<ul>
+<li>Control who can access specific log data.</li>
+<li>Limit visibility based on business units, environments, or data sensitivity.</li>
+<li>Ensure compliance with internal and external data governance policies.</li>
+</ul>
 <p><strong>Policy-Based Management for Scalability</strong></p>
 <p>Permissions in Grail are managed through IAM policies using a flexible syntax.</p>
 <p>For example, <code>ALLOW storage:buckets:read WHERE storage:bucket-name = "prod_logs"</code>.</p>
-<p>These policies:
-* Can be reused across users and  groups, supporting dynamic boundaries
-* Support conditions like <code>IN</code>, <code>STARTSWITH</code>, and <code>=</code>, enabling scalable and dynamic access control.
-* Provide access to specific log data based on record-level and field-level values</p>
+<p>These policies:</p>
+<ul>
+<li>Can be reused across users and  groups, supporting dynamic boundaries</li>
+<li>Support conditions like <code>IN</code>, <code>STARTSWITH</code>, and <code>=</code>, enabling scalable and dynamic access control.</li>
+<li>Provide access to specific log data based on record-level and field-level values</li>
+</ul>
 <p><strong>Complement Bucket and Segment Strategy</strong></p>
 <p>Controlling access to logs can be accomplished via IAM policies and defining bucket level and/or record level
-access:
-* Bucket level control is done via bucket names.
-* Record level control is done via fields or dt.security.context which must be set on the records themselves and
-defined within the policy.</p>
+access:</p>
+<ul>
+<li>Bucket level control is done via bucket names.</li>
+<li>Record level control is done via fields or dt.security.context which must be set on the records themselves and
+defined within the policy.</li>
+</ul>
 <p>Implement your permission strategy that aligns and complements your bucket and segment definitions.</p>
 <h2 id="transforming-logs-to-metrics-and-events">Transforming Logs to Metrics and Events<a class="headerlink" href="#transforming-logs-to-metrics-and-events" title="Permanent link">#</a></h2>
 <p><img alt="Logs to Metrics" src="../img/scaling-logs_logs_to_metrics.png" /></p>
 <p><strong>Create Metrics from Logs</strong></p>
-<p>Dynatrace, with OpenPipeline, can create metrics and aggregate metric data points from log data at ingest.  By leveraging metrics based on your log data you'll get:
-* Enhanced performance through efficient storage, faster query performance, and even better scalability for large data volumes.
-* Simplified alerting with easier setup, easier to generate dynamic thesholds, and easy to aggregate/summarize data.</p>
+<p>Dynatrace, with OpenPipeline, can create metrics and aggregate metric data points from log data at ingest.  By leveraging metrics based on your log data you'll get:</p>
+<ul>
+<li>Enhanced performance through efficient storage, faster query performance, and even better scalability for large data volumes.</li>
+<li>Simplified alerting with easier setup, easier to generate dynamic thesholds, and easy to aggregate/summarize data.</li>
+</ul>
 <p><strong>Create Events from Logs</strong></p>
-<p>In addition to metrics, Dynatrace can extract log data into an event:
-* Extract a Davis event to detect anomalies, simplify alerting, and speed up root cause analysis.
-* Extract a Business Event to enable business observablity and report on business outcomes.</p>
+<p>In addition to metrics, Dynatrace can extract log data into an event:</p>
+<ul>
+<li>Extract a Davis event to detect anomalies, simplify alerting, and speed up root cause analysis.</li>
+<li>Extract a Business Event to enable business observablity and report on business outcomes.</li>
+</ul>
 <p><strong>Best Practices on Using Log Data</strong></p>
 <p>When using data from logs on dashboards or in alerting, consider these best practices:</p>
-<p>Dashboards:
-* Use logs when low frequency refresh is required, involve a complex DQL, join different data types, analyzing short timeframes.
-    * Use metrics when high frequency refresh is required, trending over long timeframes, need to optimize query costs, to create SLOs/alerts.
-Alerting:
-* Use logs when infrequent ingest of log records, complex queries, detailed investigations.
-    * Use metrics when frequent data points, dynamic thresholds, and performance tracking.</p>
+<p>Dashboards:</p>
+<ul>
+<li>Use logs when low frequency refresh is required, involve a complex DQL, join different data types, analyzing short timeframes.<ul>
+<li>Use metrics when high frequency refresh is required, trending over long timeframes, need to optimize query costs, to create SLOs/alerts.</li>
+</ul>
+</li>
+</ul>
+<p>Alerting:</p>
+<ul>
+<li>Use logs when infrequent ingest of log records, complex queries, detailed investigations.<ul>
+<li>Use metrics when frequent data points, dynamic thresholds, and performance tracking.</li>
+</ul>
+</li>
+</ul>
 <h2 id="continue">Continue<a class="headerlink" href="#continue" title="Permanent link">#</a></h2>
 <p>Now that we better understand how Dynatrace is able to scale log analytics for your organization, let's implement these strategies and best practices with hands-on exercises.</p>
 <div class="grid cards">
