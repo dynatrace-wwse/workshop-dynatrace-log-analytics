@@ -1,32 +1,49 @@
-<!--TODO: Update Lab Task -->
 # Anomaly Detection
 <!--TODO: Update bizevent code snippet -->
 --8<-- "snippets/send-bizevent/4-content-placeholder.js"
 
-<!--TODO: Update Lab task and learn more link -->
-Lab task description and primer
+Now that we know how to perform powerful queries on our log data, let's explore how Dynatrace detects anomalies by analyzing raw log records and converting them into metrics using OpenPipeline. Dynatrace enhances observability by transforming log data into time-series metrics, enabling anomaly detection through static thresholds, auto-adaptive baselines, and seasonal baselines. Static thresholds provide fixed limits for alerting, while auto-adaptive baselines learn and adjust to dynamic system behavior, and seasonal baselines account for recurring patterns such as daily or weekly cycles. This approach allows for proactive identification of performance issues and unusual behavior across your environment.
 
 <div class="grid cards" markdown>
-- [Learn More:octicons-arrow-right-24:](learn-more-url){target="_blank"}
+- [Learn More:octicons-arrow-right-24:](https://docs.dynatrace.com/docs/analyze-explore-automate/logs/alerting-on-logs){target="_blank"}
 </div>
 
-<!--TODO: Lab Task Details -->
-## Lab Step
+Return to the Notebook titled `Workshop - Workshop Exercises`.  We will be completing the `Log Anomaly Detection` linked Notebooks.
 
-Step Details
+![Workshop Exercises](./img/anomaly-detection_workshop_exercises_anomaly_detection_notebook.png)
 
-### Sub Step 1
+## Log Anomaly Baselines
 
-Sub Step Details
+Complete the exercises found in the Notebook `Workshop - Log Anomaly Baselines - Exercises`.
 
-### Sub Step 2
+![Log Anomaly Baselines Exercises](./img/anomaly-detection_log_anomaly_baselines_exercises.png)
 
-Sub Step Details
+Reference the Notebook `Workshop - Log Anomaly Baselines - Answer Key` as needed or upon completion.
+
+## Davis Anomaly Detection - Logs
+
+Complete the exercises found in the Notebook `Workshop - Davis Anomaly Detection - Logs`.
+
+![Davis Anomaly Detection Logs](./img/anomaly-detection_davis_anomaly_detector_logs_exercises.png)
+
+## Log Metric Anomaly Baselines
+
+Complete the exercises found in the Notebook `Workshop - Metric Anomaly Baselines - Exercises`.
+
+![Metric Anomaly Baselines Exercises](./img/anomaly-detection_metric_anomaly_baselines_exercises.png)
+
+Reference the Notebook `Workshop - Metric Anomaly Baselines - Answer Key` as needed or upon completion.
+
+## Davis Anomaly Detection - Metrics
+
+Complete the exercises found in the Notebook `Workshop - Davis Anomaly Detection - Metrics`.
+
+TODO: update screenshot
 
 ## Continue
-<!--TODO: Update Continue Section -->
-In the next section, we'll ...
+
+In the next section, we'll cover the primary features of building dashboards in Dynatrace.
 
 <div class="grid cards" markdown>
-- [Continue to ...:octicons-arrow-right-24:](next-page.md)
+- [Continue to Dashboards in Dynatrace:octicons-arrow-right-24:](9-dashboards.md)
 </div>
