@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lab-overview" class="md-skip">
+        <a href="#about" class="md-skip">
           Skip to content
         </a>
       
@@ -276,6 +276,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -304,6 +306,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -312,9 +316,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lab-overview" class="md-nav__link">
+  <a href="#workshop-overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Lab Overview
+      Workshop Overview
     </span>
   </a>
   
@@ -587,6 +591,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -595,9 +601,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lab-overview" class="md-nav__link">
+  <a href="#workshop-overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Lab Overview
+      Workshop Overview
     </span>
   </a>
   
@@ -663,8 +669,7 @@
   
 
 
-  <h1>1. About</h1>
-
+<h1 id="about">About<a class="headerlink" href="#about" title="Permanent link">#</a></h1>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   dynatrace.sendBizEvent('page_load', {"page": "1. About"})
@@ -683,49 +688,101 @@ document.addEventListener('DOMContentLoaded', function() {
 <p><strong>Support is provided via GitHub issues only</strong>. The materials provided in this repository are offered "as-is" without any warranties, express or implied. Use them at your own risk.</p>
 </div>
 <!--TODO: Update lab overview (match readme) -->
-<h2 id="lab-overview">Lab Overview<a class="headerlink" href="#lab-overview" title="Permanent link">#</a></h2>
-<p>During this hands-on training lab, ...</p>
+<h2 id="workshop-overview">Workshop Overview<a class="headerlink" href="#workshop-overview" title="Permanent link">#</a></h2>
+<p>This workshop is designed to help participants understand how to scale log analytics using Dynatrace, particularly leveraging its Grail-powered Log Management and Analytics capabilities. It’s hands-on and intended for technical users who want to explore log ingestion, querying, and visualization at enterprise scale.</p>
 <p><strong>Lab tasks:</strong></p>
 <ol>
 <li>
-<p>Task 1</p>
+<p>About</p>
 <ul>
-<li>Task Step or Description</li>
+<li>Understand the purpose of this workshop and what will be accomplished</li>
 </ul>
 </li>
 <li>
-<p>Task 2</p>
+<p>Getting Started</p>
+<ul>
+<li>Complete prerequisites before starting the workshop</li>
+</ul>
 </li>
 <li>
-<p>Task 3</p>
+<p>Codespaces</p>
+<ul>
+<li>Deploy Kubernetes cluster with demo applications used during the workshop</li>
+<li>Deploy Dynatrace configurations (such as workshop notebooks) using Monaco</li>
+</ul>
 </li>
 <li>
-<p>Clean up GitHub codespaces instance</p>
+<p>Deploy Dynatrace</p>
+<ul>
+<li>Deploy Dynatrace on Kubernetes for full-stack observability with logs in context</li>
+<li>Validate observability signals, including logs</li>
+</ul>
+</li>
+<li>
+<p>Scaling Log Analytics</p>
+<ul>
+<li>Learn the best practices of scaling log analytics with Dynatrace</li>
+<li>Reference presentation companion asset</li>
+</ul>
+</li>
+<li>
+<p>Configure Dynatrace</p>
+<ul>
+<li>Configure Dynatrace using the best practices covered in scaling log analytics</li>
+</ul>
+</li>
+<li>
+<p>DQL Exercises</p>
+<ul>
+<li>Learn how to use Dynatrace Query Language (DQL) to perform fast and powerful analytics on your observability data, including logs</li>
+</ul>
+</li>
+<li>
+<p>Anomaly Detection</p>
+<ul>
+<li>Leverage Dynatrace's Davis AI to detect anomalies from log data to identify issues and resolve them faster</li>
+</ul>
+</li>
+<li>
+<p>Dashboards</p>
+<ul>
+<li>Learn how to visualize observability signals, including logs, using the powerful and easy to use dashboards in Dynatrace</li>
+</ul>
+</li>
+<li>
+<p>Resources</p>
+<ul>
+<li>Additional resources available to continue your log analytics journey with Dynatrace, after completing the workshop</li>
+</ul>
+</li>
+<li>
+<p>Cleanup</p>
+<ul>
+<li>Tear down and clean up the workshop assets after its completion</li>
+</ul>
 </li>
 </ol>
 <!--TODO: Update tech spec of lab components -->
 <h2 id="technical-specification">Technical Specification<a class="headerlink" href="#technical-specification" title="Permanent link">#</a></h2>
 <h3 id="technologies-used">Technologies Used<a class="headerlink" href="#technologies-used" title="Permanent link">#</a></h3>
 <ul>
-<li><a href="https://www.dynatrace.com/trial">Dynatrace</a></li>
-<li><a href="https://kind.sigs.k8s.io/">Kubernetes Kind</a><ul>
+<li><a href="https://www.dynatrace.com/trial" target="_blank">Dynatrace</a></li>
+<li><a href="https://kind.sigs.k8s.io/" target="_blank">Kubernetes Kind</a><ul>
 <li>tested on Kind tag 0.27.0</li>
 </ul>
 </li>
-<li><a href="https://cert-manager.io/">Cert Manager</a> - *prerequisite for OpenTelemetry Operator<ul>
-<li>tested on cert-manager v1.15.3</li>
+<li><a href="https://github.com/Dynatrace/dynatrace-operator" target="_blank">Dynatrace Operator</a><ul>
+<li>tested on v1.7.0 (September 2025)</li>
 </ul>
 </li>
-<li><a href="https://github.com/Dynatrace/dynatrace-operator">Dynatrace Operator</a><ul>
-<li>tested on v1.4.2 (April 2025)</li>
-</ul>
-</li>
-<li>Dynatrace OneAgent<ul>
-<li>tested on v1.309 (April 2025)</li>
+<li><a href="https://docs.dynatrace.com/docs/whats-new/oneagent" target="_blank">Dynatrace OneAgent</a><ul>
+<li>tested on v1.319 (July 2025)</li>
 </ul>
 </li>
 </ul>
 <h3 id="reference-architecture">Reference Architecture<a class="headerlink" href="#reference-architecture" title="Permanent link">#</a></h3>
+<!--TODO: Updated reference architecture -->
+
 <h2 id="continue">Continue<a class="headerlink" href="#continue" title="Permanent link">#</a></h2>
 <p>In the next section, we'll review the prerequisites for this lab needed before launching our Codespaces instance.</p>
 <div class="grid cards">

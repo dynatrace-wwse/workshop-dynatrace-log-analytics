@@ -80,6 +80,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#cleanup" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -471,6 +476,19 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    11. Cleanup
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -481,6 +499,52 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#delete-dynatrace-configurations-with-monaco" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete Dynatrace Configurations with Monaco
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-codespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete Codespace
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-dynatrace-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete Dynatrace Tokens
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -503,6 +567,43 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#delete-dynatrace-configurations-with-monaco" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete Dynatrace Configurations with Monaco
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-codespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete Codespace
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-dynatrace-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete Dynatrace Tokens
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -520,21 +621,32 @@
   
 
 
-  <h1>11. Cleanup</h1>
-
+<h1 id="cleanup">Cleanup<a class="headerlink" href="#cleanup" title="Permanent link">#</a></h1>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   dynatrace.sendBizEvent('page_load', {"page": "5. Cleanup"})
 });
 </script>
 
-<!--TODO: Validate and update clean up steps -->
+<!-- TODO:Cleanup steps -->
+
+<h2 id="delete-dynatrace-configurations-with-monaco">Delete Dynatrace Configurations with Monaco<a class="headerlink" href="#delete-dynatrace-configurations-with-monaco" title="Permanent link">#</a></h2>
+<p>You can choose to keep the Dynatrace configurations, including the Notebooks and Dashboards, but if you want to delete them automatically you can leverage the helper function.</p>
+<p>Start by setting your environment variables for Monaco, these will allow Monaco to authenticate with the Dynatrace Platform Services API.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DT_PLATFORM_URL</span><span class="o">=</span>https://<span class="o">{</span>your-environment-id<span class="o">}</span>.apps.dynatrace.com
+<span class="nb">export</span><span class="w"> </span><span class="nv">DT_PLATFORM_TOKEN</span><span class="o">=</span>dt0sXX.ABC123XYZ
+</code></pre></div>
+<p>Delete the Dynatrace configurations with Monaco using the provided helper function.</p>
+<div class="highlight"><pre><span></span><code>deleteDynatraceConfig
+</code></pre></div>
+<h2 id="delete-codespace">Delete Codespace<a class="headerlink" href="#delete-codespace" title="Permanent link">#</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">Deleting the codespace from inside the container</p>
 <p>We like to make your life easier, for convenience there is a function loaded in the shell of the Codespace for deleting the codespace, just type <code>deleteCodespace</code>. This will trigger the deletion of the codespace.</p>
 </div>
 <p>Another way to do this is by going to <a href="https://github.com/codespaces" target="_blank">https://github.com/codespaces</a> and delete the codespace.</p>
-<p>You may also want to deactivate or delete the API token needed for this lab.</p>
+<h2 id="delete-dynatrace-tokens">Delete Dynatrace Tokens<a class="headerlink" href="#delete-dynatrace-tokens" title="Permanent link">#</a></h2>
+<p>You may also want to deactivate or delete the API and Platform token(s) needed for this lab.</p>
 
 
 
