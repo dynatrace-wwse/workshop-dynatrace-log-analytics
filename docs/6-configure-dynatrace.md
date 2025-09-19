@@ -2,30 +2,24 @@
 <!--TODO: Update bizevent code snippet -->
 --8<-- "snippets/send-bizevent/4-content-placeholder.js"
 
-<!--TODO: Update Lab task and learn more link -->
-Lab task description and primer
+In this workshop module, we'll configure the Dynatrace tenant based on the best practices covered in scaling log analytics.
 
-<div class="grid cards" markdown>
-- [Learn More:octicons-arrow-right-24:](learn-more-url){target="_blank"}
-</div>
-
-<!--TODO: Lab Task Details -->
 ## Storage Bucket and OpenPipeline
 
-Step Details
+Complete the exercises found in the Notebook `Workshop - Storage Bucket and OpenPipeline`.
 
-### Sub Step 1
+![OpenPipeline](./img/configure-dynatrace_notebook_openpipeline.png)
 
-Sub Step Details
+## Segments
 
-### Sub Step 2
+Complete the exercises found in the Notebook `Workshop - Segments`.
 
-Sub Step Details
+![Segments](./img/configure-dynatrace_notebook_segments.png)
 
 ## Continue
 
 In the next section, we'll introduce the Dynatrace Query Language and unlock power queries and analytics on your data.
 
 <div class="grid cards" markdown>
-- [Continue to ...:octicons-arrow-right-24:](7-dql-exercises.md)
+- [Continue to Dynatrace Query Language:octicons-arrow-right-24:](7-dql-exercises.md)
 </div>

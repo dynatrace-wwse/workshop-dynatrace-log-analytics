@@ -12,9 +12,166 @@
             "markdown": "# Segments\n\n## Use Cases\nSegments are typically modeled to allow filtering monitored entities, logs, metrics, events, and other types of data about the following dimensions:\n\n- Business applications operated by the customer  \n- Organizational units, to understand responsibility and ownership  \n- Infrastructural components, to understand and plan the allocation of resources  \n\n## Key terms\n> **Grail bucket:** Logs powered by Grail can be stored in different buckets. Buckets can improve query performance by reducing query execution time and the scope of data read.\n\n> **One-off segment:** Segment configured with static conditions for a one-off scenario.\n\n> **Dynamic segment:** Segment configured with dynamic conditions using variables."
         },
         {
+            "id": "c3a15784-08c4-4833-ad1d-737baf439e1b",
+            "type": "markdown",
+            "markdown": "Manage your Segments through the **Settings** app.\n#\nSettings > Environment Segmentation > Segments\n#\n![](https://raw.githubusercontent.com/dynatrace-wwse/workshop-dynatrace-log-analytics/refs/heads/main/assets/images/configure-dynatrace_segments_settings.png)"
+        },
+        {
             "id": "4548684b-2770-4fca-a774-a04fb126e6db",
             "type": "markdown",
-            "markdown": "## Exercise 1: Segment logs by bucket\n\n### 1. Create a segment for a single log bucket\nHaving a segment for a single bucket might be desired in some situations. The following example shows how to do that by filtering for logs of bucket `logs_default`.\n\n![](https://dt-cdn.net/images/segments-log-bucket1-2528-0fcb794b9b.png)\n\n**1.** Go to **Segments** and **+ Segment** to add a new segment  \n**2.** Enter the segment name, such as \"Log bucket\"  \n**3.** Select **+ Add from data types > Logs** to include logs in your segment  \n**4.** **Type to filter** and select `dt.system.bucket`  \n**5.** Specify a certain bucket to filter for (for example, `dt.system.bucket = logs_default`)  \n**6.** Select **Save**  \n\n---\n> Successfully configured segments are displayed in the segments list. Select  `> Edit` to modify a segment.\n---\n\n\n### 2. Add a variable to filter for any log bucket\nAdding a variable to the segment to dynamically filter for many log buckets instead of one makes the segment universally applicable.\n\n![](https://dt-cdn.net/images/segments-log-bucket2-2524-201b656143.png)\n\n**1.** Select  **Variable**  \n**2.** Query the list of log buckets, sorted alphabetically  \n```\nfetch dt.system.buckets\n| filter dt.system.table == \"logs\"\n| fields bucket=name\n| sort bucket\n```\n**3.** Select **Run query**  \n**4.** Select **Done** to finish variable configuration  \n**5.** Adjust the condition of the include for logs to use `$bucket` variable (`dt.system.bucket = $bucket`)  \n**6.** Select **Save**\n\n---\n>Successfully configured variables are displayed as on top of existing include blocks of a segment. Select Edit variable(s) to modify variables.\n---\n\n### 3. Use segment to analyze logs by bucket\nYou can analyze logs in different apps. To query for logs in Notebooks Notebooks\n\n**1.** Go to **Notebooks** and select **+ Notebook**   \n**2.** Select **+ Logs**  \n**3.** Open the segment selector ◇ and, in **Filter by segments**, select the previously created segment for log buckets  \n**4.** In the **Select an option** list, select one or more log buckets to filter for  \n**5.** Select **Apply** to finish segment selection  \n**6.** Select **Run query** to query for logs of the selected buckets  \n\n![](https://dt-cdn.net/images/segments-12-2142-b2a14173b1.png)\n\n## Conclusion\nYou’ve configured a segment for a single bucket statically. You’ve learned how variables help to make segments more dynamic and cover broader use cases. Lastly, you’ve seen how to analyze logs of certain buckets, allowing optimization of query performance and license consumption."
+            "markdown": "## Exercise 1: Segment logs by bucket\n\n### 1. Create a segment for a single log bucket\nHaving a segment for a single bucket might be desired in some situations. The following example shows how to do that by filtering for logs of bucket `logs_default`.\n\n![](https://raw.githubusercontent.com/dynatrace-wwse/workshop-dynatrace-log-analytics/refs/heads/main/assets/images/configure-dynatrace_segments_default_logs_bucket.png)\n\n**1.** Go to **Segments** and **+ Segment** to add a new segment  \n**2.** Enter the segment name, such as \"Default Logs Bucket\"  \n**3.** Select **+ Add from data types > Logs** to include logs in your segment  \n**4.** **Type to filter** and select `dt.system.bucket`  \n**5.** Specify a certain bucket to filter for (for example, `dt.system.bucket = logs_default`)  \n**6.** Select **Save**\n\n---\n> Successfully configured segments are displayed in the segments list. Select  `> Edit` to modify a segment.\n---\n\n\n### 2. Add a variable to filter for any log bucket (Dynamic Segment)\nAdding a variable to the segment to dynamically filter for many log buckets instead of one makes the segment universally applicable.\n\n![](https://raw.githubusercontent.com/dynatrace-wwse/workshop-dynatrace-log-analytics/refs/heads/main/assets/images/configure-dynatrace_segments_dynamic_logs_bucket_variable.png)\n\n**1.** Select  **Variable**  \n**2.** Query the list of log buckets, sorted alphabetically  \n```\nfetch dt.system.buckets\n| filter dt.system.table == \"logs\"\n| sort name asc\n```\n**3.** Select **Run query**  \n**4.** Select **Done** to finish variable configuration  \n**5.** Adjust the condition of the include for logs to use `$name` variable (`dt.system.bucket = $name`)  \n**6.** Select **Save**\n\n![](https://raw.githubusercontent.com/dynatrace-wwse/workshop-dynatrace-log-analytics/refs/heads/main/assets/images/configure-dynatrace_segments_dynamic_logs_bucket_variable.png)\n\n---\n>Successfully configured variables are displayed as on top of existing include blocks of a segment. Select Edit variable(s) to modify variables.\n---\n\n### 3. Use segment to analyze logs by bucket\nYou can analyze logs in different apps. Open the **Logs** app.\n\n![](https://raw.githubusercontent.com/dynatrace-wwse/workshop-dynatrace-log-analytics/refs/heads/main/assets/images/configure-dynatrace_segments_logs_default_bucket_filter.png)\n\n**1.** Go to **Logs**  \n**2.** Click the **Segment Filter** icon  \n**3.** Select the **Default Logs Bucket** segment  \n**4.** Select **Apply** to finish segment selection  \n**5.** Select **Run query** to query for logs in the default logs bucket only  \n\n### 4. Use dynamic segment to analyze logs by bucket\nNext let's analyze logs by bucket in our notebook (you may need to refresh this notebook to update your available segments).\n\nUse the **DQL** section below to query logs by bucket.\n\n![](https://raw.githubusercontent.com/dynatrace-wwse/workshop-dynatrace-log-analytics/refs/heads/main/assets/images/configure-dynatrace_segments_logs_default_bucket_filter.png)\n\n**1.** Click the **Segment Filter** icon  \n**2.** Select the **Logs Bucket** segment  \n**3.** Select the `astroshop_paymentservice_365` and `astroshop_observe_and_troubleshoot_95` buckets  \n**4.** Select **Apply** to finish segment selection  \n**5.** Select **Run query** to query for logs in the selected logs buckets only  \n\n## Conclusion\nYou’ve configured a segment for a single bucket statically. You’ve learned how variables help to make segments more dynamic and cover broader use cases. Lastly, you’ve seen how to analyze logs of certain buckets, allowing optimization of query performance and license consumption."
+        },
+        {
+            "id": "a82dce25-95b0-4883-8f97-e16202b61ee2",
+            "type": "dql",
+            "title": "DQL: Logs by Bucket, Namespace, Container, and Level",
+            "filterSegments": [],
+            "drilldownPath": [],
+            "previousFilterSegments": [
+                {
+                    "id": "0I7FsdNuRvY",
+                    "variables": [
+                        {
+                            "name": "name",
+                            "values": [
+                                "astroshop_paymentservice_365",
+                                "astroshop_observe_and_troubleshoot_95"
+                            ]
+                        },
+                        {
+                            "name": "display_name",
+                            "values": [
+                                "AstroShop PaymentService Logs for 365 Days",
+                                "AstroShop Observe and Troubleshoot for 95 Days"
+                            ]
+                        },
+                        {
+                            "name": "dt.system.table",
+                            "values": [
+                                "logs",
+                                "logs"
+                            ]
+                        },
+                        {
+                            "name": "retention_days",
+                            "values": [
+                                "365",
+                                "95"
+                            ]
+                        },
+                        {
+                            "name": "included_query_days",
+                            "values": [
+                                "0",
+                                "0"
+                            ]
+                        },
+                        {
+                            "name": "metric_interval",
+                            "values": [
+                                "null",
+                                "null"
+                            ]
+                        },
+                        {
+                            "name": "records",
+                            "values": [
+                                "214",
+                                "11486"
+                            ]
+                        },
+                        {
+                            "name": "estimated_uncompressed_bytes",
+                            "values": [
+                                "588651",
+                                "17817633"
+                            ]
+                        },
+                        {
+                            "name": "has_access",
+                            "values": [
+                                "true",
+                                "true"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-24h",
+                        "to": "now()"
+                    },
+                    "value": "fetch logs\n| summarize logs = count(), by: {bucket = dt.system.bucket, k8s.namespace.name, k8s.container.name, loglevel}\n| sort logs desc"
+                },
+                "visualizationSettings": {
+                    "chartSettings": {}
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                }
+            }
+        },
+        {
+            "id": "e8f78890-614f-4460-a37e-e92a39b4dfc2",
+            "type": "markdown",
+            "markdown": "## Exercise 2: Segment logs by Kubernetes Namespace\n\n### 1. Create a Dynamic Segment using `k8s.namespace.name` as a variable\nCreate a new segment and call it **k8s-namespace**.  Add a variable and use the topology query to find all observed namespaces.\n\n**1.** Select  **Variable**  \n**2.** Query the list of namespaces using the query below:  \n```\nfetch dt.entity.cloud_application_namespace\n| fields namespace = entity.name\n| dedup namespace\n| sort namespace\n```\n**3.** Select **Run query**  \n**4.** Select **Done** to finish variable configuration  \n**5.** Adjust the condition of the include for all data with the filter `k8s.namespace.name = $namespace`    \n**6.** Select **Save**  \n\n![](https://raw.githubusercontent.com/dynatrace-wwse/workshop-dynatrace-log-analytics/refs/heads/main/assets/images/configure-dynatrace_segments_k8s_namespace_configuration.png)\n\n### 2. Use segment to analyze logs by namespace\nNext let's analyze logs by namespace in our notebook (you may need to refresh this notebook to update your available segments).\n\nUse the **DQL** section below to query logs by bucket.\n\n![](https://raw.githubusercontent.com/dynatrace-wwse/workshop-dynatrace-log-analytics/refs/heads/main/assets/images/configure-dynatrace_segments_dql_dynamic_namespace_filter.png)\n\n**1.** Click the **Segment Filter** icon  \n**2.** Select the **k8s-namespace** segment  \n**3.** Select the `astroshop` namespace  \n**4.** Select **Apply** to finish segment selection  \n**5.** Select **Run query** to query for logs related to the astroshop namespace only  \n\n## Conclusion\nYou’ve configured a segment for a single bucket statically. You’ve learned how variables help to make segments more dynamic and cover broader use cases. Lastly, you’ve seen how to analyze logs of certain buckets, allowing optimization of query performance and license consumption."
+        },
+        {
+            "id": "330a3d47-4ed1-4ee2-84c5-d851dab2d11b",
+            "type": "dql",
+            "title": "DQL: Logs by Namespace and Container",
+            "filterSegments": [],
+            "drilldownPath": [],
+            "previousFilterSegments": [
+                {
+                    "id": "pSBxKydXxG3",
+                    "variables": [
+                        {
+                            "name": "namespace",
+                            "values": [
+                                "astroshop"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "state": {
+                "input": {
+                    "timeframe": {
+                        "from": "now()-24h",
+                        "to": "now()"
+                    },
+                    "value": "fetch logs\n| summarize logs = count(), by: {k8s.namespace.name, k8s.container.name}\n| sort logs desc"
+                },
+                "visualizationSettings": {
+                    "chartSettings": {}
+                },
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "davis": {
+                    "includeLogs": true,
+                    "davisVisualization": {
+                        "isAvailable": true
+                    }
+                }
+            }
         }
     ]
 }
