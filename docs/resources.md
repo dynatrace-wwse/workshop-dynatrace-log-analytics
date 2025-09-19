@@ -1,4 +1,5 @@
---8<-- "snippets/resources.js"
+# Resources
+--8<-- "snippets/send-bizevent/resources.js"
 
 <!--TODO: Optional page, delete if desired -->
 ### Get your Dynatrace environment
@@ -13,5 +14,5 @@
 - [Dynatrace Blog](https://www.dynatrace.com/news/blog/){target="_blank"}
 
 <div class="grid cards" markdown>
-- [What's Next? :octicons-arrow-right-24:](whats-next.md)
+- [Cleanup:octicons-arrow-right-24:](cleanup.md)
 </div>
