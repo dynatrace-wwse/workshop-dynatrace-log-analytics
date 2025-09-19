@@ -38,7 +38,7 @@ Reference the Notebook `Workshop - Metric Anomaly Baselines - Answer Key` as nee
 
 Complete the exercises found in the Notebook `Workshop - Davis Anomaly Detection - Metrics`.
 
-TODO: update screenshot
+![Davis Anomaly Detection Metrics](./img/anomaly-detection_davis_anomaly_detector_metrics_exercises.png)
 
 ## Continue
 
