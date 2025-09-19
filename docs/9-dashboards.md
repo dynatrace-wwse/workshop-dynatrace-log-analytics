@@ -1,27 +1,24 @@
-<!--TODO: Update Lab Task -->
 # Dashboards
 <!--TODO: Update bizevent code snippet -->
 --8<-- "snippets/send-bizevent/4-content-placeholder.js"
 
-<!--TODO: Update Lab task and learn more link -->
-Lab task description and primer
+In this section of the workshop, you'll use Dynatrace log analytics and dashboards to visualize key aspects of your environment, including business outcomes, application resiliency, and infrastructure health — derived from log data in context. By querying and aggregating logs, you can uncover insights into user behavior, transaction success rates, error patterns, and system performance. Dynatrace dashboards allow you to present these insights in a clear, contextualized format, enabling teams to monitor service reliability, detect emerging issues, and correlate technical signals with business impact in real time.
 
 <div class="grid cards" markdown>
-- [Learn More:octicons-arrow-right-24:](learn-more-url){target="_blank"}
+- [Learn More:octicons-arrow-right-24:](https://docs.dynatrace.com/docs/analyze-explore-automate/dashboards-and-notebooks/dashboards-new){target="_blank"}
 </div>
 
-<!--TODO: Lab Task Details -->
-## Lab Step
+Return to the Notebook titled `Workshop - Workshop Exercises`.  We will be completing the `Dashboarding Exercises` linked Notebooks.
 
-Step Details
+![Workshop Exercises](./img/dashboards-workshop_exercises_dashboarding_notebook.png)
 
-### Sub Step 1
+## Dashboarding
 
-Sub Step Details
+Complete the exercises found in the Notebook `Workshop - Dashboarding`.
 
-### Sub Step 2
+![Dashboarding](./img/dashboards_workshop_dashboarding_notebook.png)
 
-Sub Step Details
+Reference the Dashboard `Workshop - My Kubernetes Overview` as needed or upon completion.
 
 ## Continue
 <!--TODO: Update Continue Section -->
