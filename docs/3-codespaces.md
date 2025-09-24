@@ -3,6 +3,8 @@
 <!--TODO: Remove Under Construction -->
 --8<-- "snippets/under-construction.md"
 
+--8<-- "snippets/dt-enablement.md"
+
 ## Create Codespace
 
 Click to open Codespaces for this workshop repository:

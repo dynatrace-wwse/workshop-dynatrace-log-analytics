@@ -21,6 +21,10 @@ fi
 # VARIABLES DECLARATION
 source "$REPO_PATH/.devcontainer/util/variables.sh"
 
+# LOAD TEST FUNCTIONS
+source "$REPO_PATH/.devcontainer/test/test_functions.sh"
+
+
 # FUNCTIONS DECLARATIONS
 timestamp() {
   date +"[%Y-%m-%d %H:%M:%S]"
@@ -394,10 +398,18 @@ alias pg='ps -aux | grep'
 }
 
 installRunme() {
-  printInfoSection "Installing Runme Version $RUNME_CLI_VERSION"
   mkdir runme_binary
-  wget -O runme_binary/runme_linux_x86_64.tar.gz https://download.stateful.com/runme/${RUNME_CLI_VERSION}/runme_linux_x86_64.tar.gz
-  tar -xvf runme_binary/runme_linux_x86_64.tar.gz --directory runme_binary
+  if [[ "$ARCH" == "x86_64" ]]; then
+    printInfoSection "Installing Runme Version $RUNME_CLI_VERSION for AMD/x86"
+    wget -O runme_binary/runme_linux_x86_64.tar.gz https://download.stateful.com/runme/${RUNME_CLI_VERSION}/runme_linux_x86_64.tar.gz
+    tar -xvf runme_binary/runme_linux_x86_64.tar.gz --directory runme_binary
+  elif [[ "$ARCH" == *"arm"* || "$ARCH" == *"aarch64"* ]]; then
+    printInfoSection "Installing Runme Version $RUNME_CLI_VERSION for ARM"
+    wget -O runme_binary/runme_linux_arm64.tar.gz https://download.stateful.com/runme/${RUNME_CLI_VERSION}/runme_linux_arm64.tar.gz
+    tar -xvf runme_binary/runme_linux_arm64.tar.gz --directory runme_binary
+  else 
+    printWarn "Runme cant be installed, Architecture unknown"
+  fi
   sudo mv runme_binary/runme /usr/local/bin
   rm -rf runme_binary
 }
@@ -777,18 +789,17 @@ generateDynakube(){
     CLUSTERNAME=$(hostname)
     export CLUSTERNAME
 
-    arch=$(uname -m)
     ARM=false
 
-    if [[ "$arch" == "x86_64" ]]; then
+    if [[ "$ARCH" == "x86_64" ]]; then
       printInfo "Codespace is running in AMD (x86_64), Dynakube image is set as default to pull the latest from the tenant $DT_TENANT"
-    elif [[ "$arch" == *"arm"* || "$arch" == *"aarch64"* ]]; then
-      printWarn "Codespace is running in ARM architecture ($arch), Dynakube image will be set in Dynakube for AG and OneAgent."
+    elif [[ "$ARCH" == *"arm"* || "$ARCH" == *"aarch64"* ]]; then
+      printWarn "Codespace is running in ARM architecture ($ARCH), Dynakube image will be set in Dynakube for AG and OneAgent."
       printWarn "ActiveGate image: $AG_IMAGE"
       printWarn "OneAgent image: $OA_IMAGE"
       ARM=true
     else
-      printInfo "Codespace is running on an unkown architecture ($arch), Dynakube image will be set in Dynakube for AG and OneAgent."
+      printInfo "Codespace is running on an unkown architecture ($ARCH), Dynakube image will be set in Dynakube for AG and OneAgent."
       printInfo "ActiveGate image: $AG_IMAGE"
       printInfo "OneAgent image: $OA_IMAGE"
       ARM=true
@@ -955,8 +966,9 @@ installMkdocs(){
 
 
 exposeMkdocs(){
-  printInfo "Exposing Mkdocs in your dev.container"
-  nohup mkdocs serve -a 0.0.0.0:8000 > /dev/null 2>&1 &
+  printInfo "Exposing Mkdocs in your dev.container in port 8000 & running in the background, type 'jobs' to show the process."
+  nohup mkdocs serve --dev-addr=0.0.0.0:8000 --watch-theme --dirtyreload --livereload > /dev/null 2>&1 &
+
 }
 
 
@@ -974,8 +986,29 @@ _buildLabGuide(){
   cd -
 }
 
+deployCertmanager(){
+  certmanagerInstall
+  certmanagerEnable
+}
+
 deployAstroshop(){
   printInfoSection "Deploying Astroshop"
+  
+  assertRunningPod cert-manager cert-manager
+  
+  certmanager_installed=$?   
+
+  if [[ $certmanager_installed -ne 0 ]]; then
+    printWarn "Certmanager is not installed, this version of Astroshop needs it, installing it..."
+    deployCertmanager
+  else
+    printInfo "Certmanager is installed, continuing with deployment"
+  fi
+
+  if [[ "$ARCH" != "x86_64" ]]; then
+    printWarn "This version of the Astroshop only supports AMD/x86 architectures and not ARM, exiting deployment..."
+    return
+  fi
 
   # To override the Dynatrace values call the function with the following order
   #saveReadCredentials $DT_TENANT $DT_OPERATOR_TOKEN $DT_INGEST_TOKEN $DT_INGEST_TOKEN $DT_OTEL_ENDPOINT
@@ -1045,6 +1078,76 @@ deployBugZapperApp(){
   waitAppCanHandleRequests $PORT
 
   printInfoSection "Bugzapper is available via NodePort=$PORT"
+}
+
+# deploy easytrade from manifests
+deployEasyTrade() {
+
+  #FIXME: ARM Warning
+
+  printInfoSection "Deploying EasyTrade"
+
+  # Create easytrade namespace
+  printInfoSection "Creating 'easytrade' namespace"
+
+  kubectl create namespace easytrade
+
+  # Deploy easytrade manifests
+  printInfoSection "Deploying easytrade manifests"
+
+  kubectl apply -f $REPO_PATH/.devcontainer/apps/easytrade/manifests -n easytrade
+
+  # Validate pods are running
+  printInfoSection "Waiting for all pods to start"
+
+  waitForAllPods easytrade
+
+  # TODO: Expose App
+  #printInfo "Exposing Astroshop in your dev.container via NodePort 30100"
+
+  #printInfo "Change astroshop-frontendproxy service from LoadBalancer to NodePort"
+  #kubectl patch service astroshop-frontendproxy --namespace=astroshop --patch='{"spec": {"type": "NodePort"}}'
+
+  #printInfo "Exposing the astroshop-frontendproxy in NodePort 30100"
+  #kubectl patch service astroshop-frontendproxy --namespace=astroshop --type='json' --patch='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value":30100}]'
+
+  printInfo "EasyTrade deployed succesfully"
+
+}
+
+# deploy hipstershop from manifests
+deployHipsterShop() {
+
+  #FIXME: ARM Warning
+
+  printInfoSection "Deploying HipsterShop"
+
+  # Create hipstershop namespace
+  printInfoSection "Creating 'hipstershop' namespace"
+
+  kubectl create namespace hipstershop
+
+  # Deploy hipstershop manifests
+  printInfoSection "Deploying hipstershop manifests"
+
+  kubectl apply -f $REPO_PATH/.devcontainer/apps/hipstershop/manifests -n hipstershop
+
+  # Validate pods are running
+  printInfoSection "Waiting for all pods to start"
+
+  waitForAllPods hipstershop
+
+  # TODO: Expose App
+  #printInfo "Exposing Astroshop in your dev.container via NodePort 30100"
+
+  #printInfo "Change astroshop-frontendproxy service from LoadBalancer to NodePort"
+  #kubectl patch service astroshop-frontendproxy --namespace=astroshop --patch='{"spec": {"type": "NodePort"}}'
+
+  #printInfo "Exposing the astroshop-frontendproxy in NodePort 30100"
+  #kubectl patch service astroshop-frontendproxy --namespace=astroshop --type='json' --patch='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value":30100}]'
+
+  printInfo "HipsterShop deployed succesfully"
+  
 }
 
 deleteCodespace(){
