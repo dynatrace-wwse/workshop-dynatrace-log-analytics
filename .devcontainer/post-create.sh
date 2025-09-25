@@ -17,6 +17,7 @@ installK9s
 #deployApplicationMonitoring
 
 deployAstroshop
+
 finalizePostCreation
 
 printInfoSection "Your dev container finished creating"

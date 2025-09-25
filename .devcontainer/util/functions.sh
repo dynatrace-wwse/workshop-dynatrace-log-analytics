@@ -929,16 +929,18 @@ getNextFreeAppPort() {
 
   printInfo "Iterating over NODE_PORTS: $NODE_PORTS" $print_log
 
-  # Reconstruct the array from the exported string (works in Bash and Zsh)
-  PORT_ARRAY=(${=NODE_PORTS})
+  # Reconstruct array (portable for Bash and Zsh)
+  PORT_ARRAY=()
+  for port in $(echo "$NODE_PORTS"); do
+    PORT_ARRAY+=("$port")
+  done
 
   for port in "${PORT_ARRAY[@]}"; do
     printInfo "Verifying if $port is free in Kubernetes Cluster..." $print_log
 
     # Searching for services attached to a NodePort
-    CMD="kubectl get svc --all-namespaces -o wide | grep $port"
-    #FIXME: ADD WARNING WHEN ALREADY DEPLOYED
-    allocated_app=$(eval "$CMD")
+    allocated_app=$(kubectl get svc --all-namespaces -o wide | grep "$port")
+    
     if [[ "$?" == '0' ]]; then
       printWarn "Port $port is allocated by: $allocated_app" $print_log
       app_deployed=true
