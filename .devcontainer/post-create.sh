@@ -16,7 +16,7 @@ installK9s
 #deployCloudNative
 #deployApplicationMonitoring
 
-deployAstroshop
+#deployAstroshop
 finalizePostCreation
 
 printInfoSection "Your dev container finished creating"

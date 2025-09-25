@@ -21,6 +21,9 @@ fi
 # VARIABLES DECLARATION
 source "$REPO_PATH/.devcontainer/util/variables.sh"
 
+# LOAD TEST FUNCTIONS
+source "$REPO_PATH/.devcontainer/test/test_functions.sh"
+
 
 # FUNCTIONS DECLARATIONS
 timestamp() {
@@ -876,6 +879,60 @@ undeployOperatorViaHelm(){
 }
 
 
+installMkdocs(){
+  printInfoSection "Installing Mkdocs"
+  printInfo "Installing Runme v $RUNME_CLI_VERSION"
+  installRunme
+  printInfo "Installing MKdocs"
+  pip install --break-system-packages -r docs/requirements/requirements-mkdocs.txt
+  printInfo "Exposing MKdocs 0.0.0.0:8000"
+  exposeMkdocs
+}
+
+
+exposeMkdocs(){
+  printInfo "Exposing Mkdocs in your dev.container in port 8000 & running in the background, type 'jobs' to show the process."
+  nohup mkdocs serve --dev-addr=0.0.0.0:8000 --watch-theme --dirtyreload --livereload > /dev/null 2>&1 &
+
+}
+
+
+_exposeLabguide(){
+  printInfo "Exposing Lab Guide in your dev.container"
+  cd $REPO_PATH/lab-guide/
+  nohup node bin/server.js --host 0.0.0.0 --port 3000 > /dev/null 2>&1 &
+  cd -
+}
+
+_buildLabGuide(){
+  printInfoSection "Building the Lab-guide in port 3000"
+  cd $REPO_PATH/lab-guide/
+  node bin/generator.js
+  cd -
+}
+
+deployCertmanager(){
+  certmanagerInstall
+  certmanagerEnable
+}
+
+
+getNextFreeAppPort(){
+  for PORT in "${NODE_PORTS[@]}"; do
+    printInfo "Verifying if $PORT is free"
+    # Applications are bound to all ifaces in kind
+    CMD="showOpenPorts 2>&1 | grep -c -E '0.0.0.0:$PORT'"
+    is_free=$(eval "$CMD")
+    if [[ "$is_free" == '0' ]]; then
+      printInfo "Port $PORT is free, allocating to app"
+      return $PORT
+    fi
+  done
+
+  printWarn "No NodePort is free for deploying apps in your container, please delete some apps before deploying more."
+  return 0
+}
+
 deployAITravelAdvisorApp(){
   printInfoSection "Deploying AI Travel Advisor App & it's LLM"
 
@@ -919,7 +976,11 @@ deployAITravelAdvisorApp(){
 }
 
 deployTodoApp(){
+
   printInfoSection "Deploying Todo App"
+
+  PORT=$(getNextFreeAppPort)
+
 
   kubectl create ns todoapp
 
@@ -930,71 +991,23 @@ deployTodoApp(){
   kubectl -n todoapp expose deployment todoapp --type=NodePort --name=todoapp --port=8080 --target-port=8080
 
   # Define the NodePort to expose the app from the Cluster
+  #kubectl patch service todoapp --namespace=todoapp --type='json' --patch="[{\"op\": \"replace\", \"path\": \"/spec/ports/0/nodePort\", \"value\":$PORT}]"
   kubectl patch service todoapp --namespace=todoapp --type='json' --patch='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value":30100}]'
 
   waitForAllReadyPods todoapp
 
-  waitAppCanHandleRequests 30100
+  waitAppCanHandleRequests $PORT
 
-  printInfoSection "TodoApp is available via NodePort=30100"
-}
-
-exposeTodoApp(){
-  printInfo "Exposing Todo App in your dev.container"
-  nohup kubectl port-forward service/todoapp 8080:8080  -n todoapp --address="0.0.0.0" > /tmp/kubectl-port-forward.log 2>&1 &
-}
-
-
-_exposeAstroshop(){
-  printInfo "Exposing Astroshop in your dev.container"
-  nohup kubectl port-forward service/astroshop-frontendproxy 8080:8080  -n astroshop --address="0.0.0.0" > /tmp/kubectl-port-forward.log 2>&1 &
-}
-
-
-installMkdocs(){
-  printInfoSection "Installing Mkdocs"
-  printInfo "Installing Runme v $RUNME_CLI_VERSION"
-  installRunme
-  printInfo "Installing MKdocs"
-  pip install --break-system-packages -r docs/requirements/requirements-mkdocs.txt
-  printInfo "Exposing MKdocs 0.0.0.0:8000"
-  exposeMkdocs
-}
-
-
-exposeMkdocs(){
-  printInfo "Exposing Mkdocs in your dev.container in port 8000 & running in the background, type 'jobs' to show the process."
-  nohup mkdocs serve --dev-addr=0.0.0.0:8000 --watch-theme --dirtyreload --livereload > /dev/null 2>&1 &
-
-}
-
-
-_exposeLabguide(){
-  printInfo "Exposing Lab Guide in your dev.container"
-  cd $REPO_PATH/lab-guide/
-  nohup node bin/server.js --host 0.0.0.0 --port 3000 > /dev/null 2>&1 &
-  cd -
-}
-
-_buildLabGuide(){
-  printInfoSection "Building the Lab-guide in port 3000"
-  cd $REPO_PATH/lab-guide/
-  node bin/generator.js
-  cd -
-}
-
-deployCertmanager(){
-  certmanagerInstall
-  certmanagerEnable
+  printInfoSection "TodoApp is available via NodePort=$PORT"
 }
 
 deployAstroshop(){
+
   printInfoSection "Deploying Astroshop"
   
-  assertRunningPod cert-manager cert-manager
-  
-  certmanager_installed=$?   
-
+  # Verify if cert-manager is installed in subshell to not exit function, if not, then install it
+  (assertRunningPod cert-manager cert-manager >/dev/null 2>&1)
+  certmanager_installed=$?
   if [[ $certmanager_installed -ne 0 ]]; then
     printWarn "Certmanager is not installed, this version of Astroshop needs it, installing it..."
     deployCertmanager
@@ -1006,15 +1019,6 @@ deployAstroshop(){
     printWarn "This version of the Astroshop only supports AMD/x86 architectures and not ARM, exiting deployment..."
     return
   fi
-
-  # To override the Dynatrace values call the function with the following order
-  #saveReadCredentials $DT_TENANT $DT_OPERATOR_TOKEN $DT_INGEST_TOKEN $DT_INGEST_TOKEN $DT_OTEL_ENDPOINT
-
-  ###
-  # Instructions to install Astroshop with Helm Chart from R&D and images built in shinojos repo (including code modifications from R&D)
-  ####
-  #sed -i 's~domain.placeholder~'"$DOMAIN"'~' $REPO_PATH/.devcontainer/apps/astroshop/helm/dt-otel-demo-helm/values.yaml
-  #sed -i 's~domain.placeholder~'"$DOMAIN"'~' $REPO_PATH/.devcontainer/apps/astroshop/helm/dt-otel-demo-helm-deployments/values.yaml
 
   helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
 
@@ -1028,13 +1032,13 @@ deployAstroshop(){
 
   helm upgrade --install astroshop -f $REPO_PATH/.devcontainer/apps/astroshop/helm/dt-otel-demo-helm-deployments/values.yaml --set default.image.repository=docker.io/shinojosa/astroshop --set default.image.tag=1.12.0 --set collector_tenant_endpoint=$DT_OTEL_ENDPOINT --set collector_tenant_token=$DT_INGEST_TOKEN -n astroshop $REPO_PATH/.devcontainer/apps/astroshop/helm/dt-otel-demo-helm
 
-  printInfo "Exposing Astroshop in your dev.container via NodePort 30100"
+  printInfo "Exposing Astroshop in your dev.container via NodePort $PORT"
 
   printInfo "Change astroshop-frontendproxy service from LoadBalancer to NodePort"
   kubectl patch service astroshop-frontendproxy --namespace=astroshop --patch='{"spec": {"type": "NodePort"}}'
 
-  printInfo "Exposing the astroshop-frontendproxy in NodePort 30100"
-  kubectl patch service astroshop-frontendproxy --namespace=astroshop --type='json' --patch='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value":30100}]'
+  printInfo "Exposing the astroshop-frontendproxy in NodePort $PORT"
+  kubectl patch service astroshop-frontendproxy --namespace=astroshop --type='json' --patch="[{\"op\": \"replace\", \"path\": \"/spec/ports/0/nodePort\", \"value\":$PORT}]"
 
   printInfo "Stopping all cronjobs from Demo Live since they are not needed with this scenario"
   kubectl get cronjobs -n astroshop -o json | jq -r '.items[] | .metadata.name' | xargs -I {} kubectl patch cronjob {} -n astroshop --patch '{"spec": {"suspend": true}}'
@@ -1044,7 +1048,7 @@ deployAstroshop(){
 
   waitForAllPods astroshop
 
-  waitAppCanHandleRequests 30100
+  waitAppCanHandleRequests $PORT
 
   printInfo "Astroshop deployed succesfully"
 }
@@ -1081,69 +1085,74 @@ deployBugZapperApp(){
 deployEasyTrade() {
 
   #FIXME: ARM Warning
+  if [[ "$ARCH" != "x86_64" ]]; then
+    printWarn "This version of the EasyTrade only supports AMD/x86 architectures and not ARM, exiting deployment..."
+    return 1
+  fi
+
+  PORT="30100"
 
   printInfoSection "Deploying EasyTrade"
 
   # Create easytrade namespace
-  printInfoSection "Creating 'easytrade' namespace"
+  printInfo "Creating 'easytrade' namespace"
 
   kubectl create namespace easytrade
 
   # Deploy easytrade manifests
-  printInfoSection "Deploying easytrade manifests"
+  printInfo "Deploying easytrade manifests"
 
   kubectl apply -f $REPO_PATH/.devcontainer/apps/easytrade/manifests -n easytrade
 
   # Validate pods are running
-  printInfoSection "Waiting for all pods to start"
+  printInfo "Waiting for all pods to start"
 
   waitForAllPods easytrade
 
-  # TODO: Expose App
-  #printInfo "Exposing Astroshop in your dev.container via NodePort 30100"
+  printInfo "Exposing EasyTrade in your dev.container via NodePort 30100"
 
-  #printInfo "Change astroshop-frontendproxy service from LoadBalancer to NodePort"
-  #kubectl patch service astroshop-frontendproxy --namespace=astroshop --patch='{"spec": {"type": "NodePort"}}'
+  # FIXME: Assign port dynamically
+  kubectl patch service frontendreverseproxy-easytrade --namespace=easytrade --type='json' --patch="[{\"op\": \"replace\", \"path\": \"/spec/ports/0/nodePort\", \"value\":$PORT}]"
 
-  #printInfo "Exposing the astroshop-frontendproxy in NodePort 30100"
-  #kubectl patch service astroshop-frontendproxy --namespace=astroshop --type='json' --patch='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value":30100}]'
+  waitAppCanHandleRequests $PORT
 
-  printInfo "EasyTrade deployed succesfully"
-
+  printInfo "EasyTrade is available via NodePort=$PORT"
 }
 
 # deploy hipstershop from manifests
 deployHipsterShop() {
-
-  #FIXME: ARM Warning
-
+  
   printInfoSection "Deploying HipsterShop"
 
+  PORT="30100"
+
+  #FIXME: ARM Warning
+  if [[ "$ARCH" != "x86_64" ]]; then
+    printWarn "This version of the Hipstershop only supports AMD/x86 architectures and not ARM, exiting deployment..."
+    return 1
+  fi
+
   # Create hipstershop namespace
-  printInfoSection "Creating 'hipstershop' namespace"
+  printInfo "Creating 'hipstershop' namespace"
 
   kubectl create namespace hipstershop
 
   # Deploy hipstershop manifests
-  printInfoSection "Deploying hipstershop manifests"
+  printInfo "Deploying hipstershop manifests"
 
   kubectl apply -f $REPO_PATH/.devcontainer/apps/hipstershop/manifests -n hipstershop
 
   # Validate pods are running
-  printInfoSection "Waiting for all pods to start"
+  printInfo "Waiting for all pods to start"
 
   waitForAllPods hipstershop
 
-  # TODO: Expose App
-  #printInfo "Exposing Astroshop in your dev.container via NodePort 30100"
+  # FIXME: Assign port dynamically
+  kubectl patch service frontend-external --namespace=hipstershop --type='json' --patch="[{\"op\": \"replace\", \"path\": \"/spec/ports/0/nodePort\", \"value\":$PORT}]"
 
-  #printInfo "Change astroshop-frontendproxy service from LoadBalancer to NodePort"
-  #kubectl patch service astroshop-frontendproxy --namespace=astroshop --patch='{"spec": {"type": "NodePort"}}'
-
-  #printInfo "Exposing the astroshop-frontendproxy in NodePort 30100"
-  #kubectl patch service astroshop-frontendproxy --namespace=astroshop --type='json' --patch='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value":30100}]'
-
-  printInfo "HipsterShop deployed succesfully"
+  waitAppCanHandleRequests $PORT
+  
+  printInfo "HipsterShop is available via NodePort=$PORT"
   
 }
 
@@ -1275,6 +1284,3 @@ runIntegrationTests(){
 
 # Custom functions for each repo can be added in my_functions.sh
 source $REPO_PATH/.devcontainer/util/my_functions.sh
-
-# LOAD TEST FUNCTIONS
-source "$REPO_PATH/.devcontainer/test/test_functions.sh"
