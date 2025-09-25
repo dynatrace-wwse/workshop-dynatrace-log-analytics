@@ -21,6 +21,9 @@ fi
 # VARIABLES DECLARATION
 source "$REPO_PATH/.devcontainer/util/variables.sh"
 
+# LOAD TEST FUNCTIONS
+source "$REPO_PATH/.devcontainer/test/test_functions.sh"
+
 
 # FUNCTIONS DECLARATIONS
 timestamp() {
@@ -91,6 +94,7 @@ entrypoint(){
 
         printInfo "Changing shell with 'newgrp docker' to apply changes immediately of the docker group membership"
         
+        # shellcheck disable=SC2145
         printInfo "Executing following commands as Group docker: 0:$0 ,$1 ,$2, @:$@ , *:$*"
         #exec newgrp docker "$0 $*"
         #exec sg docker "$@"
@@ -876,81 +880,6 @@ undeployOperatorViaHelm(){
 }
 
 
-deployAITravelAdvisorApp(){
-  printInfoSection "Deploying AI Travel Advisor App & it's LLM"
-
-  kubectl apply -f $REPO_PATH/.devcontainer/apps/ai-travel-advisor/k8s/namespace.yaml
-
-  kubectl -n ai-travel-advisor create secret generic dynatrace --from-literal="token=$DT_TOKEN" --from-literal="endpoint=$DT_TENANT/api/v2/otlp"
-  
-  # Start OLLAMA
-  printInfo "Deploying our LLM => Ollama"
-  kubectl apply -f $REPO_PATH/.devcontainer/apps/ai-travel-advisor/k8s/ollama.yaml
-  waitForPod ai-travel-advisor ollama
-  printInfo "Waiting for Ollama to get ready"
-  kubectl -n ai-travel-advisor wait --for=condition=Ready pod --all --timeout=10m
-  printInfo "Ollama is ready"
-
-  # Start Weaviate
-  printInfo "Deploying our VectorDB => Weaviate"
-  kubectl apply -f $REPO_PATH/.devcontainer/apps/ai-travel-advisor/k8s/weaviate.yaml
-
-  waitForPod ai-travel-advisor weaviate
-  printInfo "Waiting for Weaviate to get ready"
-  kubectl -n ai-travel-advisor wait --for=condition=Ready pod --all --timeout=10m
-  printInfo "Weaviate is ready"
-
-  # Start AI Travel Advisor
-  printInfo "Deploying AI App => AI Travel Advisor"
-  kubectl apply -f $REPO_PATH/.devcontainer/apps/ai-travel-advisor/k8s/ai-travel-advisor.yaml
-  
-  waitForPod ai-travel-advisor ai-travel-advisor
-  printInfo "Waiting for AI Travel Advisor to get ready"
-  kubectl -n ai-travel-advisor wait --for=condition=Ready pod --all --timeout=10m
-  printInfo "AI Travel Advisor is ready"
-
-  # Define the NodePort to expose the app from the Cluster
-  kubectl patch service ai-travel-advisor --namespace=ai-travel-advisor --type='json' --patch='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value":30100}]'
-
-  waitAppCanHandleRequests 30100
-
-  printInfo "AI Travel Advisor is available via NodePort=30100"
-
-}
-
-deployTodoApp(){
-  printInfoSection "Deploying Todo App"
-
-  kubectl create ns todoapp
-
-  # Create deployment of todoApp
-  kubectl -n todoapp create deploy todoapp --image=shinojosa/todoapp:1.0.1
-
-  # Expose deployment of todoApp with a Service
-  kubectl -n todoapp expose deployment todoapp --type=NodePort --name=todoapp --port=8080 --target-port=8080
-
-  # Define the NodePort to expose the app from the Cluster
-  kubectl patch service todoapp --namespace=todoapp --type='json' --patch='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value":30100}]'
-
-  waitForAllReadyPods todoapp
-
-  waitAppCanHandleRequests 30100
-
-  printInfoSection "TodoApp is available via NodePort=30100"
-}
-
-exposeTodoApp(){
-  printInfo "Exposing Todo App in your dev.container"
-  nohup kubectl port-forward service/todoapp 8080:8080  -n todoapp --address="0.0.0.0" > /tmp/kubectl-port-forward.log 2>&1 &
-}
-
-
-_exposeAstroshop(){
-  printInfo "Exposing Astroshop in your dev.container"
-  nohup kubectl port-forward service/astroshop-frontendproxy 8080:8080  -n astroshop --address="0.0.0.0" > /tmp/kubectl-port-forward.log 2>&1 &
-}
-
-
 installMkdocs(){
   printInfoSection "Installing Mkdocs"
   printInfo "Installing Runme v $RUNME_CLI_VERSION"
@@ -988,33 +917,149 @@ deployCertmanager(){
   certmanagerEnable
 }
 
+getNextFreeAppPort() {
+  # When print_log == true, then log is printed out but the 
+  # variable is not echoed out, this way is not printed in the log. If print_log =0 false, then the variable is echoed out 
+  # so the value can be catched as return vaue and stored.
+  local print_log="$1"
+  if [ -z "$print_log" ]; then
+    # As default no log is printed out. 
+    print_log=false
+  fi
+
+  printInfo "Iterating over NODE_PORTS: $NODE_PORTS" $print_log
+
+  # Reconstruct the array from the exported string (works in Bash and Zsh)
+  PORT_ARRAY=(${=NODE_PORTS})
+
+  for port in "${PORT_ARRAY[@]}"; do
+    printInfo "Verifying if $port is free in Kubernetes Cluster..." $print_log
+
+    # Searching for services attached to a NodePort
+    CMD="kubectl get svc --all-namespaces -o wide | grep $port"
+    #FIXME: ADD WARNING WHEN ALREADY DEPLOYED
+    allocated_app=$(eval "$CMD")
+    if [[ "$?" == '0' ]]; then
+      printWarn "Port $port is allocated by: $allocated_app" $print_log
+      app_deployed=true
+    else
+      printInfo "Port $port is free, allocating to app" $print_log
+      if [[ $app_deployed ]]; then
+        printWarn "You already have applications deployed, be careful with the sizing of your Kubernetes Cluster ;)" $print_log
+      fi 
+      # Use echo to return the value (functions can't use `return` for strings/numbers reliably)
+      echo "$port"
+      return 0
+    fi
+  done
+  printWarn "No NodePort is free for deploying apps in your container, please delete some apps before deploying more." $print_log
+  return 1
+}
+
+
+deployAITravelAdvisorApp(){
+  printInfoSection "Deploying AI Travel Advisor App & it's LLM"
+  
+  getNextFreeAppPort true
+  PORT=$(getNextFreeAppPort)
+  if [[ $? -ne 0 ]]; then
+    printWarn "Application can't be deployed"
+    return 1
+  fi
+
+  kubectl apply -f $REPO_PATH/.devcontainer/apps/ai-travel-advisor/k8s/namespace.yaml
+
+  kubectl -n ai-travel-advisor create secret generic dynatrace --from-literal="token=$DT_TOKEN" --from-literal="endpoint=$DT_TENANT/api/v2/otlp"
+  
+  # Start OLLAMA
+  printInfo "Deploying our LLM => Ollama"
+  kubectl apply -f $REPO_PATH/.devcontainer/apps/ai-travel-advisor/k8s/ollama.yaml
+  waitForPod ai-travel-advisor ollama
+  printInfo "Waiting for Ollama to get ready"
+  kubectl -n ai-travel-advisor wait --for=condition=Ready pod --all --timeout=10m
+  printInfo "Ollama is ready"
+
+  # Start Weaviate
+  printInfo "Deploying our VectorDB => Weaviate"
+  kubectl apply -f $REPO_PATH/.devcontainer/apps/ai-travel-advisor/k8s/weaviate.yaml
+
+  waitForPod ai-travel-advisor weaviate
+  printInfo "Waiting for Weaviate to get ready"
+  kubectl -n ai-travel-advisor wait --for=condition=Ready pod --all --timeout=10m
+  printInfo "Weaviate is ready"
+
+  # Start AI Travel Advisor
+  printInfo "Deploying AI App => AI Travel Advisor"
+  kubectl apply -f $REPO_PATH/.devcontainer/apps/ai-travel-advisor/k8s/ai-travel-advisor.yaml
+  
+  waitForPod ai-travel-advisor ai-travel-advisor
+  printInfo "Waiting for AI Travel Advisor to get ready"
+
+  kubectl -n ai-travel-advisor wait --for=condition=Ready pod --all --timeout=10m
+  printInfo "AI Travel Advisor is ready"
+
+  # Define the NodePort to expose the app from the Cluster
+  kubectl patch service ai-travel-advisor --namespace=ai-travel-advisor --type='json' --patch="[{\"op\": \"replace\", \"path\": \"/spec/ports/0/nodePort\", \"value\":$PORT}]"
+
+  waitAppCanHandleRequests $PORT
+
+  printInfo "AI Travel Advisor is available via NodePort=$PORT"
+}
+
+deployTodoApp(){
+
+  printInfoSection "Deploying Todo App"
+
+  getNextFreeAppPort true
+  PORT=$(getNextFreeAppPort)
+  if [[ $? -ne 0 ]]; then
+    printWarn "Application can't be deployed"
+    return 1
+  fi
+
+  kubectl create ns todoapp
+
+  # Create deployment of todoApp
+  kubectl -n todoapp create deploy todoapp --image=shinojosa/todoapp:1.0.1
+
+  # Expose deployment of todoApp with a Service
+  kubectl -n todoapp expose deployment todoapp --type=NodePort --name=todoapp --port=8080 --target-port=8080
+
+  # Define the NodePort to expose the app from the Cluster
+  kubectl patch service todoapp --namespace=todoapp --type='json' --patch="[{\"op\": \"replace\", \"path\": \"/spec/ports/0/nodePort\", \"value\":$PORT}]"
+
+  waitForAllReadyPods todoapp
+
+  waitAppCanHandleRequests $PORT
+
+  printInfoSection "TodoApp is available via NodePort=$PORT"
+}
+
 deployAstroshop(){
+
   printInfoSection "Deploying Astroshop"
   
-  assertRunningPod cert-manager cert-manager
-  
-  certmanager_installed=$?   
+  if [[ "$ARCH" != "x86_64" ]]; then
+    printWarn "This version of the Astroshop only supports AMD/x86 architectures and not ARM, exiting deployment..."
+    return 1
+  fi
 
+  getNextFreeAppPort true
+  PORT=$(getNextFreeAppPort)
+  if [[ $? -ne 0 ]]; then
+    printWarn "Application can't be deployed"
+    return 1
+  fi
+
+  # Verify if cert-manager is installed in subshell to not exit function, if not, then install it
+  (assertRunningPod cert-manager cert-manager >/dev/null 2>&1)
+  certmanager_installed=$?
   if [[ $certmanager_installed -ne 0 ]]; then
     printWarn "Certmanager is not installed, this version of Astroshop needs it, installing it..."
     deployCertmanager
   else
     printInfo "Certmanager is installed, continuing with deployment"
   fi
-
-  if [[ "$ARCH" != "x86_64" ]]; then
-    printWarn "This version of the Astroshop only supports AMD/x86 architectures and not ARM, exiting deployment..."
-    return
-  fi
-
-  # To override the Dynatrace values call the function with the following order
-  #saveReadCredentials $DT_TENANT $DT_OPERATOR_TOKEN $DT_INGEST_TOKEN $DT_INGEST_TOKEN $DT_OTEL_ENDPOINT
-
-  ###
-  # Instructions to install Astroshop with Helm Chart from R&D and images built in shinojos repo (including code modifications from R&D)
-  ####
-  #sed -i 's~domain.placeholder~'"$DOMAIN"'~' $REPO_PATH/.devcontainer/apps/astroshop/helm/dt-otel-demo-helm/values.yaml
-  #sed -i 's~domain.placeholder~'"$DOMAIN"'~' $REPO_PATH/.devcontainer/apps/astroshop/helm/dt-otel-demo-helm-deployments/values.yaml
 
   helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
 
@@ -1028,13 +1073,11 @@ deployAstroshop(){
 
   helm upgrade --install astroshop -f $REPO_PATH/.devcontainer/apps/astroshop/helm/dt-otel-demo-helm-deployments/values.yaml --set default.image.repository=docker.io/shinojosa/astroshop --set default.image.tag=1.12.0 --set collector_tenant_endpoint=$DT_OTEL_ENDPOINT --set collector_tenant_token=$DT_INGEST_TOKEN -n astroshop $REPO_PATH/.devcontainer/apps/astroshop/helm/dt-otel-demo-helm
 
-  printInfo "Exposing Astroshop in your dev.container via NodePort 30100"
-
   printInfo "Change astroshop-frontendproxy service from LoadBalancer to NodePort"
   kubectl patch service astroshop-frontendproxy --namespace=astroshop --patch='{"spec": {"type": "NodePort"}}'
 
-  printInfo "Exposing the astroshop-frontendproxy in NodePort 30100"
-  kubectl patch service astroshop-frontendproxy --namespace=astroshop --type='json' --patch='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value":30100}]'
+  printInfo "Exposing the astroshop-frontendproxy in NodePort $PORT"
+  kubectl patch service astroshop-frontendproxy --namespace=astroshop --type='json' --patch="[{\"op\": \"replace\", \"path\": \"/spec/ports/0/nodePort\", \"value\":$PORT}]"
 
   printInfo "Stopping all cronjobs from Demo Live since they are not needed with this scenario"
   kubectl get cronjobs -n astroshop -o json | jq -r '.items[] | .metadata.name' | xargs -I {} kubectl patch cronjob {} -n astroshop --patch '{"spec": {"suspend": true}}'
@@ -1044,20 +1087,22 @@ deployAstroshop(){
 
   waitForAllPods astroshop
 
-  waitAppCanHandleRequests 30100
+  waitAppCanHandleRequests $PORT
 
-  printInfo "Astroshop deployed succesfully"
+  printInfo "Astroshop deployed succesfully and handling request in port $PORT"
 }
 
 deployBugZapperApp(){
 
-  if [[ $# -eq 1 ]]; then
-    PORT="$1"
-  else
-    PORT="30100"
+  printInfoSection "Deploying BugZapper App"
+  
+  getNextFreeAppPort true
+  PORT=$(getNextFreeAppPort)
+  if [[ $? -ne 0 ]]; then
+    printWarn "Application can't be deployed"
+    return 1
   fi
 
-  printInfoSection "Deploying BugZapper App on Port $PORT"
 
   kubectl create ns bugzapper
 
@@ -1080,70 +1125,81 @@ deployBugZapperApp(){
 # deploy easytrade from manifests
 deployEasyTrade() {
 
-  #FIXME: ARM Warning
-
   printInfoSection "Deploying EasyTrade"
+  
+  if [[ "$ARCH" != "x86_64" ]]; then
+    printWarn "This version of the EasyTrade only supports AMD/x86 architectures and not ARM, exiting deployment..."
+    return 1
+  fi
+
+  getNextFreeAppPort true
+  PORT=$(getNextFreeAppPort)
+  if [[ $? -ne 0 ]]; then
+    printWarn "Application can't be deployed"
+    return 1
+  fi
 
   # Create easytrade namespace
-  printInfoSection "Creating 'easytrade' namespace"
+  printInfo "Creating 'easytrade' namespace"
 
   kubectl create namespace easytrade
 
   # Deploy easytrade manifests
-  printInfoSection "Deploying easytrade manifests"
+  printInfo "Deploying easytrade manifests"
 
   kubectl apply -f $REPO_PATH/.devcontainer/apps/easytrade/manifests -n easytrade
 
   # Validate pods are running
-  printInfoSection "Waiting for all pods to start"
+  printInfo "Waiting for all pods to start"
 
   waitForAllPods easytrade
 
-  # TODO: Expose App
-  #printInfo "Exposing Astroshop in your dev.container via NodePort 30100"
+  printInfo "Exposing EasyTrade in your dev.container via NodePort $PORT"
 
-  #printInfo "Change astroshop-frontendproxy service from LoadBalancer to NodePort"
-  #kubectl patch service astroshop-frontendproxy --namespace=astroshop --patch='{"spec": {"type": "NodePort"}}'
+  kubectl patch service frontendreverseproxy-easytrade --namespace=easytrade --type='json' --patch="[{\"op\": \"replace\", \"path\": \"/spec/ports/0/nodePort\", \"value\":$PORT}]"
 
-  #printInfo "Exposing the astroshop-frontendproxy in NodePort 30100"
-  #kubectl patch service astroshop-frontendproxy --namespace=astroshop --type='json' --patch='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value":30100}]'
+  waitAppCanHandleRequests $PORT
 
-  printInfo "EasyTrade deployed succesfully"
-
+  printInfo "EasyTrade is available via NodePort=$PORT"
 }
 
 # deploy hipstershop from manifests
 deployHipsterShop() {
-
-  #FIXME: ARM Warning
-
+  
   printInfoSection "Deploying HipsterShop"
+  
+  if [[ "$ARCH" != "x86_64" ]]; then
+    printWarn "This version of the Hipstershop only supports AMD/x86 architectures and not ARM, exiting deployment..."
+    return 1
+  fi
+
+  getNextFreeAppPort true
+  PORT=$(getNextFreeAppPort)
+  if [[ $? -ne 0 ]]; then
+    printWarn "Application can't be deployed"
+    return 1
+  fi
 
   # Create hipstershop namespace
-  printInfoSection "Creating 'hipstershop' namespace"
+  printInfo "Creating 'hipstershop' namespace"
 
   kubectl create namespace hipstershop
 
   # Deploy hipstershop manifests
-  printInfoSection "Deploying hipstershop manifests"
+  printInfo "Deploying hipstershop manifests"
 
   kubectl apply -f $REPO_PATH/.devcontainer/apps/hipstershop/manifests -n hipstershop
 
   # Validate pods are running
-  printInfoSection "Waiting for all pods to start"
+  printInfo "Waiting for all pods to start"
 
   waitForAllPods hipstershop
 
-  # TODO: Expose App
-  #printInfo "Exposing Astroshop in your dev.container via NodePort 30100"
+  kubectl patch service frontend-external --namespace=hipstershop --type='json' --patch="[{\"op\": \"replace\", \"path\": \"/spec/ports/0/nodePort\", \"value\":$PORT}]"
 
-  #printInfo "Change astroshop-frontendproxy service from LoadBalancer to NodePort"
-  #kubectl patch service astroshop-frontendproxy --namespace=astroshop --patch='{"spec": {"type": "NodePort"}}'
-
-  #printInfo "Exposing the astroshop-frontendproxy in NodePort 30100"
-  #kubectl patch service astroshop-frontendproxy --namespace=astroshop --type='json' --patch='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value":30100}]'
-
-  printInfo "HipsterShop deployed succesfully"
+  waitAppCanHandleRequests $PORT
+  
+  printInfo "HipsterShop is available via NodePort=$PORT"
   
 }
 
@@ -1225,6 +1281,7 @@ updateEnvVariable(){
     #printInfo "ZSH"
     #printInfo "update [$variable:${(P)variable}]"
     # indirect variable expansion in ZSH
+    # shellcheck disable=SC2296
     sed "s|^$variable=.*|$variable=${(P)variable}|" $ENV_FILE > $ENV_FILE.tmp
     mv $ENV_FILE.tmp $ENV_FILE
   else
@@ -1275,6 +1332,3 @@ runIntegrationTests(){
 
 # Custom functions for each repo can be added in my_functions.sh
 source $REPO_PATH/.devcontainer/util/my_functions.sh
-
-# LOAD TEST FUNCTIONS
-source "$REPO_PATH/.devcontainer/test/test_functions.sh"

@@ -23,14 +23,19 @@ CERTMANAGER_VERSION=1.15.3
 # RUNME Version
 RUNME_CLI_VERSION=3.13.2
 
-# NodePort Logic
-NODE_PORTS=("30100" "30200" "30300")
-export NODE_PORTS=$NODE_PORTS
+# NodePort Logic, export array in bash and zsh
+# Define an array of port numbers
+PORTS=("30100" "30200" "30300")
+# Convert array to a space-separated string
+PORTS_STRING="${PORTS[*]}"
+# Export the string
+export NODE_PORTS="$PORTS_STRING"
 
-if [ -z "$APPS" ]; then
-  APPS=()
-  export APPS=$APPS
-fi
+
+#if [ -z "$APPS" ]; then
+#  APPS=()
+#  export APPS=$APPS
+#fi
 
 # Setting up the variable since its not set when instantiating the vscode folder.
 #CODESPACE_VSCODE_FOLDER="$REPO_PATH"
