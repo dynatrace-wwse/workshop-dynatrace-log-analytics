@@ -962,6 +962,11 @@ getNextFreeAppPort() {
 deployAITravelAdvisorApp(){
   printInfoSection "Deploying AI Travel Advisor App & it's LLM"
   
+  if [[ "$ARCH" != "x86_64" ]]; then
+    printWarn "This version of the AI Travel Advisor only supports AMD/x86 architectures and not ARM, exiting deployment..."
+    return 1
+  fi
+  
   getNextFreeAppPort true
   PORT=$(getNextFreeAppPort)
   if [[ $? -ne 0 ]]; then
@@ -1203,6 +1208,111 @@ deployHipsterShop() {
   
   printInfo "HipsterShop is available via NodePort=$PORT"
   
+}
+
+deployApp(){
+  
+  if [ "$#" -eq 0 ]; then
+    showDeployAppUsage
+    return 0
+  elif [ "$#" -eq 1 ]; then
+    local input="$1"
+  elif [ "$#" -eq 2 ]; then
+    local input="$1"
+    if [[ "$2" == "-d" ]]; then
+      local delete=true
+    else
+      printWarn "Unexpected 2nd argument"
+      showDeployAppUsage
+      return 1
+    fi
+  else
+    printWarn "Unexpected number of arguments"
+    showDeployAppUsage
+    return 1
+  fi
+
+  case "$input" in
+    1 | a | ai-travel-advisor)
+      if [[ $delete ]]; then
+        printInfoSection "Undeploying astroshop..."
+        kubectl delete ns ai-travel-advisor --force
+      else
+        deployAITravelAdvisorApp
+      fi
+      ;;
+
+    2 | b | astroshop)
+      if [[ $delete ]]; then
+        printInfoSection "Undeploying astroshop..."
+        kubectl delete ns astroshop --force
+      else
+        deployAstroshop
+      fi
+      ;;
+
+    3 | c | bugzapper)
+       if [[ $delete ]]; then
+        printInfo "Undeploying bugzapper..."
+        kubectl delete ns bugzapper --force
+      else
+        deployBugZapperApp
+      fi
+      ;;
+
+    4 | d | easytrade)
+       if [[ $delete ]]; then
+        printInfo "Undeploying easytrade..."
+        kubectl delete ns easytrade --force
+      else
+        deployEasyTrade
+      fi
+      ;;
+
+    5 | e | hipstershop)
+       if [[ $delete ]]; then
+        printInfo "Undeploying hipstershop..."
+        kubectl delete ns hipstershop --force
+      else
+        deployHipsterShop
+      fi
+      ;;
+
+    6 | f | todoapp)
+       if [[ $delete ]]; then
+        printInfo "Undeploying todoapp..."
+        kubectl delete ns todoapp --force
+      else
+        deployTodoApp
+      fi
+      ;;
+
+    *)
+      printWarn "Invalid selection: '$input'. Please choose a valid app identifier."
+      showDeployAppUsage
+      return 1
+      ;;
+  esac
+  return 0
+}
+
+showDeployAppUsage(){
+  printInfoSection "Un/Deploy an Application to your Kubernetes Cluster      "
+  printInfo "                 Application repository                                     "
+  printInfo "                                                                            "
+  printInfo "For deploying one of the following apps, type the number, character or name "
+  printInfo "associated e.g. for astroshop type deployApp '2', 'b' or 'astroshop'        "
+  printInfo "                                                                            "
+  printInfo "For undeploying an app, type -d as an extra argument                        "
+  printInfo "----------------------------------------------------------------------------"
+  printInfo "[#]  [c]  [ name ]             AMD     ARM                                  "
+  printInfo "[1]   a   ai-travel-advisor     +       -                                   "
+  printInfo "[2]   b   astroshop             +       -                                   "
+  printInfo "[3]   c   bugzapper             +       +                                   "
+  printInfo "[4]   d   easytrade             +       -                                   "
+  printInfo "[5]   e   hipstershop           +       -                                   "
+  printInfo "[6]   f   todoapp               +       +                                   "
+  printInfo "----------------------------------------------------------------------------"
 }
 
 deleteCodespace(){
