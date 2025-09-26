@@ -61,60 +61,6 @@ printError() {
   echo -e "${GREEN}[$LOGNAME| ${RED}ERROR${GREEN} |$(timestamp) ${LILA}| ${RESET}$1${LILA}  |"
 }
 
-entrypoint(){
-  printInfoSection "Making sure user permissions, host mapping and docker.sock are mapped correctly"
-  if [ true ]; then
-    USER=$(whoami)
-    printInfo "PID is $$, running as $USER inside the container"
-  
-    printInfo "Adding containers Hosts to etc/hosts/ for network resolution and sharing"
-    # Add hostname to docker container's /etc/hosts
-    HOST_MAPPING="127.0.0.1  $(hostname)"
-    # We pipe out the output since sudo at this points gives an error due the hostname not being resolvable
-    sudo sh -c "echo \"$HOST_MAPPING\" >> /etc/hosts" > /dev/null 2>&1
-    # Verify output (optional)
-    printInfo "/etc/hosts content:"
-    #cat /etc/hosts
-
-    printInfo "Verifying the Hosts Docker.sock GID (DOCKER_SOCK_GID) vs Container Docker Group GID (DOCKER_GROUP_ID)"
-    # Even if the user is in the same group (docker) since they are sharing the socket, the GID of the socket needs to match the GID of the docker group in the container.
-    # GID from the socker stat
-    DOCKER_SOCK_GID=$(stat -c '%g' /var/run/docker.sock)
-    # Group ID for docker group
-    DOCKER_GROUP_ID=$(getent group docker | cut -d: -f3)
-    # Mapping docker groups of Host and Container
-    if [ $DOCKER_SOCK_GID = $DOCKER_GROUP_ID ]; then
-        printInfo "DOCKER_SOCK_GID[$DOCKER_SOCK_GID] matches DOCKER_GROUP_ID[$DOCKER_GROUP_ID]. No changes needed."
-    else
-        printInfo "DOCKER_SOCK_GID[$DOCKER_SOCK_GID] do NOT match DOCKER_GROUP_ID[$DOCKER_GROUP_ID]. Updating..."
-        sudo groupmod -g $DOCKER_SOCK_GID docker && printInfo "Updated correctly..."
-
-        printInfo "Adding '$USER' to the docker group to have access to the docker socket"
-        sudo usermod -aG docker $USER
-
-        printInfo "Changing shell with 'newgrp docker' to apply changes immediately of the docker group membership"
-        
-        # shellcheck disable=SC2145
-        printInfo "Executing following commands as Group docker: 0:$0 ,$1 ,$2, @:$@ , *:$*"
-        #exec newgrp docker "$0 $*"
-        #exec sg docker "$@"
-        #exec sg docker "$0"
-        exec sg docker "$*"
-        
-        # Construct an array which quotes all the command-line parameters.
-        #arr=("${@/#/\"}")
-        #arr=("${arr[*]/%/\"}")
-        #exec sg docker "$0 ${arr[@]}"
-        
-        #exec newgrp docker "$@"
-        printInfo "Replacing current shell process with the command and its arguments passed to the script or function since we are at entrypoint"
-        exec "$@"
-    fi
-  else
-    printInfo "PID is not 1, it is $$, nothing to verify, we are not at the entrypoint."
-  fi
-}
-
 postCodespaceTracker(){
   
   printInfo "Sending bizevent for $RepositoryName with $ERROR_COUNT issues built in $DURATION seconds"
@@ -422,7 +368,6 @@ stopKindCluster(){
 
 startKindCluster(){
   printInfoSection "Starting Kubernetes Cluster (kind-control-plane)"
-  KINDIMAGE="kind-control-plane"
   KIND_STATUS=$(docker inspect -f '{{.State.Status}}' $KINDIMAGE 2>/dev/null)
   if [ "$KIND_STATUS" = "exited" ] || [ "$KIND_STATUS" = "dead" ]; then
     printWarn "There is a stopped $KINDIMAGE, starting it..."
@@ -482,6 +427,10 @@ certmanagerInstall() {
   kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v$CERTMANAGER_VERSION/cert-manager.yaml
   # shellcheck disable=SC2119
   waitForAllPods cert-manager
+}
+
+certmanagerDelete(){
+  kubectl delete -f https://github.com/jetstack/cert-manager/releases/download/v$CERTMANAGER_VERSION/cert-manager.yaml
 }
 
 generateRandomEmail() {
@@ -863,7 +812,6 @@ deployOperatorViaKubectl(){
 }
 
 deployOperatorViaHelm(){
-
   helm install dynatrace-operator oci://public.ecr.aws/dynatrace/dynatrace-operator --create-namespace --namespace dynatrace --atomic
 
   # Save Dynatrace Secret
@@ -874,19 +822,15 @@ deployOperatorViaHelm(){
 }
 
 undeployOperatorViaHelm(){
-
   helm uninstall dynatrace-operator --namespace dynatrace
-
 }
 
 
 installMkdocs(){
   printInfoSection "Installing Mkdocs"
-  printInfo "Installing Runme v $RUNME_CLI_VERSION"
   installRunme
-  printInfo "Installing MKdocs"
+  printInfo "Installing MKdocs requirements"
   pip install --break-system-packages -r docs/requirements/requirements-mkdocs.txt
-  printInfo "Exposing MKdocs 0.0.0.0:8000"
   exposeMkdocs
 }
 
@@ -1235,7 +1179,7 @@ deployApp(){
   case "$input" in
     1 | a | ai-travel-advisor)
       if [[ $delete ]]; then
-        printInfoSection "Undeploying astroshop..."
+        printInfoSection "Undeploying ai-travel-advisor..."
         kubectl delete ns ai-travel-advisor --force
       else
         deployAITravelAdvisorApp
@@ -1246,6 +1190,7 @@ deployApp(){
       if [[ $delete ]]; then
         printInfoSection "Undeploying astroshop..."
         kubectl delete ns astroshop --force
+        certmanagerDelete
       else
         deployAstroshop
       fi
@@ -1297,8 +1242,8 @@ deployApp(){
 }
 
 showDeployAppUsage(){
-  printInfoSection "Un/Deploy an Application to your Kubernetes Cluster      "
-  printInfo "                 Application repository                                     "
+  printInfoSection "   Un/Deploy an Application to your Kubernetes Cluster      "
+  printInfo "                ${PACKAGE} Application repository  ${PACKAGE}                               "
   printInfo "                                                                            "
   printInfo "For deploying one of the following apps, type the number, character or name "
   printInfo "associated e.g. for astroshop type deployApp '2', 'b' or 'astroshop'        "
