@@ -1,9 +1,10 @@
 --8<-- "snippets/send-bizevent/3-codespaces.js"
 
+--8<-- "snippets/dt-enablement.md"
+
 <!--TODO: Remove Under Construction -->
 --8<-- "snippets/under-construction.md"
 
---8<-- "snippets/dt-enablement.md"
 
 ## Create Codespace
 
