@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#create-codespace" class="md-skip">
+        <a href="#codespaces" class="md-skip">
           Skip to content
         </a>
       
@@ -318,6 +318,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -345,6 +347,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -433,15 +437,6 @@
   <a href="#astroshop" class="md-nav__link">
     <span class="md-ellipsis">
       AstroShop
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#app-exposure" class="md-nav__link">
-    <span class="md-ellipsis">
-      App exposure
     </span>
   </a>
   
@@ -655,6 +650,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -747,15 +744,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#app-exposure" class="md-nav__link">
-    <span class="md-ellipsis">
-      App exposure
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -797,8 +785,7 @@
   
 
 
-  <h1>3. Codespaces</h1>
-
+<h1 id="codespaces">Codespaces<a class="headerlink" href="#codespaces" title="Permanent link">#</a></h1>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   dynatrace.sendBizEvent('page_load', {"page": "3. Codespaces"})
@@ -848,16 +835,27 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>We know your time is very valuable. This codespace takes around 7-10 minutes to be fully operational. A local Kubernetes (<a href="https://kind.sigs.k8s.io/" target="_blank">kind</a>) cluster will be configured and in it a sample application, AstroShop, will be deployed. To make your experience better, we are also installing and configuring tools like:</p>
 <p><strong>k9s kubectl helm node jq python3 gh</strong></p>
 <h2 id="deploy-demo-applications">Deploy Demo Applications<a class="headerlink" href="#deploy-demo-applications" title="Permanent link">#</a></h2>
-<!--TODO: Update Steps -->
 <h3 id="astroshop-opentelemetry-demo-app">AstroShop (OpenTelemetry Demo App)<a class="headerlink" href="#astroshop-opentelemetry-demo-app" title="Permanent link">#</a></h3>
+<p>The base configuration of the Codespaces instance will automatically deploy AstroShop using the function below.</p>
 <div class="highlight"><pre><span></span><code>deployAstroshop
 </code></pre></div>
-<!--TODO: Update Steps -->
+<p>AstroShop is required to complete the workshop.</p>
 <h3 id="easytrade">EasyTrade<a class="headerlink" href="#easytrade" title="Permanent link">#</a></h3>
+<p>EasyTrade is not required to complete the workshop.  It is available should you choose to add additional environment complexity and use cases.  The hands-on exercises do not reference EasyTrade, however it can be leveraged to "freestyle" additional exercises.</p>
+<div class="admonition tip">
+<p class="admonition-title">Additional Resources</p>
+<p>Deploying additional demo applications will consume significant resources.  In order to deploy EasyTrade, make sure you have <strong>8 CPU</strong> and <strong>32GB Memory</strong> allocated to your Codespaces container.</p>
+</div>
+<p>Deploy EasyTrade using the function below.</p>
 <div class="highlight"><pre><span></span><code>deployEasyTrade
 </code></pre></div>
-<!--TODO: Update Steps -->
 <h3 id="hipstershop">HipsterShop<a class="headerlink" href="#hipstershop" title="Permanent link">#</a></h3>
+<p>HipsterShop is not required to complete the workshop.  It is available should you choose to add additional environment complexity and use cases.  The hands-on exercises do not reference HipsterShop, however it can be leveraged to "freestyle" additional exercises.</p>
+<div class="admonition tip">
+<p class="admonition-title">Additional Resources</p>
+<p>Deploying additional demo applications will consume significant resources.  In order to deploy HipsterShop, make sure you have <strong>8 CPU</strong> and <strong>32GB Memory</strong> allocated to your Codespaces container.</p>
+</div>
+<p>Deploy HipsterShop using the function below.</p>
 <div class="highlight"><pre><span></span><code>deployHipsterShop
 </code></pre></div>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">#</a></h2>
@@ -879,7 +877,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w"> </span>-n<span class="w"> </span>kube-system
 kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w"> </span>-n<span class="w"> </span>default
 </code></pre></div></p>
-<h3 id="app-exposure">App exposure<a class="headerlink" href="#app-exposure" title="Permanent link">#</a></h3>
 <p>The Astroshop application is exposed via NodePort and it's mapping port 8080 to Cluster port 30100.</p>
 <p>Verify service:
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>svc<span class="w"> </span>astroshop-frontendproxy<span class="w"> </span>-n<span class="w"> </span>astroshop
@@ -898,7 +895,7 @@ kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w">
 <p>In your Dynatrace tenant, open the <strong>Notebooks</strong> App.  Locate the newly uploaded Notebook titled <code>Workshop - Workshop Exercises</code>.</p>
 <p><img alt="Workshop Notebooks" src="../img/prereq-dt_monaco_workshop_notebooks.png" /></p>
 <h2 id="continue">Continue<a class="headerlink" href="#continue" title="Permanent link">#</a></h2>
-<p>In the next section, we'll deploy Dynatrace on Kubernetes for full stack observability with log analytics.</p>
+<p>In the next section, we'll deploy Dynatrace on Kubernetes for full-stack observability with log analytics.</p>
 <div class="grid cards">
 <ul>
 <li><a href="../4-deploy-dynatrace/">Continue to Deploy Dynatrace<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0"/></svg></span></a></li>

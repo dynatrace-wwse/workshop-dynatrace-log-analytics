@@ -882,6 +882,12 @@
 
 
 <h1 id="deploy-dynatrace">Deploy Dynatrace<a class="headerlink" href="#deploy-dynatrace" title="Permanent link">#</a></h1>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  dynatrace.sendBizEvent('page_load', {"page": "4. Deploy Dynatrace"})
+});
+</script>
+
 <div class="admonition tip">
 <p class="admonition-title">Deploy Dynatrace Approach</p>
 <p>This guide offers (2) approaches to deploying Dynatrace for this workshop.  To speed things up and get log data into Dynatrace as quickly as possible, the automated (scripted) approach will deploy Dynatrace for you using helper functions.  To learn the process of deploying Dynatrace on Kubernetes and to customize the deployment to your needs, you can follow the manual (guided) approach.</p>

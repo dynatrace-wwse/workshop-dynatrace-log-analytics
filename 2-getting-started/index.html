@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#prerequisites" class="md-skip">
+        <a href="#getting-started" class="md-skip">
           Skip to content
         </a>
       
@@ -298,6 +298,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -325,6 +327,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -365,15 +369,6 @@
   <a href="#generate-dynatrace-platform-token" class="md-nav__link">
     <span class="md-ellipsis">
       Generate Dynatrace Platform Token
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#prerequisite" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisite
     </span>
   </a>
   
@@ -598,6 +593,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -642,15 +639,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#prerequisite" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisite
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -683,8 +671,7 @@
   
 
 
-  <h1>2. Getting started</h1>
-
+<h1 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">#</a></h1>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   dynatrace.sendBizEvent('page_load', {"page": "2. Getting started"})
@@ -696,7 +683,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class="admonition-title">Under Construction</p>
 <p>This guide is under construction and is not ready for use!</p>
 </div>
-<!--TODO: Update requirements -->
 <div class="admonition info">
 <p class="admonition-title">Requirements</p>
 <ul>
@@ -713,7 +699,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
 <p>You will need full administrator access to a Dynatrace SaaS tenant with a DPS license.</p>
-<!--TODO: Update prerequisite bulleted list -->
 <ul>
 <li>Identify Dynatrace Tenant URL</li>
 <li>Identify Dynatrace Tenant Platform URL</li>
@@ -745,7 +730,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </table>
 <h3 id="identify-dynatrace-tenant-platform-url">Identify Dynatrace Tenant Platform URL<a class="headerlink" href="#identify-dynatrace-tenant-platform-url" title="Permanent link">#</a></h3>
 <p>The Dynatrace platform provides a collection of so-called platform services where each has its specific area of responsibility. You can access platform services in different ways. Platform services are individually versioned and offer RESTful APIs via HTTP requests.</p>
-<p><a href="https://docs.dynatrace.com/docs/shortlink/otel-getstarted-otlpexport#export-to-saas-and-activegate" target="_blank">Dynatrace Documentation</a></p>
+<p><a href="https://developer.dynatrace.com/plan/platform-services/about-platform-services/" target="_blank">Dynatrace Documentation</a></p>
 <p>Identify and save/store your Dynatrace Tenant Platform URL for the Dynatrace SaaS tenant:</p>
 <div class="admonition tip">
 <p class="admonition-title">No Trailing Slash</p>
@@ -769,7 +754,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </tr>
 </tbody>
 </table>
-<!--TODO: Update prerequisite details -->
 <h3 id="generate-dynatrace-platform-token">Generate Dynatrace Platform Token<a class="headerlink" href="#generate-dynatrace-platform-token" title="Permanent link">#</a></h3>
 <p>Use Dynatrace Account Management to create a Platform Token.</p>
 <p><img alt="Account Management" src="../img/prereq-dt_account_management_platform_tokens.png" /></p>
@@ -782,9 +766,6 @@ document:trash.documents:delete
 app-engine:apps:run
 app-engine:functions:run
 </code></pre></div>
-<h3 id="prerequisite">Prerequisite<a class="headerlink" href="#prerequisite" title="Permanent link">#</a></h3>
-<p>Prerequisite Details</p>
-<p><img alt="Screenshot" src="./img/screenshot.png" /></p>
 <h2 id="continue">Continue<a class="headerlink" href="#continue" title="Permanent link">#</a></h2>
 <p>In the next section, we'll launch our Codespaces instance.</p>
 <div class="grid cards">
