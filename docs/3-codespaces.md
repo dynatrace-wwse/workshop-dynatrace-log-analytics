@@ -1,3 +1,4 @@
+# Codespaces
 --8<-- "snippets/send-bizevent/3-codespaces.js"
 
 --8<-- "snippets/dt-enablement.md"
@@ -30,22 +31,37 @@ We know your time is very valuable. This codespace takes around 7-10 minutes to 
 
 ## Deploy Demo Applications
 
-<!--TODO: Update Steps -->
 ### AstroShop (OpenTelemetry Demo App)
+
+The base configuration of the Codespaces instance will automatically deploy AstroShop using the function below.
 
 ```sh
 deployAstroshop
 ```
 
-<!--TODO: Update Steps -->
+AstroShop is required to complete the workshop.
+
 ### EasyTrade
+
+EasyTrade is not required to complete the workshop.  It is available should you choose to add additional environment complexity and use cases.  The hands-on exercises do not reference EasyTrade, however it can be leveraged to "freestyle" additional exercises.
+
+!!! tip "Additional Resources"
+    Deploying additional demo applications will consume significant resources.  In order to deploy EasyTrade, make sure you have **8 CPU** and **32GB Memory** allocated to your Codespaces container.
+
+Deploy EasyTrade using the function below.
 
 ```sh
 deployEasyTrade
 ```
 
-<!--TODO: Update Steps -->
 ### HipsterShop
+
+HipsterShop is not required to complete the workshop.  It is available should you choose to add additional environment complexity and use cases.  The hands-on exercises do not reference HipsterShop, however it can be leveraged to "freestyle" additional exercises.
+
+!!! tip "Additional Resources"
+    Deploying additional demo applications will consume significant resources.  In order to deploy HipsterShop, make sure you have **8 CPU** and **32GB Memory** allocated to your Codespaces container.
+
+Deploy HipsterShop using the function below.
 
 ```sh
 deployHipsterShop
@@ -81,7 +97,6 @@ kubectl get events -n kube-system
 kubectl get events -n default
 ```
 
-### App exposure
 The Astroshop application is exposed via NodePort and it's mapping port 8080 to Cluster port 30100.
 
 Verify service:
@@ -116,7 +131,7 @@ In your Dynatrace tenant, open the **Notebooks** App.  Locate the newly uploaded
 
 ## Continue
 
-In the next section, we'll deploy Dynatrace on Kubernetes for full stack observability with log analytics.
+In the next section, we'll deploy Dynatrace on Kubernetes for full-stack observability with log analytics.
 
 <div class="grid cards" markdown>
 - [Continue to Deploy Dynatrace:octicons-arrow-right-24:](4-deploy-dynatrace.md)

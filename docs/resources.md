@@ -13,6 +13,10 @@
 ### Dynatrace news
 - [Dynatrace Blog](https://www.dynatrace.com/news/blog/){target="_blank"}
 
+## Continue
+
+In the next section, we'll tear down and clean up the workshop assets.
+
 <div class="grid cards" markdown>
-- [Cleanup:octicons-arrow-right-24:](cleanup.md)
+- [Continue to Cleanup:octicons-arrow-right-24:](cleanup.md)
 </div>

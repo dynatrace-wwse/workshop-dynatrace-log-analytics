@@ -1,6 +1,5 @@
 # Dashboards
-<!--TODO: Update bizevent code snippet -->
---8<-- "snippets/send-bizevent/4-content-placeholder.js"
+--8<-- "snippets/send-bizevent/9-dashboards.js"
 
 In this section of the workshop, you'll use Dynatrace log analytics and dashboards to visualize key aspects of your environment, including business outcomes, application resiliency, and infrastructure health — derived from log data in context. By querying and aggregating logs, you can uncover insights into user behavior, transaction success rates, error patterns, and system performance. Dynatrace dashboards allow you to present these insights in a clear, contextualized format, enabling teams to monitor service reliability, detect emerging issues, and correlate technical signals with business impact in real time.
 
@@ -21,9 +20,9 @@ Complete the exercises found in the Notebook `Workshop - Dashboarding`.
 Reference the Dashboard `Workshop - My Kubernetes Overview` as needed or upon completion.
 
 ## Continue
-<!--TODO: Update Continue Section -->
-In the next section, we'll ...
+
+In the next section, we'll explore additional resources to help you scale log analytics with Dynatrace.
 
 <div class="grid cards" markdown>
-- [Continue to ...:octicons-arrow-right-24:](next-page.md)
+- [Continue to Resources:octicons-arrow-right-24:](resources.md)
 </div>

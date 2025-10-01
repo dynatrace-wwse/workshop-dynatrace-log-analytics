@@ -1,5 +1,5 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  dynatrace.sendBizEvent('page_load', {"page": "4. Content Placeholder"})
+  dynatrace.sendBizEvent('page_load', {"page": "8. Anomaly Detection"})
 });
 </script>

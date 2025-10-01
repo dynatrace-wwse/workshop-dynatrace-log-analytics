@@ -1,16 +1,15 @@
+# Getting Started
 --8<-- "snippets/send-bizevent/2-getting-started.js"
 
 <!--TODO: Remove Under Construction -->
 --8<-- "snippets/under-construction.md"
 
-<!--TODO: Update requirements -->
 --8<-- "snippets/requirements.md"
 
 ## Prerequisites
 
 You will need full administrator access to a Dynatrace SaaS tenant with a DPS license.
 
-<!--TODO: Update prerequisite bulleted list -->
 * Identify Dynatrace Tenant URL
 * Identify Dynatrace Tenant Platform URL
 * Generate Dynatrace Platform Token
@@ -31,7 +30,7 @@ Identify and save/store your Dynatrace Tenant URL for the Dynatrace SaaS tenant:
 
 The Dynatrace platform provides a collection of so-called platform services where each has its specific area of responsibility. You can access platform services in different ways. Platform services are individually versioned and offer RESTful APIs via HTTP requests.
 
-[Dynatrace Documentation](https://docs.dynatrace.com/docs/shortlink/otel-getstarted-otlpexport#export-to-saas-and-activegate){target=_blank}
+[Dynatrace Documentation](https://developer.dynatrace.com/plan/platform-services/about-platform-services/){target=_blank}
 
 Identify and save/store your Dynatrace Tenant Platform URL for the Dynatrace SaaS tenant:
 
@@ -43,7 +42,6 @@ Identify and save/store your Dynatrace Tenant Platform URL for the Dynatrace Saa
 | Live (Prod) | https://{your-environment-id}.apps.dynatrace.com                          |
 | Stage       | https://{your-environment-id}.sprint.apps.dynatracelabs.com               |
 
-<!--TODO: Update prerequisite details -->
 ### Generate Dynatrace Platform Token
 
 Use Dynatrace Account Management to create a Platform Token.
@@ -62,12 +60,6 @@ document:trash.documents:delete
 app-engine:apps:run
 app-engine:functions:run
 ```
-
-### Prerequisite
-
-Prerequisite Details
-
-![Screenshot](./img/screenshot.png)
 
 ## Continue
 

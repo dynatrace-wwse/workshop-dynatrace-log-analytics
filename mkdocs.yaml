@@ -1,4 +1,3 @@
-# TODO: change site_name and repo_url to match your repo
 site_name: "Dynatrace Workshop: Scaling Log Analytics"
 repo_name: "View Code on GitHub"
 repo_url: "https://github.com/dynatrace-wwse/workshop-dynatrace-log-analytics"
