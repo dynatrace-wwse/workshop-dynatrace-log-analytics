@@ -1,6 +1,5 @@
 # Anomaly Detection
-<!--TODO: Update bizevent code snippet -->
---8<-- "snippets/send-bizevent/4-content-placeholder.js"
+--8<-- "snippets/send-bizevent/8-anomaly-detection.js"
 
 Now that we know how to perform powerful queries on our log data, let's explore how Dynatrace detects anomalies by analyzing raw log records and converting them into metrics using OpenPipeline. Dynatrace enhances observability by transforming log data into time-series metrics, enabling anomaly detection through static thresholds, auto-adaptive baselines, and seasonal baselines. Static thresholds provide fixed limits for alerting, while auto-adaptive baselines learn and adjust to dynamic system behavior, and seasonal baselines account for recurring patterns such as daily or weekly cycles. This approach allows for proactive identification of performance issues and unusual behavior across your environment.
 

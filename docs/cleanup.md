@@ -1,8 +1,6 @@
 # Cleanup
 --8<-- "snippets/send-bizevent/cleanup.js"
 
-<!-- TODO:Cleanup steps -->
-
 ## Delete Dynatrace Configurations with Monaco
 
 You can choose to keep the Dynatrace configurations, including the Notebooks and Dashboards, but if you want to delete them automatically you can leverage the helper function.

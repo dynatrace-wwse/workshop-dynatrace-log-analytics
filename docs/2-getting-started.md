@@ -1,3 +1,4 @@
+# Getting Started
 --8<-- "snippets/send-bizevent/2-getting-started.js"
 
 <!--TODO: Remove Under Construction -->

@@ -1,6 +1,5 @@
 # Scaling Log Analytics
-<!--TODO: Update bizevent code snippet -->
---8<-- "snippets/send-bizevent/4-content-placeholder.js"
+--8<-- "snippets/send-bizevent/5-scaling-log-analytics.js"
 
 Let’s be real — logs are your lifeline. Whether you're chasing down a production bug at 2 a.m. or trying to understand why latency just spiked, you need answers fast. That’s where Dynatrace comes in. It scales log analytics effortlessly, ingesting massive volumes without breaking a sweat, and delivers lightning-fast search and AI-powered context so you can go from “what just happened?” to “problem solved” in minutes. No more stitching together tools or waiting on queries — just instant clarity, full-stack visibility, and the kind of speed that makes you feel like a superhero.
 
