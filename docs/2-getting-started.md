@@ -1,9 +1,6 @@
 # Getting Started
 --8<-- "snippets/send-bizevent/2-getting-started.js"
 
-<!--TODO: Remove Under Construction -->
---8<-- "snippets/under-construction.md"
-
 --8<-- "snippets/requirements.md"
 
 ## Prerequisites

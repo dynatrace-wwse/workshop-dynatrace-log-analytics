@@ -6,7 +6,6 @@
 <!--TODO: Remove Under Construction -->
 --8<-- "snippets/under-construction.md"
 
-
 ## Create Codespace
 
 Click to open Codespaces for this workshop repository:

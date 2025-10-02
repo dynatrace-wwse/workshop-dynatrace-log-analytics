@@ -1,13 +1,8 @@
 # About
 --8<-- "snippets/send-bizevent/index.js"
 
-<!--TODO: Remove Under Construction -->
---8<-- "snippets/under-construction.md"
-
-<!--TODO: Update disclaimer (optional) -->
 --8<-- "snippets/disclaimer.md"
 
-<!--TODO: Update lab overview (match readme) -->
 ## Workshop Overview
 
 This workshop is designed to help participants understand how to scale log analytics using Dynatrace, particularly leveraging its Grail-powered Log Management and Analytics capabilities. It’s hands-on and intended for technical users who want to explore log ingestion, querying, and visualization at enterprise scale.
@@ -61,7 +56,6 @@ This workshop is designed to help participants understand how to scale log analy
 
     - Tear down and clean up the workshop assets after its completion
 
-<!--TODO: Update tech spec of lab components -->
 ## Technical Specification
 
 ### Technologies Used
