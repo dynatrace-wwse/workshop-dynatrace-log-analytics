@@ -794,11 +794,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </ul>
 <p>To learn more about the Dynatrace Enablement Framework and how it can enhance your development workflow, please refer to the <a href="https://dynatrace-wwse.github.io/codespaces-framework">official documentation</a></p>
 </details>
-<!--TODO: Remove Under Construction -->
-<div class="admonition warning">
-<p class="admonition-title">Under Construction</p>
-<p>This guide is under construction and is not ready for use!</p>
-</div>
 <h2 id="create-codespace">Create Codespace<a class="headerlink" href="#create-codespace" title="Permanent link">#</a></h2>
 <p>Click to open Codespaces for this workshop repository:</p>
 <p><a href="https://codespaces.new/dynatrace-wwse/workshop-dynatrace-log-analytics" target="_blank"><img alt="Open in GitHub Codespaces" src="https://github.com/codespaces/badge.svg" /></a></p>
@@ -823,6 +818,17 @@ document.addEventListener('DOMContentLoaded', function() {
 </li>
 </ul>
 </div>
+<details class="example">
+<summary>GitHub Codespaces Alternatives</summary>
+<p>The simplest approach is using GitHub Codespaces.  However, you can alternatively run this workshop on the following:</p>
+<ul>
+<li>Local container on your workstation</li>
+<li>Local container on your cloud virtual machine (AWS EC2, Azure VM, Google GCE)</li>
+<li>Visual Studio Code Dev Container</li>
+</ul>
+<p>To learn more, review the <a href="https://dynatrace-wwse.github.io/codespaces-framework/instantiation-types/#2-running-in-vs-code-dev-containers-or-local-container" target="_blank">quick step-by-step guide of the Dynatrace Enablement Framework</a>.</p>
+<p>Make sure your container has sufficient resources (4 CPU Core &amp; 16 GB Memory minimum).</p>
+</details>
 <h3 id="wait-for-codespace">Wait for Codespace<a class="headerlink" href="#wait-for-codespace" title="Permanent link">#</a></h3>
 <p>We know your time is very valuable. This codespace takes around 7-10 minutes to be fully operational. A local Kubernetes (<a href="https://kind.sigs.k8s.io/" target="_blank">kind</a>) cluster will be configured and in it a sample application, AstroShop, will be deployed. To make your experience better, we are also installing and configuring tools like:</p>
 <p><strong>k9s kubectl helm node jq python3 gh</strong></p>
