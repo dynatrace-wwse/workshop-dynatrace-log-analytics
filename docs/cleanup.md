@@ -25,6 +25,9 @@ deleteDynatraceConfig
 
 Another way to do this is by going to [https://github.com/codespaces](https://github.com/codespaces){target=_blank} and delete the codespace.
 
+??? example "GitHub Codespaces Alternatives"
+    If you chose to run this workshop from one of the alternative approaches, please refer to the [Dynatrace Enablement Framework](https://dynatrace-wwse.github.io/codespaces-framework/){target="_blank"} for guidance on cleaning up the container.
+
 ## Delete Dynatrace Tokens
 
 You may also want to deactivate or delete the API and Platform token(s) needed for this lab.

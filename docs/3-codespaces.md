@@ -3,9 +3,6 @@
 
 --8<-- "snippets/dt-enablement.md"
 
-<!--TODO: Remove Under Construction -->
---8<-- "snippets/under-construction.md"
-
 ## Create Codespace
 
 Click to open Codespaces for this workshop repository:
@@ -21,6 +18,17 @@ Click to open Codespaces for this workshop repository:
         - select **4-core**
     - Region
         - select any region, preferably one closest to your Dynatrace tenant
+
+??? example "GitHub Codespaces Alternatives"
+    The simplest approach is using GitHub Codespaces.  However, you can alternatively run this workshop on the following:
+
+    - Local container on your workstation
+    - Local container on your cloud virtual machine (AWS EC2, Azure VM, Google GCE)
+    - Visual Studio Code Dev Container
+
+    To learn more, review the [quick step-by-step guide of the Dynatrace Enablement Framework](https://dynatrace-wwse.github.io/codespaces-framework/instantiation-types/#2-running-in-vs-code-dev-containers-or-local-container){target="_blank"}.
+
+    Make sure your container has sufficient resources (4 CPU Core & 16 GB Memory minimum).
 
 ### Wait for Codespace
 
