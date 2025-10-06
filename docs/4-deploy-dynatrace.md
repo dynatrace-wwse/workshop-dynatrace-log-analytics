@@ -52,7 +52,7 @@ The automation script will utilize environment variables for deploying Dynatrace
 From your terminal, set the environment variables with the `export` command.
 
 ```sh
-export DT_TENANT=https://abc123.live.dynatrace.com
+export DT_ENVIRONMENT=https://abc123.apps.dynatrace.com
 export DT_OPERATOR_TOKEN=dt0c01.<YOUR-DYNATRACE-OPERATOR-TOKEN>
 export DT_INGEST_TOKEN=dt0c01.<YOUR-DATA-INGEST-TOKEN>
 ```
