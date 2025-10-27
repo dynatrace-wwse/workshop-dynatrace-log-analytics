@@ -38,12 +38,40 @@ We know your time is very valuable. This codespace takes around 7-10 minutes to 
 
 ## Deploy Demo Applications
 
+There is an application repository for you to deploy applications easily to your Kubernetes cluster. 
+Running `deployApp` without parameters displays an interactive help menu listing all available apps, their aliases, and their compatibility (AMD/ARM). Example output:
+
+![deployApp](img/deployApp.png){ align=center ; } 
+
+#### To deploy an app
+- Use any of the listed numbers, characters, or names. For example, to deploy `astroshop`, you can run:
+	```sh
+	deployApp 2
+	# or
+	deployApp b
+	# or
+	deployApp astroshop
+	```
+
+#### To undeploy an app
+- Add `-d` as an extra argument:
+	```sh
+	deployApp 2 -d
+	# or
+	deployApp astroshop -d 
+	```
+
+
+Each app folder should contain its own deployment and cleanup scripts or instructions. The `deployApp` function will call these as needed.
+
+
+
 ### AstroShop (OpenTelemetry Demo App)
 
 The base configuration of the Codespaces instance will automatically deploy AstroShop using the function below.
 
 ```sh
-deployAstroshop
+deployApp astroshop
 ```
 
 AstroShop is required to complete the workshop.
@@ -58,7 +86,7 @@ EasyTrade is not required to complete the workshop.  It is available should you 
 Deploy EasyTrade using the function below.
 
 ```sh
-deployEasyTrade
+deployApp easytrade
 ```
 
 ### HipsterShop
@@ -71,7 +99,7 @@ HipsterShop is not required to complete the workshop.  It is available should yo
 Deploy HipsterShop using the function below.
 
 ```sh
-deployHipsterShop
+deployApp hipstershop
 ```
 
 ## Troubleshooting
