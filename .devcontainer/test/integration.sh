@@ -6,4 +6,4 @@ printInfoSection "Running integration Tests for $RepositoryName"
 
 assertRunningPod astroshop frontend
 
-assertRunningApp 30100
+assertRunningApp astroshop
