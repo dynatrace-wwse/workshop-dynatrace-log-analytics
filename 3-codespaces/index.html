@@ -864,7 +864,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>Make sure your container has sufficient resources (4 CPU Core &amp; 16 GB Memory minimum).</p>
 </details>
 <h3 id="wait-for-codespace">Wait for Codespace<a class="headerlink" href="#wait-for-codespace" title="Permanent link">#</a></h3>
-<p>We know your time is very valuable. This codespace takes around 7-10 minutes to be fully operational. A local Kubernetes (<a href="https://kind.sigs.k8s.io/" target="_blank">kind</a>) cluster will be configured and in it a sample application, AstroShop, will be deployed. To make your experience better, we are also installing and configuring tools like:</p>
+<p>We know your time is very valuable. This codespace takes around 7-10 minutes to be fully operational. A local Kubernetes (<a href="https://k3d.io/" target="_blank">k3d</a>) cluster will be configured and in it a sample application, AstroShop, will be deployed. To make your experience better, we are also installing and configuring tools like:</p>
 <p><strong>k9s kubectl helm node jq python3 gh</strong></p>
 <h2 id="deploy-demo-applications">Deploy Demo Applications<a class="headerlink" href="#deploy-demo-applications" title="Permanent link">#</a></h2>
 <p>There is an application repository for you to deploy applications easily to your Kubernetes cluster. 
@@ -931,7 +931,7 @@ deployApp<span class="w"> </span>astroshop<span class="w"> </span>-d<span class=
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w"> </span>-n<span class="w"> </span>kube-system
 kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w"> </span>-n<span class="w"> </span>default
 </code></pre></div></p>
-<p>The Astroshop application is exposed via NodePort and it's mapping port 8080 to Cluster port 30100.</p>
+<p>The Astroshop application is accessible via the nginx ingress controller. The URL is shown in the greeting — run <code>printGreeting</code> to display it.</p>
 <p>Verify service:
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>svc<span class="w"> </span>astroshop-frontendproxy<span class="w"> </span>-n<span class="w"> </span>astroshop
 </code></pre></div></p>
