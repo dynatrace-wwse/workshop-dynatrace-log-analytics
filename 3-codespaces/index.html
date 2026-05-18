@@ -171,6 +171,11 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
@@ -873,26 +878,26 @@ Running <code>deployApp</code> without parameters displays an interactive help m
 <h4 id="to-deploy-an-app">To deploy an app<a class="headerlink" href="#to-deploy-an-app" title="Permanent link">#</a></h4>
 <ul>
 <li>Use any of the listed numbers, characters, or names. For example, to deploy <code>astroshop</code>, you can run:
-    <div class="highlight"><pre><span></span><code>deployApp<span class="w"> </span><span class="m">2</span>
-<span class="c1"># or</span>
-deployApp<span class="w"> </span>b
-<span class="c1"># or</span>
-deployApp<span class="w"> </span>astroshop
-</code></pre></div></li>
+    <div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>deployApp<span class="w"> </span><span class="m">2</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># or</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>deployApp<span class="w"> </span>b
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># or</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>deployApp<span class="w"> </span>astroshop
+</span></code></pre></div></li>
 </ul>
 <h4 id="to-undeploy-an-app">To undeploy an app<a class="headerlink" href="#to-undeploy-an-app" title="Permanent link">#</a></h4>
 <ul>
 <li>Add <code>-d</code> as an extra argument:
-    <div class="highlight"><pre><span></span><code>deployApp<span class="w"> </span><span class="m">2</span><span class="w"> </span>-d
-<span class="c1"># or</span>
-deployApp<span class="w"> </span>astroshop<span class="w"> </span>-d<span class="w"> </span>
-</code></pre></div></li>
+    <div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>deployApp<span class="w"> </span><span class="m">2</span><span class="w"> </span>-d
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># or</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>deployApp<span class="w"> </span>astroshop<span class="w"> </span>-d<span class="w"> </span>
+</span></code></pre></div></li>
 </ul>
 <p>Each app folder should contain its own deployment and cleanup scripts or instructions. The <code>deployApp</code> function will call these as needed.</p>
 <h3 id="astroshop-opentelemetry-demo-app">AstroShop (OpenTelemetry Demo App)<a class="headerlink" href="#astroshop-opentelemetry-demo-app" title="Permanent link">#</a></h3>
 <p>The base configuration of the Codespaces instance will automatically deploy AstroShop using the function below.</p>
-<div class="highlight"><pre><span></span><code>deployApp<span class="w"> </span>astroshop
-</code></pre></div>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>deployApp<span class="w"> </span>astroshop
+</span></code></pre></div>
 <p>AstroShop is required to complete the workshop.</p>
 <h3 id="easytrade">EasyTrade<a class="headerlink" href="#easytrade" title="Permanent link">#</a></h3>
 <p>EasyTrade is not required to complete the workshop.  It is available should you choose to add additional environment complexity and use cases.  The hands-on exercises do not reference EasyTrade, however it can be leveraged to "freestyle" additional exercises.</p>
@@ -901,8 +906,8 @@ deployApp<span class="w"> </span>astroshop<span class="w"> </span>-d<span class=
 <p>Deploying additional demo applications will consume significant resources.  In order to deploy EasyTrade, make sure you have <strong>8 CPU</strong> and <strong>32GB Memory</strong> allocated to your Codespaces container.</p>
 </div>
 <p>Deploy EasyTrade using the function below.</p>
-<div class="highlight"><pre><span></span><code>deployApp<span class="w"> </span>easytrade
-</code></pre></div>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>deployApp<span class="w"> </span>easytrade
+</span></code></pre></div>
 <h3 id="hipstershop">HipsterShop<a class="headerlink" href="#hipstershop" title="Permanent link">#</a></h3>
 <p>HipsterShop is not required to complete the workshop.  It is available should you choose to add additional environment complexity and use cases.  The hands-on exercises do not reference HipsterShop, however it can be leveraged to "freestyle" additional exercises.</p>
 <div class="admonition tip">
@@ -910,40 +915,40 @@ deployApp<span class="w"> </span>astroshop<span class="w"> </span>-d<span class=
 <p>Deploying additional demo applications will consume significant resources.  In order to deploy HipsterShop, make sure you have <strong>8 CPU</strong> and <strong>32GB Memory</strong> allocated to your Codespaces container.</p>
 </div>
 <p>Deploy HipsterShop using the function below.</p>
-<div class="highlight"><pre><span></span><code>deployApp<span class="w"> </span>hipstershop
-</code></pre></div>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>deployApp<span class="w"> </span>hipstershop
+</span></code></pre></div>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">#</a></h2>
 <!--TODO: Update Troubleshooting -->
 
 <h3 id="astroshop">AstroShop<a class="headerlink" href="#astroshop" title="Permanent link">#</a></h3>
 <p>If you encounter problems with the AstroShop app deployed in the <code>astroshop</code> namespace, you can easily recycle the pods.</p>
 <p>Recycle pods:
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>pods<span class="w"> </span>--all<span class="w"> </span>-n<span class="w"> </span>astroshop
-</code></pre></div></p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>pods<span class="w"> </span>--all<span class="w"> </span>-n<span class="w"> </span>astroshop
+</span></code></pre></div></p>
 <p>But before doing so, if you want to see what is happening we recommend the following: </p>
 <p>Verify all astroshop pods
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>astroshop
-</code></pre></div></p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>astroshop
+</span></code></pre></div></p>
 <p>Check for events in the astroshop namespace
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w"> </span>-n<span class="w"> </span>astroshop
-</code></pre></div></p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w"> </span>-n<span class="w"> </span>astroshop
+</span></code></pre></div></p>
 <p>Check for system and cluster events 
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w"> </span>-n<span class="w"> </span>kube-system
-kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w"> </span>-n<span class="w"> </span>default
-</code></pre></div></p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w"> </span>-n<span class="w"> </span>kube-system
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w"> </span>-n<span class="w"> </span>default
+</span></code></pre></div></p>
 <p>The Astroshop application is accessible via the nginx ingress controller. The URL is shown in the greeting — run <code>printGreeting</code> to display it.</p>
 <p>Verify service:
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>svc<span class="w"> </span>astroshop-frontendproxy<span class="w"> </span>-n<span class="w"> </span>astroshop
-</code></pre></div></p>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>svc<span class="w"> </span>astroshop-frontendproxy<span class="w"> </span>-n<span class="w"> </span>astroshop
+</span></code></pre></div></p>
 <h2 id="deploy-dynatrace-configurations-with-monaco">Deploy Dynatrace Configurations with Monaco<a class="headerlink" href="#deploy-dynatrace-configurations-with-monaco" title="Permanent link">#</a></h2>
 <p>This workshop includes multiple Dynatrace configurations, such as Launchpads, Dashboards, and Notebooks.  These can be deployed to your Dynatrace tenant automatically, using Monaco.</p>
 <p>Start by setting your environment variables for Monaco, these will allow Monaco to authenticate with the Dynatrace Platform Services API.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DT_PLATFORM_URL</span><span class="o">=</span>https://<span class="o">{</span>your-environment-id<span class="o">}</span>.apps.dynatrace.com
-<span class="nb">export</span><span class="w"> </span><span class="nv">DT_PLATFORM_TOKEN</span><span class="o">=</span>dt0sXX.ABC123XYZ
-</code></pre></div>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DT_PLATFORM_URL</span><span class="o">=</span>https://<span class="o">{</span>your-environment-id<span class="o">}</span>.apps.dynatrace.com
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DT_PLATFORM_TOKEN</span><span class="o">=</span>dt0sXX.ABC123XYZ
+</span></code></pre></div>
 <p>Deploy the Dynatrace configurations with Monaco using the provided helper function.</p>
-<div class="highlight"><pre><span></span><code>deployDynatraceConfig
-</code></pre></div>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>deployDynatraceConfig
+</span></code></pre></div>
 <p>Review the Monaco logs output in the console and check for any error messages.  If the configurations were deployed successfully, you should see <strong>Successfully deployed Dynatrace Configurations with Monaco</strong>.</p>
 <p><img alt="Monaco Successful" src="../img/prereq-dt_monaco_deployment_success.png" target="_blank" /></p>
 <p>In your Dynatrace tenant, open the <strong>Notebooks</strong> App.  Locate the newly uploaded Notebook titled <code>Workshop - Workshop Exercises</code>.</p>
@@ -972,6 +977,8 @@ kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w">
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -984,6 +991,46 @@ kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w">
       </main>
       
         <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../2-getting-started/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 2. Getting started">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                2. Getting started
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../4-deploy-dynatrace/" class="md-footer__link md-footer__link--next" aria-label="Next: 4. Deploy Dynatrace">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                4. Deploy Dynatrace
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -1007,7 +1054,7 @@ kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w">
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.annotate", "navigation.instant", "navigation.tracking", "navigation.top", "search.highlight", "search.suggest"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.top", "navigation.sections", "navigation.footer", "toc.follow", "search.highlight", "search.suggest", "search.share"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
