@@ -1,5 +1,4 @@
 # Deploy Dynatrace
---8<-- "snippets/send-bizevent/4-deploy-dynatrace.js"
 
 !!! tip "Deploy Dynatrace Approach"
     This guide offers (2) approaches to deploying Dynatrace for this workshop.  To speed things up and get log data into Dynatrace as quickly as possible, the automated (scripted) approach will deploy Dynatrace for you using helper functions.  To learn the process of deploying Dynatrace on Kubernetes and to customize the deployment to your needs, you can follow the manual (guided) approach.

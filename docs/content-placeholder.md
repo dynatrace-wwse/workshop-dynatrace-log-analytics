@@ -1,7 +1,6 @@
 <!--TODO: Update Lab Task -->
 # Lab Task
 <!--TODO: Update bizevent code snippet -->
---8<-- "snippets/send-bizevent/4-content-placeholder.js"
 
 <!--TODO: Update Lab task and learn more link -->
 Lab task description and primer

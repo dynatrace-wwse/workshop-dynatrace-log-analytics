@@ -1,5 +1,4 @@
 # Resources
---8<-- "snippets/send-bizevent/resources.js"
 
 ### Dynatrace Query Language
 
