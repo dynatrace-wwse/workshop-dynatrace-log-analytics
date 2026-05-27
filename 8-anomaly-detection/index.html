@@ -653,6 +653,12 @@
 
 
 <h1 id="anomaly-detection">Anomaly Detection<a class="headerlink" href="#anomaly-detection" title="Permanent link">#</a></h1>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  dynatrace.sendBizEvent('page_load', {"page": "8. Anomaly Detection"})
+});
+</script>
+
 <p>Now that we know how to perform powerful queries on our log data, let's explore how Dynatrace detects anomalies by analyzing raw log records and converting them into metrics using OpenPipeline. Dynatrace enhances observability by transforming log data into time-series metrics, enabling anomaly detection through static thresholds, auto-adaptive baselines, and seasonal baselines. Static thresholds provide fixed limits for alerting, while auto-adaptive baselines learn and adjust to dynamic system behavior, and seasonal baselines account for recurring patterns such as daily or weekly cycles. This approach allows for proactive identification of performance issues and unusual behavior across your environment.</p>
 <div class="grid cards">
 <ul>
@@ -779,19 +785,8 @@
     <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.top", "navigation.sections", "navigation.footer", "toc.follow", "search.highlight", "search.suggest", "search.share"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-  
       <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
       
     
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      if (typeof dynatrace !== 'undefined') {
-        dynatrace.sendBizEvent('page_load', {'page': "8. Anomaly Detection"});
-      }
-    });
-  </script>
-  
-
   </body>
 </html>

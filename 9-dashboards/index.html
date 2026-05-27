@@ -599,6 +599,12 @@
 
 
 <h1 id="dashboards">Dashboards<a class="headerlink" href="#dashboards" title="Permanent link">#</a></h1>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  dynatrace.sendBizEvent('page_load', {"page": "9. Dashboards"})
+});
+</script>
+
 <p>In this section of the workshop, you'll use Dynatrace log analytics and dashboards to visualize key aspects of your environment, including business outcomes, application resiliency, and infrastructure health — derived from log data in context. By querying and aggregating logs, you can uncover insights into user behavior, transaction success rates, error patterns, and system performance. Dynatrace dashboards allow you to present these insights in a clear, contextualized format, enabling teams to monitor service reliability, detect emerging issues, and correlate technical signals with business impact in real time.</p>
 <div class="grid cards">
 <ul>
@@ -715,19 +721,8 @@
     <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.top", "navigation.sections", "navigation.footer", "toc.follow", "search.highlight", "search.suggest", "search.share"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-  
       <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
       
     
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      if (typeof dynatrace !== 'undefined') {
-        dynatrace.sendBizEvent('page_load', {'page': "9. Dashboards"});
-      }
-    });
-  </script>
-  
-
   </body>
 </html>
