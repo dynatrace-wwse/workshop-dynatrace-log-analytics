@@ -1,5 +1,4 @@
 # Dashboards
---8<-- "snippets/send-bizevent/9-dashboards.js"
 
 In this section of the workshop, you'll use Dynatrace log analytics and dashboards to visualize key aspects of your environment, including business outcomes, application resiliency, and infrastructure health — derived from log data in context. By querying and aggregating logs, you can uncover insights into user behavior, transaction success rates, error patterns, and system performance. Dynatrace dashboards allow you to present these insights in a clear, contextualized format, enabling teams to monitor service reliability, detect emerging issues, and correlate technical signals with business impact in real time.
 

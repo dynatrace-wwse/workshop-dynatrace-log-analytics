@@ -1,5 +1,4 @@
 # Configure Dynatrace
---8<-- "snippets/send-bizevent/6-configure-dynatrace.js"
 
 In this workshop module, we'll configure the Dynatrace tenant based on the best practices covered in scaling log analytics.
 

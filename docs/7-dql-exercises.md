@@ -1,5 +1,4 @@
 # DQL Exercises
---8<-- "snippets/send-bizevent/7-dql-exercises.js"
 
 Now that logs are flowing into Dynatrace from our Kubernetes environment, it's time to unlock their full potential. Enter Dynatrace Query Language (DQL) - a powerful, intuitive language purpose-built for observability at scale. With DQL, you can slice through massive volumes of log data with precision, filter by meaningful attributes, extract insights in seconds, and even correlate logs with traces and metrics—all in a single query. Whether you're troubleshooting an issue, hunting for anomalies, or building dashboards, DQL makes it easy to ask complex questions and get clear answers fast. Let’s dive in and see how DQL transforms raw log data into actionable intelligence.
 
