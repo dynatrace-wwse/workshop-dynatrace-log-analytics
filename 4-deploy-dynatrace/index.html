@@ -936,7 +936,7 @@
 </span></code></pre></div>
 <h3 id="refresh-application-pods">Refresh Application Pods<a class="headerlink" href="#refresh-application-pods" title="Permanent link">#</a></h3>
 <p>Now that Dynatrace is deployed, let's refresh/recycle the application pods for <code>astroshop</code> to inject the OneAgent code modules.</p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>astroshop<span class="w"> </span>--field-selector<span class="o">=</span><span class="s2">&quot;status.phase=Running&quot;</span>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>astroshop<span class="w"> </span>--field-selector<span class="o">=</span><span class="s2">"status.phase=Running"</span>
 </span></code></pre></div>
 <h3 id="validate-log-ingest">Validate Log Ingest<a class="headerlink" href="#validate-log-ingest" title="Permanent link">#</a></h3>
 <p>In your Dynatrace tenant, return to the <code>Kubernetes</code> app.  From the Cluster overview tab, click on <code>Namespaces</code> to open the list of Namespaces on the Cluster.</p>
@@ -1076,7 +1076,7 @@
 </span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workshop-log-analytics</span>
 </span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dynatrace</span>
 </span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
-</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="nt">feature.dynatrace.com/k8s-app-enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="nt">feature.dynatrace.com/k8s-app-enabled</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="nt">spec</span><span class="p">:</span>
 </span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">  </span><span class="nt">apiUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://&lt;tenant&gt;/api</span>
 </span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">  </span><span class="nt">metadataEnrichment</span><span class="p">:</span>
@@ -1116,7 +1116,7 @@
 <p>By enabling the Log Module in your <code>dynakube.yaml</code> definition, this will enable the Dynakube to add a Log Ingest rule scoped at the Cluster-level within the Dynatrace tenant.</p>
 <h3 id="refresh-application-pods_1">Refresh Application Pods<a class="headerlink" href="#refresh-application-pods_1" title="Permanent link">#</a></h3>
 <p>Now that Dynatrace is deployed, let's refresh/recycle the application pods for <code>astroshop</code> to inject the OneAgent code modules.</p>
-<div class="language-sh highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>astroshop<span class="w"> </span>--field-selector<span class="o">=</span><span class="s2">&quot;status.phase=Running&quot;</span>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>astroshop<span class="w"> </span>--field-selector<span class="o">=</span><span class="s2">"status.phase=Running"</span>
 </span></code></pre></div>
 <h3 id="validate-log-ingest_1">Validate Log Ingest<a class="headerlink" href="#validate-log-ingest_1" title="Permanent link">#</a></h3>
 <p>In your Dynatrace tenant, return to the <code>Kubernetes</code> app.  From the Cluster overview tab, click on <code>Namespaces</code> to open the list of Namespaces on the Cluster.</p>
