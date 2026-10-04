@@ -1,3 +1,12 @@
+---
+description: Deploy Dynatrace on a Kubernetes cluster with demo apps and apply the best practices for scaling log analytics on Grail. Query logs with DQL, detect anomalies from log data with Davis AI and visualize them in dashboards.
+tags:
+  - classic
+  - logs
+  - dql
+  - davis-ai
+---
+
 # About
 
 !!! warning "Not yet migrated to the Dynatrace Enablement App"
